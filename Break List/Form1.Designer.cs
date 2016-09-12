@@ -28,28 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            DevExpress.XtraScheduler.TimeRuler timeRuler4 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeRuler timeRuler5 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeScaleFixedInterval timeScaleFixedInterval3 = new DevExpress.XtraScheduler.TimeScaleFixedInterval();
-            DevExpress.XtraScheduler.TimeScaleFixedInterval timeScaleFixedInterval4 = new DevExpress.XtraScheduler.TimeScaleFixedInterval();
-            DevExpress.XtraScheduler.TimeRuler timeRuler6 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
+            DevExpress.XtraScheduler.TimeScaleFixedInterval timeScaleFixedInterval1 = new DevExpress.XtraScheduler.TimeScaleFixedInterval();
+            DevExpress.XtraScheduler.TimeScaleFixedInterval timeScaleFixedInterval2 = new DevExpress.XtraScheduler.TimeScaleFixedInterval();
+            DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.tablesBindingSource = new System.Windows.Forms.BindingSource();
+            this.tablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.liveGameDataSet = new Break_List.LiveGameDataSet();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colGame = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
-            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer();
+            this.appMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.popupControlContainer2 = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.buttonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.iExit = new DevExpress.XtraBars.BarButtonItem();
-            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer();
+            this.popupControlContainer1 = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.someLabelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection();
+            this.ribbonImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.iHelp = new DevExpress.XtraBars.BarButtonItem();
             this.iAbout = new DevExpress.XtraBars.BarButtonItem();
             this.siStatus = new DevExpress.XtraBars.BarStaticItem();
@@ -85,19 +86,18 @@
             this.viewZoomOutItem1 = new DevExpress.XtraScheduler.UI.ViewZoomOutItem();
             this.groupByNoneItem1 = new DevExpress.XtraScheduler.UI.GroupByNoneItem();
             this.groupByDateItem1 = new DevExpress.XtraScheduler.UI.GroupByDateItem();
-            this.groupByResourceItem1 = new DevExpress.XtraScheduler.UI.GroupByResourceItem();
             this.openScheduleItem1 = new DevExpress.XtraScheduler.UI.OpenScheduleItem();
             this.saveScheduleItem1 = new DevExpress.XtraScheduler.UI.SaveScheduleItem();
             this.printPreviewItem1 = new DevExpress.XtraScheduler.UI.PrintPreviewItem();
             this.printItem1 = new DevExpress.XtraScheduler.UI.PrintItem();
             this.printPageSetupItem1 = new DevExpress.XtraScheduler.UI.PrintPageSetupItem();
             this.btnPersonel = new DevExpress.XtraBars.BarButtonGroup();
-            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection();
+            this.ribbonImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
             this.calendarToolsRibbonPageCategory1 = new DevExpress.XtraScheduler.UI.CalendarToolsRibbonPageCategory();
             this.schedulerControl = new DevExpress.XtraScheduler.SchedulerControl();
-            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage();
-            this.appointmentsBindingSource = new System.Windows.Forms.BindingSource();
-            this.resourcesBindingSource = new System.Windows.Forms.BindingSource();
+            this.schedulerStorage = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
+            this.appointmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.resourcesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.appointmentRibbonPage1 = new DevExpress.XtraScheduler.UI.AppointmentRibbonPage();
             this.actionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActionsRibbonPageGroup();
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
@@ -114,8 +114,8 @@
             this.repositoryItemDuration1 = new DevExpress.XtraScheduler.UI.RepositoryItemDuration();
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.dateNavigator = new DevExpress.XtraScheduler.DateNavigator();
-            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection();
-            this.navbarImageCollection = new DevExpress.Utils.ImageCollection();
+            this.navbarImageCollectionLarge = new DevExpress.Utils.ImageCollection(this.components);
+            this.navbarImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController();
             this.appointmentsTableAdapter = new Break_List.LiveGameDataSetTableAdapters.AppointmentsTableAdapter();
             this.resourcesTableAdapter = new Break_List.LiveGameDataSetTableAdapters.ResourcesTableAdapter();
@@ -180,7 +180,6 @@
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-           
             this.gridControl1.DragLeave += new System.EventHandler(this.gridControl1_DragLeave);
             // 
             // tablesBindingSource
@@ -270,7 +269,6 @@
             this.viewZoomOutItem1,
             this.groupByNoneItem1,
             this.groupByDateItem1,
-            this.groupByResourceItem1,
             this.openScheduleItem1,
             this.saveScheduleItem1,
             this.printPreviewItem1,
@@ -606,12 +604,6 @@
             this.groupByDateItem1.Id = 96;
             this.groupByDateItem1.Name = "groupByDateItem1";
             // 
-            // groupByResourceItem1
-            // 
-            this.groupByResourceItem1.Caption = "Personel";
-            this.groupByResourceItem1.Id = 97;
-            this.groupByResourceItem1.Name = "groupByResourceItem1";
-            // 
             // openScheduleItem1
             // 
             this.openScheduleItem1.Id = 98;
@@ -683,7 +675,7 @@
             this.schedulerControl.Text = "schedulerControl1";
             this.schedulerControl.Views.AgendaView.Enabled = false;
             this.schedulerControl.Views.DayView.Enabled = false;
-            this.schedulerControl.Views.DayView.TimeRulers.Add(timeRuler4);
+            this.schedulerControl.Views.DayView.TimeRulers.Add(timeRuler1);
             this.schedulerControl.Views.DayView.TimeScale = System.TimeSpan.Parse("00:20:00");
             this.schedulerControl.Views.DayView.TimeSlots.Add(new DevExpress.XtraScheduler.TimeSlot(System.TimeSpan.Parse("01:00:00"), "60 Minutes", "6&0 Minutes"));
             this.schedulerControl.Views.DayView.TimeSlots.Add(new DevExpress.XtraScheduler.TimeSlot(System.TimeSpan.Parse("00:30:00"), "30 Minutes", "&30 Minutes"));
@@ -692,25 +684,25 @@
             this.schedulerControl.Views.DayView.TimeSlots.Add(new DevExpress.XtraScheduler.TimeSlot(System.TimeSpan.Parse("00:10:00"), "10 Minutes", "10 &Minutes"));
             this.schedulerControl.Views.DayView.TimeSlots.Add(new DevExpress.XtraScheduler.TimeSlot(System.TimeSpan.Parse("00:06:00"), "6 Minutes", "&6 Minutes"));
             this.schedulerControl.Views.DayView.TimeSlots.Add(new DevExpress.XtraScheduler.TimeSlot(System.TimeSpan.Parse("00:05:00"), "5 Minutes", "&5 Minutes"));
-            this.schedulerControl.Views.FullWeekView.TimeRulers.Add(timeRuler5);
+            this.schedulerControl.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl.Views.GanttView.Enabled = false;
             this.schedulerControl.Views.MonthView.Enabled = false;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ShowRecurrence = false;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ShowReminder = false;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.StatusDisplayType = DevExpress.XtraScheduler.AppointmentStatusDisplayType.Time;
             this.schedulerControl.Views.TimelineView.ResourcesPerPage = 20;
-            timeScaleFixedInterval3.DisplayFormat = "HH:mm";
-            timeScaleFixedInterval3.Value = System.TimeSpan.Parse("00:20:00");
-            timeScaleFixedInterval4.DisplayName = "Hour";
-            timeScaleFixedInterval4.MenuCaption = "Hour";
-            timeScaleFixedInterval4.Value = System.TimeSpan.Parse("01:00:00");
-            this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleFixedInterval3);
-            this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleFixedInterval4);
+            timeScaleFixedInterval1.DisplayFormat = "HH:mm";
+            timeScaleFixedInterval1.Value = System.TimeSpan.Parse("00:20:00");
+            timeScaleFixedInterval2.DisplayName = "Hour";
+            timeScaleFixedInterval2.MenuCaption = "Hour";
+            timeScaleFixedInterval2.Value = System.TimeSpan.Parse("01:00:00");
+            this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleFixedInterval1);
+            this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleFixedInterval2);
             this.schedulerControl.Views.TimelineView.ShowMoreButtons = false;
             this.schedulerControl.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));
             this.schedulerControl.Views.WeekView.Enabled = false;
             this.schedulerControl.Views.WorkWeekView.Enabled = false;
-            this.schedulerControl.Views.WorkWeekView.TimeRulers.Add(timeRuler6);
+            this.schedulerControl.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             this.schedulerControl.AppointmentDrop += new DevExpress.XtraScheduler.AppointmentDragEventHandler(this.schedulerControl_AppointmentDrop);
             this.schedulerControl.PopupMenuShowing += new DevExpress.XtraScheduler.PopupMenuShowingEventHandler(this.schedulerControl_PopupMenuShowing);
             // 
@@ -795,7 +787,6 @@
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.gotoTodayItem1);
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.viewZoomInItem1);
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.viewZoomOutItem1);
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.groupByResourceItem1);
             this.navigatorRibbonPageGroup1.Name = "navigatorRibbonPageGroup1";
             this.navigatorRibbonPageGroup1.Text = "Navigasyon";
             // 
@@ -933,7 +924,6 @@
             this.schedulerBarController1.BarItems.Add(this.viewZoomOutItem1);
             this.schedulerBarController1.BarItems.Add(this.groupByNoneItem1);
             this.schedulerBarController1.BarItems.Add(this.groupByDateItem1);
-            this.schedulerBarController1.BarItems.Add(this.groupByResourceItem1);
             this.schedulerBarController1.BarItems.Add(this.openScheduleItem1);
             this.schedulerBarController1.BarItems.Add(this.saveScheduleItem1);
             this.schedulerBarController1.BarItems.Add(this.printPreviewItem1);
@@ -1064,7 +1054,6 @@
         private DevExpress.XtraScheduler.UI.ViewZoomOutItem viewZoomOutItem1;
         private DevExpress.XtraScheduler.UI.GroupByNoneItem groupByNoneItem1;
         private DevExpress.XtraScheduler.UI.GroupByDateItem groupByDateItem1;
-        private DevExpress.XtraScheduler.UI.GroupByResourceItem groupByResourceItem1;
         private DevExpress.XtraScheduler.UI.OpenScheduleItem openScheduleItem1;
         private DevExpress.XtraScheduler.UI.SaveScheduleItem saveScheduleItem1;
         private DevExpress.XtraScheduler.UI.PrintPreviewItem printPreviewItem1;

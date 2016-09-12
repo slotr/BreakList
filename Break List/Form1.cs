@@ -110,8 +110,6 @@ namespace Break_List
                     downHitInfo = null;
                 }
             }
-
-
         }
 
         private void gridView1_MouseDown(object sender, MouseEventArgs e)
