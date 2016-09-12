@@ -24,8 +24,7 @@ namespace Break_List
     {
         public Form1()
         {
-            InitializeComponent();
-            InitSkinGallery();
+            InitializeComponent();           
             schedulerControl.Start = System.DateTime.Now;
             schedulerControl.Views.DayView.Enabled = false;
             schedulerControl.ActiveViewType = SchedulerViewType.Timeline;
@@ -34,10 +33,7 @@ namespace Break_List
         TimeSpan minTime = new TimeSpan(0, 0, 0);
         TimeSpan maxTime = new TimeSpan(24, 0, 0);
         GridHitInfo downHitInfo;
-        void InitSkinGallery()
-        {
-            SkinHelper.InitSkinGallery(rgbiSkins, true);
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -176,6 +172,12 @@ namespace Break_List
             frmExport report = new frmExport();
             report.Show();
 
+        }
+
+        private void btnPersonel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmPersonel personel = new frmPersonel();
+            personel.Show();
         }
     }
 }
