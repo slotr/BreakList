@@ -56,7 +56,6 @@
             this.siStatus = new DevExpress.XtraBars.BarStaticItem();
             this.siInfo = new DevExpress.XtraBars.BarStaticItem();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
-            this.editAppointmentQueryItem1 = new DevExpress.XtraScheduler.UI.EditAppointmentQueryItem();
             this.editOccurrenceUICommandItem1 = new DevExpress.XtraScheduler.UI.EditOccurrenceUICommandItem();
             this.editSeriesUICommandItem1 = new DevExpress.XtraScheduler.UI.EditSeriesUICommandItem();
             this.deleteAppointmentsItem1 = new DevExpress.XtraScheduler.UI.DeleteAppointmentsItem();
@@ -81,13 +80,10 @@
             this.newRecurringAppointmentItem1 = new DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem();
             this.navigateViewBackwardItem1 = new DevExpress.XtraScheduler.UI.NavigateViewBackwardItem();
             this.navigateViewForwardItem1 = new DevExpress.XtraScheduler.UI.NavigateViewForwardItem();
-            this.gotoTodayItem1 = new DevExpress.XtraScheduler.UI.GotoTodayItem();
             this.viewZoomInItem1 = new DevExpress.XtraScheduler.UI.ViewZoomInItem();
             this.viewZoomOutItem1 = new DevExpress.XtraScheduler.UI.ViewZoomOutItem();
             this.groupByNoneItem1 = new DevExpress.XtraScheduler.UI.GroupByNoneItem();
             this.groupByDateItem1 = new DevExpress.XtraScheduler.UI.GroupByDateItem();
-            this.openScheduleItem1 = new DevExpress.XtraScheduler.UI.OpenScheduleItem();
-            this.saveScheduleItem1 = new DevExpress.XtraScheduler.UI.SaveScheduleItem();
             this.printPreviewItem1 = new DevExpress.XtraScheduler.UI.PrintPreviewItem();
             this.printItem1 = new DevExpress.XtraScheduler.UI.PrintItem();
             this.printPageSetupItem1 = new DevExpress.XtraScheduler.UI.PrintPageSetupItem();
@@ -102,7 +98,6 @@
             this.actionsRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.ActionsRibbonPageGroup();
             this.fileRibbonPage1 = new DevExpress.XtraScheduler.UI.FileRibbonPage();
             this.commonRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.CommonRibbonPageGroup();
-            this.printRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.PrintRibbonPageGroup();
             this.homeRibbonPage1 = new DevExpress.XtraScheduler.UI.HomeRibbonPage();
             this.navigatorRibbonPageGroup1 = new DevExpress.XtraScheduler.UI.NavigatorRibbonPageGroup();
             this.viewRibbonPage1 = new DevExpress.XtraScheduler.UI.ViewRibbonPage();
@@ -121,6 +116,7 @@
             this.resourcesTableAdapter = new Break_List.LiveGameDataSetTableAdapters.ResourcesTableAdapter();
             this.resourcesTableAdapter1 = new Break_List.LiveGameDataSetTableAdapters.ResourcesTableAdapter();
             this.tablesTableAdapter = new Break_List.LiveGameDataSetTableAdapters.TablesTableAdapter();
+            this.btnYenile = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -162,7 +158,7 @@
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
             this.splitContainerControl.Size = new System.Drawing.Size(1100, 566);
-            this.splitContainerControl.SplitterPosition = 211;
+            this.splitContainerControl.SplitterPosition = 135;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
             // 
@@ -176,7 +172,7 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbonControl;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(211, 554);
+            this.gridControl1.Size = new System.Drawing.Size(135, 554);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -240,7 +236,6 @@
             this.siStatus,
             this.siInfo,
             this.rgbiSkins,
-            this.editAppointmentQueryItem1,
             this.editOccurrenceUICommandItem1,
             this.editSeriesUICommandItem1,
             this.deleteAppointmentsItem1,
@@ -264,20 +259,18 @@
             this.newRecurringAppointmentItem1,
             this.navigateViewBackwardItem1,
             this.navigateViewForwardItem1,
-            this.gotoTodayItem1,
             this.viewZoomInItem1,
             this.viewZoomOutItem1,
             this.groupByNoneItem1,
             this.groupByDateItem1,
-            this.openScheduleItem1,
-            this.saveScheduleItem1,
             this.printPreviewItem1,
             this.printItem1,
             this.printPageSetupItem1,
-            this.btnPersonel});
+            this.btnPersonel,
+            this.btnYenile});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 105;
+            this.ribbonControl.MaxItemId = 106;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.calendarToolsRibbonPageCategory1});
@@ -427,15 +420,6 @@
             this.rgbiSkins.Id = 60;
             this.rgbiSkins.Name = "rgbiSkins";
             // 
-            // editAppointmentQueryItem1
-            // 
-            this.editAppointmentQueryItem1.Id = 62;
-            this.editAppointmentQueryItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.editOccurrenceUICommandItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.editSeriesUICommandItem1)});
-            this.editAppointmentQueryItem1.Name = "editAppointmentQueryItem1";
-            this.editAppointmentQueryItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // editOccurrenceUICommandItem1
             // 
             this.editOccurrenceUICommandItem1.Id = 63;
@@ -578,12 +562,6 @@
             this.navigateViewForwardItem1.Id = 91;
             this.navigateViewForwardItem1.Name = "navigateViewForwardItem1";
             // 
-            // gotoTodayItem1
-            // 
-            this.gotoTodayItem1.Caption = "Bugüne Git";
-            this.gotoTodayItem1.Id = 92;
-            this.gotoTodayItem1.Name = "gotoTodayItem1";
-            // 
             // viewZoomInItem1
             // 
             this.viewZoomInItem1.Id = 93;
@@ -603,16 +581,6 @@
             // 
             this.groupByDateItem1.Id = 96;
             this.groupByDateItem1.Name = "groupByDateItem1";
-            // 
-            // openScheduleItem1
-            // 
-            this.openScheduleItem1.Id = 98;
-            this.openScheduleItem1.Name = "openScheduleItem1";
-            // 
-            // saveScheduleItem1
-            // 
-            this.saveScheduleItem1.Id = 99;
-            this.saveScheduleItem1.Name = "saveScheduleItem1";
             // 
             // printPreviewItem1
             // 
@@ -659,6 +627,7 @@
             // schedulerControl
             // 
             this.schedulerControl.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Timeline;
+            this.schedulerControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.schedulerControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl.Location = new System.Drawing.Point(0, 0);
             this.schedulerControl.LookAndFeel.SkinName = "Office 2016 Dark";
@@ -668,7 +637,7 @@
             this.schedulerControl.OptionsView.ResourceHeaders.Height = 100;
             this.schedulerControl.OptionsView.ResourceHeaders.RotateCaption = false;
             this.schedulerControl.OptionsView.ToolTipVisibility = DevExpress.XtraScheduler.ToolTipVisibility.Always;
-            this.schedulerControl.Size = new System.Drawing.Size(642, 554);
+            this.schedulerControl.Size = new System.Drawing.Size(718, 554);
             this.schedulerControl.Start = new System.DateTime(2016, 9, 11, 0, 0, 0, 0);
             this.schedulerControl.Storage = this.schedulerStorage;
             this.schedulerControl.TabIndex = 0;
@@ -705,6 +674,7 @@
             this.schedulerControl.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             this.schedulerControl.AppointmentDrop += new DevExpress.XtraScheduler.AppointmentDragEventHandler(this.schedulerControl_AppointmentDrop);
             this.schedulerControl.PopupMenuShowing += new DevExpress.XtraScheduler.PopupMenuShowingEventHandler(this.schedulerControl_PopupMenuShowing);
+            this.schedulerControl.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl_EditAppointmentFormShowing);
             // 
             // schedulerStorage
             // 
@@ -722,6 +692,7 @@
             this.schedulerStorage.Appointments.Mappings.Subject = "Subject";
             this.schedulerStorage.Appointments.Mappings.TimeZoneId = "TimeZoneId";
             this.schedulerStorage.Appointments.Mappings.Type = "Type";
+            this.schedulerStorage.EnableReminders = false;
             this.schedulerStorage.Resources.DataSource = this.resourcesBindingSource;
             this.schedulerStorage.Resources.Mappings.Caption = "ResourceName";
             this.schedulerStorage.Resources.Mappings.Color = "Color";
@@ -750,29 +721,19 @@
             // 
             // actionsRibbonPageGroup1
             // 
-            this.actionsRibbonPageGroup1.ItemLinks.Add(this.editAppointmentQueryItem1);
             this.actionsRibbonPageGroup1.ItemLinks.Add(this.deleteAppointmentsItem1);
             this.actionsRibbonPageGroup1.Name = "actionsRibbonPageGroup1";
             // 
             // fileRibbonPage1
             // 
             this.fileRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.commonRibbonPageGroup1,
-            this.printRibbonPageGroup1});
+            this.commonRibbonPageGroup1});
             this.fileRibbonPage1.Name = "fileRibbonPage1";
             // 
             // commonRibbonPageGroup1
             // 
-            this.commonRibbonPageGroup1.ItemLinks.Add(this.openScheduleItem1);
-            this.commonRibbonPageGroup1.ItemLinks.Add(this.saveScheduleItem1);
+            this.commonRibbonPageGroup1.ItemLinks.Add(this.btnYenile);
             this.commonRibbonPageGroup1.Name = "commonRibbonPageGroup1";
-            // 
-            // printRibbonPageGroup1
-            // 
-            this.printRibbonPageGroup1.ItemLinks.Add(this.printPreviewItem1);
-            this.printRibbonPageGroup1.ItemLinks.Add(this.printItem1);
-            this.printRibbonPageGroup1.ItemLinks.Add(this.printPageSetupItem1);
-            this.printRibbonPageGroup1.Name = "printRibbonPageGroup1";
             // 
             // homeRibbonPage1
             // 
@@ -784,7 +745,6 @@
             // 
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.navigateViewBackwardItem1);
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.navigateViewForwardItem1);
-            this.navigatorRibbonPageGroup1.ItemLinks.Add(this.gotoTodayItem1);
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.viewZoomInItem1);
             this.navigatorRibbonPageGroup1.ItemLinks.Add(this.viewZoomOutItem1);
             this.navigatorRibbonPageGroup1.Name = "navigatorRibbonPageGroup1";
@@ -795,7 +755,6 @@
             this.viewRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.layoutRibbonPageGroup1});
             this.viewRibbonPage1.Name = "viewRibbonPage1";
-            this.viewRibbonPage1.Visible = false;
             // 
             // layoutRibbonPageGroup1
             // 
@@ -855,7 +814,7 @@
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
             this.schedulerSplitContainerControl.Panel2.Controls.Add(this.dateNavigator);
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(872, 554);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(948, 554);
             this.schedulerSplitContainerControl.SplitterPosition = 225;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -871,6 +830,8 @@
             this.dateNavigator.Location = new System.Drawing.Point(0, 0);
             this.dateNavigator.Name = "dateNavigator";
             this.dateNavigator.SchedulerControl = this.schedulerControl;
+            this.dateNavigator.SelectionMode = DevExpress.XtraEditors.Repository.CalendarSelectionMode.Single;
+            this.dateNavigator.ShowMonthNavigationButtons = DevExpress.Utils.DefaultBoolean.True;
             this.dateNavigator.Size = new System.Drawing.Size(225, 554);
             this.dateNavigator.TabIndex = 1;
             // 
@@ -895,7 +856,6 @@
             // 
             // schedulerBarController1
             // 
-            this.schedulerBarController1.BarItems.Add(this.editAppointmentQueryItem1);
             this.schedulerBarController1.BarItems.Add(this.editOccurrenceUICommandItem1);
             this.schedulerBarController1.BarItems.Add(this.editSeriesUICommandItem1);
             this.schedulerBarController1.BarItems.Add(this.deleteAppointmentsItem1);
@@ -919,13 +879,10 @@
             this.schedulerBarController1.BarItems.Add(this.newRecurringAppointmentItem1);
             this.schedulerBarController1.BarItems.Add(this.navigateViewBackwardItem1);
             this.schedulerBarController1.BarItems.Add(this.navigateViewForwardItem1);
-            this.schedulerBarController1.BarItems.Add(this.gotoTodayItem1);
             this.schedulerBarController1.BarItems.Add(this.viewZoomInItem1);
             this.schedulerBarController1.BarItems.Add(this.viewZoomOutItem1);
             this.schedulerBarController1.BarItems.Add(this.groupByNoneItem1);
             this.schedulerBarController1.BarItems.Add(this.groupByDateItem1);
-            this.schedulerBarController1.BarItems.Add(this.openScheduleItem1);
-            this.schedulerBarController1.BarItems.Add(this.saveScheduleItem1);
             this.schedulerBarController1.BarItems.Add(this.printPreviewItem1);
             this.schedulerBarController1.BarItems.Add(this.printItem1);
             this.schedulerBarController1.BarItems.Add(this.printPageSetupItem1);
@@ -946,6 +903,15 @@
             // tablesTableAdapter
             // 
             this.tablesTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnYenile
+            // 
+            this.btnYenile.Caption = "Listeyi Yenile";
+            this.btnYenile.Glyph = ((System.Drawing.Image)(resources.GetObject("btnYenile.Glyph")));
+            this.btnYenile.Id = 105;
+            this.btnYenile.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnYenile.LargeGlyph")));
+            this.btnYenile.Name = "btnYenile";
+            this.btnYenile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYenile_ItemClick);
             // 
             // Form1
             // 
@@ -1023,7 +989,6 @@
         private DevExpress.XtraScheduler.SchedulerControl schedulerControl;
         private DevExpress.XtraScheduler.DateNavigator dateNavigator;
         private DevExpress.XtraScheduler.SchedulerStorage schedulerStorage;
-        private DevExpress.XtraScheduler.UI.EditAppointmentQueryItem editAppointmentQueryItem1;
         private DevExpress.XtraScheduler.UI.EditOccurrenceUICommandItem editOccurrenceUICommandItem1;
         private DevExpress.XtraScheduler.UI.EditSeriesUICommandItem editSeriesUICommandItem1;
         private DevExpress.XtraScheduler.UI.DeleteAppointmentsItem deleteAppointmentsItem1;
@@ -1049,13 +1014,10 @@
         private DevExpress.XtraScheduler.UI.NewRecurringAppointmentItem newRecurringAppointmentItem1;
         private DevExpress.XtraScheduler.UI.NavigateViewBackwardItem navigateViewBackwardItem1;
         private DevExpress.XtraScheduler.UI.NavigateViewForwardItem navigateViewForwardItem1;
-        private DevExpress.XtraScheduler.UI.GotoTodayItem gotoTodayItem1;
         private DevExpress.XtraScheduler.UI.ViewZoomInItem viewZoomInItem1;
         private DevExpress.XtraScheduler.UI.ViewZoomOutItem viewZoomOutItem1;
         private DevExpress.XtraScheduler.UI.GroupByNoneItem groupByNoneItem1;
         private DevExpress.XtraScheduler.UI.GroupByDateItem groupByDateItem1;
-        private DevExpress.XtraScheduler.UI.OpenScheduleItem openScheduleItem1;
-        private DevExpress.XtraScheduler.UI.SaveScheduleItem saveScheduleItem1;
         private DevExpress.XtraScheduler.UI.PrintPreviewItem printPreviewItem1;
         private DevExpress.XtraScheduler.UI.PrintItem printItem1;
         private DevExpress.XtraScheduler.UI.PrintPageSetupItem printPageSetupItem1;
@@ -1064,7 +1026,6 @@
         private DevExpress.XtraScheduler.UI.ActionsRibbonPageGroup actionsRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.FileRibbonPage fileRibbonPage1;
         private DevExpress.XtraScheduler.UI.CommonRibbonPageGroup commonRibbonPageGroup1;
-        private DevExpress.XtraScheduler.UI.PrintRibbonPageGroup printRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.HomeRibbonPage homeRibbonPage1;
         private DevExpress.XtraScheduler.UI.NavigatorRibbonPageGroup navigatorRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.ViewRibbonPage viewRibbonPage1;
@@ -1083,5 +1044,6 @@
         private DevExpress.XtraBars.BarButtonGroup btnPersonel;
         private DevExpress.XtraGrid.Columns.GridColumn colGame;
         private DevExpress.XtraGrid.Columns.GridColumn colNo;
+        private DevExpress.XtraBars.BarButtonItem btnYenile;
     }
 }

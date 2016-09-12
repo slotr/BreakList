@@ -150,8 +150,25 @@ namespace Break_List
             DeleteSelectedRows(gridView1);
         }
 
-       
+        private void btnYenile_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            tablesTableAdapter.Fill(this.liveGameDataSet._Tables);
+        }
 
-       
+        private void schedulerControl_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
+        {
+            DevExpress.XtraScheduler.SchedulerControl scheduler = ((DevExpress.XtraScheduler.SchedulerControl)(sender));
+            Break_List.CustomAppointmentForm form = new Break_List.CustomAppointmentForm(scheduler, e.Appointment, e.OpenRecurrenceForm);
+            try
+            {
+                e.DialogResult = form.ShowDialog();
+                e.Handled = true;
+            }
+            finally
+            {
+                form.Dispose();
+            }
+
+        }
     }
 }
