@@ -177,33 +177,6 @@
   <data name="&gt;&gt;tbSubject.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblShowTimeAs.AccessibleName" xml:space="preserve">
-    <value>Show time as</value>
-  </data>
-  <data name="lblShowTimeAs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 49</value>
-  </data>
-  <data name="lblShowTimeAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
-  </data>
-  <data name="lblShowTimeAs.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="lblShowTimeAs.Text" xml:space="preserve">
-    <value>İşaretle:</value>
-  </data>
-  <data name="&gt;&gt;lblShowTimeAs.Name" xml:space="preserve">
-    <value>lblShowTimeAs</value>
-  </data>
-  <data name="&gt;&gt;lblShowTimeAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;lblShowTimeAs.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblShowTimeAs.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="btnOk.AccessibleName" xml:space="preserve">
     <value>Ok</value>
   </data>
@@ -211,7 +184,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 82</value>
+    <value>16, 49</value>
   </data>
   <data name="btnOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -241,7 +214,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 82</value>
+    <value>110, 49</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -262,7 +235,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="btnDelete.AccessibleName" xml:space="preserve">
     <value>Delete</value>
@@ -271,7 +244,7 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 82</value>
+    <value>205, 49</value>
   </data>
   <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -292,38 +265,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="edtShowTimeAs.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="edtShowTimeAs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 42</value>
-  </data>
-  <data name="edtShowTimeAs.Properties.AccessibleName" xml:space="preserve">
-    <value>Show time as</value>
-  </data>
-  <assembly alias="DevExpress.Utils.v16.1" name="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="edtShowTimeAs.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v16.1">
-    <value>Combo</value>
-  </data>
-  <data name="edtShowTimeAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 20</value>
-  </data>
-  <data name="edtShowTimeAs.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;edtShowTimeAs.Name" xml:space="preserve">
-    <value>edtShowTimeAs</value>
-  </data>
-  <data name="&gt;&gt;edtShowTimeAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentStatusEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="&gt;&gt;edtShowTimeAs.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;edtShowTimeAs.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -332,7 +274,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>331, 117</value>
+    <value>331, 84</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

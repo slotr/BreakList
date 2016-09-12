@@ -170,5 +170,12 @@ namespace Break_List
             }
 
         }
+
+        private void btnReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmExport report = new frmExport();
+            report.Show();
+
+        }
     }
 }

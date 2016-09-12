@@ -59,7 +59,7 @@ namespace Break_List
             this.control = control;
             this.storage = control.Storage;
 
-            this.edtShowTimeAs.Storage = this.storage;
+           
             
 
             SubscribeControllerEvents(Controller);

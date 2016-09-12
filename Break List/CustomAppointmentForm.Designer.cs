@@ -25,13 +25,10 @@ namespace Break_List
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomAppointmentForm));
             this.lblSubject = new DevExpress.XtraEditors.LabelControl();
             this.tbSubject = new DevExpress.XtraEditors.TextEdit();
-            this.lblShowTimeAs = new DevExpress.XtraEditors.LabelControl();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
-            this.edtShowTimeAs = new DevExpress.XtraScheduler.UI.AppointmentStatusEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSubject.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtShowTimeAs.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSubject
@@ -44,11 +41,6 @@ namespace Break_List
             resources.ApplyResources(this.tbSubject, "tbSubject");
             this.tbSubject.Name = "tbSubject";
             this.tbSubject.Properties.AccessibleName = resources.GetString("tbSubject.Properties.AccessibleName");
-            // 
-            // lblShowTimeAs
-            // 
-            resources.ApplyResources(this.lblShowTimeAs, "lblShowTimeAs");
-            this.lblShowTimeAs.Name = "lblShowTimeAs";
             // 
             // btnOk
             // 
@@ -70,15 +62,6 @@ namespace Break_List
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Click += new System.EventHandler(this.OnBtnDeleteClick);
             // 
-            // edtShowTimeAs
-            // 
-            resources.ApplyResources(this.edtShowTimeAs, "edtShowTimeAs");
-            this.edtShowTimeAs.Name = "edtShowTimeAs";
-            this.edtShowTimeAs.Properties.AccessibleName = resources.GetString("edtShowTimeAs.Properties.AccessibleName");
-            this.edtShowTimeAs.Properties.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
-            this.edtShowTimeAs.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(((DevExpress.XtraEditors.Controls.ButtonPredefines)(resources.GetObject("edtShowTimeAs.Properties.Buttons"))))});
-            // 
             // CustomAppointmentForm
             // 
             this.AcceptButton = this.btnOk;
@@ -89,15 +72,12 @@ namespace Break_List
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.tbSubject);
             this.Controls.Add(this.lblSubject);
-            this.Controls.Add(this.lblShowTimeAs);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.edtShowTimeAs);
             this.Name = "CustomAppointmentForm";
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.OnAppointmentFormActivated);
             ((System.ComponentModel.ISupportInitialize)(this.tbSubject.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtShowTimeAs.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,11 +85,9 @@ namespace Break_List
         #endregion
 
         protected DevExpress.XtraEditors.LabelControl lblSubject;
-        protected DevExpress.XtraEditors.LabelControl lblShowTimeAs;
         protected DevExpress.XtraEditors.SimpleButton btnOk;
         protected DevExpress.XtraEditors.SimpleButton btnCancel;
         protected DevExpress.XtraEditors.SimpleButton btnDelete;
-        protected DevExpress.XtraScheduler.UI.AppointmentStatusEdit edtShowTimeAs;
         protected DevExpress.XtraEditors.TextEdit tbSubject;
         private System.ComponentModel.IContainer components = null;
 
