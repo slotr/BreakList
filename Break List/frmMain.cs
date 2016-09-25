@@ -32,7 +32,35 @@ namespace Break_List
             schedulerControl.Views.DayView.Enabled = false;
             schedulerControl.ActiveViewType = SchedulerViewType.Timeline;
             schedulerControl.GroupType = SchedulerGroupType.Resource;
+            getTables();
+            getNames();
+
+            TimeScaleCollection scales = schedulerControl.TimelineView.Scales;
+            schedulerControl.TimelineView.Scales.BeginUpdate();
+            try
+            {
+                scales.Clear();
+                scales.Add(new MyTimeScaleFixedInterval(TimeSpan.FromDays(1), minTime, maxTime));
+                scales.Add(new MyTimeScaleFixedInterval(TimeSpan.FromHours(1), minTime, maxTime));
+                scales.Add(new MyTimeScaleFixedInterval(TimeSpan.FromMinutes(20), minTime, maxTime));
+            }
+            finally
+            {
+                schedulerControl.TimelineView.Scales.EndUpdate();
+            }
+
+            this.schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
+            this.schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
+            this.schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
         }
+
+        private void OnAppointmentChangedInsertedDeleted(object sender, PersistentObjectsEventArgs e)
+        {
+            this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
+            appointmentsTableAdapter.Update(livegameDataSet1);
+            livegameDataSet1.AcceptChanges();
+        }
+
         TimeSpan minTime = new TimeSpan(0, 0, 0);
         TimeSpan maxTime = new TimeSpan(24, 0, 0);
         GridHitInfo downHitInfo;
@@ -99,23 +127,8 @@ namespace Break_List
             // TODO: This line of code loads data into the 'livegameDataSet1.appointments' table. You can move, or remove it, as needed.
             this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
 
-            getTables();             
-             getNames();          
             
-            TimeScaleCollection scales = schedulerControl.TimelineView.Scales;
-            schedulerControl.TimelineView.Scales.BeginUpdate();
-            try
-            {
-                scales.Clear();
-                scales.Add(new MyTimeScaleFixedInterval(TimeSpan.FromDays(1), minTime, maxTime));
-                scales.Add(new MyTimeScaleFixedInterval(TimeSpan.FromHours(1), minTime, maxTime));
-                scales.Add(new MyTimeScaleFixedInterval(TimeSpan.FromMinutes(20), minTime, maxTime));
-            }
-            finally
-            {
-                schedulerControl.TimelineView.Scales.EndUpdate();
-            }
-         
+
         }
 
      
@@ -239,19 +252,12 @@ namespace Break_List
             schedulerControl.RefreshData();
         }
 
-        private void schedulerStorage1_AppointmentsInserted(object sender, PersistentObjectsEventArgs e)
-        {
-            appointmentsTableAdapter.Update(livegameDataSet1.appointments);
-        }
+      
 
-        private void schedulerStorage1_AppointmentsDeleted(object sender, PersistentObjectsEventArgs e)
+        private void schedulerControl_AppointmentDrag(object sender, AppointmentDragEventArgs e)
         {
-            appointmentsTableAdapter.Update(livegameDataSet1.appointments);
-        }
+            
 
-        private void schedulerStorage1_AppointmentsChanged(object sender, PersistentObjectsEventArgs e)
-        {
-            appointmentsTableAdapter.Update(livegameDataSet1.appointments);
         }
     }
 }

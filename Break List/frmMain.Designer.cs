@@ -450,8 +450,10 @@
             this.schedulerControl.MenuManager = this.ribbonControl;
             this.schedulerControl.Name = "schedulerControl";
             this.schedulerControl.OptionsBehavior.ShowRemindersForm = false;
+            this.schedulerControl.OptionsCustomization.AllowAppointmentConflicts = DevExpress.XtraScheduler.AppointmentConflictsMode.Forbidden;
             this.schedulerControl.OptionsCustomization.AllowAppointmentMultiSelect = false;
             this.schedulerControl.OptionsCustomization.AllowDisplayAppointmentForm = DevExpress.XtraScheduler.AllowDisplayAppointmentForm.Never;
+            this.schedulerControl.OptionsCustomization.AllowInplaceEditor = DevExpress.XtraScheduler.UsedAppointmentType.None;
             this.schedulerControl.OptionsView.NavigationButtons.NextCaption = "Sonraki";
             this.schedulerControl.OptionsView.NavigationButtons.PrevCaption = "Onceki";
             this.schedulerControl.OptionsView.ResourceHeaders.Height = 80;
@@ -486,6 +488,7 @@
             this.schedulerControl.Views.WeekView.Enabled = false;
             this.schedulerControl.Views.WorkWeekView.Enabled = false;
             this.schedulerControl.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            this.schedulerControl.AppointmentDrag += new DevExpress.XtraScheduler.AppointmentDragEventHandler(this.schedulerControl_AppointmentDrag);
             this.schedulerControl.PopupMenuShowing += new DevExpress.XtraScheduler.PopupMenuShowingEventHandler(this.schedulerControl_PopupMenuShowing);
             // 
             // schedulerStorage1
@@ -509,9 +512,6 @@
             this.schedulerStorage1.Resources.Mappings.Color = "Color";
             this.schedulerStorage1.Resources.Mappings.Id = "ResourceID";
             this.schedulerStorage1.Resources.Mappings.Image = "Image";
-            this.schedulerStorage1.AppointmentsInserted += new DevExpress.XtraScheduler.PersistentObjectsEventHandler(this.schedulerStorage1_AppointmentsInserted);
-            this.schedulerStorage1.AppointmentsChanged += new DevExpress.XtraScheduler.PersistentObjectsEventHandler(this.schedulerStorage1_AppointmentsChanged);
-            this.schedulerStorage1.AppointmentsDeleted += new DevExpress.XtraScheduler.PersistentObjectsEventHandler(this.schedulerStorage1_AppointmentsDeleted);
             // 
             // appointmentsBindingSource
             // 
@@ -708,7 +708,7 @@
         private DevExpress.XtraScheduler.UI.CommonRibbonPageGroup commonRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.SchedulerBarController schedulerBarController1;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        
+
         private DevExpress.XtraBars.BarButtonItem btnYenile;
         private DevExpress.XtraBars.BarButtonItem btnReport;
         private DevExpress.XtraBars.BarButtonItem btnPersonel;
