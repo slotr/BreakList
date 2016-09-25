@@ -33,5 +33,27 @@ namespace Break_List.Properties {
                 return ((string)(this["LiveGameConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.187;user id=hakan;password=26091974;database=livegame;persistsec" +
+            "urityinfo=True")]
+        public string livegameConnectionString1 {
+            get {
+                return ((string)(this["livegameConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;dat" +
+            "abase=livegame")]
+        public string livegameConnectionString2 {
+            get {
+                return ((string)(this["livegameConnectionString2"]));
+            }
+        }
     }
 }

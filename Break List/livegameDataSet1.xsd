@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="livegameDataSet1" targetNamespace="http://tempuri.org/livegameDataSet1.xsd" xmlns:mstns="http://tempuri.org/livegameDataSet1.xsd" xmlns="http://tempuri.org/livegameDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="livegameConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="livegameConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Break_List.Properties.Settings.GlobalReference.Default.livegameConnectionString2" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="spResourcesTableAdapter" GeneratorDataComponentClassName="spResourcesTableAdapter" Name="spResources" UserDataComponentName="spResourcesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="`livegame`.`spResources`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>`livegame`.`spResources`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ResourceName" DataSetColumn="ResourceName" />
+              <Mapping SourceColumn="ResourceID" DataSetColumn="ResourceID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="spResources1TableAdapter" GeneratorDataComponentClassName="spResources1TableAdapter" Name="spResources1" UserDataComponentName="spResources1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="`livegame`.`spResources1`" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>`livegame`.`spResources1`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Subject" DataSetColumn="Subject" />
+              <Mapping SourceColumn="Location" DataSetColumn="Location" />
+              <Mapping SourceColumn="StartDate" DataSetColumn="StartDate" />
+              <Mapping SourceColumn="EndDate" DataSetColumn="EndDate" />
+              <Mapping SourceColumn="ResourceName" DataSetColumn="ResourceName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="appointmentsTableAdapter" GeneratorDataComponentClassName="appointmentsTableAdapter" Name="appointments" UserDataComponentName="appointmentsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="livegame.appointments" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `appointments` WHERE ((`UniqueID` = @p1) AND ((@p2 = 1 AND `Type` IS NULL) OR (`Type` = @p3)) AND ((@p4 = 1 AND `StartDate` IS NULL) OR (`StartDate` = @p5)) AND ((@p6 = 1 AND `EndDate` IS NULL) OR (`EndDate` = @p7)) AND ((@p8 = 1 AND `AllDay` IS NULL) OR (`AllDay` = @p9)) AND ((@p10 = 1 AND `Subject` IS NULL) OR (`Subject` = @p11)) AND ((@p12 = 1 AND `Location` IS NULL) OR (`Location` = @p13)) AND ((@p14 = 1 AND `Description` IS NULL) OR (`Description` = @p15)) AND ((@p16 = 1 AND `Status` IS NULL) OR (`Status` = @p17)) AND ((@p18 = 1 AND `Label` IS NULL) OR (`Label` = @p19)) AND ((@p20 = 1 AND `ResourceID` IS NULL) OR (`ResourceID` = @p21)) AND ((@p22 = 1 AND `ResourceIDs` IS NULL) OR (`ResourceIDs` = @p23)) AND ((@p24 = 1 AND `ReminderInfo` IS NULL) OR (`ReminderInfo` = @p25)) AND ((@p26 = 1 AND `RecurrenceInfo` IS NULL) OR (`RecurrenceInfo` = @p27)) AND ((@p28 = 1 AND `TimeZoneId` IS NULL) OR (`TimeZoneId` = @p29)) AND ((@p30 = 1 AND `CustomField1` IS NULL) OR (`CustomField1` = @p31)) AND ((@p32 = 1 AND `ResourceName` IS NULL) OR (`ResourceName` = @p33)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="UniqueID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="StartDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="StartDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="EndDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="EndDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="AllDay" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="AllDay" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Subject" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Subject" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Status" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Status" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Label" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Label" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceIDs" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceIDs" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ReminderInfo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ReminderInfo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="RecurrenceInfo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="RecurrenceInfo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="TimeZoneId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="TimeZoneId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `appointments` (`Type`, `StartDate`, `EndDate`, `AllDay`, `Subject`, `Location`, `Description`, `Status`, `Label`, `ResourceID`, `ResourceIDs`, `ReminderInfo`, `RecurrenceInfo`, `TimeZoneId`, `CustomField1`, `ResourceName`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="StartDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="EndDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="AllDay" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Subject" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Status" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Label" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceIDs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ReminderInfo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="RecurrenceInfo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="TimeZoneId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `UniqueID`, `Type`, `StartDate`, `EndDate`, `AllDay`, `Subject`, `Location`, `Description`, `Status`, `Label`, `ResourceID`, `ResourceIDs`, `ReminderInfo`, `RecurrenceInfo`, `TimeZoneId`, `CustomField1`, `ResourceName` FROM `appointments`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `appointments` SET `Type` = @p1, `StartDate` = @p2, `EndDate` = @p3, `AllDay` = @p4, `Subject` = @p5, `Location` = @p6, `Description` = @p7, `Status` = @p8, `Label` = @p9, `ResourceID` = @p10, `ResourceIDs` = @p11, `ReminderInfo` = @p12, `RecurrenceInfo` = @p13, `TimeZoneId` = @p14, `CustomField1` = @p15, `ResourceName` = @p16 WHERE ((`UniqueID` = @p17) AND ((@p18 = 1 AND `Type` IS NULL) OR (`Type` = @p19)) AND ((@p20 = 1 AND `StartDate` IS NULL) OR (`StartDate` = @p21)) AND ((@p22 = 1 AND `EndDate` IS NULL) OR (`EndDate` = @p23)) AND ((@p24 = 1 AND `AllDay` IS NULL) OR (`AllDay` = @p25)) AND ((@p26 = 1 AND `Subject` IS NULL) OR (`Subject` = @p27)) AND ((@p28 = 1 AND `Location` IS NULL) OR (`Location` = @p29)) AND ((@p30 = 1 AND `Description` IS NULL) OR (`Description` = @p31)) AND ((@p32 = 1 AND `Status` IS NULL) OR (`Status` = @p33)) AND ((@p34 = 1 AND `Label` IS NULL) OR (`Label` = @p35)) AND ((@p36 = 1 AND `ResourceID` IS NULL) OR (`ResourceID` = @p37)) AND ((@p38 = 1 AND `ResourceIDs` IS NULL) OR (`ResourceIDs` = @p39)) AND ((@p40 = 1 AND `ReminderInfo` IS NULL) OR (`ReminderInfo` = @p41)) AND ((@p42 = 1 AND `RecurrenceInfo` IS NULL) OR (`RecurrenceInfo` = @p43)) AND ((@p44 = 1 AND `TimeZoneId` IS NULL) OR (`TimeZoneId` = @p45)) AND ((@p46 = 1 AND `CustomField1` IS NULL) OR (`CustomField1` = @p47)) AND ((@p48 = 1 AND `ResourceName` IS NULL) OR (`ResourceName` = @p49)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="StartDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="EndDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="AllDay" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Subject" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Status" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Label" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceIDs" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ReminderInfo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="RecurrenceInfo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="TimeZoneId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="UniqueID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Type" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="StartDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="StartDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="EndDate" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="EndDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="AllDay" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="AllDay" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Subject" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Subject" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Description" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Status" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Status" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p34" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Label" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p35" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Label" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p36" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p37" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p38" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceIDs" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p39" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceIDs" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p40" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ReminderInfo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p41" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ReminderInfo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p42" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="RecurrenceInfo" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p43" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="RecurrenceInfo" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p44" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="TimeZoneId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p45" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="TimeZoneId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p46" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p47" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p48" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p49" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UniqueID" DataSetColumn="UniqueID" />
+              <Mapping SourceColumn="Type" DataSetColumn="Type" />
+              <Mapping SourceColumn="StartDate" DataSetColumn="StartDate" />
+              <Mapping SourceColumn="EndDate" DataSetColumn="EndDate" />
+              <Mapping SourceColumn="AllDay" DataSetColumn="AllDay" />
+              <Mapping SourceColumn="Subject" DataSetColumn="Subject" />
+              <Mapping SourceColumn="Location" DataSetColumn="Location" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="Label" DataSetColumn="Label" />
+              <Mapping SourceColumn="ResourceID" DataSetColumn="ResourceID" />
+              <Mapping SourceColumn="ResourceIDs" DataSetColumn="ResourceIDs" />
+              <Mapping SourceColumn="ReminderInfo" DataSetColumn="ReminderInfo" />
+              <Mapping SourceColumn="RecurrenceInfo" DataSetColumn="RecurrenceInfo" />
+              <Mapping SourceColumn="TimeZoneId" DataSetColumn="TimeZoneId" />
+              <Mapping SourceColumn="CustomField1" DataSetColumn="CustomField1" />
+              <Mapping SourceColumn="ResourceName" DataSetColumn="ResourceName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="resourcesTableAdapter" GeneratorDataComponentClassName="resourcesTableAdapter" Name="resources" UserDataComponentName="resourcesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="livegame.resources" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `resources` WHERE ((`UniqueID` = @p1) AND ((@p2 = 1 AND `ResourceID` IS NULL) OR (`ResourceID` = @p3)) AND ((@p4 = 1 AND `ResourceName` IS NULL) OR (`ResourceName` = @p5)) AND ((@p6 = 1 AND `Color` IS NULL) OR (`Color` = @p7)) AND ((@p8 = 1 AND `Image` IS NULL) OR (`Image` = @p9)) AND ((@p10 = 1 AND `CustomField1` IS NULL) OR (`CustomField1` = @p11)) AND ((@p12 = 1 AND `Monday` IS NULL) OR (`Monday` = @p13)) AND ((@p14 = 1 AND `Tuesday` IS NULL) OR (`Tuesday` = @p15)) AND ((@p16 = 1 AND `Wednesday` IS NULL) OR (`Wednesday` = @p17)) AND ((@p18 = 1 AND `Thursday` IS NULL) OR (`Thursday` = @p19)) AND ((@p20 = 1 AND `Friday` IS NULL) OR (`Friday` = @p21)) AND ((@p22 = 1 AND `Saturday` IS NULL) OR (`Saturday` = @p23)) AND ((@p24 = 1 AND `Sunday` IS NULL) OR (`Sunday` = @p25)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="UniqueID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Blob" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `resources` (`ResourceID`, `ResourceName`, `Color`, `Image`, `CustomField1`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Blob" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `UniqueID`, `ResourceID`, `ResourceName`, `Color`, `Image`, `CustomField1`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday` FROM `resources`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `resources` SET `ResourceID` = @p1, `ResourceName` = @p2, `Color` = @p3, `Image` = @p4, `CustomField1` = @p5, `Monday` = @p6, `Tuesday` = @p7, `Wednesday` = @p8, `Thursday` = @p9, `Friday` = @p10, `Saturday` = @p11, `Sunday` = @p12 WHERE ((`UniqueID` = @p13) AND ((@p14 = 1 AND `ResourceID` IS NULL) OR (`ResourceID` = @p15)) AND ((@p16 = 1 AND `ResourceName` IS NULL) OR (`ResourceName` = @p17)) AND ((@p18 = 1 AND `Color` IS NULL) OR (`Color` = @p19)) AND ((@p20 = 1 AND `Image` IS NULL) OR (`Image` = @p21)) AND ((@p22 = 1 AND `CustomField1` IS NULL) OR (`CustomField1` = @p23)) AND ((@p24 = 1 AND `Monday` IS NULL) OR (`Monday` = @p25)) AND ((@p26 = 1 AND `Tuesday` IS NULL) OR (`Tuesday` = @p27)) AND ((@p28 = 1 AND `Wednesday` IS NULL) OR (`Wednesday` = @p29)) AND ((@p30 = 1 AND `Thursday` IS NULL) OR (`Thursday` = @p31)) AND ((@p32 = 1 AND `Friday` IS NULL) OR (`Friday` = @p33)) AND ((@p34 = 1 AND `Saturday` IS NULL) OR (`Saturday` = @p35)) AND ((@p36 = 1 AND `Sunday` IS NULL) OR (`Sunday` = @p37)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Blob" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="UniqueID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ResourceName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Color" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Object" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Blob" Scale="0" Size="0" SourceColumn="Image" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="CustomField1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p34" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p35" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p36" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p37" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UniqueID" DataSetColumn="UniqueID" />
+              <Mapping SourceColumn="ResourceID" DataSetColumn="ResourceID" />
+              <Mapping SourceColumn="ResourceName" DataSetColumn="ResourceName" />
+              <Mapping SourceColumn="Color" DataSetColumn="Color" />
+              <Mapping SourceColumn="Image" DataSetColumn="Image" />
+              <Mapping SourceColumn="CustomField1" DataSetColumn="CustomField1" />
+              <Mapping SourceColumn="Monday" DataSetColumn="Monday" />
+              <Mapping SourceColumn="Tuesday" DataSetColumn="Tuesday" />
+              <Mapping SourceColumn="Wednesday" DataSetColumn="Wednesday" />
+              <Mapping SourceColumn="Thursday" DataSetColumn="Thursday" />
+              <Mapping SourceColumn="Friday" DataSetColumn="Friday" />
+              <Mapping SourceColumn="Saturday" DataSetColumn="Saturday" />
+              <Mapping SourceColumn="Sunday" DataSetColumn="Sunday" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rosterTableAdapter" GeneratorDataComponentClassName="rosterTableAdapter" Name="roster" UserDataComponentName="rosterTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="livegame.roster" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `roster` WHERE ((`Id` = @p1) AND ((@p2 = 1 AND `personel` IS NULL) OR (`personel` = @p3)) AND ((@p4 = 1 AND `Monday` IS NULL) OR (`Monday` = @p5)) AND ((@p6 = 1 AND `Tuesday` IS NULL) OR (`Tuesday` = @p7)) AND ((@p8 = 1 AND `Wednesday` IS NULL) OR (`Wednesday` = @p9)) AND ((@p10 = 1 AND `Thursday` IS NULL) OR (`Thursday` = @p11)) AND ((@p12 = 1 AND `Friday` IS NULL) OR (`Friday` = @p13)) AND ((@p14 = 1 AND `Saturday` IS NULL) OR (`Saturday` = @p15)) AND ((@p16 = 1 AND `Sunday` IS NULL) OR (`Sunday` = @p17)) AND ((@p18 = 1 AND `Gorev` IS NULL) OR (`Gorev` = @p19)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="personel" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="personel" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Gorev" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Gorev" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `roster` (`personel`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`, `Gorev`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="personel" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Gorev" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `personel`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`, `Gorev` FROM `roster`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `roster` SET `personel` = @p1, `Monday` = @p2, `Tuesday` = @p3, `Wednesday` = @p4, `Thursday` = @p5, `Friday` = @p6, `Saturday` = @p7, `Sunday` = @p8, `Gorev` = @p9 WHERE ((`Id` = @p10) AND ((@p11 = 1 AND `personel` IS NULL) OR (`personel` = @p12)) AND ((@p13 = 1 AND `Monday` IS NULL) OR (`Monday` = @p14)) AND ((@p15 = 1 AND `Tuesday` IS NULL) OR (`Tuesday` = @p16)) AND ((@p17 = 1 AND `Wednesday` IS NULL) OR (`Wednesday` = @p18)) AND ((@p19 = 1 AND `Thursday` IS NULL) OR (`Thursday` = @p20)) AND ((@p21 = 1 AND `Friday` IS NULL) OR (`Friday` = @p22)) AND ((@p23 = 1 AND `Saturday` IS NULL) OR (`Saturday` = @p24)) AND ((@p25 = 1 AND `Sunday` IS NULL) OR (`Sunday` = @p26)) AND ((@p27 = 1 AND `Gorev` IS NULL) OR (`Gorev` = @p28)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="personel" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Gorev" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="personel" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="personel" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Gorev" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Gorev" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="personel" DataSetColumn="personel" />
+              <Mapping SourceColumn="Monday" DataSetColumn="Monday" />
+              <Mapping SourceColumn="Tuesday" DataSetColumn="Tuesday" />
+              <Mapping SourceColumn="Wednesday" DataSetColumn="Wednesday" />
+              <Mapping SourceColumn="Thursday" DataSetColumn="Thursday" />
+              <Mapping SourceColumn="Friday" DataSetColumn="Friday" />
+              <Mapping SourceColumn="Saturday" DataSetColumn="Saturday" />
+              <Mapping SourceColumn="Sunday" DataSetColumn="Sunday" />
+              <Mapping SourceColumn="Gorev" DataSetColumn="Gorev" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rotalarTableAdapter" GeneratorDataComponentClassName="rotalarTableAdapter" Name="rotalar" UserDataComponentName="rotalarTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="livegame.rotalar" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `rotalar` WHERE ((`id` = @p1) AND ((@p2 = 1 AND `Personel` IS NULL) OR (`Personel` = @p3)) AND ((@p4 = 1 AND `Monday` IS NULL) OR (`Monday` = @p5)) AND ((@p6 = 1 AND `Shift` IS NULL) OR (`Shift` = @p7)) AND ((@p8 = 1 AND `Tuesday` IS NULL) OR (`Tuesday` = @p9)) AND ((@p10 = 1 AND `Wednesday` IS NULL) OR (`Wednesday` = @p11)) AND ((@p12 = 1 AND `Thursday` IS NULL) OR (`Thursday` = @p13)) AND ((@p14 = 1 AND `Friday` IS NULL) OR (`Friday` = @p15)) AND ((@p16 = 1 AND `Saturday` IS NULL) OR (`Saturday` = @p17)) AND ((@p18 = 1 AND `Sunday` IS NULL) OR (`Sunday` = @p19)) AND ((@p20 = 1 AND `date1` IS NULL) OR (`date1` = @p21)) AND ((@p22 = 1 AND `date2` IS NULL) OR (`date2` = @p23)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Personel" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Personel" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Shift" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Shift" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="date1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="date2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `rotalar` (`Personel`, `Monday`, `Shift`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`, `date1`, `date2`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Personel" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Shift" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `id`, `Personel`, `Monday`, `Shift`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`, `date1`, `date2` FROM `rotalar`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `rotalar` SET `Personel` = @p1, `Monday` = @p2, `Shift` = @p3, `Tuesday` = @p4, `Wednesday` = @p5, `Thursday` = @p6, `Friday` = @p7, `Saturday` = @p8, `Sunday` = @p9, `date1` = @p10, `date2` = @p11 WHERE ((`id` = @p12) AND ((@p13 = 1 AND `Personel` IS NULL) OR (`Personel` = @p14)) AND ((@p15 = 1 AND `Monday` IS NULL) OR (`Monday` = @p16)) AND ((@p17 = 1 AND `Shift` IS NULL) OR (`Shift` = @p18)) AND ((@p19 = 1 AND `Tuesday` IS NULL) OR (`Tuesday` = @p20)) AND ((@p21 = 1 AND `Wednesday` IS NULL) OR (`Wednesday` = @p22)) AND ((@p23 = 1 AND `Thursday` IS NULL) OR (`Thursday` = @p24)) AND ((@p25 = 1 AND `Friday` IS NULL) OR (`Friday` = @p26)) AND ((@p27 = 1 AND `Saturday` IS NULL) OR (`Saturday` = @p28)) AND ((@p29 = 1 AND `Sunday` IS NULL) OR (`Sunday` = @p30)) AND ((@p31 = 1 AND `date1` IS NULL) OR (`date1` = @p32)) AND ((@p33 = 1 AND `date2` IS NULL) OR (`date2` = @p34)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Personel" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Shift" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Personel" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Personel" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Monday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Shift" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Shift" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Tuesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Wednesday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Thursday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Friday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Saturday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="Text" Scale="0" Size="0" SourceColumn="Sunday" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="date1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="date2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p34" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="date2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="Personel" DataSetColumn="Personel" />
+              <Mapping SourceColumn="Monday" DataSetColumn="Monday" />
+              <Mapping SourceColumn="Shift" DataSetColumn="Shift" />
+              <Mapping SourceColumn="Tuesday" DataSetColumn="Tuesday" />
+              <Mapping SourceColumn="Wednesday" DataSetColumn="Wednesday" />
+              <Mapping SourceColumn="Thursday" DataSetColumn="Thursday" />
+              <Mapping SourceColumn="Friday" DataSetColumn="Friday" />
+              <Mapping SourceColumn="Saturday" DataSetColumn="Saturday" />
+              <Mapping SourceColumn="Sunday" DataSetColumn="Sunday" />
+              <Mapping SourceColumn="date1" DataSetColumn="date1" />
+              <Mapping SourceColumn="date2" DataSetColumn="date2" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="tablesTableAdapter" GeneratorDataComponentClassName="tablesTableAdapter" Name="tables" UserDataComponentName="tablesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="livegameConnectionString2 (Settings)" DbObjectName="livegame.tables" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `tables` WHERE ((`Guid` = @p1) AND ((@p2 = 1 AND `Game` IS NULL) OR (`Game` = @p3)) AND ((@p4 = 1 AND `No` IS NULL) OR (`No` = @p5)) AND ((@p6 = 1 AND `Open` IS NULL) OR (`Open` = @p7)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Game" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Game" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="No" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="No" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Open" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="Open" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `tables` (`Game`, `No`, `Open`) VALUES (@p1, @p2, @p3)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Game" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="No" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="Open" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Guid`, `Game`, `No`, `Open` FROM `tables`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `tables` SET `Game` = @p1, `No` = @p2, `Open` = @p3 WHERE ((`Guid` = @p4) AND ((@p5 = 1 AND `Game` IS NULL) OR (`Game` = @p6)) AND ((@p7 = 1 AND `No` IS NULL) OR (`No` = @p8)) AND ((@p9 = 1 AND `Open` IS NULL) OR (`Open` = @p10)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Game" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="No" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="Open" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Guid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Game" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Game" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="No" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="No" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="Open" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="SByte" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Byte" Scale="0" Size="0" SourceColumn="Open" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Guid" DataSetColumn="Guid" />
+              <Mapping SourceColumn="Game" DataSetColumn="Game" />
+              <Mapping SourceColumn="No" DataSetColumn="No" />
+              <Mapping SourceColumn="Open" DataSetColumn="Open" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="livegameDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="livegameDataSet1" msprop:Generator_UserDSName="livegameDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="spResources" msprop:Generator_TableClassName="spResourcesDataTable" msprop:Generator_TableVarName="tablespResources" msprop:Generator_TablePropName="spResources" msprop:Generator_RowDeletingName="spResourcesRowDeleting" msprop:Generator_RowChangingName="spResourcesRowChanging" msprop:Generator_RowEvHandlerName="spResourcesRowChangeEventHandler" msprop:Generator_RowDeletedName="spResourcesRowDeleted" msprop:Generator_UserTableName="spResources" msprop:Generator_RowChangedName="spResourcesRowChanged" msprop:Generator_RowEvArgName="spResourcesRowChangeEvent" msprop:Generator_RowClassName="spResourcesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ResourceName" msprop:Generator_ColumnVarNameInTable="columnResourceName" msprop:Generator_ColumnPropNameInRow="ResourceName" msprop:Generator_ColumnPropNameInTable="ResourceNameColumn" msprop:Generator_UserColumnName="ResourceName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ResourceID" msprop:Generator_ColumnVarNameInTable="columnResourceID" msprop:Generator_ColumnPropNameInRow="ResourceID" msprop:Generator_ColumnPropNameInTable="ResourceIDColumn" msprop:Generator_UserColumnName="ResourceID" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="spResources1" msprop:Generator_TableClassName="spResources1DataTable" msprop:Generator_TableVarName="tablespResources1" msprop:Generator_TablePropName="spResources1" msprop:Generator_RowDeletingName="spResources1RowDeleting" msprop:Generator_RowChangingName="spResources1RowChanging" msprop:Generator_RowEvHandlerName="spResources1RowChangeEventHandler" msprop:Generator_RowDeletedName="spResources1RowDeleted" msprop:Generator_UserTableName="spResources1" msprop:Generator_RowChangedName="spResources1RowChanged" msprop:Generator_RowEvArgName="spResources1RowChangeEvent" msprop:Generator_RowClassName="spResources1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Subject" msprop:Generator_ColumnVarNameInTable="columnSubject" msprop:Generator_ColumnPropNameInRow="Subject" msprop:Generator_ColumnPropNameInTable="SubjectColumn" msprop:Generator_UserColumnName="Subject" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StartDate" msprop:Generator_ColumnVarNameInTable="columnStartDate" msprop:Generator_ColumnPropNameInRow="StartDate" msprop:Generator_ColumnPropNameInTable="StartDateColumn" msprop:Generator_UserColumnName="StartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EndDate" msprop:Generator_ColumnVarNameInTable="columnEndDate" msprop:Generator_ColumnPropNameInRow="EndDate" msprop:Generator_ColumnPropNameInTable="EndDateColumn" msprop:Generator_UserColumnName="EndDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ResourceName" msprop:Generator_ColumnVarNameInTable="columnResourceName" msprop:Generator_ColumnPropNameInRow="ResourceName" msprop:Generator_ColumnPropNameInTable="ResourceNameColumn" msprop:Generator_UserColumnName="ResourceName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="appointments" msprop:Generator_TableClassName="appointmentsDataTable" msprop:Generator_TableVarName="tableappointments" msprop:Generator_TablePropName="appointments" msprop:Generator_RowDeletingName="appointmentsRowDeleting" msprop:Generator_RowChangingName="appointmentsRowChanging" msprop:Generator_RowEvHandlerName="appointmentsRowChangeEventHandler" msprop:Generator_RowDeletedName="appointmentsRowDeleted" msprop:Generator_UserTableName="appointments" msprop:Generator_RowChangedName="appointmentsRowChanged" msprop:Generator_RowEvArgName="appointmentsRowChangeEvent" msprop:Generator_RowClassName="appointmentsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UniqueID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUniqueID" msprop:Generator_ColumnPropNameInRow="UniqueID" msprop:Generator_ColumnPropNameInTable="UniqueIDColumn" msprop:Generator_UserColumnName="UniqueID" type="xs:int" />
+              <xs:element name="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type" type="xs:int" minOccurs="0" />
+              <xs:element name="StartDate" msprop:Generator_ColumnVarNameInTable="columnStartDate" msprop:Generator_ColumnPropNameInRow="StartDate" msprop:Generator_ColumnPropNameInTable="StartDateColumn" msprop:Generator_UserColumnName="StartDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EndDate" msprop:Generator_ColumnVarNameInTable="columnEndDate" msprop:Generator_ColumnPropNameInRow="EndDate" msprop:Generator_ColumnPropNameInTable="EndDateColumn" msprop:Generator_UserColumnName="EndDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="AllDay" msprop:Generator_ColumnVarNameInTable="columnAllDay" msprop:Generator_ColumnPropNameInRow="AllDay" msprop:Generator_ColumnPropNameInTable="AllDayColumn" msprop:Generator_UserColumnName="AllDay" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Subject" msprop:Generator_ColumnVarNameInTable="columnSubject" msprop:Generator_ColumnPropNameInRow="Subject" msprop:Generator_ColumnPropNameInTable="SubjectColumn" msprop:Generator_UserColumnName="Subject" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Location" msprop:Generator_ColumnVarNameInTable="columnLocation" msprop:Generator_ColumnPropNameInRow="Location" msprop:Generator_ColumnPropNameInTable="LocationColumn" msprop:Generator_UserColumnName="Location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" minOccurs="0" />
+              <xs:element name="Label" msprop:Generator_ColumnVarNameInTable="columnLabel" msprop:Generator_ColumnPropNameInRow="Label" msprop:Generator_ColumnPropNameInTable="LabelColumn" msprop:Generator_UserColumnName="Label" type="xs:int" minOccurs="0" />
+              <xs:element name="ResourceID" msprop:Generator_ColumnVarNameInTable="columnResourceID" msprop:Generator_ColumnPropNameInRow="ResourceID" msprop:Generator_ColumnPropNameInTable="ResourceIDColumn" msprop:Generator_UserColumnName="ResourceID" type="xs:int" minOccurs="0" />
+              <xs:element name="ResourceIDs" msprop:Generator_ColumnVarNameInTable="columnResourceIDs" msprop:Generator_ColumnPropNameInRow="ResourceIDs" msprop:Generator_ColumnPropNameInTable="ResourceIDsColumn" msprop:Generator_UserColumnName="ResourceIDs" type="xs:string" minOccurs="0" />
+              <xs:element name="ReminderInfo" msprop:Generator_ColumnVarNameInTable="columnReminderInfo" msprop:Generator_ColumnPropNameInRow="ReminderInfo" msprop:Generator_ColumnPropNameInTable="ReminderInfoColumn" msprop:Generator_UserColumnName="ReminderInfo" type="xs:string" minOccurs="0" />
+              <xs:element name="RecurrenceInfo" msprop:Generator_ColumnVarNameInTable="columnRecurrenceInfo" msprop:Generator_ColumnPropNameInRow="RecurrenceInfo" msprop:Generator_ColumnPropNameInTable="RecurrenceInfoColumn" msprop:Generator_UserColumnName="RecurrenceInfo" type="xs:string" minOccurs="0" />
+              <xs:element name="TimeZoneId" msprop:Generator_ColumnVarNameInTable="columnTimeZoneId" msprop:Generator_ColumnPropNameInRow="TimeZoneId" msprop:Generator_ColumnPropNameInTable="TimeZoneIdColumn" msprop:Generator_UserColumnName="TimeZoneId" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomField1" msprop:Generator_ColumnVarNameInTable="columnCustomField1" msprop:Generator_ColumnPropNameInRow="CustomField1" msprop:Generator_ColumnPropNameInTable="CustomField1Column" msprop:Generator_UserColumnName="CustomField1" type="xs:string" minOccurs="0" />
+              <xs:element name="ResourceName" msprop:Generator_ColumnVarNameInTable="columnResourceName" msprop:Generator_ColumnPropNameInRow="ResourceName" msprop:Generator_ColumnPropNameInTable="ResourceNameColumn" msprop:Generator_UserColumnName="ResourceName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="resources" msprop:Generator_TableClassName="resourcesDataTable" msprop:Generator_TableVarName="tableresources" msprop:Generator_TablePropName="resources" msprop:Generator_RowDeletingName="resourcesRowDeleting" msprop:Generator_RowChangingName="resourcesRowChanging" msprop:Generator_RowEvHandlerName="resourcesRowChangeEventHandler" msprop:Generator_RowDeletedName="resourcesRowDeleted" msprop:Generator_UserTableName="resources" msprop:Generator_RowChangedName="resourcesRowChanged" msprop:Generator_RowEvArgName="resourcesRowChangeEvent" msprop:Generator_RowClassName="resourcesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UniqueID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnUniqueID" msprop:Generator_ColumnPropNameInRow="UniqueID" msprop:Generator_ColumnPropNameInTable="UniqueIDColumn" msprop:Generator_UserColumnName="UniqueID" type="xs:int" />
+              <xs:element name="ResourceID" msprop:Generator_ColumnVarNameInTable="columnResourceID" msprop:Generator_ColumnPropNameInRow="ResourceID" msprop:Generator_ColumnPropNameInTable="ResourceIDColumn" msprop:Generator_UserColumnName="ResourceID" type="xs:int" minOccurs="0" />
+              <xs:element name="ResourceName" msprop:Generator_ColumnVarNameInTable="columnResourceName" msprop:Generator_ColumnPropNameInRow="ResourceName" msprop:Generator_ColumnPropNameInTable="ResourceNameColumn" msprop:Generator_UserColumnName="ResourceName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" type="xs:int" minOccurs="0" />
+              <xs:element name="Image" msprop:Generator_ColumnVarNameInTable="columnImage" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_UserColumnName="Image" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="CustomField1" msprop:Generator_ColumnVarNameInTable="columnCustomField1" msprop:Generator_ColumnPropNameInRow="CustomField1" msprop:Generator_ColumnPropNameInTable="CustomField1Column" msprop:Generator_UserColumnName="CustomField1" type="xs:string" minOccurs="0" />
+              <xs:element name="Monday" msprop:Generator_ColumnVarNameInTable="columnMonday" msprop:Generator_ColumnPropNameInRow="Monday" msprop:Generator_ColumnPropNameInTable="MondayColumn" msprop:Generator_UserColumnName="Monday" type="xs:string" minOccurs="0" />
+              <xs:element name="Tuesday" msprop:Generator_ColumnVarNameInTable="columnTuesday" msprop:Generator_ColumnPropNameInRow="Tuesday" msprop:Generator_ColumnPropNameInTable="TuesdayColumn" msprop:Generator_UserColumnName="Tuesday" type="xs:string" minOccurs="0" />
+              <xs:element name="Wednesday" msprop:Generator_ColumnVarNameInTable="columnWednesday" msprop:Generator_ColumnPropNameInRow="Wednesday" msprop:Generator_ColumnPropNameInTable="WednesdayColumn" msprop:Generator_UserColumnName="Wednesday" type="xs:string" minOccurs="0" />
+              <xs:element name="Thursday" msprop:Generator_ColumnVarNameInTable="columnThursday" msprop:Generator_ColumnPropNameInRow="Thursday" msprop:Generator_ColumnPropNameInTable="ThursdayColumn" msprop:Generator_UserColumnName="Thursday" type="xs:string" minOccurs="0" />
+              <xs:element name="Friday" msprop:Generator_ColumnVarNameInTable="columnFriday" msprop:Generator_ColumnPropNameInRow="Friday" msprop:Generator_ColumnPropNameInTable="FridayColumn" msprop:Generator_UserColumnName="Friday" type="xs:string" minOccurs="0" />
+              <xs:element name="Saturday" msprop:Generator_ColumnVarNameInTable="columnSaturday" msprop:Generator_ColumnPropNameInRow="Saturday" msprop:Generator_ColumnPropNameInTable="SaturdayColumn" msprop:Generator_UserColumnName="Saturday" type="xs:string" minOccurs="0" />
+              <xs:element name="Sunday" msprop:Generator_ColumnVarNameInTable="columnSunday" msprop:Generator_ColumnPropNameInRow="Sunday" msprop:Generator_ColumnPropNameInTable="SundayColumn" msprop:Generator_UserColumnName="Sunday" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="roster" msprop:Generator_TableClassName="rosterDataTable" msprop:Generator_TableVarName="tableroster" msprop:Generator_TablePropName="roster" msprop:Generator_RowDeletingName="rosterRowDeleting" msprop:Generator_RowChangingName="rosterRowChanging" msprop:Generator_RowEvHandlerName="rosterRowChangeEventHandler" msprop:Generator_RowDeletedName="rosterRowDeleted" msprop:Generator_UserTableName="roster" msprop:Generator_RowChangedName="rosterRowChanged" msprop:Generator_RowEvArgName="rosterRowChangeEvent" msprop:Generator_RowClassName="rosterRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="personel" msprop:Generator_ColumnVarNameInTable="columnpersonel" msprop:Generator_ColumnPropNameInRow="personel" msprop:Generator_ColumnPropNameInTable="personelColumn" msprop:Generator_UserColumnName="personel" type="xs:string" minOccurs="0" />
+              <xs:element name="Monday" msprop:Generator_ColumnVarNameInTable="columnMonday" msprop:Generator_ColumnPropNameInRow="Monday" msprop:Generator_ColumnPropNameInTable="MondayColumn" msprop:Generator_UserColumnName="Monday" type="xs:string" minOccurs="0" />
+              <xs:element name="Tuesday" msprop:Generator_ColumnVarNameInTable="columnTuesday" msprop:Generator_ColumnPropNameInRow="Tuesday" msprop:Generator_ColumnPropNameInTable="TuesdayColumn" msprop:Generator_UserColumnName="Tuesday" type="xs:string" minOccurs="0" />
+              <xs:element name="Wednesday" msprop:Generator_ColumnVarNameInTable="columnWednesday" msprop:Generator_ColumnPropNameInRow="Wednesday" msprop:Generator_ColumnPropNameInTable="WednesdayColumn" msprop:Generator_UserColumnName="Wednesday" type="xs:string" minOccurs="0" />
+              <xs:element name="Thursday" msprop:Generator_ColumnVarNameInTable="columnThursday" msprop:Generator_ColumnPropNameInRow="Thursday" msprop:Generator_ColumnPropNameInTable="ThursdayColumn" msprop:Generator_UserColumnName="Thursday" type="xs:string" minOccurs="0" />
+              <xs:element name="Friday" msprop:Generator_ColumnVarNameInTable="columnFriday" msprop:Generator_ColumnPropNameInRow="Friday" msprop:Generator_ColumnPropNameInTable="FridayColumn" msprop:Generator_UserColumnName="Friday" type="xs:string" minOccurs="0" />
+              <xs:element name="Saturday" msprop:Generator_ColumnVarNameInTable="columnSaturday" msprop:Generator_ColumnPropNameInRow="Saturday" msprop:Generator_ColumnPropNameInTable="SaturdayColumn" msprop:Generator_UserColumnName="Saturday" type="xs:string" minOccurs="0" />
+              <xs:element name="Sunday" msprop:Generator_ColumnVarNameInTable="columnSunday" msprop:Generator_ColumnPropNameInRow="Sunday" msprop:Generator_ColumnPropNameInTable="SundayColumn" msprop:Generator_UserColumnName="Sunday" type="xs:string" minOccurs="0" />
+              <xs:element name="Gorev" msprop:Generator_ColumnVarNameInTable="columnGorev" msprop:Generator_ColumnPropNameInRow="Gorev" msprop:Generator_ColumnPropNameInTable="GorevColumn" msprop:Generator_UserColumnName="Gorev" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rotalar" msprop:Generator_TableClassName="rotalarDataTable" msprop:Generator_TableVarName="tablerotalar" msprop:Generator_TablePropName="rotalar" msprop:Generator_RowDeletingName="rotalarRowDeleting" msprop:Generator_RowChangingName="rotalarRowChanging" msprop:Generator_RowEvHandlerName="rotalarRowChangeEventHandler" msprop:Generator_RowDeletedName="rotalarRowDeleted" msprop:Generator_UserTableName="rotalar" msprop:Generator_RowChangedName="rotalarRowChanged" msprop:Generator_RowEvArgName="rotalarRowChangeEvent" msprop:Generator_RowClassName="rotalarRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="Personel" msprop:Generator_ColumnVarNameInTable="columnPersonel" msprop:Generator_ColumnPropNameInRow="Personel" msprop:Generator_ColumnPropNameInTable="PersonelColumn" msprop:Generator_UserColumnName="Personel" type="xs:string" minOccurs="0" />
+              <xs:element name="Monday" msprop:Generator_ColumnVarNameInTable="columnMonday" msprop:Generator_ColumnPropNameInRow="Monday" msprop:Generator_ColumnPropNameInTable="MondayColumn" msprop:Generator_UserColumnName="Monday" type="xs:string" minOccurs="0" />
+              <xs:element name="Shift" msprop:Generator_ColumnVarNameInTable="columnShift" msprop:Generator_ColumnPropNameInRow="Shift" msprop:Generator_ColumnPropNameInTable="ShiftColumn" msprop:Generator_UserColumnName="Shift" type="xs:string" minOccurs="0" />
+              <xs:element name="Tuesday" msprop:Generator_ColumnVarNameInTable="columnTuesday" msprop:Generator_ColumnPropNameInRow="Tuesday" msprop:Generator_ColumnPropNameInTable="TuesdayColumn" msprop:Generator_UserColumnName="Tuesday" type="xs:string" minOccurs="0" />
+              <xs:element name="Wednesday" msprop:Generator_ColumnVarNameInTable="columnWednesday" msprop:Generator_ColumnPropNameInRow="Wednesday" msprop:Generator_ColumnPropNameInTable="WednesdayColumn" msprop:Generator_UserColumnName="Wednesday" type="xs:string" minOccurs="0" />
+              <xs:element name="Thursday" msprop:Generator_ColumnVarNameInTable="columnThursday" msprop:Generator_ColumnPropNameInRow="Thursday" msprop:Generator_ColumnPropNameInTable="ThursdayColumn" msprop:Generator_UserColumnName="Thursday" type="xs:string" minOccurs="0" />
+              <xs:element name="Friday" msprop:Generator_ColumnVarNameInTable="columnFriday" msprop:Generator_ColumnPropNameInRow="Friday" msprop:Generator_ColumnPropNameInTable="FridayColumn" msprop:Generator_UserColumnName="Friday" type="xs:string" minOccurs="0" />
+              <xs:element name="Saturday" msprop:Generator_ColumnVarNameInTable="columnSaturday" msprop:Generator_ColumnPropNameInRow="Saturday" msprop:Generator_ColumnPropNameInTable="SaturdayColumn" msprop:Generator_UserColumnName="Saturday" type="xs:string" minOccurs="0" />
+              <xs:element name="Sunday" msprop:Generator_ColumnVarNameInTable="columnSunday" msprop:Generator_ColumnPropNameInRow="Sunday" msprop:Generator_ColumnPropNameInTable="SundayColumn" msprop:Generator_UserColumnName="Sunday" type="xs:string" minOccurs="0" />
+              <xs:element name="date1" msprop:Generator_ColumnVarNameInTable="columndate1" msprop:Generator_ColumnPropNameInRow="date1" msprop:Generator_ColumnPropNameInTable="date1Column" msprop:Generator_UserColumnName="date1" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="date2" msprop:Generator_ColumnVarNameInTable="columndate2" msprop:Generator_ColumnPropNameInRow="date2" msprop:Generator_ColumnPropNameInTable="date2Column" msprop:Generator_UserColumnName="date2" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tables" msprop:Generator_TableClassName="tablesDataTable" msprop:Generator_TableVarName="tabletables" msprop:Generator_TablePropName="tables" msprop:Generator_RowDeletingName="tablesRowDeleting" msprop:Generator_RowChangingName="tablesRowChanging" msprop:Generator_RowEvHandlerName="tablesRowChangeEventHandler" msprop:Generator_RowDeletedName="tablesRowDeleted" msprop:Generator_UserTableName="tables" msprop:Generator_RowChangedName="tablesRowChanged" msprop:Generator_RowEvArgName="tablesRowChangeEvent" msprop:Generator_RowClassName="tablesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Guid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnGuid" msprop:Generator_ColumnPropNameInRow="Guid" msprop:Generator_ColumnPropNameInTable="GuidColumn" msprop:Generator_UserColumnName="Guid" type="xs:int" />
+              <xs:element name="Game" msprop:Generator_ColumnVarNameInTable="columnGame" msprop:Generator_ColumnPropNameInRow="Game" msprop:Generator_ColumnPropNameInTable="GameColumn" msprop:Generator_UserColumnName="Game" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="No" msprop:Generator_ColumnVarNameInTable="columnNo" msprop:Generator_ColumnPropNameInRow="No" msprop:Generator_ColumnPropNameInTable="NoColumn" msprop:Generator_UserColumnName="No" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Open" msprop:Generator_ColumnVarNameInTable="columnOpen" msprop:Generator_ColumnPropNameInRow="Open" msprop:Generator_ColumnPropNameInTable="OpenColumn" msprop:Generator_UserColumnName="Open" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:appointments" />
+      <xs:field xpath="mstns:UniqueID" />
+    </xs:unique>
+    <xs:unique name="resources_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:resources" />
+      <xs:field xpath="mstns:UniqueID" />
+    </xs:unique>
+    <xs:unique name="roster_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:roster" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="rotalar_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rotalar" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="tables_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:tables" />
+      <xs:field xpath="mstns:Guid" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
