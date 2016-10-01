@@ -112,6 +112,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="checkPermissions.cs" />
     <Compile Include="customProperties.cs" />
     <Compile Include="CustomScales.cs" />
     <Compile Include="Database.cs" />
@@ -152,6 +153,12 @@
     <Compile Include="frmOperationDate.Designer.cs">
       <DependentUpon>frmOperationDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermissions.Designer.cs">
+      <DependentUpon>frmPermissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPersonelList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,12 +170,6 @@
     </Compile>
     <Compile Include="frmRoster.Designer.cs">
       <DependentUpon>frmRoster.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmUsers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUsers.Designer.cs">
-      <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="livegameDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -189,6 +190,27 @@
     <Compile Include="frmPersonelDetails.Designer.cs">
       <DependentUpon>frmPersonelDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDepartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDepartments.Designer.cs">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPositions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPositions.Designer.cs">
+      <DependentUpon>frmPositions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmDepartments.resx">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,14 +226,23 @@
     <EmbeddedResource Include="frmMDIMain.resx">
       <DependentUpon>frmMDIMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNewVacation.resx">
+      <DependentUpon>frmNewVacation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOperationDate.resx">
       <DependentUpon>frmOperationDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPermissions.resx">
+      <DependentUpon>frmPermissions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPersonelDetails.resx">
       <DependentUpon>frmPersonelDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPersonelList.resx">
       <DependentUpon>frmPersonelList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPositions.resx">
+      <DependentUpon>frmPositions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRoster.resx">
       <DependentUpon>frmRoster.cs</DependentUpon>

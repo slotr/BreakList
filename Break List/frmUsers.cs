@@ -8,6 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using DevExpress.XtraLayout.Helpers;
+using DevExpress.XtraLayout;
 
 namespace Break_List
 {
@@ -16,6 +20,24 @@ namespace Break_List
         public frmUsers()
         {
             InitializeComponent();
+           
+        }
+
+        
+    
+
+        private void frmUsers_Load(object sender, EventArgs e)
+        {
+           ;
+
+
+
+        }
+
+        private void permissionsBindingNavigatorSaveItem1_Click(object sender, EventArgs e)
+        {
+           
+
         }
     }
 }

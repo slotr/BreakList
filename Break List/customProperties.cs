@@ -11,7 +11,7 @@ namespace Break_List
         public string _roleID { get; set; } // Diger formlara gonderiliyor
         public string _department { get; set; } // Main Form set ediliyor
         public string _FullName { get; set; } // Main Form Set ediliyor
-
+        public string _userID { get; set; } // Main Form Set ediliyor
         public string _RoleName { get; set; } // Main Form Set ediliyor
     }
 }

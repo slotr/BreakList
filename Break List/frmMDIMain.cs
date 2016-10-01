@@ -13,6 +13,7 @@ namespace Break_List
         public string _userNameFromLogin { get; set; }  // Login Formundan geliyor.
         customProperties prop = new customProperties();
         string str = Settings.Default.livegameConnectionString2;
+        Boolean haspermissionAppointment { get; set; }
         public frmMDIMain()
         {
             InitializeComponent();
@@ -28,13 +29,23 @@ namespace Break_List
             frmOperationDate opDate = new frmOperationDate();
             opDate.ShowDialog();
             stOperationDate.Caption = Settings.Default.operationDate.ToString("d");
+            checkPermissions();
+            if (haspermissionAppointment == true)
+            {
+                ribbonBreak.Visible = true;
+            }
+
+            else
+            {
+                ribbonBreak.Visible = false;
+            }
         }
 
         void getProperties() //Department , Role ve Full adi aliyor.
         {
             MySqlConnection conn = new MySqlConnection(str);
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT Department, RoleID, FullName from users WHERE UserName ='" + _userNameFromLogin + "'";
+            command.CommandText = "SELECT userID, Department, RoleID, FullName from users WHERE UserName ='" + _userNameFromLogin + "'";
             try
             {
                 conn.Open();
@@ -46,10 +57,34 @@ namespace Break_List
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
+                prop._userID = reader["userID"].ToString();
                 prop._roleID = reader["RoleID"].ToString();
                 prop._department = reader["Department"].ToString();
                 prop._FullName = reader["FullName"].ToString();
                 
+            }
+            conn.Close();
+        }
+
+        void checkPermissions() //Department , Role ve Full adi aliyor.
+        {
+            MySqlConnection conn = new MySqlConnection(str);
+            MySqlCommand command = conn.CreateCommand();
+            command.CommandText = "SELECT * from permissions WHERE UserID ='" + prop._userID + "'";
+            try
+            {
+                conn.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There were an Error", ex.ToString());
+            }
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                haspermissionAppointment = Convert.ToBoolean(reader["Appointments"].ToString());
+                
+
             }
             conn.Close();
         }
@@ -100,6 +135,27 @@ namespace Break_List
             };
 
             monthlRoster.Show();
+        }
+
+        private void btnDepartments_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmDepartments Departments = new frmDepartments();
+            Departments.MdiParent = this;
+            Departments.Show();
+        }
+
+        private void btnPositions_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmPositions Positions = new frmPositions();
+            Positions.MdiParent = this;
+            Positions.Show();
+        }
+
+        private void btnPermissions_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmPermissions Permissions = new frmPermissions();
+            Permissions.MdiParent = this;
+            Permissions.Show();
         }
     }
 }

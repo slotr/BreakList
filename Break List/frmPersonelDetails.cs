@@ -24,7 +24,7 @@ namespace Break_List
         private FileStream fs;
         private BinaryReader br;
         public string _personelID { get; set; }
-
+        
         public frmPersonelDetails()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace Break_List
             {
                 try
                 {
-                    if ((this.txtNameSurname.Text.Length <= 0 ? true : this.lblFileName.Text.Length <= 0))
+                    if ((txtNameSurname.Text.Length <= 0 ? true : lblFileName.Text.Length <= 0))
                     {
                         MessageBox.Show("Incomplete data!", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     }
@@ -62,15 +62,15 @@ namespace Break_List
                         cmd.Parameters.Add("@EndDate", MySqlDbType.Date);
                         cmd.Parameters.Add("@BirthDate", MySqlDbType.Date);
                         cmd.Parameters.Add("@Position", MySqlDbType.VarChar, 45);
-                        cmd.Parameters["@ResourceName"].Value = this.txtNameSurname.Text;
-                        cmd.Parameters["@customField1"].Value = this.txtPosition.Text;
+                        cmd.Parameters["@ResourceName"].Value = txtNameSurname.Text;
+                        cmd.Parameters["@customField1"].Value = txtPosition.Text;
                         cmd.Parameters["@Image"].Value = ImageData;
-                        cmd.Parameters["@resourceID"].Value = this.txtPersonelId.Text;
-                        cmd.Parameters["@Department"].Value = this.cmbDepartment.EditValue.ToString();
-                        cmd.Parameters["@StartDate"].Value = this.dtStartDate.EditValue;
-                        cmd.Parameters["@EndDate"].Value = this.dtEndDate.EditValue;
-                        cmd.Parameters["@Position"].Value = this.txtPosition.Text;
-                        cmd.Parameters["@BirthDate"].Value = this.dtBirthDate.EditValue;
+                        cmd.Parameters["@resourceID"].Value = txtPersonelId.Text;
+                        cmd.Parameters["@Department"].Value = cmbDepartment.EditValue.ToString();
+                        cmd.Parameters["@StartDate"].Value = dtStartDate.EditValue;
+                        cmd.Parameters["@EndDate"].Value = dtEndDate.EditValue;
+                        cmd.Parameters["@Position"].Value = txtPosition.EditValue.ToString();
+                        cmd.Parameters["@BirthDate"].Value = dtBirthDate.EditValue;
                         con.Open();
                         if (cmd.ExecuteNonQuery() > 0)
                         {
@@ -86,9 +86,9 @@ namespace Break_List
             }
             finally
             {
-                if (this.con.State == ConnectionState.Open)
+                if (con.State == ConnectionState.Open)
                 {
-                    this.con.Close();
+                    con.Close();
                 }
             }
         }
@@ -119,6 +119,72 @@ namespace Break_List
                 mySqlConnection.Close();
             }
         }
+
+        void getDepartments() // Yeni Kayit Olusturulurken Aliyor
+        {
+
+            var connectionString = Settings.Default.livegameConnectionString2;
+            using (MySqlConnection cnn = new MySqlConnection(connectionString))
+            using (MySqlCommand cmd = cnn.CreateCommand())
+            {
+                cnn.Open();
+                cmd.CommandText = "spDepartment";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                DataTable dt = new DataTable();
+                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+
+                    foreach (DataRow Row in dt.Rows)
+                    {
+
+                        cmbDepartment.Properties.Items.Add(Row["DepartmentName"]);
+
+                    }
+
+                   cmbDepartment.Properties.Sorted = true;
+                    
+
+                }
+            }
+           
+        }
+
+        void bringPositions() // Yeni Kayit Olusturulurken Departmana gore Aliyor
+        {
+
+            var connectionString = Settings.Default.livegameConnectionString2;
+            using (MySqlConnection cnn = new MySqlConnection(connectionString))
+            using (MySqlCommand cmd = cnn.CreateCommand())
+            {
+                cnn.Open();
+                cmd.CommandText = "spBringPositions";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
+                cmd.Parameters["@DepartmentName"].Value = cmbDepartment.EditValue.ToString();
+                DataTable dt = new DataTable();
+                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                {
+                    
+                    da.Fill(dt);
+
+                    foreach (DataRow Row in dt.Rows)
+                    {
+
+                        txtPosition.Properties.Items.Add(Row["PositionName"]);
+
+                    }
+
+                    txtPosition.Properties.Sorted = true;
+
+
+                }
+            }
+
+        }
+
+
         private void calculateVacation()
         {
             DateTime dateTime = this.dtStartDate.DateTime;
@@ -295,8 +361,9 @@ namespace Break_List
             }
             else
             {
-                
+                getDepartments();
                 lblEarnedVacation.Visible = false;
+                lblUsedVacations.Visible = false;
             }
         }
 
@@ -335,6 +402,12 @@ namespace Break_List
             frmNewVacation newVacation = new frmNewVacation();
 
             newVacation.ShowDialog();
+        }
+
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtPosition.Properties.Items.Clear();
+            bringPositions();
         }
     }
 }

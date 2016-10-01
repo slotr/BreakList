@@ -21,7 +21,8 @@ using System.Data.SqlClient;
 using DevExpress.XtraScheduler.Drawing;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
-
+using DevExpress.XtraGrid.Views.Tile;
+using DevExpress.XtraGrid.Views.Tile.ViewInfo;
 
 namespace Break_List
 {
@@ -32,7 +33,7 @@ namespace Break_List
         public DateTime _operationDate { get; set; }
         public frmBreakList()
         {
-            InitializeComponent();           
+            InitializeComponent();
             
             schedulerControl.Views.DayView.Enabled = false;
             schedulerControl.ActiveViewType = SchedulerViewType.Timeline;
@@ -73,7 +74,7 @@ namespace Break_List
         TimeSpan minTime = new TimeSpan(0, 0, 0);
         TimeSpan maxTime = new TimeSpan(24, 0, 0);
         GridHitInfo downHitInfo;
-
+        
 
         void getNames()
         {
@@ -102,7 +103,8 @@ namespace Break_List
             }
 
         }
-    
+
+        
         void getTables()
         {
             using (var conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
@@ -121,8 +123,10 @@ namespace Break_List
                     {
                         adapter.Fill(dt);
                         gridControl1.DataSource = dt;
+                        
+                        var rows = dt.Select();
+                        
 
-                       
                     }
                 }
 
@@ -130,6 +134,8 @@ namespace Break_List
             }
 
         }
+
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -143,6 +149,7 @@ namespace Break_List
             if (_departmentNameFromMainForm == "Live Game")
             {
                 getTables();
+                
             }
             else
             {
@@ -245,6 +252,10 @@ namespace Break_List
             schedulerControl.RefreshData();
         }
 
+    
+
        
+
+      
     }
 }

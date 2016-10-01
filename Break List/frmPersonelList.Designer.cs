@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.resourcesGridControl = new DevExpress.XtraGrid.GridControl();
             this.livegameDataSet11 = new Break_List.livegameDataSet1();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.resourcesTableAdapter1 = new Break_List.livegameDataSet1TableAdapters.resourcesTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             this.SuspendLayout();
             // 
             // resourcesGridControl
@@ -50,7 +50,7 @@
             this.resourcesGridControl.DataSource = this.livegameDataSet11;
             this.resourcesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resourcesGridControl.Location = new System.Drawing.Point(0, 0);
-            this.resourcesGridControl.MainView = this.gridView1;
+            this.resourcesGridControl.MainView = this.tileView1;
             this.resourcesGridControl.Name = "resourcesGridControl";
             this.resourcesGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
@@ -58,24 +58,12 @@
             this.resourcesGridControl.Size = new System.Drawing.Size(456, 599);
             this.resourcesGridControl.TabIndex = 1;
             this.resourcesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.tileView1});
             // 
             // livegameDataSet11
             // 
             this.livegameDataSet11.DataSetName = "livegameDataSet1";
             this.livegameDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.resourcesGridControl;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsCustomization.AllowColumnMoving = false;
-            this.gridView1.OptionsFind.AlwaysVisible = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
             // repositoryItemComboBox1
             // 
@@ -103,6 +91,13 @@
             this.bindingSource1.DataMember = "resources";
             this.bindingSource1.DataSource = this.livegameDataSet11;
             // 
+            // tileView1
+            // 
+            this.tileView1.GridControl = this.resourcesGridControl;
+            this.tileView1.Name = "tileView1";
+            this.tileView1.OptionsFind.AlwaysVisible = true;
+            this.tileView1.ItemClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileView1_ItemClick);
+            // 
             // frmPersonelList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,21 +110,21 @@
             this.Load += new System.EventHandler(this.frmPersonel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private DevExpress.XtraGrid.GridControl resourcesGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private livegameDataSet1 livegameDataSet11;
         private livegameDataSet1TableAdapters.resourcesTableAdapter resourcesTableAdapter1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
     }
 }

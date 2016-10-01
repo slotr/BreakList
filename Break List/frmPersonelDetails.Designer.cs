@@ -40,17 +40,27 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.lblUsedVacations = new DevExpress.XtraEditors.LabelControl();
             this.lblFileName = new DevExpress.XtraEditors.LabelControl();
             this.dtBirthDate = new DevExpress.XtraEditors.DateEdit();
-            this.txtPosition = new DevExpress.XtraEditors.TextEdit();
             this.txtPersonelId = new DevExpress.XtraEditors.TextEdit();
             this.txtNameSurname = new DevExpress.XtraEditors.TextEdit();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cmbDepartment = new DevExpress.XtraEditors.ComboBoxEdit();
             this.dtStartDate = new DevExpress.XtraEditors.DateEdit();
             this.dtEndDate = new DevExpress.XtraEditors.DateEdit();
             this.cmbDocumentType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbDepartment = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txtPosition = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -74,16 +84,6 @@
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDocumentNo.Properties)).BeginInit();
@@ -92,18 +92,21 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.xtraTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBirthDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBirthDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonelId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameSurname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDocumentType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDepartment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
@@ -125,9 +128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            this.xtraTabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -140,14 +140,14 @@
             this.dataLayoutControl1.Controls.Add(this.lblUsedVacations);
             this.dataLayoutControl1.Controls.Add(this.lblFileName);
             this.dataLayoutControl1.Controls.Add(this.dtBirthDate);
-            this.dataLayoutControl1.Controls.Add(this.txtPosition);
             this.dataLayoutControl1.Controls.Add(this.txtPersonelId);
             this.dataLayoutControl1.Controls.Add(this.txtNameSurname);
             this.dataLayoutControl1.Controls.Add(this.pictureBox1);
-            this.dataLayoutControl1.Controls.Add(this.cmbDepartment);
             this.dataLayoutControl1.Controls.Add(this.dtStartDate);
             this.dataLayoutControl1.Controls.Add(this.dtEndDate);
             this.dataLayoutControl1.Controls.Add(this.cmbDocumentType);
+            this.dataLayoutControl1.Controls.Add(this.cmbDepartment);
+            this.dataLayoutControl1.Controls.Add(this.txtPosition);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataLayoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem9});
@@ -235,6 +235,81 @@
             this.xtraTabPage3.Size = new System.Drawing.Size(758, 158);
             this.xtraTabPage3.Text = "Warnings";
             // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.memoEdit1);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(758, 158);
+            this.xtraTabPage4.Text = "Comments";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.Location = new System.Drawing.Point(0, 0);
+            this.memoEdit1.MenuManager = this.barManager1;
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(758, 158);
+            this.memoEdit1.TabIndex = 0;
+            // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.Form = this;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barSubItem1,
+            this.barButtonItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 4;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(784, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 561);
+            this.barDockControlBottom.Size = new System.Drawing.Size(784, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 561);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(784, 0);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 561);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Add New Vacation";
+            this.barSubItem1.Id = 0;
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Id = 3;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Add New Vacation";
+            this.barButtonItem2.Id = 2;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
             // lblUsedVacations
             // 
             this.lblUsedVacations.Location = new System.Drawing.Point(527, 58);
@@ -266,14 +341,6 @@
             this.dtBirthDate.StyleController = this.dataLayoutControl1;
             this.dtBirthDate.TabIndex = 11;
             // 
-            // txtPosition
-            // 
-            this.txtPosition.Location = new System.Drawing.Point(286, 84);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(237, 20);
-            this.txtPosition.StyleController = this.dataLayoutControl1;
-            this.txtPosition.TabIndex = 8;
-            // 
             // txtPersonelId
             // 
             this.txtPersonelId.Location = new System.Drawing.Point(286, 36);
@@ -299,16 +366,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // cmbDepartment
-            // 
-            this.cmbDepartment.Location = new System.Drawing.Point(286, 60);
-            this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbDepartment.Size = new System.Drawing.Size(237, 20);
-            this.cmbDepartment.StyleController = this.dataLayoutControl1;
-            this.cmbDepartment.TabIndex = 7;
             // 
             // dtStartDate
             // 
@@ -357,6 +414,27 @@
             this.cmbDocumentType.Size = new System.Drawing.Size(237, 20);
             this.cmbDocumentType.StyleController = this.dataLayoutControl1;
             this.cmbDocumentType.TabIndex = 15;
+            // 
+            // cmbDepartment
+            // 
+            this.cmbDepartment.Location = new System.Drawing.Point(286, 60);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbDepartment.Size = new System.Drawing.Size(237, 20);
+            this.cmbDepartment.StyleController = this.dataLayoutControl1;
+            this.cmbDepartment.TabIndex = 7;
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(286, 84);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtPosition.Size = new System.Drawing.Size(237, 20);
+            this.txtPosition.StyleController = this.dataLayoutControl1;
+            this.txtPosition.TabIndex = 8;
             // 
             // layoutControlItem9
             // 
@@ -618,81 +696,6 @@
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Add New Vacation";
-            this.barButtonItem2.Id = 2;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
-            // barManager1
-            // 
-            this.barManager1.DockControls.Add(this.barDockControlTop);
-            this.barManager1.DockControls.Add(this.barDockControlBottom);
-            this.barManager1.DockControls.Add(this.barDockControlLeft);
-            this.barManager1.DockControls.Add(this.barDockControlRight);
-            this.barManager1.Form = this;
-            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barSubItem1,
-            this.barButtonItem1,
-            this.barButtonItem2});
-            this.barManager1.MaxItemId = 4;
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(784, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 561);
-            this.barDockControlBottom.Size = new System.Drawing.Size(784, 0);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 561);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(784, 0);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 561);
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Add New Vacation";
-            this.barSubItem1.Id = 0;
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Id = 3;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // xtraTabPage4
-            // 
-            this.xtraTabPage4.Controls.Add(this.memoEdit1);
-            this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(758, 158);
-            this.xtraTabPage4.Text = "Comments";
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit1.Location = new System.Drawing.Point(0, 0);
-            this.memoEdit1.MenuManager = this.barManager1;
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(758, 158);
-            this.memoEdit1.TabIndex = 0;
-            // 
             // frmPersonelDetails
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -709,6 +712,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmPersonelDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employee Details";
             this.Load += new System.EventHandler(this.frmPersonelDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
@@ -719,18 +723,21 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.xtraTabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBirthDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBirthDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPersonelId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameSurname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbDepartment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDocumentType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDepartment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPosition.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
@@ -752,9 +759,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            this.xtraTabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -772,7 +776,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem13;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem14;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.TextEdit txtPosition;
         private DevExpress.XtraEditors.TextEdit txtPersonelId;
         private DevExpress.XtraEditors.TextEdit txtNameSurname;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
@@ -781,7 +784,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbDepartment;
         private DevExpress.XtraEditors.DateEdit dtStartDate;
         private DevExpress.XtraEditors.DateEdit dtEndDate;
         private DevExpress.XtraEditors.DateEdit dtBirthDate;
@@ -816,6 +818,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbDepartment;
+        private DevExpress.XtraEditors.ComboBoxEdit txtPosition;
     }
 
 }

@@ -71,6 +71,7 @@
             this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController();
             this.appointmentsTableAdapter = new Break_List.livegameDataSet1TableAdapters.appointmentsTableAdapter();
             this.resourcesTableAdapter = new Break_List.livegameDataSet1TableAdapters.resourcesTableAdapter();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -110,7 +111,7 @@
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
             this.splitContainerControl.Size = new System.Drawing.Size(1108, 554);
-            this.splitContainerControl.SplitterPosition = 114;
+            this.splitContainerControl.SplitterPosition = 159;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
             // 
@@ -127,7 +128,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(114, 542);
+            this.gridControl1.Size = new System.Drawing.Size(159, 542);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -139,7 +140,8 @@
             this.gridView1.Appearance.Row.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colGame,
-            this.colNo});
+            this.colNo,
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -181,7 +183,7 @@
             this.btnPersonelYenile});
             this.ribbonControl.LargeImages = this.ribbonImageCollectionLarge;
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 112;
+            this.ribbonControl.MaxItemId = 116;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.iAbout);
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -228,12 +230,25 @@
             this.btnYenile.Name = "btnYenile";
             this.btnYenile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYenile_ItemClick);
             // 
-            
+            // btnReport
             // 
-            
+            this.btnReport.Id = 112;
+            this.btnReport.Name = "btnReport";
             // 
-            
-         
+            // btnPersonel
+            // 
+            this.btnPersonel.Id = 113;
+            this.btnPersonel.Name = "btnPersonel";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Id = 114;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Id = 115;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // btnPersonelYenile
             // 
@@ -322,7 +337,7 @@
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
             this.schedulerSplitContainerControl.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(970, 542);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(925, 542);
             this.schedulerSplitContainerControl.SplitterPosition = 225;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -353,7 +368,7 @@
             this.schedulerControl.OptionsView.ResourceHeaders.RotateCaption = false;
             this.schedulerControl.OptionsView.ShowOnlyResourceAppointments = true;
             this.schedulerControl.OptionsView.ToolTipVisibility = DevExpress.XtraScheduler.ToolTipVisibility.Never;
-            this.schedulerControl.Size = new System.Drawing.Size(970, 542);
+            this.schedulerControl.Size = new System.Drawing.Size(925, 542);
             this.schedulerControl.Start = new System.DateTime(2016, 9, 11, 0, 0, 0, 0);
             this.schedulerControl.Storage = this.schedulerStorage1;
             this.schedulerControl.TabIndex = 0;
@@ -384,7 +399,6 @@
             this.schedulerControl.Views.WorkWeekView.Enabled = false;
             this.schedulerControl.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             this.schedulerControl.PopupMenuShowing += new DevExpress.XtraScheduler.PopupMenuShowingEventHandler(this.schedulerControl_PopupMenuShowing);
-            
             // 
             // schedulerStorage1
             // 
@@ -508,6 +522,13 @@
             // 
             this.resourcesTableAdapter.ClearBeforeFill = true;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "People";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            // 
             // frmBreakList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -595,5 +616,6 @@
         private livegameDataSet1TableAdapters.appointmentsTableAdapter appointmentsTableAdapter;
         private System.Windows.Forms.BindingSource resourcesBindingSource;
         private livegameDataSet1TableAdapters.resourcesTableAdapter resourcesTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
