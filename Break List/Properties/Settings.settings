@@ -2,22 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Break_List.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="LiveGameConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=DBSQL\FINANCE;Initial Catalog=LiveGame;Persist Security Info=True;User ID=hakan;Password=26091974&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=DBSQL\FINANCE;Initial Catalog=LiveGame;Persist Security Info=True;User ID=hakan;Password=26091974</Value>
-    </Setting>
-    <Setting Name="livegameConnectionString1" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;server=192.168.0.187;user id=hakan;password=26091974;database=livegame;persistsecurityinfo=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">server=192.168.0.187;user id=hakan;password=26091974;database=livegame;persistsecurityinfo=True</Value>
-    </Setting>
     <Setting Name="livegameConnectionString2" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
@@ -25,6 +9,9 @@
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame</Value>
+    </Setting>
+    <Setting Name="operationDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">09/30/2016 11:07:00</Value>
     </Setting>
   </Settings>
 </SettingsFile>

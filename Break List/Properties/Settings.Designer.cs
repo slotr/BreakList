@@ -26,33 +26,23 @@ namespace Break_List.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DBSQL\\FINANCE;Initial Catalog=LiveGame;Persist Security Info=True;Use" +
-            "r ID=hakan;Password=26091974")]
-        public string LiveGameConnectionString {
-            get {
-                return ((string)(this["LiveGameConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.187;user id=hakan;password=26091974;database=livegame;persistsec" +
-            "urityinfo=True")]
-        public string livegameConnectionString1 {
-            get {
-                return ((string)(this["livegameConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;dat" +
             "abase=livegame")]
         public string livegameConnectionString2 {
             get {
                 return ((string)(this["livegameConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("09/30/2016 11:07:00")]
+        public global::System.DateTime operationDate {
+            get {
+                return ((global::System.DateTime)(this["operationDate"]));
+            }
+            set {
+                this["operationDate"] = value;
             }
         }
     }

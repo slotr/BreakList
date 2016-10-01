@@ -79,8 +79,8 @@
             this.tableAdapterManager.appointmentsTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.resourcesTableAdapter = null;
-            this.tableAdapterManager.rosterTableAdapter = null;
-            this.tableAdapterManager.rotalarTableAdapter = null;
+            
+           
             this.tableAdapterManager.tablesTableAdapter = this.tablesTableAdapter;
             this.tableAdapterManager.UpdateOrder = Break_List.livegameDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 

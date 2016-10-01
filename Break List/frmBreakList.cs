@@ -20,22 +20,27 @@ using DevExpress.XtraGrid;
 using System.Data.SqlClient;
 using DevExpress.XtraScheduler.Drawing;
 using MySql.Data.MySqlClient;
+using Break_List.Properties;
+
 
 namespace Break_List
 {
-    public partial class frmMain : RibbonForm
+    public partial class frmBreakList : RibbonForm
     {
-        public frmMain()
+        public string _departmentNameFromMainForm { get; set; }
+        public string _userRoleIDFromMainForm { get; set; }
+        public DateTime _operationDate { get; set; }
+        public frmBreakList()
         {
             InitializeComponent();           
-            schedulerControl.Start = System.DateTime.Now;
+            
             schedulerControl.Views.DayView.Enabled = false;
             schedulerControl.ActiveViewType = SchedulerViewType.Timeline;
             schedulerControl.GroupType = SchedulerGroupType.Resource;
-            getTables();
-            getNames();
+            
 
             TimeScaleCollection scales = schedulerControl.TimelineView.Scales;
+            schedulerControl.Start = System.DateTime.Now;
             schedulerControl.TimelineView.Scales.BeginUpdate();
             try
             {
@@ -54,11 +59,15 @@ namespace Break_List
             this.schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
         }
 
+
+   
+
         private void OnAppointmentChangedInsertedDeleted(object sender, PersistentObjectsEventArgs e)
         {
-            this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
+            
             appointmentsTableAdapter.Update(livegameDataSet1);
             livegameDataSet1.AcceptChanges();
+            this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
         }
 
         TimeSpan minTime = new TimeSpan(0, 0, 0);
@@ -68,14 +77,16 @@ namespace Break_List
 
         void getNames()
         {
-            using (var conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
-            using (var command = new MySqlCommand("spResources", conn)
+            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {
-                CommandType = CommandType.StoredProcedure
-            })
-            {
+                MySqlCommand command = new MySqlCommand("spBreakListNames;", conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                string _department = _departmentNameFromMainForm;
+                DateTime _opDate = Settings.Default.operationDate;
+                // Add your parameters here if you need them
+                command.Parameters.Add(new MySqlParameter("DepartmentName", _department));
+                command.Parameters.Add(new MySqlParameter("OperationDate", _opDate));
                 conn.Open();
-                command.ExecuteNonQuery();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter())
                 {
@@ -84,10 +95,10 @@ namespace Break_List
                     {
                         adapter.Fill(dt);
                         schedulerStorage1.Resources.DataSource = dt;
+                        this.Text = "Break List of:" + _department;
                     }
                 }
-
-
+                conn.Close();
             }
 
         }
@@ -123,12 +134,20 @@ namespace Break_List
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'livegameDataSet1.resources' table. You can move, or remove it, as needed.
-            this.resourcesTableAdapter.Fill(this.livegameDataSet1.resources);
+           // this.resourcesTableAdapter.Fill(this.livegameDataSet1.resources);
             // TODO: This line of code loads data into the 'livegameDataSet1.appointments' table. You can move, or remove it, as needed.
             this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
-
             
+            getNames();
+            
+            if (_departmentNameFromMainForm == "Live Game")
+            {
+                getTables();
+            }
+            else
+            {
 
+            }
         }
 
      
@@ -218,33 +237,7 @@ namespace Break_List
         {
             getTables();
         }
-
-        //Raporlar
-        private void btnReport_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            frmExport report = new frmExport();
-            report.ShowDialog();
-
-        }
-        //Personel
-        private void btnPersonel_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            frmPersonel personel = new frmPersonel();
-            personel.ShowDialog();
-        }
-        //Rotalar
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            frmRota Rota = new frmRota();
-            Rota.ShowDialog();
-        }
-        //Masalar
-        private void btnMasalar_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            frmMasalar Masalar = new frmMasalar();
-            Masalar.ShowDialog();
-        }
-
+        
         private void btnPersonelYenile_ItemClick(object sender, ItemClickEventArgs e)
         {
             getNames();
@@ -252,12 +245,6 @@ namespace Break_List
             schedulerControl.RefreshData();
         }
 
-      
-
-        private void schedulerControl_AppointmentDrag(object sender, AppointmentDragEventArgs e)
-        {
-            
-
-        }
+       
     }
 }
