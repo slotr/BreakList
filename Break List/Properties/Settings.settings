@@ -13,5 +13,11 @@
     <Setting Name="operationDate" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">09/30/2016 11:07:00</Value>
     </Setting>
+    <Setting Name="StartDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2016-10-10</Value>
+    </Setting>
+    <Setting Name="EndDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2016-10-11</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
