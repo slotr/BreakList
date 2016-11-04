@@ -28,7 +28,7 @@ using Break_List.Class;
 namespace Break_List
 {
 
-    public partial class frmBreakList : RibbonForm
+    public partial class frmBreakList : DevExpress.XtraEditors.XtraForm
     {
         public string _departmentNameFromMainForm { get; set; }
         public string _userRoleIDFromMainForm { get; set; }
@@ -270,6 +270,24 @@ namespace Break_List
         private void frmBreakList_ResizeEnd(object sender, EventArgs e)
         {
            
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            getTables();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            using (frmMasalar form = new frmMasalar())
+            {
+                DialogResult dr = form.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    getTables();
+                }
+
+            }
         }
     }
 }

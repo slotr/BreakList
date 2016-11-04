@@ -50,6 +50,7 @@
             this.btnCalismaIzni = new DevExpress.XtraBars.BarButtonItem();
             this.btnTip = new DevExpress.XtraBars.BarButtonItem();
             this.btnOnayaDusenler = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPersonelCount = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonBreak = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPersonel = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -77,10 +78,20 @@
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btnAvanslar = new DevExpress.XtraBars.BarButtonItem();
+            this.tabFormDefaultManager3 = new DevExpress.XtraBars.TabFormDefaultManager();
+            this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl7 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.rbnEgitimler = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnEgitim = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -108,9 +119,10 @@
             this.btnCalismaIzni,
             this.btnTip,
             this.btnOnayaDusenler,
-            this.btnAvanslar});
+            this.btnPersonelCount,
+            this.btnEgitim});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 13;
+            this.ribbon.MaxItemId = 15;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonBreak,
@@ -119,7 +131,8 @@
             this.rbnAdmin,
             this.ribbonRapor,
             this.rbnPageKasa,
-            this.rbnOnaylar});
+            this.rbnOnaylar,
+            this.rbnEgitimler});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
             this.ribbon.Size = new System.Drawing.Size(1227, 83);
             this.ribbon.StatusBar = this.ribbonStatusBar;
@@ -285,6 +298,15 @@
             this.btnOnayaDusenler.Name = "btnOnayaDusenler";
             this.btnOnayaDusenler.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOnayaDusenler_ItemClick);
             // 
+            // btnPersonelCount
+            // 
+            this.btnPersonelCount.Caption = "Personel Count";
+            this.btnPersonelCount.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPersonelCount.Glyph")));
+            this.btnPersonelCount.Id = 13;
+            this.btnPersonelCount.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPersonelCount.LargeGlyph")));
+            this.btnPersonelCount.Name = "btnPersonelCount";
+            this.btnPersonelCount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPersonelCount_ItemClick);
+            // 
             // ribbonBreak
             // 
             this.ribbonBreak.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -311,6 +333,7 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnAddPersonel, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnIstenAyrilmis);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnCalismaIzni);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnPersonelCount);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Personnel";
             // 
@@ -367,7 +390,6 @@
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.btnTip);
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnAvanslar);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Kasiyer Operasyonlari";
             // 
@@ -480,14 +502,81 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
-            // btnAvanslar
+            // tabFormDefaultManager3
             // 
-            this.btnAvanslar.Caption = "Avanslar";
-            this.btnAvanslar.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAvanslar.Glyph")));
-            this.btnAvanslar.Id = 12;
-            this.btnAvanslar.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnAvanslar.LargeGlyph")));
-            this.btnAvanslar.Name = "btnAvanslar";
-            this.btnAvanslar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAvanslar_ItemClick);
+            this.tabFormDefaultManager3.DockControls.Add(this.barDockControl6);
+            this.tabFormDefaultManager3.DockControls.Add(this.barDockControl7);
+            this.tabFormDefaultManager3.DockControls.Add(this.barDockControl8);
+            this.tabFormDefaultManager3.DockControls.Add(this.barDockControl9);
+            this.tabFormDefaultManager3.Form = this;
+            this.tabFormDefaultManager3.MaxItemId = 0;
+            // 
+            // barDockControl6
+            // 
+            this.barDockControl6.CausesValidation = false;
+            this.barDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl6.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl6.Size = new System.Drawing.Size(1227, 0);
+            // 
+            // barDockControl7
+            // 
+            this.barDockControl7.CausesValidation = false;
+            this.barDockControl7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl7.Location = new System.Drawing.Point(0, 872);
+            this.barDockControl7.Size = new System.Drawing.Size(1227, 0);
+            // 
+            // barDockControl8
+            // 
+            this.barDockControl8.CausesValidation = false;
+            this.barDockControl8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl8.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl8.Size = new System.Drawing.Size(0, 872);
+            // 
+            // barDockControl9
+            // 
+            this.barDockControl9.CausesValidation = false;
+            this.barDockControl9.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl9.Location = new System.Drawing.Point(1227, 0);
+            this.barDockControl9.Size = new System.Drawing.Size(0, 872);
+            // 
+            // xtraTabbedMdiManager1
+            // 
+            this.xtraTabbedMdiManager1.Appearance.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.xtraTabbedMdiManager1.Appearance.Options.UseFont = true;
+            this.xtraTabbedMdiManager1.AppearancePage.HeaderActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.xtraTabbedMdiManager1.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.xtraTabbedMdiManager1.AppearancePage.HeaderActive.Options.UseBackColor = true;
+            this.xtraTabbedMdiManager1.AppearancePage.HeaderActive.Options.UseFont = true;
+            this.xtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
+            this.xtraTabbedMdiManager1.HeaderButtons = ((DevExpress.XtraTab.TabButtons)(((DevExpress.XtraTab.TabButtons.Prev | DevExpress.XtraTab.TabButtons.Next) 
+            | DevExpress.XtraTab.TabButtons.Close)));
+            this.xtraTabbedMdiManager1.HeaderButtonsShowMode = DevExpress.XtraTab.TabButtonShowMode.Always;
+            this.xtraTabbedMdiManager1.MdiParent = this;
+            this.xtraTabbedMdiManager1.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InAllTabPageHeaders;
+            this.xtraTabbedMdiManager1.SetNextMdiChildMode = DevExpress.XtraTabbedMdi.SetNextMdiChildMode.TabControl;
+            this.xtraTabbedMdiManager1.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.True;
+            // 
+            // rbnEgitimler
+            // 
+            this.rbnEgitimler.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup7});
+            this.rbnEgitimler.Name = "rbnEgitimler";
+            this.rbnEgitimler.Text = "Eğitimler";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnEgitim);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            this.ribbonPageGroup7.Text = "ribbonPageGroup7";
+            // 
+            // btnEgitim
+            // 
+            this.btnEgitim.Caption = "Eğitim Girişleri";
+            this.btnEgitim.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.Glyph")));
+            this.btnEgitim.Id = 14;
+            this.btnEgitim.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.LargeGlyph")));
+            this.btnEgitim.Name = "btnEgitim";
+            this.btnEgitim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEgitim_ItemClick);
             // 
             // frmMDIMain
             // 
@@ -504,6 +593,10 @@
             this.Controls.Add(this.barDockControl5);
             this.Controls.Add(this.barDockControl2);
             this.Controls.Add(this.barDockControl1);
+            this.Controls.Add(this.barDockControl8);
+            this.Controls.Add(this.barDockControl9);
+            this.Controls.Add(this.barDockControl7);
+            this.Controls.Add(this.barDockControl6);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.IsMdiContainer = true;
             this.Name = "frmMDIMain";
@@ -515,6 +608,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,6 +664,15 @@
         private DevExpress.XtraBars.BarButtonItem btnOnayaDusenler;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnOnaylar;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
-        private DevExpress.XtraBars.BarButtonItem btnAvanslar;
+        private DevExpress.XtraBars.TabFormDefaultManager tabFormDefaultManager3;
+        private DevExpress.XtraBars.BarDockControl barDockControl6;
+        private DevExpress.XtraBars.BarDockControl barDockControl7;
+        private DevExpress.XtraBars.BarDockControl barDockControl8;
+        private DevExpress.XtraBars.BarDockControl barDockControl9;
+        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private DevExpress.XtraBars.BarButtonItem btnPersonelCount;
+        private DevExpress.XtraBars.BarButtonItem btnEgitim;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbnEgitimler;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
     }
 }

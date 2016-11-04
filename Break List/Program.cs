@@ -28,6 +28,8 @@ namespace Break_List
                 DevExpress.Skins.SkinManager.EnableFormSkins();
                 DevExpress.UserSkins.BonusSkins.Register();
                 Application.Run(new frmLogin());
+                
+                
             }
             else
             {
@@ -38,5 +40,8 @@ namespace Break_List
 
 
         }
+
     }
+  
 }
+

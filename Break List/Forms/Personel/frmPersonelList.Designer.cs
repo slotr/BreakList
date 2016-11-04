@@ -131,7 +131,9 @@
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.Name = "frmPersonelList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Çalışan Personel Listesi";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPersonel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).EndInit();

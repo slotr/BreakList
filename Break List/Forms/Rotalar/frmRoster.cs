@@ -154,6 +154,9 @@ namespace Break_List
                     apt.CustomFields["NoCall"] = 0;
                     apt.CustomFields["SickSentHome"] = 0;
                     apt.CustomFields["Rapor"] = 0;
+                    apt.CustomFields["SentHome"] = 0;
+                    apt.CustomFields["Late"] = 0;
+                    apt.CustomFields["Suspend"] = 0;
                     apt.CustomFields["Department"] = _departmentNameFromMainForm;
                     appointments.Add(apt);
                 }
@@ -171,6 +174,9 @@ namespace Break_List
                     apt.CustomFields["NoCall"] = 0;
                     apt.CustomFields["SickSentHome"] = 0;
                     apt.CustomFields["Rapor"] = 0;
+                    apt.CustomFields["SentHome"] = 0;
+                    apt.CustomFields["Late"] = 0;
+                    apt.CustomFields["Suspend"] = 0;
                     apt.CustomFields["Department"] = _departmentNameFromMainForm;
                     appointments.Add(apt);
                 }

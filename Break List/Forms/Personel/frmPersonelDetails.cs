@@ -273,8 +273,7 @@ namespace Break_List
                 txtEmail.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["email"].ToString();
                 byte[] item = (byte[])dataSet.Tables["spSinglePersonel"].Rows[0]["Image"];
                 MemoryStream memoryStream = new MemoryStream(item);
-                pictureBox1.Image = Image.FromStream(memoryStream);
-                Text = txtNameSurname.Text + " " + UniqueID.ToString();
+                pictureBox1.Image = Image.FromStream(memoryStream);                
                 mySqlConnection.Close();
             }
         }
@@ -1126,9 +1125,40 @@ namespace Break_List
                 }
                 
             }
+
+            if (xtraTabControl1.SelectedTabPage.Equals(tabEgitim))
+            {
+                if (egitimGrid.DataSource == null)
+                {
+                    egitimler();
+                }
+            }
         }
 
+        void egitimler()
+        {
+            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            {
+                using (MySqlCommand mySqlCommand = new MySqlCommand("spSelectEgitimByPersonel;", mySqlConnection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
 
+                    mySqlCommand.Parameters.Add(new MySqlParameter("_personelID",_personelID));
+                    mySqlConnection.Open();
+                    mySqlCommand.ExecuteNonQuery();
+                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    {
+                        DataTable dataTable = new DataTable();
+                        mySqlDataAdapter.SelectCommand = mySqlCommand;
+                        mySqlDataAdapter.Fill(dataTable);
+                        egitimGrid.DataSource = dataTable;
+                    }
+                    mySqlConnection.Close();
+                }
+            }
+        }
         private void gridView6_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
             DevExpress.XtraGrid.Columns.GridColumn Column = e.Column;
@@ -1191,5 +1221,21 @@ namespace Break_List
             
         }
 
- }
+        private void salaryGridview_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            DevExpress.XtraGrid.Columns.GridColumn Column = e.Column;
+
+            if(Column == gridColumn6)
+            {
+                int rowid;
+                rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
+                using (Forms.Maas.frmMaasArtisiGoster frmMaasGoster = new Forms.Maas.frmMaasArtisiGoster())
+                {
+                    frmMaasGoster.rowid = rowid;
+                    frmMaasGoster.Text = txtNameSurname.Text;
+                    frmMaasGoster.ShowDialog();
+                }
+            }
+        }
+    }
 }

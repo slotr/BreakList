@@ -37,21 +37,22 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.btnSec = new DevExpress.XtraEditors.ButtonEdit();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtTarih.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtTarih.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOnay.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSec.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dtTarih
@@ -70,8 +71,13 @@
             // 
             this.txtMaas.Location = new System.Drawing.Point(139, 64);
             this.txtMaas.Name = "txtMaas";
-            this.txtMaas.Properties.Mask.EditMask = "d";
+            this.txtMaas.Properties.DisplayFormat.FormatString = "f1";
+            this.txtMaas.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtMaas.Properties.EditFormat.FormatString = "f1";
+            this.txtMaas.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtMaas.Properties.Mask.EditMask = "f1";
             this.txtMaas.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtMaas.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtMaas.Size = new System.Drawing.Size(132, 20);
             this.txtMaas.TabIndex = 1;
             // 
@@ -87,7 +93,7 @@
             // 
             // txtOnay
             // 
-            this.txtOnay.Location = new System.Drawing.Point(139, 90);
+            this.txtOnay.Location = new System.Drawing.Point(139, 109);
             this.txtOnay.Name = "txtOnay";
             this.txtOnay.Size = new System.Drawing.Size(132, 20);
             this.txtOnay.TabIndex = 2;
@@ -104,13 +110,13 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(21, 71);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(33, 13);
+            this.labelControl2.Size = new System.Drawing.Size(60, 13);
             this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "Miktar:";
+            this.labelControl2.Text = "Artiş Miktarı:";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(21, 97);
+            this.labelControl3.Location = new System.Drawing.Point(21, 112);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(56, 13);
             this.labelControl3.TabIndex = 4;
@@ -130,16 +136,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(278, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(289, 365);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // labelControl4
             // 
@@ -192,6 +188,26 @@
             this.labelControl7.TabIndex = 11;
             this.labelControl7.Text = "Artış Yapılan:";
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.Location = new System.Drawing.Point(24, 90);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(244, 13);
+            this.labelControl8.TabIndex = 4;
+            this.labelControl8.Text = "Lütfen artış miktarını girin. Örneğin tip artışı 0,5 gibi";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(278, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(289, 365);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMaasArtisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +218,7 @@
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.memoEdit1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
@@ -220,9 +237,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOnay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSec.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +263,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -141,7 +141,7 @@
     <value>lblSubject</value>
   </data>
   <data name="&gt;&gt;lblSubject.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblSubject.Parent" xml:space="preserve">
     <value>$this</value>
@@ -171,7 +171,7 @@
     <value>lblLocation</value>
   </data>
   <data name="&gt;&gt;lblLocation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblLocation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -205,7 +205,7 @@
     <value>tbSubject</value>
   </data>
   <data name="&gt;&gt;tbSubject.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tbSubject.Parent" xml:space="preserve">
     <value>$this</value>
@@ -235,7 +235,7 @@
     <value>lblLabel</value>
   </data>
   <data name="&gt;&gt;lblLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblLabel.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -265,7 +265,7 @@
     <value>lblStartTime</value>
   </data>
   <data name="&gt;&gt;lblStartTime.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblStartTime.Parent" xml:space="preserve">
     <value>$this</value>
@@ -295,7 +295,7 @@
     <value>lblEndTime</value>
   </data>
   <data name="&gt;&gt;lblEndTime.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblEndTime.Parent" xml:space="preserve">
     <value>$this</value>
@@ -322,7 +322,7 @@
     <value>chkAllDay</value>
   </data>
   <data name="&gt;&gt;chkAllDay.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkAllDay.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -352,7 +352,7 @@
     <value>lblShowTimeAs</value>
   </data>
   <data name="&gt;&gt;lblShowTimeAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblShowTimeAs.Parent" xml:space="preserve">
     <value>$this</value>
@@ -382,7 +382,7 @@
     <value>btnOk</value>
   </data>
   <data name="&gt;&gt;btnOk.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnOk.Parent" xml:space="preserve">
     <value>$this</value>
@@ -412,7 +412,7 @@
     <value>btnCancel</value>
   </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -442,7 +442,7 @@
     <value>btnDelete</value>
   </data>
   <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnDelete.Parent" xml:space="preserve">
     <value>$this</value>
@@ -472,7 +472,7 @@
     <value>btnRecurrence</value>
   </data>
   <data name="&gt;&gt;btnRecurrence.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.SimpleButton, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;btnRecurrence.Parent" xml:space="preserve">
     <value>$this</value>
@@ -492,7 +492,7 @@
   <data name="edtStartDate.Properties.AccessibleName" xml:space="preserve">
     <value>Start date</value>
   </data>
-  <assembly alias="DevExpress.Utils.v16.1" name="DevExpress.Utils.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <assembly alias="DevExpress.Utils.v16.1" name="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="edtStartDate.Properties.Buttons" type="DevExpress.XtraEditors.Controls.ButtonPredefines, DevExpress.Utils.v16.1">
     <value>Combo</value>
   </data>
@@ -509,7 +509,7 @@
     <value>edtStartDate</value>
   </data>
   <data name="&gt;&gt;edtStartDate.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.DateEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.DateEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtStartDate.Parent" xml:space="preserve">
     <value>$this</value>
@@ -545,7 +545,7 @@
     <value>edtEndDate</value>
   </data>
   <data name="&gt;&gt;edtEndDate.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.DateEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.DateEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtEndDate.Parent" xml:space="preserve">
     <value>$this</value>
@@ -569,7 +569,7 @@
     <value>chkReminder</value>
   </data>
   <data name="&gt;&gt;chkReminder.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;chkReminder.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -602,7 +602,7 @@
     <value>tbDescription</value>
   </data>
   <data name="&gt;&gt;tbDescription.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.MemoEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tbDescription.Parent" xml:space="preserve">
     <value>$this</value>
@@ -629,7 +629,7 @@
     <value>lblResource</value>
   </data>
   <data name="&gt;&gt;lblResource.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblResource.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -662,7 +662,7 @@
     <value>tbLocation</value>
   </data>
   <data name="&gt;&gt;tbLocation.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tbLocation.Parent" xml:space="preserve">
     <value>$this</value>
@@ -677,7 +677,7 @@
     <value>edtResource</value>
   </data>
   <data name="&gt;&gt;edtResource.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentResourceEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentResourceEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtResource.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -689,7 +689,7 @@
     <value>edtResources</value>
   </data>
   <data name="&gt;&gt;edtResources.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentResourcesEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentResourcesEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtResources.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -701,7 +701,7 @@
     <value>cbReminder</value>
   </data>
   <data name="&gt;&gt;cbReminder.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.DurationEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.DurationEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cbReminder.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -713,7 +713,7 @@
     <value>edtLabel</value>
   </data>
   <data name="&gt;&gt;edtLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentLabelEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentLabelEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtLabel.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -737,7 +737,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.PanelControl, DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -764,7 +764,7 @@
     <value>edtResource</value>
   </data>
   <data name="&gt;&gt;edtResource.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentResourceEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentResourceEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtResource.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -797,7 +797,7 @@
     <value>edtResources</value>
   </data>
   <data name="&gt;&gt;edtResources.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentResourcesEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentResourcesEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtResources.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -827,7 +827,7 @@
     <value>cbReminder</value>
   </data>
   <data name="&gt;&gt;cbReminder.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.DurationEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.DurationEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;cbReminder.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -854,7 +854,7 @@
     <value>edtLabel</value>
   </data>
   <data name="&gt;&gt;edtLabel.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentLabelEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentLabelEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtLabel.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -869,7 +869,7 @@
     <value>tbProgress</value>
   </data>
   <data name="&gt;&gt;tbProgress.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TrackBarControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TrackBarControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tbProgress.Parent" xml:space="preserve">
     <value>progressPanel</value>
@@ -881,7 +881,7 @@
     <value>lblPercentCompleteValue</value>
   </data>
   <data name="&gt;&gt;lblPercentCompleteValue.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPercentCompleteValue.Parent" xml:space="preserve">
     <value>progressPanel</value>
@@ -893,7 +893,7 @@
     <value>lblPercentComplete</value>
   </data>
   <data name="&gt;&gt;lblPercentComplete.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPercentComplete.Parent" xml:space="preserve">
     <value>progressPanel</value>
@@ -950,7 +950,7 @@
     <value>tbProgress</value>
   </data>
   <data name="&gt;&gt;tbProgress.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TrackBarControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TrackBarControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;tbProgress.Parent" xml:space="preserve">
     <value>progressPanel</value>
@@ -983,7 +983,7 @@
     <value>lblPercentCompleteValue</value>
   </data>
   <data name="&gt;&gt;lblPercentCompleteValue.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPercentCompleteValue.Parent" xml:space="preserve">
     <value>progressPanel</value>
@@ -1013,7 +1013,7 @@
     <value>lblPercentComplete</value>
   </data>
   <data name="&gt;&gt;lblPercentComplete.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;lblPercentComplete.Parent" xml:space="preserve">
     <value>progressPanel</value>
@@ -1046,7 +1046,7 @@
     <value>edtStartTime</value>
   </data>
   <data name="&gt;&gt;edtStartTime.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.SchedulerTimeEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.SchedulerTimeEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtStartTime.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1079,7 +1079,7 @@
     <value>edtEndTime</value>
   </data>
   <data name="&gt;&gt;edtEndTime.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.SchedulerTimeEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.SchedulerTimeEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtEndTime.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1112,7 +1112,7 @@
     <value>edtShowTimeAs</value>
   </data>
   <data name="&gt;&gt;edtShowTimeAs.Type" xml:space="preserve">
-    <value>DevExpress.XtraScheduler.UI.AppointmentStatusEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraScheduler.UI.AppointmentStatusEdit, DevExpress.XtraScheduler.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;edtShowTimeAs.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1133,7 +1133,7 @@
     <value>txtOverTime</value>
   </data>
   <data name="&gt;&gt;txtOverTime.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtOverTime.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1154,7 +1154,7 @@
     <value>txtErkenGonderim</value>
   </data>
   <data name="&gt;&gt;txtErkenGonderim.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtErkenGonderim.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1178,7 +1178,7 @@
     <value>labelControl1</value>
   </data>
   <data name="&gt;&gt;labelControl1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1202,7 +1202,7 @@
     <value>labelControl2</value>
   </data>
   <data name="&gt;&gt;labelControl2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1223,7 +1223,7 @@
     <value>txtSicCall</value>
   </data>
   <data name="&gt;&gt;txtSicCall.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtSicCall.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1244,7 +1244,7 @@
     <value>txtNoCall</value>
   </data>
   <data name="&gt;&gt;txtNoCall.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtNoCall.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1265,7 +1265,7 @@
     <value>txtSickSent</value>
   </data>
   <data name="&gt;&gt;txtSickSent.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtSickSent.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1286,7 +1286,7 @@
     <value>txtSentHome</value>
   </data>
   <data name="&gt;&gt;txtSentHome.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtSentHome.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1310,7 +1310,7 @@
     <value>labelControl3</value>
   </data>
   <data name="&gt;&gt;labelControl3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl3.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1334,7 +1334,7 @@
     <value>labelControl4</value>
   </data>
   <data name="&gt;&gt;labelControl4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl4.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1358,7 +1358,7 @@
     <value>labelControl5</value>
   </data>
   <data name="&gt;&gt;labelControl5.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl5.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1382,7 +1382,7 @@
     <value>labelControl6</value>
   </data>
   <data name="&gt;&gt;labelControl6.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl6.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1403,7 +1403,7 @@
     <value>txtLate</value>
   </data>
   <data name="&gt;&gt;txtLate.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtLate.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1424,7 +1424,7 @@
     <value>txtSuspend</value>
   </data>
   <data name="&gt;&gt;txtSuspend.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtSuspend.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1448,7 +1448,7 @@
     <value>labelControl7</value>
   </data>
   <data name="&gt;&gt;labelControl7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl7.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1472,7 +1472,7 @@
     <value>labelControl8</value>
   </data>
   <data name="&gt;&gt;labelControl8.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl8.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1496,7 +1496,7 @@
     <value>labelControl9</value>
   </data>
   <data name="&gt;&gt;labelControl9.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl9.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1517,7 +1517,7 @@
     <value>txtRapor</value>
   </data>
   <data name="&gt;&gt;txtRapor.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;txtRapor.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1547,7 +1547,7 @@
     <value>labelControl11</value>
   </data>
   <data name="&gt;&gt;labelControl11.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl11.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1580,7 +1580,7 @@
     <value>radioGroup1</value>
   </data>
   <data name="&gt;&gt;radioGroup1.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup1.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1613,7 +1613,7 @@
     <value>radioGroup2</value>
   </data>
   <data name="&gt;&gt;radioGroup2.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup2.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1646,7 +1646,7 @@
     <value>radioGroup3</value>
   </data>
   <data name="&gt;&gt;radioGroup3.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup3.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1679,7 +1679,7 @@
     <value>radioGroup4</value>
   </data>
   <data name="&gt;&gt;radioGroup4.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup4.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1712,7 +1712,7 @@
     <value>radioGroup5</value>
   </data>
   <data name="&gt;&gt;radioGroup5.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup5.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1745,7 +1745,7 @@
     <value>radioGroup6</value>
   </data>
   <data name="&gt;&gt;radioGroup6.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup6.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1778,7 +1778,7 @@
     <value>radioGroup7</value>
   </data>
   <data name="&gt;&gt;radioGroup7.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.RadioGroup, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;radioGroup7.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1802,7 +1802,7 @@
     <value>labelControl10</value>
   </data>
   <data name="&gt;&gt;labelControl10.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl10.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1826,7 +1826,7 @@
     <value>labelControl12</value>
   </data>
   <data name="&gt;&gt;labelControl12.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="&gt;&gt;labelControl12.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -1877,6 +1877,6 @@
     <value>frmAddOverTime</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+    <value>DevExpress.XtraEditors.XtraForm, DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

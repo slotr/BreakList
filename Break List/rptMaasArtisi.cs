@@ -15,7 +15,7 @@ namespace Break_List
 
         private void rptMaasArtisi_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            spPrintPersonelMaaslarıTableAdapter1.Fill(livegameDataSet11.spPrintPersonelMaasları, Convert.ToString(Parameters["parameter1"].Value));
+            spPrintPersonelMaaslariTableAdapter1.Fill(livegameDataSet11.spPrintPersonelMaaslari, Convert.ToString(Parameters["parameter1"].Value));
         }
     }
 }

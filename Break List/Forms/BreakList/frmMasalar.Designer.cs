@@ -29,35 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMasalar));
             this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.tablesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tablesTableAdapter = new Break_List.livegameDataSet1TableAdapters.tablesTableAdapter();
             this.tableAdapterManager = new Break_List.livegameDataSet1TableAdapters.TableAdapterManager();
-            this.tablesBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.tablesBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.tablesGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colOpen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGame = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOpen = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablesBindingNavigator)).BeginInit();
-            this.tablesBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablesGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // livegameDataSet1
@@ -77,145 +69,37 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.appointmentsTableAdapter = null;
+            this.tableAdapterManager.apps_countriesTableAdapter = null;
+            this.tableAdapterManager.avanslarTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.departmentsTableAdapter = null;
+            this.tableAdapterManager.documentsTableAdapter = null;
+            this.tableAdapterManager.kesintilerTableAdapter = null;
+            this.tableAdapterManager.lghataTableAdapter = null;
+            this.tableAdapterManager.maaslarTableAdapter = null;
+            this.tableAdapterManager.offalacaklariTableAdapter = null;
+            this.tableAdapterManager.permissionsTableAdapter = null;
+            this.tableAdapterManager.positionsTableAdapter = null;
             this.tableAdapterManager.resourcesTableAdapter = null;
-            
-           
+            this.tableAdapterManager.rolesTableAdapter = null;
+            this.tableAdapterManager.roster1TableAdapter = null;
+            this.tableAdapterManager.shiftsTableAdapter = null;
             this.tableAdapterManager.tablesTableAdapter = this.tablesTableAdapter;
+            this.tableAdapterManager.tblcalismaizinleriTableAdapter = null;
+            this.tableAdapterManager.tiplerTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Break_List.livegameDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tablesBindingNavigator
-            // 
-            this.tablesBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.tablesBindingNavigator.BindingSource = this.tablesBindingSource;
-            this.tablesBindingNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.tablesBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.tablesBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem,
-            this.tablesBindingNavigatorSaveItem});
-            this.tablesBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.tablesBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.tablesBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.tablesBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.tablesBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.tablesBindingNavigator.Name = "tablesBindingNavigator";
-            this.tablesBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.tablesBindingNavigator.Size = new System.Drawing.Size(335, 25);
-            this.tablesBindingNavigator.TabIndex = 0;
-            this.tablesBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 15);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 6);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 6);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            // 
-            // tablesBindingNavigatorSaveItem
-            // 
-            this.tablesBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tablesBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("tablesBindingNavigatorSaveItem.Image")));
-            this.tablesBindingNavigatorSaveItem.Name = "tablesBindingNavigatorSaveItem";
-            this.tablesBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
-            this.tablesBindingNavigatorSaveItem.Text = "Save Data";
-            this.tablesBindingNavigatorSaveItem.Click += new System.EventHandler(this.tablesBindingNavigatorSaveItem_Click_1);
+            this.tableAdapterManager.userdepartmentsTableAdapter = null;
+            this.tableAdapterManager.usersTableAdapter = null;
+            this.tableAdapterManager.vacationsTableAdapter = null;
             // 
             // tablesGridControl
             // 
             this.tablesGridControl.DataSource = this.tablesBindingSource;
             this.tablesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablesGridControl.Location = new System.Drawing.Point(0, 25);
+            this.tablesGridControl.Location = new System.Drawing.Point(2, 2);
             this.tablesGridControl.MainView = this.gridView1;
             this.tablesGridControl.Name = "tablesGridControl";
-            this.tablesGridControl.Size = new System.Drawing.Size(335, 575);
+            this.tablesGridControl.Size = new System.Drawing.Size(331, 564);
             this.tablesGridControl.TabIndex = 1;
             this.tablesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -228,11 +112,24 @@
             this.colNo});
             this.gridView1.GridControl = this.tablesGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.NewItemRowText = "Yeni Masa Ekle";
+            this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridView1_KeyDown);
+            // 
+            // colOpen
+            // 
+            this.colOpen.Caption = "Aç/Kapa";
+            this.colOpen.FieldName = "Open";
+            this.colOpen.Name = "colOpen";
+            this.colOpen.Visible = true;
+            this.colOpen.VisibleIndex = 0;
             // 
             // colGame
             // 
-            this.colGame.Caption = "Game";
+            this.colGame.Caption = "Oyun";
             this.colGame.FieldName = "Game";
             this.colGame.Name = "colGame";
             this.colGame.Visible = true;
@@ -246,21 +143,53 @@
             this.colNo.Visible = true;
             this.colNo.VisibleIndex = 2;
             // 
-            // colOpen
+            // panelControl1
             // 
-            this.colOpen.Caption = "Open";
-            this.colOpen.FieldName = "Open";
-            this.colOpen.Name = "colOpen";
-            this.colOpen.Visible = true;
-            this.colOpen.VisibleIndex = 0;
+            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.simpleButton2);
+            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(335, 32);
+            this.panelControl1.TabIndex = 2;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton1.Location = new System.Drawing.Point(248, 5);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Kaydet";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.tablesGridControl);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 32);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(335, 568);
+            this.panelControl2.TabIndex = 3;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Image = global::Break_List.Properties.Resources.black_jack;
+            this.simpleButton2.Location = new System.Drawing.Point(13, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(97, 23);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Text = "Yeni Masa Ekle";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // frmMasalar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 600);
-            this.Controls.Add(this.tablesGridControl);
-            this.Controls.Add(this.tablesBindingNavigator);
+            this.Controls.Add(this.panelControl2);
+            this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmMasalar";
@@ -268,13 +197,13 @@
             this.Load += new System.EventHandler(this.frmMasalar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablesBindingNavigator)).EndInit();
-            this.tablesBindingNavigator.ResumeLayout(false);
-            this.tablesBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -284,23 +213,14 @@
         private System.Windows.Forms.BindingSource tablesBindingSource;
         private livegameDataSet1TableAdapters.tablesTableAdapter tablesTableAdapter;
         private livegameDataSet1TableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator tablesBindingNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton tablesBindingNavigatorSaveItem;
         private DevExpress.XtraGrid.GridControl tablesGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colOpen;
         private DevExpress.XtraGrid.Columns.GridColumn colGame;
         private DevExpress.XtraGrid.Columns.GridColumn colNo;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

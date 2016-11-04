@@ -257,6 +257,7 @@ namespace Break_List
         private void btnTip_ItemClick(object sender, ItemClickEventArgs e)
         {
             Forms.Kasa.frmTipListesi frmTip = new Forms.Kasa.frmTipListesi();
+            frmTip.userName = prop._FullName;
             frmTip.MdiParent = this;
             frmTip.Show();
         }
@@ -264,16 +265,23 @@ namespace Break_List
         private void btnOnayaDusenler_ItemClick(object sender, ItemClickEventArgs e)
         {
             Forms.Maas.frmMaasTipOnaylari frmOnay = new Forms.Maas.frmMaasTipOnaylari();
-            frmOnay._UserNameFromMainForm = _userNameFromLogin;
+            frmOnay._UserNameFromMainForm = prop._FullName;
             frmOnay.MdiParent = this;
             frmOnay.Show();
         }
 
-        private void btnAvanslar_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnPersonelCount_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Forms.Kasa.frmAvanslar frmAvans = new Forms.Kasa.frmAvanslar();
-            frmAvans.MdiParent = this;
-            frmAvans.Show();
+            Forms.Personel.frmPersonelCount frmCountPersonel = new Forms.Personel.frmPersonelCount();
+            frmCountPersonel.MdiParent = this;
+            frmCountPersonel.Show();
+        }
+
+        private void btnEgitim_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Forms.Personel.frmEgitimler frmEgitim = new Forms.Personel.frmEgitimler();
+            frmEgitim.MdiParent = this;
+            frmEgitim.Show();
         }
     }
 }
