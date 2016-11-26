@@ -60,21 +60,21 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Location = new System.Drawing.Point(108, 36);
+            this.textEdit1.Location = new System.Drawing.Point(92, 36);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(149, 20);
+            this.textEdit1.Size = new System.Drawing.Size(165, 20);
             this.textEdit1.StyleController = this.dataLayoutControl1;
             this.textEdit1.TabIndex = 5;
             // 
             // comboBoxEdit1
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(108, 12);
+            this.comboBoxEdit1.Location = new System.Drawing.Point(92, 12);
             this.comboBoxEdit1.Name = "comboBoxEdit1";
             this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
             this.comboBoxEdit1.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.comboBoxEdit1_Properties_ButtonClick);
-            this.comboBoxEdit1.Size = new System.Drawing.Size(149, 20);
+            this.comboBoxEdit1.Size = new System.Drawing.Size(165, 20);
             this.comboBoxEdit1.StyleController = this.dataLayoutControl1;
             this.comboBoxEdit1.TabIndex = 4;
             // 
@@ -96,8 +96,8 @@
             this.cmDepartment.Location = new System.Drawing.Point(0, 0);
             this.cmDepartment.Name = "cmDepartment";
             this.cmDepartment.Size = new System.Drawing.Size(249, 24);
-            this.cmDepartment.Text = "Select Department:";
-            this.cmDepartment.TextSize = new System.Drawing.Size(93, 13);
+            this.cmDepartment.Text = "Departman Sec:";
+            this.cmDepartment.TextSize = new System.Drawing.Size(77, 13);
             // 
             // txtPosition
             // 
@@ -105,8 +105,8 @@
             this.txtPosition.Location = new System.Drawing.Point(0, 24);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(249, 26);
-            this.txtPosition.Text = "Position:";
-            this.txtPosition.TextSize = new System.Drawing.Size(93, 13);
+            this.txtPosition.Text = "Pozisyon:";
+            this.txtPosition.TextSize = new System.Drawing.Size(77, 13);
             // 
             // windowsUIButtonPanelMain
             // 
@@ -148,6 +148,9 @@
             this.labelControl.AllowHtmlString = true;
             this.labelControl.Appearance.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.labelControl.Appearance.Options.UseFont = true;
+            this.labelControl.Appearance.Options.UseForeColor = true;
+            this.labelControl.Appearance.Options.UseTextOptions = true;
             this.labelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.labelControl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.labelControl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -156,7 +159,7 @@
             this.labelControl.Padding = new System.Windows.Forms.Padding(10, 5, 0, 0);
             this.labelControl.Size = new System.Drawing.Size(269, 30);
             this.labelControl.TabIndex = 1;
-            this.labelControl.Text = "Positions";
+            this.labelControl.Text = "Pozisyon Kaydi";
             // 
             // frmPositions
             // 

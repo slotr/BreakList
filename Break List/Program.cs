@@ -17,10 +17,7 @@ namespace Break_List
         static void Main()
         {
             
-                var first = false;
-            _m = new Mutex(true, Application.ProductName, out first);
-            if ((first))
-            {
+           
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -29,12 +26,7 @@ namespace Break_List
                 DevExpress.UserSkins.BonusSkins.Register();
                 Application.Run(new frmLogin());
                 
-                
-            }
-            else
-            {
-                XtraMessageBox.Show(@"Application" + " " + Application.ProductName + " " + "already running");
-            }
+          
 
 
 

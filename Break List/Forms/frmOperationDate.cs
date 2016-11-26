@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Break_List;
 
-namespace Break_List
+namespace Break_List.Forms
 {
-    public partial class frmOperationDate : DevExpress.XtraEditors.XtraForm
+    public partial class frmOperationDate : XtraForm
     {
         public frmOperationDate()
         {
@@ -30,7 +24,7 @@ namespace Break_List
             Properties.Settings.Default.StartDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
             Properties.Settings.Default.Save();
             EndDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
-            dateEdit2.EditValue = EndDate.AddHours(20);
+            dateEdit2.EditValue = EndDate.AddHours(24);
             
         }
 

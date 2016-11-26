@@ -1,4 +1,4 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms.Rotalar
 {
     partial class frmRoster
     {
@@ -62,6 +62,12 @@
             this.schedulerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl1.Location = new System.Drawing.Point(2, 2);
             this.schedulerControl1.Name = "schedulerControl1";
+            this.schedulerControl1.OptionsCustomization.AllowAppointmentConflicts = DevExpress.XtraScheduler.AppointmentConflictsMode.Forbidden;
+            this.schedulerControl1.OptionsCustomization.AllowAppointmentCreate = DevExpress.XtraScheduler.UsedAppointmentType.None;
+            this.schedulerControl1.OptionsCustomization.AllowAppointmentEdit = DevExpress.XtraScheduler.UsedAppointmentType.NonRecurring;
+            this.schedulerControl1.OptionsCustomization.AllowAppointmentMultiSelect = false;
+            this.schedulerControl1.OptionsCustomization.AllowAppointmentResize = DevExpress.XtraScheduler.UsedAppointmentType.None;
+            this.schedulerControl1.OptionsCustomization.AllowInplaceEditor = DevExpress.XtraScheduler.UsedAppointmentType.None;
             this.schedulerControl1.OptionsView.FirstDayOfWeek = DevExpress.XtraScheduler.FirstDayOfWeek.Monday;
             this.schedulerControl1.OptionsView.ResourceHeaders.Height = 150;
             this.schedulerControl1.OptionsView.ResourceHeaders.ImageInterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bicubic;
@@ -79,13 +85,19 @@
             this.schedulerControl1.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl1.Views.GanttView.Enabled = false;
             this.schedulerControl1.Views.MonthView.Enabled = false;
-            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 30;
+            this.schedulerControl1.Views.TimelineView.Appearance.Appointment.BorderColor = System.Drawing.Color.Purple;
+            this.schedulerControl1.Views.TimelineView.Appearance.Appointment.Options.UseBorderColor = true;
+            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 15;
             this.schedulerControl1.Views.TimelineView.ShowMoreButtons = false;
+            this.schedulerControl1.Views.TimelineView.TimeIndicatorDisplayOptions.Visibility = DevExpress.XtraScheduler.TimeIndicatorVisibility.CurrentDate;
             this.schedulerControl1.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));
             this.schedulerControl1.Views.WeekView.Enabled = false;
             this.schedulerControl1.Views.WorkWeekView.Enabled = false;
             this.schedulerControl1.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
+            this.schedulerControl1.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl1_AppointmentViewInfoCustomizing);
+            this.schedulerControl1.AppointmentDrop += new DevExpress.XtraScheduler.AppointmentDragEventHandler(this.schedulerControl1_AppointmentDrop);
             this.schedulerControl1.EditAppointmentFormShowing += new DevExpress.XtraScheduler.AppointmentFormEventHandler(this.schedulerControl1_EditAppointmentFormShowing);
+            this.schedulerControl1.CustomDrawResourceHeader += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl1_CustomDrawResourceHeader);
             // 
             // schedulerStorage1
             // 
@@ -103,15 +115,21 @@
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Late", "Late"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("SentHome", "SentHome"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Suspend", "Suspend"));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("CreatedAt", "CreatedAt"));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Createdby", "createdby"));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("UpdatedAt", "updatedAt"));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Updatedby", "updatedby"));
             this.schedulerStorage1.Appointments.DataSource = this.roster1BindingSource;
             this.schedulerStorage1.Appointments.Mappings.End = "EndDate";
             this.schedulerStorage1.Appointments.Mappings.ResourceId = "ResourceID";
             this.schedulerStorage1.Appointments.Mappings.Start = "StartDate";
             this.schedulerStorage1.Appointments.Mappings.Subject = "Subject";
+            this.schedulerStorage1.Resources.CustomFieldMappings.Add(new DevExpress.XtraScheduler.ResourceCustomFieldMapping("Position", "Position"));
             this.schedulerStorage1.Resources.DataSource = this.resourcesBindingSource;
             this.schedulerStorage1.Resources.Mappings.Caption = "ResourceName";
             this.schedulerStorage1.Resources.Mappings.Color = "Color";
             this.schedulerStorage1.Resources.Mappings.Id = "ResourceID";
+            this.schedulerStorage1.Resources.Mappings.Image = "Image";
             // 
             // roster1BindingSource
             // 

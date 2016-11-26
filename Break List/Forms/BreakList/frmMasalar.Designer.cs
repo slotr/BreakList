@@ -39,9 +39,9 @@
             this.colGame = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablesGridControl)).BeginInit();
@@ -88,7 +88,6 @@
             this.tableAdapterManager.tblcalismaizinleriTableAdapter = null;
             this.tableAdapterManager.tiplerTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Break_List.livegameDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.userdepartmentsTableAdapter = null;
             this.tableAdapterManager.usersTableAdapter = null;
             this.tableAdapterManager.vacationsTableAdapter = null;
             // 
@@ -132,6 +131,8 @@
             this.colGame.Caption = "Oyun";
             this.colGame.FieldName = "Game";
             this.colGame.Name = "colGame";
+            this.colGame.OptionsColumn.AllowEdit = false;
+            this.colGame.OptionsColumn.ReadOnly = true;
             this.colGame.Visible = true;
             this.colGame.VisibleIndex = 1;
             // 
@@ -140,6 +141,8 @@
             this.colNo.Caption = "No";
             this.colNo.FieldName = "No";
             this.colNo.Name = "colNo";
+            this.colNo.OptionsColumn.AllowEdit = false;
+            this.colNo.OptionsColumn.ReadOnly = true;
             this.colNo.Visible = true;
             this.colNo.VisibleIndex = 2;
             // 
@@ -153,6 +156,17 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(335, 32);
             this.panelControl1.TabIndex = 2;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Image = global::Break_List.Properties.Resources.black_jack;
+            this.simpleButton2.Location = new System.Drawing.Point(13, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(97, 23);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Text = "Yeni Masa Ekle";
+            this.simpleButton2.Visible = false;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
@@ -172,16 +186,6 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(335, 568);
             this.panelControl2.TabIndex = 3;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Image = global::Break_List.Properties.Resources.black_jack;
-            this.simpleButton2.Location = new System.Drawing.Point(13, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(97, 23);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "Yeni Masa Ekle";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // frmMasalar
             // 

@@ -14,7 +14,7 @@ using DevExpress.XtraLayout.Helpers;
 using DevExpress.XtraLayout;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
-using static Break_List.frmPersonelDetails;
+using static Break_List.Forms.Personel.frmPersonelDetails;
 
 namespace Break_List
 {
@@ -122,7 +122,7 @@ namespace Break_List
 
         private void dtEnd_EditValueChanged(object sender, EventArgs e)
         {
-            long istenenSure = frmPersonelDetails.DateTimeUtil.DateDiff(DateInterval.Day, Convert.ToDateTime(dtStart.EditValue), Convert.ToDateTime(dtEnd.EditValue));
+            long istenenSure = Break_List.Forms.Personel.frmPersonelDetails.DateTimeUtil.DateDiff(DateInterval.Day, Convert.ToDateTime(dtStart.EditValue), Convert.ToDateTime(dtEnd.EditValue));
             long kalanSure = Convert.ToInt32(lblKalan.Text.ToString());
             long verilecekIzinSuresi = istenenSure;
             lblverilecekTotal.Text = verilecekIzinSuresi.ToString();

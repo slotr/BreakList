@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Tile;
 using Break_List.Properties;
 
-namespace Break_List
+namespace Break_List.Forms.Personel
 {
     public partial class frmPersonelList : XtraForm
     {
@@ -39,20 +33,19 @@ namespace Break_List
         void getNames()
         {
             checkPermissions();
-            if (haspermissionToAllPersonel == true)
+            if (haspermissionToAllPersonel)
             {
                 using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
-                    MySqlCommand command = new MySqlCommand("spPersonelallActive;", conn);
-                    command.CommandType = CommandType.StoredProcedure;                  
-                    
+                    MySqlCommand cmd = new MySqlCommand("spPersonelallActive;", conn) { CommandType = CommandType.StoredProcedure };
+
 
                     conn.Open();
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter())
                     {
                         DataTable dt = new DataTable();
-                        adapter.SelectCommand = command;
+                        adapter.SelectCommand = cmd;
                         {
                             adapter.Fill(dt);
                             resourcesGridControl.DataSource = dt;
@@ -65,17 +58,16 @@ namespace Break_List
             {
                 using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
-                    MySqlCommand command = new MySqlCommand("spPersonel;", conn);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    MySqlCommand cmd = new MySqlCommand("spPersonel;", conn) { CommandType = CommandType.StoredProcedure };
                     string _department = _departmentNameFromMainForm;
-                    command.Parameters.Add(new MySqlParameter("DepartmentName", _department));
-                    
+                    cmd.Parameters.Add(new MySqlParameter("DepartmentName", _department));
+
                     conn.Open();
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter())
                     {
                         DataTable dt = new DataTable();
-                        adapter.SelectCommand = command;
+                        adapter.SelectCommand = cmd;
                         {
                             adapter.Fill(dt);
                             resourcesGridControl.DataSource = dt;
@@ -84,7 +76,7 @@ namespace Break_List
                     conn.Close();
                 }
             }
-            
+
 
         }
 
@@ -92,7 +84,7 @@ namespace Break_List
         {
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * from permissions WHERE UserID ='" + _UserID + "'";
+            command.CommandText = string.Format("SELECT * from permissions WHERE UserID ='{0}'", _UserID);
             try
             {
                 conn.Open();
@@ -121,7 +113,7 @@ namespace Break_List
                 tileView1.OptionsTiles.Padding = new Padding(20);
                 tileView1.OptionsTiles.ItemPadding = new Padding(10);
                 tileView1.OptionsTiles.IndentBetweenItems = 20;
-                tileView1.OptionsTiles.ItemSize = new Size(340, 190);
+                tileView1.OptionsTiles.ItemSize = new Size(280, 190);
                 tileView1.Appearance.ItemNormal.ForeColor = Color.White;
                 tileView1.Appearance.ItemNormal.BorderColor = Color.FromArgb(52, 73, 94);
                 //Setup tiles template
@@ -141,7 +133,7 @@ namespace Break_List
                 tileView1.TileTemplate.Add(departmentValue);
                 tileView1.TileTemplate.Add(price);
                 tileView1.TileTemplate.Add(image);
-                
+
                 //
                 leftPanel.StretchVertical = true;
                 leftPanel.Width = 122;
@@ -176,12 +168,12 @@ namespace Break_List
                 //
                 price.Column = tileView1.Columns["Personel ID"];
                 price.TextAlignment = TileItemContentAlignment.BottomLeft;
-                price.Appearance.Normal.Font = new Font("Segoe UI Semilight", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                price.Appearance.Normal.Font = new Font("Segoe UI Semilight", 16F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                 //
                 image.Column = tileView1.Columns["Image"];
-                image.ImageSize = new Size(280, 220);
+                image.ImageSize = new Size(220, 220);
                 image.ImageAlignment = TileItemContentAlignment.MiddleRight;
-                image.ImageScaleMode = TileItemImageScaleMode.ZoomOutside;
+                image.ImageScaleMode = TileItemImageScaleMode.ZoomInside;
                 image.ImageLocation = new Point(10, 10);
 
             }
@@ -194,23 +186,23 @@ namespace Break_List
 
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
-           
+
             personelID = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
 
             var personel = new frmPersonelDetails
             {
-                 MdiParent = this.ParentForm,
+                MdiParent = ParentForm,
                 _personelID = personelID.ToString(),
                 _UserNameFromMainForm = _UserNameFromMainForm,
                 _UserID = labelControl1.Text
-              
+
             };
-            
+
             personel.Show();
-           
+
 
         }
 
-       
+
     }
 }

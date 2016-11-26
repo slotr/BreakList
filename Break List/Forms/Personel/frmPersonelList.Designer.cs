@@ -1,4 +1,4 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms.Personel
 {
     partial class frmPersonelList
     {
@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.resourcesGridControl = new DevExpress.XtraGrid.GridControl();
-            this.livegameDataSet11 = new Break_List.livegameDataSet1();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.livegameDataSet11 = new Break_List.livegameDataSet1();
             this.resourcesTableAdapter1 = new Break_List.livegameDataSet1TableAdapters.resourcesTableAdapter();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -50,8 +50,6 @@
             // 
             // resourcesGridControl
             // 
-            this.resourcesGridControl.DataMember = "resources";
-            this.resourcesGridControl.DataSource = this.livegameDataSet11;
             this.resourcesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resourcesGridControl.Location = new System.Drawing.Point(2, 2);
             this.resourcesGridControl.LookAndFeel.SkinName = "Office 2016 Colorful";
@@ -64,11 +62,6 @@
             this.resourcesGridControl.TabIndex = 1;
             this.resourcesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
-            // 
-            // livegameDataSet11
-            // 
-            this.livegameDataSet11.DataSetName = "livegameDataSet1";
-            this.livegameDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // tileView1
             // 
@@ -95,6 +88,11 @@
             // 
             this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
             this.repositoryItemPictureEdit1.ZoomAccelerationFactor = 1D;
+            // 
+            // livegameDataSet11
+            // 
+            this.livegameDataSet11.DataSetName = "livegameDataSet1";
+            this.livegameDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // resourcesTableAdapter1
             // 
@@ -136,10 +134,10 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPersonel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

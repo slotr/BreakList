@@ -39,10 +39,11 @@ namespace Break_List.Forms
             this.permissionsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.permissionsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.permissionsGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.permissionGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colidpermissions = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUsers = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUserDepartments = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAppointments = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colResources = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,6 +54,7 @@ namespace Break_List.Forms
             this.colUserName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRapor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaasArtisi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDokumanlar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUyarilar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colYorumlar = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -60,13 +62,14 @@ namespace Break_List.Forms
             this.colCalismaIznleri = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colpersonelEkle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepartment = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKasa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOnay = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingNavigator)).BeginInit();
             this.permissionsBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.permissionGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,11 +90,15 @@ namespace Break_List.Forms
             // tableAdapterManager
             // 
             this.tableAdapterManager.appointmentsTableAdapter = null;
+            this.tableAdapterManager.apps_countriesTableAdapter = null;
+            this.tableAdapterManager.avanslarTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.departmentsTableAdapter = null;
             this.tableAdapterManager.documentsTableAdapter = null;
+            this.tableAdapterManager.kesintilerTableAdapter = null;
             this.tableAdapterManager.lghataTableAdapter = null;
             this.tableAdapterManager.maaslarTableAdapter = null;
+            this.tableAdapterManager.offalacaklariTableAdapter = null;
             this.tableAdapterManager.permissionsTableAdapter = this.permissionsTableAdapter;
             this.tableAdapterManager.positionsTableAdapter = null;
             this.tableAdapterManager.resourcesTableAdapter = null;
@@ -99,8 +106,9 @@ namespace Break_List.Forms
             this.tableAdapterManager.roster1TableAdapter = null;
             this.tableAdapterManager.shiftsTableAdapter = null;
             this.tableAdapterManager.tablesTableAdapter = null;
+            this.tableAdapterManager.tblcalismaizinleriTableAdapter = null;
+            this.tableAdapterManager.tiplerTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Break_List.livegameDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.userdepartmentsTableAdapter = null;
             this.tableAdapterManager.usersTableAdapter = null;
             this.tableAdapterManager.vacationsTableAdapter = null;
             // 
@@ -137,18 +145,18 @@ namespace Break_List.Forms
             this.permissionsGridControl.DataSource = this.permissionsBindingSource;
             this.permissionsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.permissionsGridControl.Location = new System.Drawing.Point(0, 25);
-            this.permissionsGridControl.MainView = this.gridView1;
+            this.permissionsGridControl.MainView = this.permissionGrid;
             this.permissionsGridControl.Name = "permissionsGridControl";
             this.permissionsGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             this.permissionsGridControl.Size = new System.Drawing.Size(1086, 508);
             this.permissionsGridControl.TabIndex = 1;
             this.permissionsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.permissionGrid});
             // 
-            // gridView1
+            // permissionGrid
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.permissionGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colidpermissions,
             this.colUsers,
             this.gridColumn1,
@@ -162,20 +170,23 @@ namespace Break_List.Forms
             this.colUserName,
             this.colRapor,
             this.colMaasArtisi,
+            this.gridColumn2,
             this.colDokumanlar,
             this.colUyarilar,
             this.colYorumlar,
             this.colEgitimler,
             this.colCalismaIznleri,
             this.colpersonelEkle,
-            this.colDepartment});
-            this.gridView1.GridControl = this.permissionsGridControl;
-            this.gridView1.GroupCount = 1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gridView1.OptionsEditForm.EditFormColumnCount = 6;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            this.colDepartment,
+            this.colKasa,
+            this.colOnay});
+            this.permissionGrid.GridControl = this.permissionsGridControl;
+            this.permissionGrid.GroupCount = 1;
+            this.permissionGrid.Name = "permissionGrid";
+            this.permissionGrid.OptionsBehavior.AutoExpandAllGroups = true;
+            this.permissionGrid.OptionsEditForm.EditFormColumnCount = 6;
+            this.permissionGrid.OptionsView.ShowGroupPanel = false;
+            this.permissionGrid.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDepartment, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colidpermissions
@@ -197,6 +208,15 @@ namespace Break_List.Forms
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.QueryCheckStateByValue += new DevExpress.XtraEditors.Controls.QueryCheckStateByValueEventHandler(this.repositoryItemCheckEdit1_QueryCheckStateByValue);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "All Personel";
+            this.gridColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn1.FieldName = "AllPersonel";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
             // 
             // colUserDepartments
             // 
@@ -281,13 +301,22 @@ namespace Break_List.Forms
             this.colMaasArtisi.Visible = true;
             this.colMaasArtisi.VisibleIndex = 10;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Maas Edit";
+            this.gridColumn2.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn2.FieldName = "maasedit";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 11;
+            // 
             // colDokumanlar
             // 
             this.colDokumanlar.ColumnEdit = this.repositoryItemCheckEdit1;
             this.colDokumanlar.FieldName = "Dokumanlar";
             this.colDokumanlar.Name = "colDokumanlar";
             this.colDokumanlar.Visible = true;
-            this.colDokumanlar.VisibleIndex = 11;
+            this.colDokumanlar.VisibleIndex = 12;
             // 
             // colUyarilar
             // 
@@ -295,7 +324,7 @@ namespace Break_List.Forms
             this.colUyarilar.FieldName = "Uyarilar";
             this.colUyarilar.Name = "colUyarilar";
             this.colUyarilar.Visible = true;
-            this.colUyarilar.VisibleIndex = 12;
+            this.colUyarilar.VisibleIndex = 13;
             // 
             // colYorumlar
             // 
@@ -303,7 +332,7 @@ namespace Break_List.Forms
             this.colYorumlar.FieldName = "Yorumlar";
             this.colYorumlar.Name = "colYorumlar";
             this.colYorumlar.Visible = true;
-            this.colYorumlar.VisibleIndex = 13;
+            this.colYorumlar.VisibleIndex = 14;
             // 
             // colEgitimler
             // 
@@ -311,7 +340,7 @@ namespace Break_List.Forms
             this.colEgitimler.FieldName = "Egitimler";
             this.colEgitimler.Name = "colEgitimler";
             this.colEgitimler.Visible = true;
-            this.colEgitimler.VisibleIndex = 14;
+            this.colEgitimler.VisibleIndex = 15;
             // 
             // colCalismaIznleri
             // 
@@ -319,7 +348,7 @@ namespace Break_List.Forms
             this.colCalismaIznleri.FieldName = "CalismaIznleri";
             this.colCalismaIznleri.Name = "colCalismaIznleri";
             this.colCalismaIznleri.Visible = true;
-            this.colCalismaIznleri.VisibleIndex = 15;
+            this.colCalismaIznleri.VisibleIndex = 16;
             // 
             // colpersonelEkle
             // 
@@ -328,7 +357,7 @@ namespace Break_List.Forms
             this.colpersonelEkle.FieldName = "personelEkle";
             this.colpersonelEkle.Name = "colpersonelEkle";
             this.colpersonelEkle.Visible = true;
-            this.colpersonelEkle.VisibleIndex = 16;
+            this.colpersonelEkle.VisibleIndex = 17;
             // 
             // colDepartment
             // 
@@ -337,14 +366,23 @@ namespace Break_List.Forms
             this.colDepartment.Visible = true;
             this.colDepartment.VisibleIndex = 18;
             // 
-            // gridColumn1
+            // colKasa
             // 
-            this.gridColumn1.Caption = "All Personel";
-            this.gridColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
-            this.gridColumn1.FieldName = "AllPersonel";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
+            this.colKasa.Caption = "Kasa";
+            this.colKasa.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colKasa.FieldName = "kasa";
+            this.colKasa.Name = "colKasa";
+            this.colKasa.Visible = true;
+            this.colKasa.VisibleIndex = 18;
+            // 
+            // colOnay
+            // 
+            this.colOnay.Caption = "Onay GM";
+            this.colOnay.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colOnay.FieldName = "onay";
+            this.colOnay.Name = "colOnay";
+            this.colOnay.Visible = true;
+            this.colOnay.VisibleIndex = 19;
             // 
             // frmPermissions
             // 
@@ -353,8 +391,9 @@ namespace Break_List.Forms
             this.ClientSize = new System.Drawing.Size(1086, 533);
             this.Controls.Add(this.permissionsGridControl);
             this.Controls.Add(this.permissionsBindingNavigator);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPermissions";
-            this.Text = "frmPermissions";
+            this.Text = "Kullanici Haklari";
             this.Load += new System.EventHandler(this.frmPermissions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingSource)).EndInit();
@@ -362,7 +401,7 @@ namespace Break_List.Forms
             this.permissionsBindingNavigator.ResumeLayout(false);
             this.permissionsBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.permissionGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -378,7 +417,7 @@ namespace Break_List.Forms
         private System.Windows.Forms.BindingNavigator permissionsBindingNavigator;
         private System.Windows.Forms.ToolStripButton permissionsBindingNavigatorSaveItem;
         private DevExpress.XtraGrid.GridControl permissionsGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView permissionGrid;
         private DevExpress.XtraGrid.Columns.GridColumn colidpermissions;
         private DevExpress.XtraGrid.Columns.GridColumn colUsers;
         private DevExpress.XtraGrid.Columns.GridColumn colUserDepartments;
@@ -400,5 +439,8 @@ namespace Break_List.Forms
         private DevExpress.XtraGrid.Columns.GridColumn colDepartment;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn colKasa;
+        private DevExpress.XtraGrid.Columns.GridColumn colOnay;
     }
 }

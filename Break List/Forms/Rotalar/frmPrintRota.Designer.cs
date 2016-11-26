@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraPivotGrid.PivotGridGroup pivotGridGroup2 = new DevExpress.XtraPivotGrid.PivotGridGroup();
+            DevExpress.XtraPivotGrid.PivotGridGroup pivotGridGroup3 = new DevExpress.XtraPivotGrid.PivotGridGroup();
             this.fieldStaff1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
@@ -41,6 +41,7 @@
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -50,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // fieldStaff1
@@ -87,12 +89,12 @@
             this.fieldDate1,
             this.fieldShift1,
             this.pivotGridField1});
-            pivotGridGroup2.Fields.Add(this.fieldStaff1);
-            pivotGridGroup2.Fields.Add(this.pivotGridField1);
-            pivotGridGroup2.Hierarchy = null;
-            pivotGridGroup2.ShowNewValues = true;
+            pivotGridGroup3.Fields.Add(this.fieldStaff1);
+            pivotGridGroup3.Fields.Add(this.pivotGridField1);
+            pivotGridGroup3.Hierarchy = null;
+            pivotGridGroup3.ShowNewValues = true;
             this.pivotGridControl1.Groups.AddRange(new DevExpress.XtraPivotGrid.PivotGridGroup[] {
-            pivotGridGroup2});
+            pivotGridGroup3});
             this.pivotGridControl1.Location = new System.Drawing.Point(2, 2);
             this.pivotGridControl1.Name = "pivotGridControl1";
             this.pivotGridControl1.OptionsBehavior.BestFitMode = DevExpress.XtraPivotGrid.PivotGridBestFitMode.None;
@@ -144,6 +146,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.comboBoxEdit1);
             this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -157,7 +160,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(476, 13);
+            this.simpleButton1.Location = new System.Drawing.Point(683, 13);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 4;
@@ -191,7 +194,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit2.Size = new System.Drawing.Size(161, 20);
             this.dateEdit2.TabIndex = 1;
-            this.dateEdit2.EditValueChanged += new System.EventHandler(this.dateEdit2_EditValueChanged);
+            
             // 
             // dateEdit1
             // 
@@ -214,6 +217,16 @@
             this.panelControl2.Size = new System.Drawing.Size(940, 626);
             this.panelControl2.TabIndex = 6;
             // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(520, 18);
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(100, 20);
+            this.comboBoxEdit1.TabIndex = 5;
+            this.comboBoxEdit1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit1_SelectedIndexChanged);
+            // 
             // frmPrintRota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +265,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraPivotGrid.PivotGridField pivotGridField1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
     }
 }

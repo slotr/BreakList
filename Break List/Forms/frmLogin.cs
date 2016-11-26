@@ -50,7 +50,7 @@ namespace Break_List
                             UserName = textEdit1.Text;
                             prop._userName = UserName;
 
-                            var mainform = new frmMDIMain
+                            var mainform = new Forms.frmMDIMain
                             {
                                 _userNameFromLogin = UserName
                             };

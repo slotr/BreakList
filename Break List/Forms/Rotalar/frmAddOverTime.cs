@@ -3,7 +3,6 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
-using DevExpress.Utils.Controls;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraScheduler;
@@ -15,11 +14,10 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors.Native;
 using DevExpress.Utils.Internal;
 using System.Collections.Generic;
-using DevExpress.XtraScheduler.Internal;
 
-namespace Break_List.Forms
+namespace Break_List.Forms.Rotalar
 {
-    public partial class frmAddOverTime : DevExpress.XtraEditors.XtraForm, IDXManagerPopupMenu
+    public partial class frmAddOverTime : XtraForm, IDXManagerPopupMenu
     {
         #region Fields
         bool openRecurrenceForm;
@@ -28,26 +26,28 @@ namespace Break_List.Forms
         Icon recurringIcon;
         Icon normalIcon;
         readonly AppointmentFormController controller;
-        IDXMenuManager menuManager;
         #endregion
-
+        
         [EditorBrowsable(EditorBrowsableState.Never)]
         public frmAddOverTime()
         {
+            
             InitializeComponent();
         }
         public frmAddOverTime(SchedulerControl control, Appointment apt)
             : this(control, apt, false)
         {
         }
-        public frmAddOverTime(SchedulerControl control, Appointment apt, bool openRecurrenceForm)
+        public frmAddOverTime(SchedulerControl control, 
+            Appointment apt, 
+            bool openRecurrenceForm)
         {
             Guard.ArgumentNotNull(control, "control");
             Guard.ArgumentNotNull(control.Storage, "control.Storage");
             Guard.ArgumentNotNull(apt, "apt");
 
             this.openRecurrenceForm = openRecurrenceForm;
-            this.controller = CreateController(control, apt);
+            controller = CreateController(control, apt);
             //
             // Required for Windows Form Designer support
             //
@@ -57,13 +57,13 @@ namespace Break_List.Forms
             LoadIcons();
 
             this.control = control;
-            this.storage = control.Storage;
+            storage = control.Storage;
 
-            this.edtShowTimeAs.Storage = this.storage;
-            this.edtLabel.Storage = storage;
-            this.edtResource.SchedulerControl = control;
-            this.edtResource.Storage = storage;
-            this.edtResources.SchedulerControl = control;
+            edtShowTimeAs.Storage = storage;
+            edtLabel.Storage = storage;
+            edtResource.SchedulerControl = control;
+            edtResource.Storage = storage;
+            edtResources.SchedulerControl = control;
 
             SubscribeControllerEvents(Controller);
             SubscribeEditorsEvents();
@@ -71,8 +71,8 @@ namespace Break_List.Forms
 
         }
         #region Properties
-        protected override FormShowMode ShowMode { get { return DevExpress.XtraEditors.FormShowMode.AfterInitialization; } }
-        public IDXMenuManager MenuManager { get { return menuManager; } private set { menuManager = value; } }
+        protected override FormShowMode ShowMode { get { return FormShowMode.AfterInitialization; } }
+        public IDXMenuManager MenuManager { get; private set; }
         protected internal AppointmentFormController Controller { get { return controller; } }
         protected internal SchedulerControl Control { get { return control; } }
         protected internal ISchedulerStorage Storage { get { return storage; } }
@@ -91,21 +91,33 @@ namespace Break_List.Forms
             }
         }
         #endregion
-
+        
         public virtual void LoadFormData(Appointment appointment)
         {
-            txtOverTime.Text = appointment.CustomFields["OverTime"].ToString();
-            txtErkenGonderim.Text = appointment.CustomFields["ErkenGonderim"].ToString();
-            txtSicCall.Text = appointment.CustomFields["SickCall"].ToString();
-            txtNoCall.Text = appointment.CustomFields["NoCall"].ToString();
-            txtSickSent.Text= appointment.CustomFields["SickSentHome"].ToString();
-            txtRapor.Text = appointment.CustomFields["Rapor"].ToString();
-            txtSentHome.Text = appointment.CustomFields["SentHome"].ToString();
-            txtLate.Text = appointment.CustomFields["Late"].ToString();
-            txtSuspend.Text = appointment.CustomFields["Suspend"].ToString();
+            try
+            {
+                txtOverTime.Text = appointment.CustomFields["OverTime"].ToString();
+                txtErkenGonderim.Text = appointment.CustomFields["ErkenGonderim"].ToString();
+                txtSicCall.Text = appointment.CustomFields["SickCall"].ToString();
+                txtNoCall.Text = appointment.CustomFields["NoCall"].ToString();
+                txtSickSent.Text = appointment.CustomFields["SickSentHome"].ToString();
+                txtRapor.Text = appointment.CustomFields["Rapor"].ToString();
+                txtSentHome.Text = appointment.CustomFields["SentHome"].ToString();
+                txtLate.Text = appointment.CustomFields["Late"].ToString();
+                txtSuspend.Text = appointment.CustomFields["Suspend"].ToString();
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Bir Hata Olustu. IT ye soyleyin");
+            }
+
+            
+            
         }
         public virtual bool SaveFormData(Appointment appointment)
         {
+            
             appointment.CustomFields["OverTime"] = txtOverTime.Text;
             appointment.CustomFields["ErkenGonderim"] = txtErkenGonderim.Text;
             appointment.CustomFields["SickCall"] = txtSicCall.Text;
@@ -115,6 +127,9 @@ namespace Break_List.Forms
             appointment.CustomFields["SentHome"] = txtSentHome.Text;
             appointment.CustomFields["Late"] = txtLate.Text;
             appointment.CustomFields["Suspend"] = txtSuspend.Text;
+            appointment.CustomFields["Updatedby"] = labelControl2.Text;
+            appointment.CustomFields["UpdatedAt"] = DateTime.Now;
+
             return true;
         }
         public virtual bool IsAppointmentChanged(Appointment appointment)
@@ -128,12 +143,14 @@ namespace Break_List.Forms
             appointment.CustomFields["SentHome"] = txtSentHome.Text;
             appointment.CustomFields["Late"] = txtLate.Text;
             appointment.CustomFields["Suspend"] = txtSuspend.Text;
+            appointment.CustomFields["Updatedy"] = labelControl2.Text;
+            appointment.CustomFields["UpdateAt"] = DateTime.Now;
             return true;
         }
         public virtual void SetMenuManager(IDXMenuManager menuManager)
         {
             MenuManagerUtils.SetMenuManager(Controls, menuManager);
-            this.menuManager = menuManager;
+            MenuManager = menuManager;
         }
 
         protected internal virtual void SetupPredefinedConstraints()
@@ -229,7 +246,7 @@ namespace Break_List.Forms
             base.OnLoad(e);
             if (Controller == null)
                 return;
-            this.DataBindings.Add("Text", Controller, "Caption");
+            DataBindings.Add("Text", Controller, "Caption");
             SubscribeControlsEvents();
             LoadFormData(Controller.EditedAppointmentCopy);
             RecalculateLayoutOfControlsAffectedByProgressPanel();
@@ -240,7 +257,7 @@ namespace Break_List.Forms
         }
         void SubscribeEditorsEvents()
         {
-            this.cbReminder.EditValueChanging += OnCbReminderEditValueChanging;
+            cbReminder.EditValueChanging += OnCbReminderEditValueChanging;
         }
         void SubscribeControllerEvents(AppointmentFormController controller)
         {
@@ -265,11 +282,11 @@ namespace Break_List.Forms
                     continue;
                 editor.ReadOnly = Controller.ReadOnly;
             }
-            this.btnOk.Enabled = !Controller.ReadOnly;
-            this.btnRecurrence.Enabled = !Controller.ReadOnly;
+            btnOk.Enabled = !Controller.ReadOnly;
+            btnRecurrence.Enabled = !Controller.ReadOnly;
         }
 
-        List<Control> GetAllControls(Control rootControl)
+        static List<Control> GetAllControls(Control rootControl)
         {
             List<Control> result = new List<Control>();
             foreach (Control control in rootControl.Controls)
@@ -288,31 +305,31 @@ namespace Break_List.Forms
         }
         protected internal virtual void SubscribeControlsEvents()
         {
-            edtEndDate.Validating += new CancelEventHandler(OnEdtEndDateValidating);
-            edtEndDate.InvalidValue += new InvalidValueExceptionEventHandler(OnEdtEndDateInvalidValue);
-            edtEndTime.Validating += new CancelEventHandler(OnEdtEndTimeValidating);
-            edtEndTime.InvalidValue += new InvalidValueExceptionEventHandler(OnEdtEndTimeInvalidValue);
-            cbReminder.InvalidValue += new InvalidValueExceptionEventHandler(OnCbReminderInvalidValue);
-            cbReminder.Validating += new CancelEventHandler(OnCbReminderValidating);
-            edtStartDate.Validating += new CancelEventHandler(OnEdtStartDateValidating);
-            edtStartDate.InvalidValue += new InvalidValueExceptionEventHandler(OnEdtStartDateInvalidValue);
-            edtStartTime.Validating += new CancelEventHandler(OnEdtStartTimeValidating);
-            edtStartTime.InvalidValue += new InvalidValueExceptionEventHandler(OnEdtStartTimeInvalidValue);
+            edtEndDate.Validating += OnEdtEndDateValidating;
+            edtEndDate.InvalidValue += OnEdtEndDateInvalidValue;
+            edtEndTime.Validating += OnEdtEndTimeValidating;
+            edtEndTime.InvalidValue += OnEdtEndTimeInvalidValue;
+            cbReminder.InvalidValue += OnCbReminderInvalidValue;
+            cbReminder.Validating += OnCbReminderValidating;
+            edtStartDate.Validating += OnEdtStartDateValidating;
+            edtStartDate.InvalidValue += OnEdtStartDateInvalidValue;
+            edtStartTime.Validating += OnEdtStartTimeValidating;
+            edtStartTime.InvalidValue += OnEdtStartTimeInvalidValue;
         }
         protected internal virtual void UnsubscribeControlsEvents()
         {
-            edtEndDate.Validating -= new CancelEventHandler(OnEdtEndDateValidating);
-            edtEndDate.InvalidValue -= new InvalidValueExceptionEventHandler(OnEdtEndDateInvalidValue);
-            edtEndTime.Validating -= new CancelEventHandler(OnEdtEndTimeValidating);
-            edtEndTime.InvalidValue -= new InvalidValueExceptionEventHandler(OnEdtEndTimeInvalidValue);
-            cbReminder.InvalidValue -= new InvalidValueExceptionEventHandler(OnCbReminderInvalidValue);
-            cbReminder.Validating -= new CancelEventHandler(OnCbReminderValidating);
-            edtStartDate.Validating -= new CancelEventHandler(OnEdtStartDateValidating);
-            edtStartDate.InvalidValue -= new InvalidValueExceptionEventHandler(OnEdtStartDateInvalidValue);
-            edtStartTime.Validating -= new CancelEventHandler(OnEdtStartTimeValidating);
-            edtStartTime.InvalidValue -= new InvalidValueExceptionEventHandler(OnEdtStartTimeInvalidValue);
+            edtEndDate.Validating -= OnEdtEndDateValidating;
+            edtEndDate.InvalidValue -= OnEdtEndDateInvalidValue;
+            edtEndTime.Validating -= OnEdtEndTimeValidating;
+            edtEndTime.InvalidValue -= OnEdtEndTimeInvalidValue;
+            cbReminder.InvalidValue -= OnCbReminderInvalidValue;
+            cbReminder.Validating -= OnCbReminderValidating;
+            edtStartDate.Validating -= OnEdtStartDateValidating;
+            edtStartDate.InvalidValue -= OnEdtStartDateInvalidValue;
+            edtStartTime.Validating -= OnEdtStartTimeValidating;
+            edtStartTime.InvalidValue -= OnEdtStartTimeInvalidValue;
         }
-        void OnBtnOkClick(object sender, System.EventArgs e)
+        void OnBtnOkClick(object sender, EventArgs e)
         {
             OnOkButton();
         }
@@ -336,7 +353,7 @@ namespace Break_List.Forms
         {
             e.Cancel = !IsValidInterval();
             if (!e.Cancel)
-                this.edtEndDate.DataBindings["EditValue"].WriteValue();
+                edtEndDate.DataBindings["EditValue"].WriteValue();
         }
         protected internal virtual void OnEdtEndDateInvalidValue(object sender, InvalidValueExceptionEventArgs e)
         {
@@ -349,7 +366,7 @@ namespace Break_List.Forms
         {
             e.Cancel = !IsValidInterval();
             if (!e.Cancel)
-                this.edtEndTime.DataBindings["EditValue"].WriteValue();
+                edtEndTime.DataBindings["EditValue"].WriteValue();
         }
         protected internal virtual void OnEdtEndTimeInvalidValue(object sender, InvalidValueExceptionEventArgs e)
         {
@@ -386,13 +403,13 @@ namespace Break_List.Forms
             edtStartDate.DoValidate();
             edtStartTime.DoValidate();
 
-            return String.IsNullOrEmpty(this.edtEndTime.ErrorText) && String.IsNullOrEmpty(this.edtEndDate.ErrorText) && String.IsNullOrEmpty(this.edtStartDate.ErrorText) && String.IsNullOrEmpty(this.edtStartTime.ErrorText);
+            return String.IsNullOrEmpty(edtEndTime.ErrorText) && String.IsNullOrEmpty(edtEndDate.ErrorText) && String.IsNullOrEmpty(edtStartDate.ErrorText) && String.IsNullOrEmpty(edtStartTime.ErrorText);
         }
         protected internal virtual DialogResult ShowMessageBox(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
             return XtraMessageBox.Show(this, text, caption, buttons, icon);
         }
-        void OnBtnDeleteClick(object sender, System.EventArgs e)
+        void OnBtnDeleteClick(object sender, EventArgs e)
         {
             OnDeleteButton();
         }
@@ -457,7 +474,7 @@ namespace Break_List.Forms
             TimeSpan span = cbReminder.Duration;
             e.Cancel = (span == TimeSpan.MinValue) || (span.Ticks < 0);
             if (!e.Cancel)
-                this.cbReminder.DataBindings["Duration"].WriteValue();
+                cbReminder.DataBindings["Duration"].WriteValue();
         }
         protected internal virtual void OnCbReminderInvalidValue(object sender, InvalidValueExceptionEventArgs e)
         {
@@ -513,7 +530,7 @@ namespace Break_List.Forms
 
         private void radioGroup7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtRapor.Text = radioGroup6.EditValue.ToString();
+            txtRapor.Text = radioGroup7.EditValue.ToString();
         }
     }
 }

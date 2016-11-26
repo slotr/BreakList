@@ -1,5 +1,5 @@
 using DevExpress.XtraScheduler.UI;
-namespace Break_List.Forms
+namespace Break_List.Forms.Rotalar
 {
     partial class frmAddOverTime
     {
@@ -72,7 +72,6 @@ namespace Break_List.Forms
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txtRapor = new DevExpress.XtraEditors.TextEdit();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
@@ -81,6 +80,7 @@ namespace Break_List.Forms
             this.radioGroup5 = new DevExpress.XtraEditors.RadioGroup();
             this.radioGroup6 = new DevExpress.XtraEditors.RadioGroup();
             this.radioGroup7 = new DevExpress.XtraEditors.RadioGroup();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tbSubject.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAllDay.Properties)).BeginInit();
@@ -143,6 +143,7 @@ namespace Break_List.Forms
             // 
             resources.ApplyResources(this.lblLabel, "lblLabel");
             this.lblLabel.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("lblLabel.Appearance.BackColor")));
+            this.lblLabel.Appearance.Options.UseBackColor = true;
             this.lblLabel.Name = "lblLabel";
             // 
             // lblStartTime
@@ -320,12 +321,14 @@ namespace Break_List.Forms
             // 
             resources.ApplyResources(this.lblPercentCompleteValue, "lblPercentCompleteValue");
             this.lblPercentCompleteValue.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("lblPercentCompleteValue.Appearance.BackColor")));
+            this.lblPercentCompleteValue.Appearance.Options.UseBackColor = true;
             this.lblPercentCompleteValue.Name = "lblPercentCompleteValue";
             // 
             // lblPercentComplete
             // 
             resources.ApplyResources(this.lblPercentComplete, "lblPercentComplete");
             this.lblPercentComplete.Appearance.BackColor = ((System.Drawing.Color)(resources.GetObject("lblPercentComplete.Appearance.BackColor")));
+            this.lblPercentComplete.Appearance.Options.UseBackColor = true;
             this.lblPercentComplete.Name = "lblPercentComplete";
             // 
             // edtStartTime
@@ -377,25 +380,21 @@ namespace Break_List.Forms
             // 
             resources.ApplyResources(this.txtSicCall, "txtSicCall");
             this.txtSicCall.Name = "txtSicCall";
-            this.txtSicCall.Properties.ReadOnly = true;
             // 
             // txtNoCall
             // 
             resources.ApplyResources(this.txtNoCall, "txtNoCall");
             this.txtNoCall.Name = "txtNoCall";
-            this.txtNoCall.Properties.ReadOnly = true;
             // 
             // txtSickSent
             // 
             resources.ApplyResources(this.txtSickSent, "txtSickSent");
             this.txtSickSent.Name = "txtSickSent";
-            this.txtSickSent.Properties.ReadOnly = true;
             // 
             // txtSentHome
             // 
             resources.ApplyResources(this.txtSentHome, "txtSentHome");
             this.txtSentHome.Name = "txtSentHome";
-            this.txtSentHome.Properties.ReadOnly = true;
             // 
             // labelControl3
             // 
@@ -421,13 +420,11 @@ namespace Break_List.Forms
             // 
             resources.ApplyResources(this.txtLate, "txtLate");
             this.txtLate.Name = "txtLate";
-            this.txtLate.Properties.ReadOnly = true;
             // 
             // txtSuspend
             // 
             resources.ApplyResources(this.txtSuspend, "txtSuspend");
             this.txtSuspend.Name = "txtSuspend";
-            this.txtSuspend.Properties.ReadOnly = true;
             // 
             // labelControl7
             // 
@@ -448,7 +445,6 @@ namespace Break_List.Forms
             // 
             resources.ApplyResources(this.txtRapor, "txtRapor");
             this.txtRapor.Name = "txtRapor";
-            this.txtRapor.Properties.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -478,11 +474,6 @@ namespace Break_List.Forms
             this.tableLayoutPanel1.Controls.Add(this.labelControl10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelControl12, 1, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            // 
-            // labelControl10
-            // 
-            resources.ApplyResources(this.labelControl10, "labelControl10");
-            this.labelControl10.Name = "labelControl10";
             // 
             // labelControl11
             // 
@@ -558,6 +549,11 @@ namespace Break_List.Forms
             new DevExpress.XtraEditors.Controls.RadioGroupItem(((object)(resources.GetObject("radioGroup7.Properties.Items"))), resources.GetString("radioGroup7.Properties.Items1")),
             new DevExpress.XtraEditors.Controls.RadioGroupItem(((object)(resources.GetObject("radioGroup7.Properties.Items2"))), resources.GetString("radioGroup7.Properties.Items3"))});
             this.radioGroup7.SelectedIndexChanged += new System.EventHandler(this.radioGroup7_SelectedIndexChanged);
+            // 
+            // labelControl10
+            // 
+            resources.ApplyResources(this.labelControl10, "labelControl10");
+            this.labelControl10.Name = "labelControl10";
             // 
             // labelControl12
             // 
@@ -681,7 +677,6 @@ namespace Break_List.Forms
         private DevExpress.XtraEditors.TextEdit txtOverTime;
         private DevExpress.XtraEditors.TextEdit txtErkenGonderim;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtSicCall;
         private DevExpress.XtraEditors.TextEdit txtNoCall;
         private DevExpress.XtraEditors.TextEdit txtSickSent;
@@ -707,5 +702,6 @@ namespace Break_List.Forms
         private DevExpress.XtraEditors.RadioGroup radioGroup6;
         private DevExpress.XtraEditors.RadioGroup radioGroup7;
         private DevExpress.XtraEditors.LabelControl labelControl12;
+        public DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }

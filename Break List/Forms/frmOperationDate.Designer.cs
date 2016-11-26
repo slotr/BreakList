@@ -1,4 +1,4 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms
 {
     partial class frmOperationDate
     {
@@ -42,7 +42,7 @@
             // dateEdit1
             // 
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(102, 18);
+            this.dateEdit1.Location = new System.Drawing.Point(101, 46);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.dateEdit1.Properties.Appearance.Options.UseFont = true;
@@ -62,7 +62,7 @@
             // dateEdit2
             // 
             this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(102, 58);
+            this.dateEdit2.Location = new System.Drawing.Point(101, 86);
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.dateEdit2.Properties.Appearance.Options.UseFont = true;
@@ -81,7 +81,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(239, 94);
+            this.simpleButton1.Location = new System.Drawing.Point(238, 122);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 3;
@@ -91,7 +91,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 26);
+            this.labelControl1.Location = new System.Drawing.Point(11, 54);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(73, 13);
             this.labelControl1.TabIndex = 4;
@@ -99,7 +99,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(37, 66);
+            this.labelControl2.Location = new System.Drawing.Point(36, 94);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(48, 13);
             this.labelControl2.TabIndex = 4;
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 127);
+            this.ClientSize = new System.Drawing.Size(335, 182);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);

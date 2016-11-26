@@ -11,18 +11,13 @@ using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 
-namespace Break_List
+namespace Break_List.Forms.Raporlar
 {
-    public partial class frmCcalismaSaatleriByManager : DevExpress.XtraEditors.XtraForm
+    public partial class frmCcalismaSaatleriByManager : XtraForm
     {
         public frmCcalismaSaatleriByManager()
         {
             InitializeComponent();
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void frmCcalismaSaatleriByManager_Load(object sender, EventArgs e)
@@ -40,7 +35,7 @@ namespace Break_List
                 {
                     
                     mySqlCommand.Parameters.Add(new MySqlParameter("StartDate", dateEdit1.EditValue));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("EndDate", dateEdit2.EditValue));
+                    //mySqlCommand.Parameters.Add(new MySqlParameter("EndDate", dateEdit2.EditValue));
                     mySqlCommand.Parameters.Add(new MySqlParameter("DepartmentName", comboBoxEdit1.EditValue));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
@@ -89,6 +84,11 @@ namespace Break_List
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
             getTimes();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            gridControl1.ShowPrintPreview();
         }
     }
 }

@@ -1,74 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraScheduler;
 using MySql.Data.MySqlClient;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using System.Globalization;
-using NodaTime.Text;
-
-namespace Break_List
+using DevExpress.XtraScheduler.Drawing;
+namespace Break_List.Forms.Rotalar
 {
-    public partial class frmRoster : DevExpress.XtraEditors.XtraForm
+    public partial class frmRoster : XtraForm
     {
-        public string _departmentNameFromMainForm;
+        public string _departmentNameFromMainForm { get; set; }
+        public string UserName { get; set; }
         public frmRoster()
         {
             InitializeComponent();
-            schedulerControl1.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Timeline;
+            schedulerControl1.ActiveViewType = SchedulerViewType.Timeline;
             schedulerControl1.GroupType = SchedulerGroupType.Resource;
             TimeScaleCollection scales = schedulerControl1.TimelineView.Scales;
-
+            schedulerControl1.TimelineView.AppointmentDisplayOptions.StartTimeVisibility = AppointmentTimeVisibility.Never;
+            schedulerControl1.TimelineView.AppointmentDisplayOptions.EndTimeVisibility = AppointmentTimeVisibility.Never;
             scales.Clear();
 
             scales.Add(new TimeScaleMonth());
             //scales.Add(new TimeScaleWeek());
             scales.Add(new TimeScaleDay());
-            
+
             DateTime startDate = schedulerControl1.SelectedInterval.Start;
             schedulerControl1.Start = new DateTime(startDate.Year, startDate.Month, 1);
 
             UpdateScaleWidth();
 
-            this.schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
-            this.schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
-            this.schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
+            schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
+            schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
+            schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
         }
         private void OnAppointmentChangedInsertedDeleted(object sender, PersistentObjectsEventArgs e)
         {
 
             roster1TableAdapter.Update(livegameDataSet1);
             livegameDataSet1.AcceptChanges();
-            this.roster1TableAdapter.Fill(this.livegameDataSet1.roster1);
+            roster1TableAdapter.Fill(livegameDataSet1.roster1);
         }
         void getNames()
         {
             using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {
-                MySqlCommand command = new MySqlCommand("spRotaPersonel;", conn);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                MySqlCommand cmd = new MySqlCommand("spRotaPersonel;", conn) { CommandType = CommandType.StoredProcedure };
                 string _department = _departmentNameFromMainForm;
                 // Add your parameters here if you need them
-                command.Parameters.Add(new MySqlParameter("DepartmentName", _department));
+                cmd.Parameters.Add(new MySqlParameter("DepartmentName", _department));
 
                 conn.Open();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter())
                 {
                     DataTable dt = new DataTable();
-                    adapter.SelectCommand = command;
+                    adapter.SelectCommand = cmd;
                     {
                         adapter.Fill(dt);
                         schedulerStorage1.Resources.DataSource = dt;
-                        this.Text = "Rota of: " +_department;
+                        Text = _department + " Rotası ";
                     }
                 }
                 conn.Close();
@@ -78,10 +74,8 @@ namespace Break_List
 
         private void frmRoster_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'livegameDataSet1.resources' table. You can move, or remove it, as needed.
-           // this.resourcesTableAdapter.Fill(this.livegameDataSet1.resources);
-            // TODO: This line of code loads data into the 'livegameDataSet1.roster1' table. You can move, or remove it, as needed.
-            this.roster1TableAdapter.Fill(this.livegameDataSet1.roster1);
+            
+            roster1TableAdapter.Fill(livegameDataSet1.roster1);
             getNames();
             getShifts();
 
@@ -95,21 +89,20 @@ namespace Break_List
         {
             using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {
-                MySqlCommand command = new MySqlCommand("Select ShiftNo as Shift, ShiftStart as Start, Hour as Hours from shifts", conn);
-                command.CommandType = CommandType.Text;
-                
-                
+                MySqlCommand cmd = new MySqlCommand("Select ShiftNo as Shift, ShiftStart as Start, Hour as Hours from shifts", conn) { CommandType = CommandType.Text };
+
+
 
                 conn.Open();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter())
                 {
                     DataTable dt = new DataTable();
-                    adapter.SelectCommand = command;
+                    adapter.SelectCommand = cmd;
                     {
                         adapter.Fill(dt);
                         gridControl1.DataSource = dt;
-                        
+
                     }
                 }
                 conn.Close();
@@ -117,8 +110,8 @@ namespace Break_List
 
         }
         GridHitInfo downHitInfo;
-        TimeSpan minTime = new TimeSpan(0, 0, 0);
-        TimeSpan maxTime = new TimeSpan(24, 0, 0);
+        readonly TimeSpan minTime = new TimeSpan(0, 0, 0);
+        readonly TimeSpan maxTime = new TimeSpan(24, 0, 0);
         #region #GetDragData
         SchedulerDragData GetDragData(GridView view)
         {
@@ -131,7 +124,7 @@ namespace Break_List
             for (int i = 0; i < count; i++)
             {
 
-                int rowIndex = selection[i];                
+                int rowIndex = selection[i];
                 Appointment apt = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
                 string subject = (string)view.GetRowCellValue(rowIndex, "Shift");
                 TimeSpan start = (TimeSpan)view.GetRowCellValue(rowIndex, "Start");
@@ -139,7 +132,7 @@ namespace Break_List
                 TimeSpan end = start + hour;
                 double totalDuration = Convert.ToDouble(hour.TotalHours);
                 double totalHours = Convert.ToDouble(end.TotalHours);
-               // MessageBox.Show(totalHours.ToString());
+                // MessageBox.Show(totalHours.ToString());
                 if (totalHours > 24)
                 {
                     TimeSpan _final = end - maxTime;
@@ -158,6 +151,8 @@ namespace Break_List
                     apt.CustomFields["Late"] = 0;
                     apt.CustomFields["Suspend"] = 0;
                     apt.CustomFields["Department"] = _departmentNameFromMainForm;
+                    apt.CustomFields["Createdby"] = UserName;
+                    apt.CustomFields["CreatedAt"] = DateTime.Now;
                     appointments.Add(apt);
                 }
 
@@ -178,15 +173,10 @@ namespace Break_List
                     apt.CustomFields["Late"] = 0;
                     apt.CustomFields["Suspend"] = 0;
                     apt.CustomFields["Department"] = _departmentNameFromMainForm;
+                    apt.CustomFields["Createdby"] = UserName;
+                    apt.CustomFields["CreatedAt"] = DateTime.Now;
                     appointments.Add(apt);
                 }
-
-
-
-
-
-
-
             }
 
             return new SchedulerDragData(appointments, 0);
@@ -222,7 +212,7 @@ namespace Break_List
             }
         }
 
-      
+
 
         private void schedulerControl1_AppointmentDrop(object sender, AppointmentDragEventArgs e)
         {
@@ -231,15 +221,17 @@ namespace Break_List
             bool isNewAppointment = srcStart == DateTime.MinValue;
         }
 
-        
+
 
         private void schedulerControl1_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
         {
             SchedulerControl scheduler = ((SchedulerControl)(sender));
-            Forms.frmAddOverTime form = new Forms.frmAddOverTime(scheduler, e.Appointment, e.OpenRecurrenceForm);
+            frmAddOverTime form = new frmAddOverTime(scheduler, e.Appointment, e.OpenRecurrenceForm);
+            form.labelControl2.Text = UserName;
             try
-            {
+            {   
                 e.DialogResult = form.ShowDialog();
+                
                 e.Handled = true;
             }
             finally
@@ -247,6 +239,37 @@ namespace Break_List
                 form.Dispose();
             }
 
+        }
+
+        private void schedulerControl1_AppointmentViewInfoCustomizing(object sender, AppointmentViewInfoCustomizingEventArgs e)
+        {
+            if (e.ViewInfo.Appointment.Subject.Contains("OFF"))
+            {
+                e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font, FontStyle.Bold);
+                e.ViewInfo.Appearance.ForeColor = Color.Red;
+                e.ViewInfo.Appearance.BorderColor = Color.Red;
+                
+            }
+
+
+               
+        }
+
+        private void schedulerControl1_CustomDrawResourceHeader(object sender, CustomDrawObjectEventArgs e)
+        {
+            ResourceHeader header = (ResourceHeader)e.ObjectInfo;
+
+            if (header.Resource.CustomFields["Position"].Equals("Inspector"))
+            {
+                header.Appearance.HeaderCaption.ForeColor = Color.Red;
+
+            }
+
+            if (header.Resource.CustomFields["Position"].Equals("Dealer"))
+            {
+                header.Appearance.HeaderCaption.ForeColor = Color.Blue;
+
+            }
         }
     }
 }

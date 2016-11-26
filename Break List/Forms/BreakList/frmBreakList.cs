@@ -1,34 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using DevExpress.Skins;
-using DevExpress.LookAndFeel;
-using DevExpress.UserSkins;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Ribbon;
-using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraScheduler;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraEditors;
-using DevExpress.XtraGrid;
-using System.Data.SqlClient;
 using DevExpress.XtraScheduler.Drawing;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
-using DevExpress.XtraGrid.Views.Tile;
-using DevExpress.XtraGrid.Views.Tile.ViewInfo;
-using Break_List.Class;
+using DevExpress.XtraScheduler.Services.Internal;
 
-namespace Break_List
+namespace Break_List.Forms.BreakList
 {
-
-    public partial class frmBreakList : DevExpress.XtraEditors.XtraForm
+    public partial class frmBreakList : XtraForm
     {
         public string _departmentNameFromMainForm { get; set; }
         public string _userRoleIDFromMainForm { get; set; }
@@ -39,7 +26,7 @@ namespace Break_List
         public frmBreakList()
         {
             InitializeComponent();
-            
+
             schedulerControl.Views.DayView.Enabled = false;
             schedulerControl.ActiveViewType = SchedulerViewType.Timeline;
             schedulerControl.GroupType = SchedulerGroupType.Resource;
@@ -47,12 +34,12 @@ namespace Break_List
             _EndDate = Settings.Default.EndDate;
 
             _Duration = _EndDate - _operationDate;
-            
+
             TimeSpan tsStart = TimeSpan.FromHours(_operationDate.Hour);
             TimeSpan tsEnd = TimeSpan.FromHours(_EndDate.Hour);
-            schedulerControl.Start = _operationDate;           
+            schedulerControl.Start = _operationDate;
 
-            schedulerControl.TimelineView.WorkTime = new TimeOfDayInterval(tsStart, tsStart+ _Duration);
+            schedulerControl.TimelineView.WorkTime = new TimeOfDayInterval(tsStart, tsStart + _Duration);
 
             TimeScaleCollection scales = schedulerControl.TimelineView.Scales;
             schedulerControl.TimelineView.Scales.BeginUpdate();
@@ -70,47 +57,47 @@ namespace Break_List
                 schedulerControl.TimelineView.Scales.EndUpdate();
             }
 
-            this.schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
-            this.schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
-            this.schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
+            schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
+            schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
+            schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
+            
         }
 
-       
+
 
 
         private void OnAppointmentChangedInsertedDeleted(object sender, PersistentObjectsEventArgs e)
         {
-            
+
             appointmentsTableAdapter.Update(livegameDataSet1);
             livegameDataSet1.AcceptChanges();
-            this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
+            appointmentsTableAdapter.Fill(livegameDataSet1.appointments);
         }
 
-        TimeSpan minTime = new TimeSpan(0, 0, 0);
-        TimeSpan maxTime = new TimeSpan(24, 0, 0);
+        readonly TimeSpan minTime = new TimeSpan(0, 0, 0);
+        readonly TimeSpan maxTime = new TimeSpan(24, 0, 0);
         GridHitInfo downHitInfo;
-        
+
 
         void getNames()
         {
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
+            using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
-                MySqlCommand command = new MySqlCommand("spBreakListNames;", conn);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
+                MySqlCommand cmd = new MySqlCommand("spBreakListNames;", conn) { CommandType = CommandType.StoredProcedure };
                 //string _department = _departmentNameFromMainForm;                
                 // Add your parameters here if you need them
-                command.Parameters.Add(new MySqlParameter("DepartmentName", _departmentNameFromMainForm));
-                command.Parameters.Add(new MySqlParameter("OperationDate", _operationDate));
+                cmd.Parameters.Add(new MySqlParameter("DepartmentName", _departmentNameFromMainForm));
+                cmd.Parameters.Add(new MySqlParameter("OperationDate", _operationDate));
                 conn.Open();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter())
                 {
                     DataTable dt = new DataTable();
-                    adapter.SelectCommand = command;
+                    adapter.SelectCommand = cmd;
                     {
                         adapter.Fill(dt);
                         schedulerStorage1.Resources.DataSource = dt;
-                        this.Text = "Break List of:" + _departmentNameFromMainForm;
+                        Text = "Break List of:" + _departmentNameFromMainForm;
                     }
                 }
                 conn.Close();
@@ -118,11 +105,33 @@ namespace Break_List
 
         }
 
-        
+        void getNamesGelecek()
+        {
+            using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            {
+                MySqlCommand cmd = new MySqlCommand("spBreakListNamesGrid;", conn) { CommandType = CommandType.StoredProcedure };               
+                cmd.Parameters.Add(new MySqlParameter("DepartmentName", _departmentNameFromMainForm));
+                cmd.Parameters.Add(new MySqlParameter("OperationDate", _operationDate));
+                conn.Open();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+                {
+                    DataTable dt = new DataTable();
+                    adapter.SelectCommand = cmd;
+                    {
+                        adapter.Fill(dt);
+                        gridPErsonel.DataSource = dt;
+                       
+                    }
+                }
+                conn.Close();
+            }
+
+        }
         void getTables()
         {
-            using (var conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
-            using (var command = new MySqlCommand("SELECT Game, No FROM livegame.tables where open = 1", conn)
+            using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var command = new MySqlCommand("SELECT * FROM livegame.tables where open = 1", conn)
             {
                 CommandType = CommandType.Text
             })
@@ -136,45 +145,50 @@ namespace Break_List
                     adapter.SelectCommand = command;
                     {
                         adapter.Fill(dt);
-                        gridControl1.DataSource = dt;
-                        
+                        gridMasa.DataSource = dt;
+                       
                         var rows = dt.Select();
-                        
+
 
                     }
                 }
 
 
             }
+            
 
         }
-
-       
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'livegameDataSet1.resources' table. You can move, or remove it, as needed.
-           // this.resourcesTableAdapter.Fill(this.livegameDataSet1.resources);
-            // TODO: This line of code loads data into the 'livegameDataSet1.appointments' table. You can move, or remove it, as needed.
-            this.appointmentsTableAdapter.Fill(this.livegameDataSet1.appointments);
             
+            schedulerControl.MouseWheel += schedulerControl_MouseWheel;
+            appointmentsTableAdapter.Fill(livegameDataSet1.appointments);
             getNames();
+            getNamesGelecek();
+            switch (_departmentNameFromMainForm)
+            {
+                case "Live Game":
+                    getTables();                    
+                    gridView1.Columns["No"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+                    break;
+                default:
+                    break;
+            }
             
-            if (_departmentNameFromMainForm == "Live Game")
-            {
-                getTables();
-                
-            }
-            else
-            {
-
-            }
         }
 
-     
+        void schedulerControl_MouseWheel(object sender, MouseEventArgs e) // Mouse asagi yukari hareket ediyor.
+        {
+            int index = schedulerControl.ActiveView.FirstVisibleResourceIndex;
+            if (e.Delta > 0 && index != 0)
+                schedulerControl.ActiveView.FirstVisibleResourceIndex--;
+            if (e.Delta < 0 && index != schedulerControl.Storage.Resources.Count - 1)
+                schedulerControl.ActiveView.FirstVisibleResourceIndex++;
+        }
+      
 
-       
-        
+
 
         #region #GetDragData
         SchedulerDragData GetDragData(GridView view)
@@ -187,21 +201,23 @@ namespace Break_List
             int count = selection.Length;
             for (int i = 0; i < count; i++)
             {
-                
+
                 int rowIndex = selection[i];
                 Appointment apt = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
                 string subject = (string)view.GetRowCellValue(rowIndex, "Game");
                 string location = (string)view.GetRowCellValue(rowIndex, "No");
                 apt.Subject = subject;
                 apt.Location = location;
-                
+                apt.CustomFields["Department"] = _departmentNameFromMainForm;
+                apt.CustomFields["ActualShiftDate"] = _operationDate;
                 apt.Duration = TimeSpan.FromMinutes(20);
                 //apt.CustomFields["Sure"] = 20;                          
                 appointments.Add(apt);
-                
+
             }
 
             return new SchedulerDragData(appointments, 0);
+            
         }
         #endregion #GetDragData
 
@@ -234,47 +250,113 @@ namespace Break_List
                 downHitInfo = hitInfo;
 
         }
-
         
-
+        
+        int resourceID { get; set; }
+        string resourceName { get; set; }
         private void schedulerControl_PopupMenuShowing(object sender, DevExpress.XtraScheduler.PopupMenuShowingEventArgs e)
         {
-            e.Menu.Items.Clear();            
+            e.Menu.Items.Clear();
+            SchedulerControl scheduler = (SchedulerControl)sender;
+            Point clickPoint = scheduler.PointToClient(Control.MousePosition);
+            SchedulerHitInfo hi = scheduler.ActiveView.ViewInfo.CalcHitInfo(clickPoint, true);
+            if (hi.HitTest == SchedulerHitTest.ResourceHeader)
+            {
+                e.Menu.Items.Clear();
+                resourceID = (int)hi.ViewInfo.Resource.Id;
+                resourceName = (string)hi.ViewInfo.Resource.Caption;
+                e.Menu.Items.Add(new SchedulerMenuItem(resourceName + " Bitir", eveGonder));
+                
+            }
+
+            if (hi.HitTest == SchedulerHitTest.Cell)
+            {
+                
+                if (schedulerControl.SelectedAppointments.Count == 1)
+                {
+                    
+                    e.Menu.Items.Clear();                    
+                    e.Menu.Items.Add(new SchedulerMenuItem("İşaretle", isaretle));
+                    e.Menu.Items.Add(new SchedulerMenuItem("İşareti Kaldır", isaretiKaldir));
+                }
+                else
+                {
+                    e.Menu.Items.Clear();
+                }
+                
+            }
+            if ((hi.HitTest == SchedulerHitTest.TimeScaleHeader)){
+                
+                AddCustomppointmentComparer(schedulerControl);
+            }
+                
         }
-
-      
-
-        private void DeleteSelectedRows(GridView view)
+        public void eveGonder(object sender, EventArgs e)
         {
-            view.DeleteRow(view.FocusedRowHandle);
+            DialogResult dialogResult = XtraMessageBox.Show(string.Format("{0} Bitirilecek", resourceName), "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                {
+                    MySqlCommand cmd = new MySqlCommand("spBreakPersonelBitir;", conn) { CommandType = CommandType.StoredProcedure };
+                    cmd.Parameters.Add(new MySqlParameter("resourceID", resourceID));
+                    cmd.Parameters.Add(new MySqlParameter("operationDate", _operationDate));
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                XtraMessageBox.Show(string.Format("{0} Bitirildi", resourceName));
+                getNames();
+            }
+            else
+            {
+                XtraMessageBox.Show("OK Sen Bilirsin", "Bitirilmedi");
+            }
+            
+        }
+        public void isaretle(object sender, EventArgs e)
+        {
+            Appointment apt;
+            if (schedulerControl.SelectedAppointments.Count == 1)
+            {
+                apt = schedulerControl.SelectedAppointments[0];
+                SchedulerMenuItem menu = (SchedulerMenuItem)sender;
+                //apt.Location = menu.Caption;
+                apt.LabelKey = 1;
+            }
+        }
+        public void isaretiKaldir(object sender, EventArgs e)
+        {
+            Appointment apt;
+            if (schedulerControl.SelectedAppointments.Count == 1)
+            {
+                apt = schedulerControl.SelectedAppointments[0];
+                SchedulerMenuItem menu = (SchedulerMenuItem)sender;
+                //apt.Location = menu.Caption;
+                apt.LabelKey = 0;
+            }
+        }
+        private static void DeleteSelectedRows(GridView view)
+        {
+            
+                view.DeleteRow(view.FocusedRowHandle);            
+                
 
         }
 
         private void gridControl1_DragLeave(object sender, EventArgs e)
         {
-            DeleteSelectedRows(gridView1);
+           DeleteSelectedRows(gridView1);
+          
+                
         }
 
-        private void btnYenile_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            getTables();
-        }
-        
-        private void btnPersonelYenile_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            getNames();
-            
-            schedulerControl.RefreshData();
-        }
-        //frmBreakList.ResizeEnd += new System.EventHandler(frmBreakList.frmBreakList_ResizeEnd);
-        private void frmBreakList_ResizeEnd(object sender, EventArgs e)
-        {
-           
-        }
+       
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             getTables();
+            gridView1.Columns["No"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -288,6 +370,149 @@ namespace Break_List
                 }
 
             }
+        }
+
+        private void schedulerControl_CustomDrawResourceHeader(object sender, CustomDrawObjectEventArgs e)
+        {
+            ResourceHeader header = (ResourceHeader)e.ObjectInfo;
+
+            if (header.Resource.CustomFields["Position"].Equals("Inspector"))
+            {
+                header.Appearance.HeaderCaption.ForeColor = Color.Red;
+                
+            }
+
+            if (header.Resource.CustomFields["Position"].Equals("Dealer"))
+            {
+                header.Appearance.HeaderCaption.ForeColor = Color.Blue;
+
+            }
+            
+        }
+
+        private void schedulerControl_InitAppointmentDisplayText(object sender, AppointmentDisplayTextEventArgs e)
+        {
+            e.Text = e.Appointment.Location;
+            //e.Appointment.Subject = "";
+        }
+        string locationData { get; set; }
+        string subjectData { get; set; }
+        private void schedulerStorage1_AppointmentDeleting(object sender, PersistentObjectCancelEventArgs e)
+        {
+            Appointment apt = (Appointment)e.Object;
+            locationData = apt.Location;
+            subjectData = apt.Subject;
+            DataTable sourceTable = gridMasa.DataSource as DataTable;
+            DataRow row = sourceTable.NewRow();
+            if (subjectData != "Break")
+            {
+                row["Game"] = subjectData;
+                row["No"] = locationData;
+                sourceTable.Rows.Add(row);
+                gridView1.Columns["No"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+            }
+            
+        }
+
+        private void schedulerControl_AppointmentViewInfoCustomizing_1(object sender, AppointmentViewInfoCustomizingEventArgs e)
+        {
+            if (e.ViewInfo.Appointment.Location.Contains("C"))
+            {
+                e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font, FontStyle.Bold);
+                e.ViewInfo.Appearance.ForeColor = Color.Red;
+                e.ViewInfo.Appearance.BorderColor = Color.Red;
+
+            }
+        }
+
+        private void schedulerControl_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            SchedulerHitInfo hInfo = schedulerControl.ActiveView.ViewInfo.CalcHitInfo(new Point(e.X, e.Y), true);          
+
+            Point pos = new Point(e.X, e.Y);
+            SchedulerViewInfoBase viewInfo = schedulerControl.ActiveView.ViewInfo;
+            SchedulerHitInfo hitInfo = viewInfo.CalcHitInfo(pos, true);
+
+            if (hitInfo.HitTest == SchedulerHitTest.ResourceHeader)
+            {
+                var resourceID = (int)hInfo.ViewInfo.Resource.Id;
+                MessageBox.Show(resourceID.ToString());
+            }
+        }
+
+        private void gridViewPers_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            var Column = e.Column;
+            if(Column == colGetir)
+            {
+                int rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "ResourceID");
+                using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                {
+                    MySqlCommand cmd = new MySqlCommand("spBreakPersonelGetir;", conn) { CommandType = CommandType.StoredProcedure };
+                    cmd.Parameters.Add(new MySqlParameter("resourceID", rowid));
+                    cmd.Parameters.Add(new MySqlParameter("operationDate", _operationDate));
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+               
+                
+                //getNamesGelecek();
+                DeleteSelectedRows(gridViewPers);
+                getNames();
+                
+            }
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = XtraMessageBox.Show("Yeni Gune Gecmek istediginizden Emin misiniz", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                {
+                    try
+                    {
+                        MySqlCommand cmd = new MySqlCommand("kopyala;", conn) { CommandType = CommandType.StoredProcedure };
+                        cmd.Parameters.Add(new MySqlParameter("departmentName", _departmentNameFromMainForm));
+                        cmd.Parameters.Add(new MySqlParameter("operationDate", _operationDate));
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch(Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.ToString());
+                    }
+                    finally
+                    {
+                        // Get the parameters/arguments passed to program if any
+                        string arguments = string.Empty;
+                        string[] args = Environment.GetCommandLineArgs();
+                        for (int i = 1; i < args.Length; i++) // args[0] is always exe path/filename
+                            arguments += args[i] + " ";
+
+                        // Restart current application, with same arguments/parameters
+                        Application.Exit();
+                        System.Diagnostics.Process.Start(Application.ExecutablePath, arguments);
+                    }
+                   
+                }
+               
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+            
+
+        }
+
+        
+        void AddCustomppointmentComparer(SchedulerControl serviceProvider)
+        {
+            MyAppointmentComparerService comparer = new MyAppointmentComparerService("Location");
+            serviceProvider.Services.AddService(typeof(IExternalAppointmentCompareService), comparer);
         }
     }
 }

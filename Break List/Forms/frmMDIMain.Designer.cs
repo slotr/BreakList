@@ -1,4 +1,4 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms
 {
     partial class frmMDIMain
     {
@@ -51,6 +51,7 @@
             this.btnTip = new DevExpress.XtraBars.BarButtonItem();
             this.btnOnayaDusenler = new DevExpress.XtraBars.BarButtonItem();
             this.btnPersonelCount = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEgitim = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonBreak = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPersonel = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -65,6 +66,8 @@
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnOnaylar = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbnEgitimler = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabFormDefaultManager1 = new DevExpress.XtraBars.TabFormDefaultManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -84,9 +87,7 @@
             this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.rbnEgitimler = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnEgitim = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEskiBreak = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).BeginInit();
@@ -120,9 +121,10 @@
             this.btnTip,
             this.btnOnayaDusenler,
             this.btnPersonelCount,
-            this.btnEgitim});
+            this.btnEgitim,
+            this.btnEskiBreak});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 15;
+            this.ribbon.MaxItemId = 16;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonBreak,
@@ -133,7 +135,7 @@
             this.rbnPageKasa,
             this.rbnOnaylar,
             this.rbnEgitimler});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
+            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.Size = new System.Drawing.Size(1227, 83);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
@@ -193,7 +195,6 @@
             this.stOperationDate.Id = 10;
             this.stOperationDate.Name = "stOperationDate";
             this.stOperationDate.TextAlignment = System.Drawing.StringAlignment.Near;
-            this.stOperationDate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.stOperationDate_ItemClick);
             // 
             // department
             // 
@@ -207,7 +208,6 @@
             this.bstuserName.Id = 12;
             this.bstuserName.Name = "bstuserName";
             this.bstuserName.TextAlignment = System.Drawing.StringAlignment.Near;
-            this.bstuserName.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bstuserName_ItemClick);
             // 
             // btnUsers
             // 
@@ -307,6 +307,15 @@
             this.btnPersonelCount.Name = "btnPersonelCount";
             this.btnPersonelCount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPersonelCount_ItemClick);
             // 
+            // btnEgitim
+            // 
+            this.btnEgitim.Caption = "Eğitim Girişleri";
+            this.btnEgitim.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.Glyph")));
+            this.btnEgitim.Id = 14;
+            this.btnEgitim.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.LargeGlyph")));
+            this.btnEgitim.Name = "btnEgitim";
+            this.btnEgitim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEgitim_ItemClick);
+            // 
             // ribbonBreak
             // 
             this.ribbonBreak.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -377,6 +386,7 @@
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnEskiBreak);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Calisma Saatleri";
             // 
@@ -405,6 +415,19 @@
             this.ribbonPageGroup6.ItemLinks.Add(this.btnOnayaDusenler);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "ribbonPageGroup6";
+            // 
+            // rbnEgitimler
+            // 
+            this.rbnEgitimler.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup7});
+            this.rbnEgitimler.Name = "rbnEgitimler";
+            this.rbnEgitimler.Text = "Eğitimler";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnEgitim);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            this.ribbonPageGroup7.Text = "ribbonPageGroup7";
             // 
             // ribbonStatusBar
             // 
@@ -548,6 +571,8 @@
             this.xtraTabbedMdiManager1.AppearancePage.HeaderActive.Options.UseBackColor = true;
             this.xtraTabbedMdiManager1.AppearancePage.HeaderActive.Options.UseFont = true;
             this.xtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
+            this.xtraTabbedMdiManager1.FloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.False;
+            this.xtraTabbedMdiManager1.FloatOnDrag = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTabbedMdiManager1.HeaderButtons = ((DevExpress.XtraTab.TabButtons)(((DevExpress.XtraTab.TabButtons.Prev | DevExpress.XtraTab.TabButtons.Next) 
             | DevExpress.XtraTab.TabButtons.Close)));
             this.xtraTabbedMdiManager1.HeaderButtonsShowMode = DevExpress.XtraTab.TabButtonShowMode.Always;
@@ -556,27 +581,14 @@
             this.xtraTabbedMdiManager1.SetNextMdiChildMode = DevExpress.XtraTabbedMdi.SetNextMdiChildMode.TabControl;
             this.xtraTabbedMdiManager1.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // rbnEgitimler
+            // btnEskiBreak
             // 
-            this.rbnEgitimler.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup7});
-            this.rbnEgitimler.Name = "rbnEgitimler";
-            this.rbnEgitimler.Text = "Eğitimler";
-            // 
-            // ribbonPageGroup7
-            // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.btnEgitim);
-            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            this.ribbonPageGroup7.Text = "ribbonPageGroup7";
-            // 
-            // btnEgitim
-            // 
-            this.btnEgitim.Caption = "Eğitim Girişleri";
-            this.btnEgitim.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.Glyph")));
-            this.btnEgitim.Id = 14;
-            this.btnEgitim.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.LargeGlyph")));
-            this.btnEgitim.Name = "btnEgitim";
-            this.btnEgitim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEgitim_ItemClick);
+            this.btnEskiBreak.Caption = "Eski Break List";
+            this.btnEskiBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.Glyph")));
+            this.btnEskiBreak.Id = 15;
+            this.btnEskiBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.LargeGlyph")));
+            this.btnEskiBreak.Name = "btnEskiBreak";
+            this.btnEskiBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEskiBreak_ItemClick);
             // 
             // frmMDIMain
             // 
@@ -674,5 +686,6 @@
         private DevExpress.XtraBars.BarButtonItem btnEgitim;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnEgitimler;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem btnEskiBreak;
     }
 }

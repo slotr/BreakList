@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
@@ -14,7 +9,7 @@ using Break_List.Properties;
 namespace Break_List.Forms.Hatalar
 {
 
-    public partial class frmHataEkle : DevExpress.XtraEditors.XtraForm
+    public partial class frmHataEkle : XtraForm
     {
         public string personelID { get; set; }
         private MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2);
@@ -34,7 +29,7 @@ namespace Break_List.Forms.Hatalar
 
             if(dateEdit1.EditValue != null)
             {
-                cmd = new MySqlCommand("INSERT INTO lghata(Tarih, OVP,UNP,CRDH,LGE,CLE,WSB,MSD,personelID) VALUES(@Tarih, @OVP,@UNP,@CRDH,@LGE,@CLE,@WSB,@MSD,@personelID)", con);
+                cmd = new MySqlCommand("INSERT INTO lghata(Tarih, OVP,UNP,CRDH,LGE,CLE,WSB,MSD,personelID,aciklama) VALUES(@Tarih, @OVP,@UNP,@CRDH,@LGE,@CLE,@WSB,@MSD,@personelID,@aciklama)", con);
 
                 cmd.Parameters.Add("@Tarih", MySqlDbType.DateTime);
                 cmd.Parameters.Add("@OVP", MySqlDbType.TinyText);
@@ -45,6 +40,7 @@ namespace Break_List.Forms.Hatalar
                 cmd.Parameters.Add("@WSB", MySqlDbType.TinyText);
                 cmd.Parameters.Add("@MSD", MySqlDbType.TinyText);
                 cmd.Parameters.Add("@personelID", MySqlDbType.VarChar, 45);
+                cmd.Parameters.Add("@aciklama", MySqlDbType.VarChar, 500);
                 cmd.Parameters["@Tarih"].Value = Convert.ToDateTime(dateEdit1.EditValue.ToString());
                 cmd.Parameters["@OVP"].Value = checkEdit1.EditValue.ToString();
                 cmd.Parameters["@UNP"].Value = checkEdit2.EditValue.ToString();
@@ -54,6 +50,7 @@ namespace Break_List.Forms.Hatalar
                 cmd.Parameters["@WSB"].Value = checkEdit6.EditValue.ToString();
                 cmd.Parameters["@MSD"].Value = checkEdit7.EditValue.ToString();
                 cmd.Parameters["@personelID"].Value = labelControl1.Text;
+                cmd.Parameters["@aciklama"].Value = textEdit1.Text;
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -64,12 +61,10 @@ namespace Break_List.Forms.Hatalar
            
             else
             {
-                string caption = "Hata Yaptınız";
-                string message = "Tarih girmeden hata raporu gıremezsiniz!!! ";
+                const string caption = "Hata Yaptınız";
+                const string message = "Tarih girmeden hata raporu gıremezsiniz!!! ";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result;
-
-                result = MessageBox.Show(message, caption, buttons);
+                DialogResult result = MessageBox.Show(message, caption, buttons);
 
                 if (result == DialogResult.OK)
                 {

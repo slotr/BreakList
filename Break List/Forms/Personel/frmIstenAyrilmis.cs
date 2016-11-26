@@ -195,7 +195,7 @@ namespace Break_List
            
                 personelID = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
 
-            var personel = new frmPersonelDetails
+            var personel = new Break_List.Forms.Personel.frmPersonelDetails
             {
                 MdiParent = this.ParentForm,
                 _personelID = personelID.ToString(),

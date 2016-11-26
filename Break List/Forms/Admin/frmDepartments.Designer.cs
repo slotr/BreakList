@@ -55,9 +55,9 @@
             // 
             // txtDepartment
             // 
-            this.txtDepartment.Location = new System.Drawing.Point(106, 12);
+            this.txtDepartment.Location = new System.Drawing.Point(90, 12);
             this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(104, 20);
+            this.txtDepartment.Size = new System.Drawing.Size(120, 20);
             this.txtDepartment.StyleController = this.dataLayoutControl1;
             this.txtDepartment.TabIndex = 4;
             // 
@@ -78,8 +78,8 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(202, 62);
-            this.layoutControlItem1.Text = "Department Name:";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(91, 13);
+            this.layoutControlItem1.Text = "Departman Adi:";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(75, 13);
             // 
             // windowsUIButtonPanelMain
             // 
@@ -121,6 +121,9 @@
             this.labelControl.AllowHtmlString = true;
             this.labelControl.Appearance.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.labelControl.Appearance.Options.UseFont = true;
+            this.labelControl.Appearance.Options.UseForeColor = true;
+            this.labelControl.Appearance.Options.UseTextOptions = true;
             this.labelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.labelControl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.labelControl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -129,7 +132,7 @@
             this.labelControl.Padding = new System.Windows.Forms.Padding(10, 5, 0, 0);
             this.labelControl.Size = new System.Drawing.Size(222, 30);
             this.labelControl.TabIndex = 1;
-            this.labelControl.Text = "Departments";
+            this.labelControl.Text = "Departman Kaydi";
             // 
             // frmDepartments
             // 

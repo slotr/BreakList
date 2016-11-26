@@ -1,47 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 using DevExpress.XtraLayout.Utils;
-using DevExpress.DataAccess.Sql;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Threading.Tasks;
 
-namespace Break_List
+namespace Break_List.Forms.Personel
 {
-    public partial class frmPersonelDetails : DevExpress.XtraEditors.XtraForm
+    public partial class frmPersonelDetails : XtraForm
     {
-        #region Properties
-        private MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2);
+        private const string conString = "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
+        private readonly MySqlConnection con = new MySqlConnection(conString);
         private MySqlCommand cmd;
         private FileStream fs;
         private BinaryReader br;
         public string _personelID { get; set; }
         public string _kayitID { get; set; }
         public int UniqueID { get; set; }
-        public string _departmentName {get; set;}
+        public string _departmentName { get; set; }
         public string _pozisyon { get; set; }
         public string _UserID { get; set; }
         public string _UserNameFromMainForm { get; set; }
-        #endregion
+        public bool hasPermissionToVacations { get; set; }
+        public bool hasPermissionsToPersonelEditAdd { get; set; }
+        public bool hasPermissionToAddEditTip { get; set; }
+        public bool hasPermissionToAddEditmaas { get; set; }
         public frmPersonelDetails()
         {
             InitializeComponent();
-
         }
-        #region Personel
+        private void checkPermissions()
+        {
+            var conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var command = conn.CreateCommand();
+            command.CommandText = string.Format("SELECT * from permissions WHERE UserID ='{0}'", _UserID);
+            try
+            {
+                conn.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There were an Error", ex.ToString());
+            }
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                hasPermissionToVacations = Convert.ToBoolean(reader["Vacations"].ToString());
+                hasPermissionsToPersonelEditAdd = Convert.ToBoolean(reader["personelEkle"].ToString());
+                hasPermissionToAddEditTip = Convert.ToBoolean(reader["MaasArtisi"].ToString());
+                hasPermissionToAddEditmaas = Convert.ToBoolean(reader["maasedit"].ToString());
+            }
+            conn.Close();
+        }
+        private void frmPersonelDetails_Load(object sender, EventArgs e)
+        {
+            if (_personelID != null)
+            {
+                getPersonel();
+                calculateVacation();
+                getUsedVacations();
+                getDepartments();
+                getVacations();
+                getToplamOffAlacagi();
+                checkPermissions();
+                labelControl.Text = string.Format("Personel: {0} | Departmanı: {1} | Pozisyonu: {2} | Sicil No: {3} | Kayıt No:{4}", txtNameSurname.Text, _departmentName, _pozisyon, _personelID, _kayitID);
+                LockControls(this);
+
+                if (hasPermissionsToPersonelEditAdd == false)
+                {
+                    windowsUIButtonPanelMain.Visible = false;
+                    btnAddVacation.Enabled = false;
+                    btnMaasArtisi.Enabled = false;
+                }
+
+                else
+                {
+                    windowsUIButtonPanelMain.Visible = true;
+                    btnAddVacation.Enabled = true;
+                    btnMaasArtisi.Enabled = true;
+                }
+
+                if (hasPermissionToAddEditmaas) {
+                    txtMaas.Enabled = true;
+                    txtTip.Enabled = true;
+                }
+
+                else {
+                    tabMaas.PageVisible = false;
+                    txtMaas.Enabled = false;
+                    txtTip.Enabled = false;
+                }
+                    windowsUIButtonPanelMain.Buttons["Save"].Properties.Caption = "Edit";
+                windowsUIButtonPanelMain.Buttons["Save And New"].Properties.Visible = false;
+                windowsUIButtonPanelMain.Buttons["Save And Close"].Properties.Visible = false;
+                
+            }
+            else
+            {
+                getDepartments();
+                tabLayout.Visibility = LayoutVisibility.Never;
+                labelControl.Text = "Yeni Personel Kaydı";
+            }
+        }
         private void addPersonel()
         {
             try
@@ -50,194 +118,229 @@ namespace Break_List
                 {
                     if ((txtNameSurname.Text.Length <= 0 ? true : lblFileName.Text.Length <= 0))
                     {
-                        MessageBox.Show("Resim Eklenmedi", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        MessageBox.Show("Resim Eklenmedi", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     }
                     else
                     {
-                        string FileName = lblFileName.Text;
+                        var FileName = lblFileName.Text;
                         byte[] ImageData;
                         fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
                         br = new BinaryReader(fs);
                         ImageData = br.ReadBytes((int)fs.Length);
                         br.Close();
-                        fs.Close();                      
-                            
-                            cmd = new MySqlCommand("INSERT INTO resources(ResourceID, ResourceName, Image, Department, StartDate,  BirthDate, Position, DocumentType, DocumentNo, ValidUntil, WorkPermitStart, WorkPermitEnd, PassportDNNo, SSKNO, IhtiyatNo,  ReasonForLeaving, Adres, Telefon, Active, Maas, TipPuani, Uyruk, sex, email, MedeniHal, Askerlik, Ehliyet, aciltelefon ) VALUES(@ResourceID, @ResourceName, @Image, @Department, @StartDate,  @BirthDate, @Position, @DocumentType, @DocumentNo, @ValidUntil, @WorkPermitStart, @WorkPermitEnd, @PassportDNNo, @SSKNO, @IhtiyatNo,  @ReasonForLeaving, @Adres, @Telefon, @Active, @Maas, @TipPuani, @Uyruk, @sex, @email, @MedeniHal, @Askerlik, @Ehliyet, @aciltelefon)", con);
-                            cmd.Parameters.Add("@ResourceID"        , MySqlDbType.Int32)                ;
-                            cmd.Parameters.Add("@ResourceName"      , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@Image"             , MySqlDbType.Blob)                 ;
-                            cmd.Parameters.Add("@Department"        , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@StartDate"         , MySqlDbType.Date)                 ;
-                            //cmd.Parameters.Add("@EndDate"           , MySqlDbType.Date)                 ;
-                            cmd.Parameters.Add("@BirthDate"         , MySqlDbType.Date)                 ;
-                            cmd.Parameters.Add("@Position"          , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@DocumentType"      , MySqlDbType.VarChar,45)           ;
-                            cmd.Parameters.Add("@DocumentNo"        , MySqlDbType.VarChar,45)           ;
-                            cmd.Parameters.Add("@ValidUntil"        , MySqlDbType.Date)                 ;
-                            cmd.Parameters.Add("@WorkPermitStart"   , MySqlDbType.Date)                 ;
-                            cmd.Parameters.Add("@WorkPermitEnd"     , MySqlDbType.Date)                 ;
-                            cmd.Parameters.Add("@PassportDNNo"      ,MySqlDbType.VarChar, 45)           ;
-                            cmd.Parameters.Add("@SSKNO"             , MySqlDbType.VarChar ,45)          ;
-                            cmd.Parameters.Add("@IhtiyatNo"         , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@ReasonForLeaving"  , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@Adres"             , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@Telefon"           , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@Active"            , MySqlDbType.Int32)                ;
-                            cmd.Parameters.Add("@Maas"              , MySqlDbType.Decimal)              ;
-                            cmd.Parameters.Add("@TipPuani"          , MySqlDbType.Decimal);
-                            cmd.Parameters.Add("@Uyruk"             , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@sex"               , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@email"             , MySqlDbType.VarChar, 45)          ;                        
-                            cmd.Parameters.Add("@MedeniHal"         , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@Askerlik"          , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@Ehliyet"           , MySqlDbType.VarChar, 45)          ;
-                            cmd.Parameters.Add("@aciltelefon"       , MySqlDbType.VarChar, 45)          ;
-                       
-                            cmd.Parameters["@ResourceID"      ].Value = txtPersonelId.Text;
-                            cmd.Parameters["@ResourceName"    ].Value = txtNameSurname.Text;
-                            cmd.Parameters["@Image"           ].Value = ImageData;
-                            cmd.Parameters["@Department"      ].Value = cmbDepartment.Text;
-                            cmd.Parameters["@StartDate"       ].Value = dtStartDate.EditValue;
-                            //cmd.Parameters["@EndDate"         ].Value = dtEndDate.EditValue;
-                            cmd.Parameters["@BirthDate"       ].Value = dtBirthDate.EditValue;
-                            cmd.Parameters["@Position"        ].Value = txtPosition.Text;
-                            cmd.Parameters["@DocumentType"    ].Value = cmbDocumentType.Text;
-                            cmd.Parameters["@DocumentNo"      ].Value = cmbDocumentType.Text;
-                            cmd.Parameters["@ValidUntil"      ].Value = txtValidUntil.EditValue;
-                            cmd.Parameters["@WorkPermitStart" ].Value = dtIzinBaslangic.EditValue;
-                            cmd.Parameters["@WorkPermitEnd"   ].Value = dtIzinBitis.EditValue;
-                            cmd.Parameters["@PassportDNNo"    ].Value = txtPassportNo.Text;
-                            cmd.Parameters["@SSKNO"           ].Value = txtSSKNo.Text;
-                            cmd.Parameters["@IhtiyatNo"       ].Value = txtIhtiyat.Text;
-                            //cmd.Parameters["@ReasonForLeaving"].Value = txtistencikis.Text;
-                            cmd.Parameters["@Adres"           ].Value = txtAddress.Text;
-                            cmd.Parameters["@Telefon"         ].Value = txtTelefon.Text;                            
-                            cmd.Parameters["@Active"          ].Value = Convert.ToInt32(radioGroup1.EditValue.ToString());
-                            cmd.Parameters["@Maas"            ].Value = Convert.ToDecimal(txtMaas.Text);
-                            cmd.Parameters["@TipPuani"        ].Value = Convert.ToDouble(txtTip.Text);
-                            cmd.Parameters["@Uyruk"           ].Value = cmbUyruk.Text;
-                            cmd.Parameters["@sex"].Value = cmbCinsiyet.Text;
-                            cmd.Parameters["@email"].Value = txtEmail.Text;
-                            cmd.Parameters["@MedeniHal"].Value = txtMedeniHali.Text;
-                            cmd.Parameters["@Askerlik"].Value = cmbAskerlik.Text;
-                            cmd.Parameters["@Ehliyet"].Value = cmbEhliyet.Text;
-                            cmd.Parameters["@aciltelefon"].Value = txtAcilTel.Text;
-                        con.Open();                           
-                            
-                    }
-                        if (cmd.ExecuteNonQuery() > 0)
-                        {
-                            MessageBox.Show("Personel Added Succesfully");
-                        }
-                        con.Close();
+                        fs.Close();
 
-                     }
-                        catch (Exception exception)
-                        {
-                            MessageBox.Show(exception.Message);
-                        }
+                        cmd = new MySqlCommand("INSERT INTO resources(ResourceID, ResourceName, Image, Department, StartDate, EndDate,  BirthDate, Position, DocumentType, DocumentNo, ValidUntil, WorkPermitStart, WorkPermitEnd, PassportDNNo, SSKNO, IhtiyatNo,  ReasonForLeaving, Adres, Telefon, Active, Maas, TipPuani, Uyruk, sex, email, MedeniHal, Askerlik, Ehliyet, aciltelefon ) VALUES(@ResourceID, @ResourceName, @Image, @Department, @StartDate, @EndDate , @BirthDate, @Position, @DocumentType, @DocumentNo, @ValidUntil, @WorkPermitStart, @WorkPermitEnd, @PassportDNNo, @SSKNO, @IhtiyatNo,  @ReasonForLeaving, @Adres, @Telefon, @Active, @Maas, @TipPuani, @Uyruk, @sex, @email, @MedeniHal, @Askerlik, @Ehliyet, @aciltelefon)", con);
+                        cmd.Parameters.Add("@ResourceID"        , MySqlDbType.Int32)                ;
+                        cmd.Parameters.Add("@ResourceName"      , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@Image"             , MySqlDbType.Blob)                 ;
+                        cmd.Parameters.Add("@Department"        , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@StartDate"         , MySqlDbType.Date)                 ; 
+                        cmd.Parameters.Add("@EndDate"           , MySqlDbType.Date)                 ;
+                        cmd.Parameters.Add("@BirthDate"         , MySqlDbType.Date)                 ;
+                        cmd.Parameters.Add("@Position"          , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@DocumentType"      , MySqlDbType.VarChar, 45)           ;
+                        cmd.Parameters.Add("@DocumentNo"        , MySqlDbType.VarChar, 45)           ;
+                        cmd.Parameters.Add("@ValidUntil"        , MySqlDbType.Date)                 ;
+                        cmd.Parameters.Add("@WorkPermitStart"   , MySqlDbType.Date)                 ;
+                        cmd.Parameters.Add("@WorkPermitEnd"     , MySqlDbType.Date)                 ;
+                        cmd.Parameters.Add("@PassportDNNo"      , MySqlDbType.VarChar, 45)           ;
+                        cmd.Parameters.Add("@SSKNO"             , MySqlDbType.VarChar , 45)          ;
+                        cmd.Parameters.Add("@IhtiyatNo"         , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@ReasonForLeaving"  , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@Adres"             , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@Telefon"           , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@Active"            , MySqlDbType.Int32)                ;
+                        cmd.Parameters.Add("@Maas"              , MySqlDbType.Decimal)              ;
+                        cmd.Parameters.Add("@TipPuani"          , MySqlDbType.Decimal);
+                        cmd.Parameters.Add("@Uyruk"             , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@sex"               , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@email"             , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@MedeniHal"         , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@Askerlik"          , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@Ehliyet"           , MySqlDbType.VarChar, 45)          ;
+                        cmd.Parameters.Add("@aciltelefon"       , MySqlDbType.VarChar, 45)          ;
+
+                        cmd.Parameters["@ResourceID"      ].Value = txtPersonelId.Text;
+                        cmd.Parameters["@ResourceName"    ].Value = txtNameSurname.Text;
+                        cmd.Parameters["@Image"           ].Value = ImageData;
+                        cmd.Parameters["@Department"      ].Value = cmbDepartment.Text;
+                        cmd.Parameters["@StartDate"       ].Value = dtStartDate.EditValue != null ? (object)dtStartDate.DateTime.Date : (object)DBNull.Value;
+                        cmd.Parameters["@EndDate"         ].Value = dtEnd.EditValue != null ? (object)dtEnd.DateTime.Date : (object)DBNull.Value;
+                        cmd.Parameters["@BirthDate"       ].Value = dtBirthDate.EditValue != null ? (object)dtBirthDate.DateTime.Date : (object)DBNull.Value;
+                        cmd.Parameters["@Position"        ].Value = txtPosition.Text;
+                        cmd.Parameters["@DocumentType"    ].Value = cmbDocumentType.Text;
+                        cmd.Parameters["@DocumentNo"      ].Value = txtDocumentNo.Text;
+                        cmd.Parameters["@ValidUntil"      ].Value = txtValidUntil.EditValue != null ? (object)txtValidUntil.DateTime.Date : (object)DBNull.Value;
+                        cmd.Parameters["@WorkPermitStart" ].Value = dtIzinBaslangic.EditValue != null ? (object)dtIzinBaslangic.DateTime.Date : (object)DBNull.Value;
+                        cmd.Parameters["@WorkPermitEnd"   ].Value = dtIzinBitis.EditValue != null ? (object)dtIzinBitis.DateTime.Date : (object)DBNull.Value;
+                        cmd.Parameters["@PassportDNNo"    ].Value = txtPassportNo.Text;
+                        cmd.Parameters["@SSKNO"           ].Value = txtSSKNo.Text;
+                        cmd.Parameters["@IhtiyatNo"       ].Value = txtIhtiyat.Text;
+                        cmd.Parameters["@ReasonForLeaving"].Value = cmbistenayrilma.Text;
+                        cmd.Parameters["@Adres"           ].Value = txtAddress.Text;
+                        cmd.Parameters["@Telefon"         ].Value = txtTelefon.Text;
+                        cmd.Parameters["@Active"          ].Value = Convert.ToInt32(radioGroup1.EditValue.ToString());
+                        cmd.Parameters["@Maas"            ].Value = Convert.ToDecimal(txtMaas.Text);
+                        cmd.Parameters["@TipPuani"        ].Value = Convert.ToDouble(txtTip.Text);
+                        cmd.Parameters["@Uyruk"           ].Value = cmbUyruk.Text;
+                        cmd.Parameters["@sex"].Value = cmbCinsiyet.Text;
+                        cmd.Parameters["@email"].Value = txtEmail.Text;
+                        cmd.Parameters["@MedeniHal"].Value = txtMedeniHali.Text;
+                        cmd.Parameters["@Askerlik"].Value = cmbAskerlik.Text;
+                        cmd.Parameters["@Ehliyet"].Value = cmbEhliyet.Text;
+                        cmd.Parameters["@aciltelefon"].Value = txtAcilTel.Text;
+                        con.Open();
                     }
-                    finally
+                    if (cmd.ExecuteNonQuery() > 0)
                     {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
+                        MessageBox.Show("Personel Added Succesfully");
                     }
+                    con.Close();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
         }
 
-        
+
+
+
         private void updatePersonel()
         {
+            if (lblFileName.Text.Length > 0)
+            {
+                try
+                {
+                    var FileName = lblFileName.Text;
+                    byte[] ImageData;
+                    fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
+                    br = new BinaryReader(fs);
+                    ImageData = br.ReadBytes((int)fs.Length);
+                    br.Close();
+                    fs.Close();
 
+                    using (var conn = new MySqlConnection(conString))
+                    {
+                        using (var cmd = new MySqlCommand("spUpdatePersonelWithImage;", conn)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        })
+                        {
+                            cmd.Parameters.Add(new MySqlParameter("_ResourceName", txtNameSurname.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Image", ImageData));
+                            cmd.Parameters.Add(new MySqlParameter("_Department", cmbDepartment.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_StartDate", dtStartDate.EditValue != null ? (object)dtStartDate.DateTime.Date : (object)DBNull.Value));
+                            cmd.Parameters.Add(new MySqlParameter("_EndDate", dtEnd.EditValue != null ? (object)dtEnd.DateTime.Date : (object)DBNull.Value));
+                            cmd.Parameters.Add(new MySqlParameter("_BirthDate", dtBirthDate.EditValue != null ? (object)dtBirthDate.DateTime.Date : (object)DBNull.Value));
+                            cmd.Parameters.Add(new MySqlParameter("_Position", txtPosition.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_DocumentType", cmbDocumentType.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_DocumentNo", txtDocumentNo.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_ValidUntil", txtValidUntil.EditValue != null ? (object)txtValidUntil.DateTime.Date : (object)DBNull.Value));
+                            cmd.Parameters.Add(new MySqlParameter("_WorkPermitStart", dtIzinBaslangic.EditValue != null ? (object)dtIzinBaslangic.DateTime.Date : (object)DBNull.Value));
+                            cmd.Parameters.Add(new MySqlParameter("_WorkPermitEnd", dtIzinBitis.EditValue != null ? (object)dtIzinBitis.DateTime.Date : (object)DBNull.Value));
+                            cmd.Parameters.Add(new MySqlParameter("_PassportDNNo", txtPassportNo.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_SSKNO", txtSSKNo.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_IhtiyatNo", txtIhtiyat.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_ReasonForLeaving", cmbistenayrilma.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Adres", txtAddress.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Telefon", txtTelefon.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Active", radioGroup1.EditValue.ToString()));
+                            cmd.Parameters.Add(new MySqlParameter("_Maas", txtMaas.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_TipPuani", txtTip.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Uyruk", cmbUyruk.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_sex", cmbCinsiyet.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_email", txtEmail.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_MedeniHal", txtMedeniHali.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Askerlik", cmbAskerlik.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_Ehliyet", cmbEhliyet.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_aciltelefon", txtAcilTel.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_uniqueID", UniqueID));
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
+                   MessageBox.Show("Personel Bilgisi Update edildi");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "Bir Hata Oluştu.");
+                }
+                return;
+            }
             try
             {
-                cmd = new MySqlCommand("UPDATE resources SET ResourceName = @ResourceName,  Department = @Department, StartDate = @StartDate, BirthDate =@BirthDate, Position=@Position, DocumentType = @DocumentType, DocumentNo = @DocumentNo, ValidUntil = @ValidUntil, WorkPermitStart = @WorkPermitStart, WorkPermitEnd = @WorkPermitEnd, PassportDNNo = @PassportDNNo, SSKNO = @SSKNO, IhtiyatNo = @IhtiyatNo,  ReasonForLeaving = @ReasonForLeaving, Adres = @Adres, Telefon = @Telefon, Active = @Active, Maas=@Maas, TipPuani=@TipPuani ,Uyruk=@Uyruk, sex=@sex, email=@email, MedeniHal=@MedeniHal, Askerlik=@Askerlik, Ehliyet=@Ehliyet, aciltelefon=@aciltelefon WHERE UniqueID= @UniqueID", con);
-
-                cmd.Parameters.Add("@ResourceName", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@Department", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@StartDate", MySqlDbType.Date);
-                //cmd.Parameters.Add("@EndDate", MySqlDbType.Date);
-                cmd.Parameters.Add("@BirthDate", MySqlDbType.Date);
-                cmd.Parameters.Add("@Position", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@DocumentType", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@DocumentNo", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@ValidUntil", MySqlDbType.Date);
-                cmd.Parameters.Add("@WorkPermitStart", MySqlDbType.Date);
-                cmd.Parameters.Add("@WorkPermitEnd", MySqlDbType.Date);
-                cmd.Parameters.Add("@PassportDNNo", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@SSKNO", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@IhtiyatNo", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@ReasonForLeaving", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@Adres", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@Telefon", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@Active", MySqlDbType.Int32);
-                cmd.Parameters.Add("@Maas", MySqlDbType.Decimal);
-                cmd.Parameters.Add("@TipPuani", MySqlDbType.Double);
-                cmd.Parameters.Add("@Uyruk", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@sex", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@email", MySqlDbType.VarChar, 45);                
-                cmd.Parameters.Add("@MedeniHal", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@Askerlik", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@Ehliyet", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@aciltelefon", MySqlDbType.VarChar, 45);
-                cmd.Parameters.Add("@UniqueID", MySqlDbType.Int32);
-
-                cmd.Parameters["@ResourceName"].Value = txtNameSurname.Text;
-                cmd.Parameters["@Department"].Value = cmbDepartment.Text;
-                cmd.Parameters["@StartDate"].Value = Convert.ToDateTime(dtStartDate.EditValue);
-                //cmd.Parameters["@EndDate"].Value = Convert.ToDateTime(dtEndDate.EditValue);
-                cmd.Parameters["@BirthDate"].Value = Convert.ToDateTime(dtBirthDate.EditValue);
-                cmd.Parameters["@Position"].Value = txtPosition.Text;
-                cmd.Parameters["@DocumentType"].Value = cmbDocumentType.Text;
-                cmd.Parameters["@DocumentNo"].Value = cmbDocumentType.Text;
-                cmd.Parameters["@ValidUntil"].Value = Convert.ToDateTime(txtValidUntil.EditValue);
-                cmd.Parameters["@WorkPermitStart"].Value = Convert.ToDateTime(dtIzinBaslangic.EditValue);
-                cmd.Parameters["@WorkPermitEnd"].Value = Convert.ToDateTime(dtIzinBitis.EditValue);
-                cmd.Parameters["@PassportDNNo"].Value = txtPassportNo.Text;
-                cmd.Parameters["@SSKNO"].Value = txtSSKNo.Text;
-                cmd.Parameters["@IhtiyatNo"].Value = txtIhtiyat.Text;
-                //cmd.Parameters["@ReasonForLeaving"].Value = txtistencikis.Text;
-                cmd.Parameters["@Adres"].Value = txtAddress.Text;
-                cmd.Parameters["@Telefon"].Value = txtTelefon.Text;
-                cmd.Parameters["@Active"].Value = Convert.ToInt32(radioGroup1.EditValue.ToString());
-                cmd.Parameters["@Maas"].Value = Convert.ToDecimal(txtMaas.Text);
-                cmd.Parameters["@TipPuani"].Value = Convert.ToDecimal(txtTip.Text);
-                cmd.Parameters["@Uyruk"].Value = cmbUyruk.Text;
-                cmd.Parameters["@sex"].Value = cmbCinsiyet.Text;
-                cmd.Parameters["@email"].Value = txtEmail.Text;
-                cmd.Parameters["@MedeniHal"].Value = txtMedeniHali.Text;
-                cmd.Parameters["@Askerlik"].Value = cmbAskerlik.Text;
-                cmd.Parameters["@Ehliyet"].Value = cmbEhliyet.Text;
-                cmd.Parameters["@aciltelefon"].Value = txtAcilTel.Text;
-                cmd.Parameters["@UniqueID"].Value = UniqueID;
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
+                using (var conn = new MySqlConnection(conString))
+                {
+                    using (var cmd = new MySqlCommand("spUpdatePersonelWithoutImage;", conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("_ResourceName", txtNameSurname.Text));                        
+                        cmd.Parameters.Add(new MySqlParameter("_Department", cmbDepartment.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_StartDate", dtStartDate.EditValue != null ? (object)dtStartDate.DateTime.Date : (object)DBNull.Value));
+                        cmd.Parameters.Add(new MySqlParameter("_EndDate", dtEnd.EditValue != null ? (object)dtEnd.DateTime.Date : (object)DBNull.Value));
+                        cmd.Parameters.Add(new MySqlParameter("_BirthDate", dtBirthDate.EditValue != null ? (object)dtBirthDate.DateTime.Date : (object)DBNull.Value));
+                        cmd.Parameters.Add(new MySqlParameter("_Position", txtPosition.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_DocumentType", cmbDocumentType.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_DocumentNo", txtDocumentNo.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_ValidUntil", txtValidUntil.EditValue != null ? (object)txtValidUntil.DateTime.Date : (object)DBNull.Value));
+                        cmd.Parameters.Add(new MySqlParameter("_WorkPermitStart", dtIzinBaslangic.EditValue != null ? (object)dtIzinBaslangic.DateTime.Date : (object)DBNull.Value));
+                        cmd.Parameters.Add(new MySqlParameter("_WorkPermitEnd", dtIzinBitis.EditValue != null ? (object)dtIzinBitis.DateTime.Date : (object)DBNull.Value));
+                        cmd.Parameters.Add(new MySqlParameter("_PassportDNNo", txtPassportNo.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_SSKNO", txtSSKNo.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_IhtiyatNo", txtIhtiyat.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_ReasonForLeaving", cmbistenayrilma.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_Adres", txtAddress.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_Telefon", txtTelefon.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_Active", radioGroup1.EditValue.ToString()));
+                        cmd.Parameters.Add(new MySqlParameter("_Maas", txtMaas.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_TipPuani", txtTip.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_Uyruk", cmbUyruk.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_sex", cmbCinsiyet.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_email", txtEmail.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_MedeniHal", txtMedeniHali.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_Askerlik", cmbAskerlik.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_Ehliyet", cmbEhliyet.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_aciltelefon", txtAcilTel.Text));
+                        cmd.Parameters.Add(new MySqlParameter("_uniqueID", UniqueID));
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                }
+              
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString(), "Bir Hata Oluştu.");
-            } 
-
-                        
-
+            }
         }
-        void getPersonel()
+        private void getPersonel()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var mySqlConnection = new MySqlConnection(conString))
             {
-                MySqlCommand mySqlCommand = new MySqlCommand("spSinglePersonel;", mySqlConnection)
+                var mySqlCommand = new MySqlCommand("spSinglePersonel;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                string str = this._personelID;
-                
+                var str = _personelID;
+
                 mySqlCommand.Parameters.Add(new MySqlParameter("_resourceID", str));
                 mySqlConnection.Open();
-                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
-                DataSet dataSet = new DataSet();
+                var mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
+                var dataSet = new DataSet();
                 mySqlDataAdapter.Fill(dataSet, "spSinglePersonel");
                 UniqueID = Convert.ToInt32(dataSet.Tables["spSinglePersonel"].Rows[0]["UniqueID"].ToString());
                 _departmentName = dataSet.Tables["spSinglePersonel"].Rows[0]["Department"].ToString();
@@ -248,10 +351,15 @@ namespace Break_List
                 cmbDepartment.EditValue = _departmentName;
                 txtPosition.Text = _pozisyon;
                 dtStartDate.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["StartDate"].ToString();
-                //dtEndDate.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["EndDate"].ToString();
+
+
+                dtEnd.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["EndDate"].ToString();
+
+
+
                 dtBirthDate.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["BirthDate"].ToString();
-                cmbDocumentType.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["DocumentType"].ToString();                
-                //txtistencikis.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["ReasonForLeaving"].ToString();
+                cmbDocumentType.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["DocumentType"].ToString();
+                cmbistenayrilma.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["ReasonForLeaving"].ToString();
                 txtDocumentNo.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["DocumentNo"].ToString();
                 txtValidUntil.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["ValidUntil"].ToString();
                 dtIzinBaslangic.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["WorkPermitStart"].ToString();
@@ -271,292 +379,295 @@ namespace Break_List
                 cmbEhliyet.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["Ehliyet"].ToString();
                 txtAcilTel.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["aciltelefon"].ToString();
                 txtEmail.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["email"].ToString();
-                byte[] item = (byte[])dataSet.Tables["spSinglePersonel"].Rows[0]["Image"];
-                MemoryStream memoryStream = new MemoryStream(item);
-                pictureBox1.Image = Image.FromStream(memoryStream);                
+                var item = (byte[])dataSet.Tables["spSinglePersonel"].Rows[0]["Image"];
+                var memoryStream = new MemoryStream(item);
+                pictureBox1.Image = Image.FromStream(memoryStream);
                 mySqlConnection.Close();
             }
         }
 
-        void getDepartments() // Yeni Kayit Olusturulurken Aliyor
+        private void getDepartments()
         {
-
-            var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            using (var cnn = new MySqlConnection(conString))
             {
-                cnn.Open();
-                cmd.CommandText = "spDepartment";
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                DataTable dt = new DataTable();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                using (var cmd = cnn.CreateCommand())
                 {
-                    da.Fill(dt);
+                    cnn.Open();
+                    cmd.CommandText = "spDepartment";
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    foreach (DataRow Row in dt.Rows)
+                    var dt = new DataTable();
+                    using (var da = new MySqlDataAdapter(cmd))
                     {
+                        da.Fill(dt);
 
-                        cmbDepartment.Properties.Items.Add(Row["DepartmentName"]);
-                        
+                        foreach (DataRow Row in dt.Rows)
+                        {
+                            cmbDepartment.Properties.Items.Add(Row["DepartmentName"]);
+                        }
+
+                        cmbDepartment.Properties.Sorted = true;
+
+                        cnn.Close();
                     }
-
-                   cmbDepartment.Properties.Sorted = true;
-
-                    cnn.Close();
                 }
             }
-           
         }
 
-        void bringPositions() // Yeni Kayit Olusturulurken Departmana gore Aliyor
+        private void bringPositions()
         {
-
-            var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            using (var cnn = new MySqlConnection(conString))
             {
-                cnn.Open();
-                cmd.CommandText = "spBringPositions";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
-                cmd.Parameters["@DepartmentName"].Value = cmbDepartment.EditValue.ToString();
-                DataTable dt = new DataTable();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                using (var cmd = cnn.CreateCommand())
                 {
-                    
-                    da.Fill(dt);
-
-                    foreach (DataRow Row in dt.Rows)
+                    cnn.Open();
+                    cmd.CommandText = "spBringPositions";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
+                    cmd.Parameters["@DepartmentName"].Value = cmbDepartment.EditValue.ToString();
+                    var dt = new DataTable();
+                    using (var da = new MySqlDataAdapter(cmd))
                     {
+                        da.Fill(dt);
 
-                        txtPosition.Properties.Items.Add(Row["PositionName"]);
+                        foreach (DataRow Row in dt.Rows)
+                        {
+                            txtPosition.Properties.Items.Add(Row["PositionName"]);
+                        }
 
+                        txtPosition.Properties.Sorted = true;
+                        cnn.Close();
                     }
-
-                    txtPosition.Properties.Sorted = true;
-                    cnn.Close();
-
                 }
             }
-
         }
-        #endregion
-        #region Vacations
+
+
+        private DateTime IseBaslamaTarihi
+        {
+            get
+            {
+                return dtStartDate.DateTime;
+            }
+        }
         private void calculateVacation()
         {
-            DateTime iseBaslamaTarihi = dtStartDate.DateTime;
-            long num = DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, DateTime.Today);
-            int toplamCalismaGunu = Convert.ToInt32(num);
-
-
-
-            int firstFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, DateTime.Today));
-            int secondFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, DateTime.Today) - 1825);
-            int thirdFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, DateTime.Today) - 3650);
-            int over15Years = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, DateTime.Today) - 5475);
-
-
-            int dataFirstFiveYears = firstFiveYears * 14 / 365;
-            int dataSecondFiveYears = ((firstFiveYears - secondFiveYears) * 14 / 365 + secondFiveYears * 18 / 365);
-            int dataThirdFiveYears = ((firstFiveYears - secondFiveYears) * 14 / 365 + (secondFiveYears - thirdFiveYears) * 18 / 365 + thirdFiveYears * 22 / 365);
-            int dataOver15Years = ((firstFiveYears - secondFiveYears) * 14 / 365 + (secondFiveYears - thirdFiveYears) * 18 / 365 + (thirdFiveYears - over15Years) * 22 / 365 + over15Years * 25 / 365);
-
-            
-           
-            
-
-            if (toplamCalismaGunu < 184)
+            if (radioGroup1.SelectedIndex == 0)
             {
-                lblHak.Text = "0";
-                lbl05.Text = "6 ay altı";
-                lbl510.Text = "0";
-                lbl1015.Text = "0";
-                lbl15ust.Text = "0";
-            }
+                var iseBaslamaTarihi = dtStartDate.DateTime;
+                var ikincitarih = DateTime.Today;
+                var num = DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih);
+                var toplamCalismaGunu = Convert.ToInt32(num);
 
-            if (toplamCalismaGunu >184 && toplamCalismaGunu <1825)
-            {
-                
-                lblHak.Text = dataFirstFiveYears.ToString();
 
-                if (toplamCalismaGunu < 1825)
+
+                var firstFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih));
+                var secondFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih) - 1825);
+                var thirdFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih) - 3650);
+                var over15Years = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih) - 5475);
+
+
+                var dataFirstFiveYears = firstFiveYears * 14 / 365;
+                var dataSecondFiveYears = ((firstFiveYears - secondFiveYears) * 14 / 365 + secondFiveYears * 18 / 365);
+                var dataThirdFiveYears = ((firstFiveYears - secondFiveYears) * 14 / 365 + (secondFiveYears - thirdFiveYears) * 18 / 365 + thirdFiveYears * 22 / 365);
+                var dataOver15Years = ((firstFiveYears - secondFiveYears) * 14 / 365 + (secondFiveYears - thirdFiveYears) * 18 / 365 + (thirdFiveYears - over15Years) * 22 / 365 + over15Years * 25 / 365);
+
+
+
+
+
+                if (toplamCalismaGunu < 184)
                 {
-                    lbl05.Text = (toplamCalismaGunu * 14 / 365).ToString();
+                    lblHak.Text = "0";
+                    lbl05.Text = "6 ay altı";
+                    lbl510.Text = "0";
+                    lbl1015.Text = "0";
+                    lbl15ust.Text = "0";
                 }
-                else
+
+                if (toplamCalismaGunu > 184 && toplamCalismaGunu < 1825)
                 {
-                    lbl05.Text = "70";
-                }
-                               
-                lbl510.Text = "0";
-                lbl1015.Text = "0";
-                lbl15ust.Text = "0";
-            }
-            if(toplamCalismaGunu >1825 && toplamCalismaGunu < 3650)
-            {
-                lblHak.Text = dataSecondFiveYears.ToString();
-                if (toplamCalismaGunu < 1825)
-                {
-                    lbl05.Text = (toplamCalismaGunu * 14 / 365).ToString();
-                }
-                else
-                {
-                    lbl05.Text = "70";
+                    lblHak.Text = dataFirstFiveYears.ToString();
+
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+
+                    lbl510.Text = "0";
+                    lbl1015.Text = "0";
+                    lbl15ust.Text = "0";
                 }
                 if (toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650)
                 {
-                    lbl510.Text = (secondFiveYears * 18 / 365).ToString();
-                }
-                else
-                {
-                    lbl510.Text = "90";
-                }    
-                lbl1015.Text = "0";
-                lbl15ust.Text = "0";
-            }
-            if (toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475)
-            {
-                lblHak.Text = dataThirdFiveYears.ToString();
-                if (toplamCalismaGunu < 1825)
-                {
-                    lbl05.Text = (toplamCalismaGunu * 14 / 365).ToString();
-                }
-                else
-                {
-                    lbl05.Text = "70";
-                }
-                if (toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650)
-                {
-                    lbl510.Text = (secondFiveYears * 18 / 365).ToString();
-                }
-                else
-                {
-                    lbl510.Text = "90";
+                    lblHak.Text = dataSecondFiveYears.ToString();
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+                    lbl510.Text = toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650 ? (secondFiveYears * 18 / 365).ToString() : "90";
+                    lbl1015.Text = "0";
+                    lbl15ust.Text = "0";
                 }
                 if (toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475)
                 {
-                    lbl1015.Text = (thirdFiveYears * 22 / 365).ToString();
+                    lblHak.Text = dataThirdFiveYears.ToString();
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+                    lbl510.Text = toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650 ? (secondFiveYears * 18 / 365).ToString() : "90";
+                    lbl1015.Text = toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475 ? (thirdFiveYears * 22 / 365).ToString() : "110";
+
+
+                    lbl15ust.Text = "0";
                 }
-                else
+                if (toplamCalismaGunu > 5475)
                 {
-                    lbl1015.Text = "110";
+                    lblHak.Text = dataOver15Years.ToString();
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+                    lbl510.Text = toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650 ? (secondFiveYears * 18 / 365).ToString() : "90";
+                    lbl1015.Text = toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475 ? (thirdFiveYears * 22 / 365).ToString() : "110";
+                    lbl15ust.Text = (over15Years * 25 / 365).ToString();
                 }
-                    
-                
-                lbl15ust.Text = "0";
             }
-            if (toplamCalismaGunu > 5475)
+            else
             {
-                lblHak.Text = dataOver15Years.ToString();
-                if (toplamCalismaGunu < 1825)
+                var ikincitarih = dtEnd.DateTime;
+                var num = DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih);
+                var toplamCalismaGunu = Convert.ToInt32(num);
+
+
+
+                var firstFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih));
+                var secondFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih) - 1825);
+                var thirdFiveYears = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih) - 3650);
+                var over15Years = Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih) - 5475);
+
+
+                var dataFirstFiveYears = firstFiveYears * 14 / 365;
+                var dataSecondFiveYears = ((firstFiveYears - secondFiveYears) * 14 / 365 + secondFiveYears * 18 / 365);
+                var dataThirdFiveYears = ((firstFiveYears - secondFiveYears) * 14 / 365 + (secondFiveYears - thirdFiveYears) * 18 / 365 + thirdFiveYears * 22 / 365);
+                var dataOver15Years = ((firstFiveYears - secondFiveYears) * 14 / 365 + (secondFiveYears - thirdFiveYears) * 18 / 365 + (thirdFiveYears - over15Years) * 22 / 365 + over15Years * 25 / 365);
+
+
+
+
+
+                if (toplamCalismaGunu < 184)
                 {
-                    lbl05.Text = (toplamCalismaGunu * 14 / 365).ToString();
+                    lblHak.Text = "0";
+                    lbl05.Text = "6 ay altı";
+                    lbl510.Text = "0";
+                    lbl1015.Text = "0";
+                    lbl15ust.Text = "0";
                 }
-                else
+
+                if (toplamCalismaGunu > 184 && toplamCalismaGunu < 1825)
                 {
-                    lbl05.Text = "70";
+                    lblHak.Text = dataFirstFiveYears.ToString();
+
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+
+                    lbl510.Text = "0";
+                    lbl1015.Text = "0";
+                    lbl15ust.Text = "0";
                 }
                 if (toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650)
                 {
-                    lbl510.Text = (secondFiveYears * 18 / 365).ToString();
-                }
-                else
-                {
-                    lbl510.Text = "90";
+                    lblHak.Text = dataSecondFiveYears.ToString();
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+                    lbl510.Text = toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650 ? (secondFiveYears * 18 / 365).ToString() : "90";
+                    lbl1015.Text = "0";
+                    lbl15ust.Text = "0";
                 }
                 if (toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475)
                 {
-                    lbl1015.Text = (thirdFiveYears * 22 / 365).ToString();
+                    lblHak.Text = dataThirdFiveYears.ToString();
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+                    lbl510.Text = toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650 ? (secondFiveYears * 18 / 365).ToString() : "90";
+                    lbl1015.Text = toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475 ? (thirdFiveYears * 22 / 365).ToString() : "110";
+
+
+                    lbl15ust.Text = "0";
                 }
-                else
+                if (toplamCalismaGunu > 5475)
                 {
-                    lbl1015.Text = "110";
+                    lblHak.Text = dataOver15Years.ToString();
+                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu * 14 / 365).ToString() : "70";
+                    lbl510.Text = toplamCalismaGunu > 1825 && toplamCalismaGunu < 3650 ? (secondFiveYears * 18 / 365).ToString() : "90";
+                    lbl1015.Text = toplamCalismaGunu > 3650 && toplamCalismaGunu < 5475 ? (thirdFiveYears * 22 / 365).ToString() : "110";
+                    lbl15ust.Text = (over15Years * 25 / 365).ToString();
                 }
-                   lbl15ust.Text = (over15Years * 25 / 365).ToString();
-                
-                    
             }
         }
         private void getVacations()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spSelectVacations;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spSelectVacations;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
-                    int num = Convert.ToInt32(this._personelID);
+                    var num = Convert.ToInt32(_personelID);
                     mySqlCommand.Parameters.Add(new MySqlParameter("personelID", num));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
-                        this.vacationgrid.DataSource = dataTable;
+                        vacationgrid.DataSource = dataTable;
                     }
                     mySqlConnection.Close();
                 }
             }
         }
-       
         private void getUsedVacations()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
-                MySqlCommand mySqlCommand = new MySqlCommand("spUSedVacations;", mySqlConnection)
-                {
-                    CommandType = CommandType.StoredProcedure
+                var mySqlCommand = new MySqlCommand("spUSedVacations;", mySqlConnection)
+                { CommandType = CommandType.StoredProcedure
                 };
-                string str = this._personelID;
+                var str = _personelID;
                 mySqlCommand.Parameters.Add(new MySqlParameter("personelID", str));
                 mySqlConnection.Open();
-                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
-                DataSet dataSet = new DataSet();
+                var mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
+                var dataSet = new DataSet();
                 mySqlDataAdapter.Fill(dataSet, "spUsedVacations");
                 lblKul.Text = dataSet.Tables["spUSedVacations"].Rows[0]["totalVacationUsed"].ToString();
                 lblKullanilan.Text = dataSet.Tables["spUSedVacations"].Rows[0]["totalVacationUsed"].ToString();
 
-                
-                
-                if (lblKul.Text == "")
-                {
 
+
+                if (lblKul.Text == string.Empty)
+                {
                     lblKul.Text = "0";
                 }
 
 
                 else
                 {
-                    int kullanilan = Convert.ToInt32(lblKul.Text);
-                    int hakedilen = Convert.ToInt32(lblHak.Text);
+                    var kullanilan = Convert.ToInt32(lblKul.Text);
+                    var hakedilen = Convert.ToInt32(lblHak.Text);
                     lblKalan.Text = Convert.ToString(hakedilen - kullanilan);
                 }
-                
+
                 mySqlConnection.Close();
             }
         }
-        #endregion
-        #region Maaslar
+
+
         private void getMaas()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spMaasArtislari;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spMaasArtislari;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
-                    int num = Convert.ToInt32(this._personelID);
+                    var num = Convert.ToInt32(_personelID);
                     mySqlCommand.Parameters.Add(new MySqlParameter("personelID", num));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
                         salaryGrid.DataSource = dataTable;
@@ -565,7 +676,7 @@ namespace Break_List
                 }
             }
         }
-        #endregion
+
         private void windowsUIButtonPanelMain_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
         {
             switch (e.Button.Properties.Caption)
@@ -581,12 +692,12 @@ namespace Break_List
                         windowsUIButtonPanelMain.Buttons["Save And Close"].Properties.Visible = false;
                         windowsUIButtonPanelMain.Buttons["Save And New"].Properties.Visible = false;
                     }
-                    
-                    
+
+
                     break;
                 case "Edit":
                     UnlockLockControls(this);
-                    windowsUIButtonPanelMain.Buttons["Edit"].Properties.Caption = "Save Changes";  
+                    windowsUIButtonPanelMain.Buttons["Edit"].Properties.Caption = "Save Changes";
                     break;
 
                 case "Save Changes":
@@ -595,7 +706,7 @@ namespace Break_List
                     updatePersonel();
                     calculateVacation();
                     getUsedVacations();
-                    labelControl.Text = "Personel: " + txtNameSurname.Text + " | Departmanı: " + _departmentName + " | Pozisyonu: " + _pozisyon + " | Sicil No: " + _personelID + " | Kayıt No:" + _kayitID;
+                    labelControl.Text = string.Format("Personel: {0} | Departmanı: {1} | Pozisyonu: {2} | Sicil No: {3} | Kayıt No:{4}", txtNameSurname.Text, _departmentName, _pozisyon, _personelID, _kayitID);
                     break;
 
 
@@ -606,7 +717,7 @@ namespace Break_List
                         Close();
                     }
 
-                   
+
                     break;
                 case "Save And New":
                     if (_personelID == null)
@@ -614,7 +725,6 @@ namespace Break_List
                         addPersonel();
                         _personelID = null;
                         ClearSpace(this);
-                        
                     }
 
                     else
@@ -623,39 +733,16 @@ namespace Break_List
                         ClearSpace(this);
                     }
                     break;
-               
+                default:
+                    break;
             }
         }
-        #region Permission Control
-        public Boolean hasPermissionToVacations { get; set; }
-        public Boolean hasPermissionsToPersonelEditAdd { get; set; }
-        public Boolean hasPermissionToAddEditTip { get; set; }
-        void checkPermissions() //UserID ye gore permission control
-        {
-            MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
-            MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * from permissions WHERE UserID ='" + _UserID + "'";
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("There were an Error", ex.ToString());
-            }
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                hasPermissionToVacations = Convert.ToBoolean(reader["Vacations"].ToString());
-                hasPermissionsToPersonelEditAdd = Convert.ToBoolean(reader["personelEkle"].ToString());
-                hasPermissionToAddEditTip = Convert.ToBoolean(reader["MaasArtisi"].ToString());
 
-            }
-            conn.Close();
-        }
-        #endregion
+       
+      
 
-        #region Utilities
+
+
         public static void ClearSpace(Control control)
         {
             foreach (Control c in control.Controls)
@@ -664,15 +751,21 @@ namespace Break_List
                 var comboBox = c as ComboBoxEdit;
                 var picturebox = c as PictureBox;
                 if (textBox != null)
-                    (textBox).Text = "";
-
+                {
+                    (textBox).Text = string.Empty;
+                }
                 if (comboBox != null)
+                {
                     comboBox.SelectedIndex = -1;
+                }
                 if (picturebox != null)
+                {
                     picturebox.Image = null;
-
+                }
                 if (c.HasChildren)
+                {
                     ClearSpace(c);
+                }
             }
         }
 
@@ -682,19 +775,28 @@ namespace Break_List
             {
                 var textBox = c as TextEdit;
                 var comboBox = c as ComboBoxEdit;
-                var picturebox = c as PictureBox;
                 var radiobox = c as RadioGroup;
                 var button = c as SimpleButton;
                 if (button != null)
-                    button.Enabled = true;
+                {
+                    button.Enabled = false;
+                }
                 if (radiobox != null)
+                {
                     radiobox.ReadOnly = true;
+                }
                 if (textBox != null)
+                {
                     textBox.ReadOnly = true;
+                }
                 if (comboBox != null)
+                {
                     comboBox.ReadOnly = true;
+                }
                 if (c.HasChildren)
+                {
                     LockControls(c);
+                }
             }
         }
 
@@ -704,19 +806,28 @@ namespace Break_List
             {
                 var textBox = c as TextEdit;
                 var comboBox = c as ComboBoxEdit;
-                var picturebox = c as PictureBox;
                 var radiobox = c as RadioGroup;
                 var button = c as SimpleButton;
                 if (button != null)
-                    button.Enabled = false;
+                {
+                    button.Enabled = true;
+                }
                 if (radiobox != null)
+                {
                     radiobox.ReadOnly = false;
+                }
                 if (textBox != null)
+                {
                     textBox.ReadOnly = false;
+                }
                 if (comboBox != null)
+                {
                     comboBox.ReadOnly = false;
+                }
                 if (c.HasChildren)
+                {
                     UnlockLockControls(c);
+                }
             }
         }
         public enum DateInterval
@@ -735,118 +846,54 @@ namespace Break_List
             public static long DateDiff(DateInterval interval, DateTime date1, DateTime date2)
             {
                 long year;
-                TimeSpan timeSpan = date2 - date1;
+                var timeSpan = date2 - date1;
                 switch (interval)
                 {
                     case DateInterval.Year:
-                        {
-                            year = (long)(date2.Year - date1.Year);
-                            break;
-                        }
+                        year = (long)(date2.Year - date1.Year);
+                        break;
                     case DateInterval.Month:
-                        {
-                            year = (long)(date2.Month - date1.Month + 12 * (date2.Year - date1.Year));
-                            break;
-                        }
+                        year = (long)(date2.Month - date1.Month + 12 * (date2.Year - date1.Year));
+                        break;
                     case DateInterval.Weekday:
-                        {
-                            year = Fix(timeSpan.TotalDays) / (long)7;
-                            break;
-                        }
+                        year = Fix(timeSpan.TotalDays) / (long)7;
+                        break;
                     case DateInterval.Day:
-                        {
-                            year = Fix(timeSpan.TotalDays);
-                            break;
-                        }
+                        year = Fix(timeSpan.TotalDays);
+                        break;
                     case DateInterval.Hour:
-                        {
-                            year = Fix(timeSpan.TotalHours);
-                            break;
-                        }
+                        year = Fix(timeSpan.TotalHours);
+                        break;
                     case DateInterval.Minute:
-                        {
-                            year = Fix(timeSpan.TotalMinutes);
-                            break;
-                        }
+                        year = Fix(timeSpan.TotalMinutes);
+                        break;
                     default:
-                        {
-                            year = Fix(timeSpan.TotalSeconds);
-                            break;
-                        }
+                        year = Fix(timeSpan.TotalSeconds);
+                        break;
                 }
                 return year;
             }
 
             private static long Fix(double Number)
             {
-                long num;
-                num = (Number < 0 ? (long)Math.Ceiling(Number) : (long)Math.Floor(Number));
+                var num = (Number < 0 ? (long)Math.Ceiling(Number) : (long)Math.Floor(Number));
                 return num;
             }
         }
-        #endregion
-        private void frmPersonelDetails_Load(object sender, EventArgs e)
-        {
-           
 
-            if (_personelID != null)
-            {
-                getPersonel();
-                calculateVacation();                
-                getUsedVacations();
-                getDepartments();
-                getVacations();
-                getToplamOffAlacagi();
-                checkPermissions();
-                labelControl.Text = "Personel: " + txtNameSurname.Text + " | Departmanı: " + _departmentName + " | Pozisyonu: " + _pozisyon + " | Sicil No: " + _personelID + " | Kayıt No:" + _kayitID;
-                LockControls(this);
+        
 
-                if (hasPermissionsToPersonelEditAdd == false)
-                {
-                    windowsUIButtonPanelMain.Visible = false;
-                    btnAddVacation.Enabled = false;
-                    btnMaasArtisi.Enabled = false;
-                }
-                
-                else
-                {
-                    windowsUIButtonPanelMain.Visible = true;
-                    btnAddVacation.Enabled = true;
-                    btnMaasArtisi.Enabled = true;
-                }
-
-                if (hasPermissionToAddEditTip == false)
-                {
-
-                }
-                windowsUIButtonPanelMain.Buttons["Save"].Properties.Caption = "Edit";
-                windowsUIButtonPanelMain.Buttons["Save And New"].Properties.Visible = false;
-                windowsUIButtonPanelMain.Buttons["Save And Close"].Properties.Visible = false;
-                txtMaas.Enabled = false;
-                txtTip.Enabled = false;
-            }
-            else
-            {
-                getDepartments();
-                tabLayout.Visibility = LayoutVisibility.Never;                
-                labelControl.Text = "Yeni Personel Kaydı";
-                
-            }
-            
-        }
-       
         private void btnPicture_Click(object sender, EventArgs e)
         {
             try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog()
-                {
-                    Filter = "Image files | *.jpg"
+                var openFileDialog = new OpenFileDialog()
+                { Filter = "Image files | *.jpg"
                 };
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    this.lblFileName.Text = openFileDialog.FileName.ToString();
-                    this.pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+                    lblFileName.Text = openFileDialog.FileName;
+                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
                 }
             }
             catch (Exception exception)
@@ -855,25 +902,25 @@ namespace Break_List
             }
         }
 
-      
+
 
         private void gridControl1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                this.popvacation.ShowPopup(Control.MousePosition);
+                popvacation.ShowPopup(Control.MousePosition);
             }
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (frmNewVacation frmvacation = new frmNewVacation())
+            using (var frmvacation = new frmNewVacation())
             {
-                frmvacation.personelID = _personelID.ToString();
+                frmvacation.personelID = _personelID;
                 frmvacation.UserName = _UserNameFromMainForm;
                 frmvacation.lblKalan.Text = lblKalan.Text;
                 frmvacation.personelName = txtNameSurname.Text;
-                DialogResult dr = frmvacation.ShowDialog();
+                var dr = frmvacation.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     getVacations();
@@ -881,7 +928,6 @@ namespace Break_List
                     calculateVacation();
                     getOffAlacaklari();
                 }
-
             }
         }
 
@@ -890,8 +936,8 @@ namespace Break_List
             txtPosition.Properties.Items.Clear();
             bringPositions();
         }
-        
-        
+
+
 
         private void txtNameSurname_KeyUp(object sender, KeyEventArgs e)
         {
@@ -900,16 +946,15 @@ namespace Break_List
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Forms.Maas.frmMaasArtisi frmMaasArtisi = new Forms.Maas.frmMaasArtisi())
+            using (var frmMaasArtisi = new Forms.Maas.frmMaasArtisi())
             {
-                frmMaasArtisi.personelID = _personelID.ToString();
+                frmMaasArtisi.personelID = _personelID;
                 frmMaasArtisi.UserName = _UserNameFromMainForm;
-                DialogResult dr = frmMaasArtisi.ShowDialog();
+                var dr = frmMaasArtisi.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     MessageBox.Show("Maas Artis Talebi Onaya gonderilmistir.", "Onaya Gonderildi");
                 }
-
             }
         }
 
@@ -921,73 +966,95 @@ namespace Break_List
             }
         }
 
-       
+
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            rptMaasArtisi report = new rptMaasArtisi();
-
-            report.RequestParameters = false;
+            rptMaasArtisi report = new rptMaasArtisi() { RequestParameters = false };
             report.Parameters[0].Value = _personelID;
             new ReportPrintTool(report).ShowPreview();
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Forms.Hatalar.frmHataEkle frmHatalar = new Forms.Hatalar.frmHataEkle())
+            var frmHatalar = new Forms.Hatalar.frmHataEkle();
+            try
             {
-                frmHatalar.personelID = _personelID.ToString();
-                
-                DialogResult dr = frmHatalar.ShowDialog();
+                frmHatalar.personelID = _personelID;
+
+                var dr = frmHatalar.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     getHataListesi();
                 }
-
+            }
+            finally
+            {
+                if (frmHatalar != null)
+                {
+                    frmHatalar.Dispose();
+                }
             }
         }
 
         private void getHataListesi()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            try
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spLgHata;", mySqlConnection)
+                var mySqlCommand = new MySqlCommand("spLgHata;", mySqlConnection) { CommandType = CommandType.StoredProcedure };
+                try
                 {
-                    CommandType = CommandType.StoredProcedure
-                })
-                {
-                    int num = Convert.ToInt32(this._personelID);
+                    var num = Convert.ToInt32(_personelID);
                     mySqlCommand.Parameters.Add(new MySqlParameter("_personelID", num));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
                         hatagrid.DataSource = dataTable;
+                        hatagridview.OptionsView.ShowPreview = true;
+                        hatagridview.PreviewFieldName = "Aciklama";
                     }
                     mySqlConnection.Close();
+                }
+                finally
+                {
+                    if (mySqlCommand != null)
+                    {
+                        mySqlCommand.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (mySqlConnection != null)
+                {
+                    mySqlConnection.Dispose();
                 }
             }
         }
 
         private void hatagridview_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button != MouseButtons.Right)
             {
-                popHata.ShowPopup(Control.MousePosition);
+                return;
             }
+            popHata.ShowPopup(Control.MousePosition);
         }
 
         private void btnOffAlacagi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Forms.Personel.frmOffAlacagi frmAlacaklar = new Forms.Personel.frmOffAlacagi())
+            var frmAlacaklar = new frmOffAlacagi();
+            try
             {
-                frmAlacaklar.personelID = _personelID.ToString();
-                frmAlacaklar.UserName = _UserNameFromMainForm.ToString();
-                DialogResult dr = frmAlacaklar.ShowDialog();
-                if (dr== DialogResult.OK)
+                frmAlacaklar.personelID = _personelID;
+                frmAlacaklar.UserName = _UserNameFromMainForm;
+                var dr = frmAlacaklar.ShowDialog();
+                if (dr == DialogResult.OK)
                 {
                     getVacations();
                     getUsedVacations();
@@ -996,49 +1063,70 @@ namespace Break_List
                     getToplamOffAlacagi();
                 }
             }
+            finally
+            {
+                if (frmAlacaklar != null)
+                {
+                    frmAlacaklar.Dispose();
+                }
+            }
         }
-        #region offlar
+
         private void getOffAlacaklari()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            try
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spOffAlacaklari;", mySqlConnection)
+                var mySqlCommand = new MySqlCommand("spOffAlacaklari;", mySqlConnection) { CommandType = CommandType.StoredProcedure };
+                try
                 {
-                    CommandType = CommandType.StoredProcedure
-                })
-                {
-                    int num = Convert.ToInt32(this._personelID);
+                    var num = Convert.ToInt32(_personelID);
                     mySqlCommand.Parameters.Add(new MySqlParameter("_personelID", num));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
                         gridOffAlacaklari.DataSource = dataTable;
                     }
                     mySqlConnection.Close();
                 }
+                finally
+                {
+                    if (mySqlCommand != null)
+                    {
+                        mySqlCommand.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (mySqlConnection != null)
+                {
+                    mySqlConnection.Dispose();
+                }
             }
         }
 
         private void getOdenenOfflar()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            try
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spOdenenOfflar;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spOdenenOfflar;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
-                    int num = Convert.ToInt32(this._personelID);
+                    var num = Convert.ToInt32(_personelID);
                     mySqlCommand.Parameters.Add(new MySqlParameter("_personelID", num));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
                         gridOdenenIzinler.DataSource = dataTable;
@@ -1046,111 +1134,101 @@ namespace Break_List
                     mySqlConnection.Close();
                 }
             }
+            finally
+            {
+                if (mySqlConnection != null)
+                {
+                    mySqlConnection.Dispose();
+                }
+            }
         }
         private void getToplamOffAlacagi()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            try
             {
-                MySqlCommand mySqlCommand = new MySqlCommand("spOffAlacaklariToplam;", mySqlConnection)
+                var mySqlCommand = new MySqlCommand("spOffAlacaklariToplam;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
 
                 mySqlCommand.Parameters.Add(new MySqlParameter("_personelID", _personelID));
                 mySqlConnection.Open();
-                MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
-                DataSet dataSet = new DataSet();
+                var mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
+                var dataSet = new DataSet();
                 mySqlDataAdapter.Fill(dataSet, "spOffAlacaklariToplam");
                 lblOffalacagi.Text = dataSet.Tables["spOffAlacaklariToplam"].Rows[0]["Toplam Off Alacagi"].ToString();
 
 
 
 
-                if (lblOffalacagi.Text == "")
+                if (lblOffalacagi.Text == string.Empty)
                 {
-
                     lblOffalacagi.Text = "0";
                 }
 
 
-                else
-                {
-
-                }
 
                 mySqlConnection.Close();
             }
+            finally
+            {
+                if (mySqlConnection != null)
+                {
+                    mySqlConnection.Dispose();
+                }
+            }
         }
-        #endregion
+
 
         private void gridView6_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (e.Button != MouseButtons.Right)
             {
-               popOffAlacak.ShowPopup(Control.MousePosition);
+                return;
             }
+            popOffAlacak.ShowPopup(Control.MousePosition);
         }
 
-        private void xtraTabControl1_TabIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+
 
         private void xtraTabControl1_Click(object sender, EventArgs e)
         {
-            if (xtraTabControl1.SelectedTabPage.Equals(tabOffAlacak))
+            if (xtraTabControl1.SelectedTabPage.Equals(tabOffAlacak) && gridOffAlacaklari.DataSource == null)
             {
-                if (gridOffAlacaklari.DataSource == null)
-                {
-                    getOffAlacaklari();
-                    getOdenenOfflar();
-                }
-               
+                getOffAlacaklari();
+                getOdenenOfflar();
             }
-            if (xtraTabControl1.SelectedTabPage.Equals(tabMaas))
+            if (xtraTabControl1.SelectedTabPage.Equals(tabMaas) && salaryGrid.DataSource == null)
             {
-                if (salaryGrid.DataSource == null)
-                {
-                    getMaas();
-                }
-               
-                
+                getMaas();
             }
-
-            if (xtraTabControl1.SelectedTabPage.Equals(tabPerformans))
+            if (xtraTabControl1.SelectedTabPage.Equals(tabPerformans) && hatagrid.DataSource == null)
             {
-                if (hatagrid.DataSource == null)
-                {
-                    getHataListesi();
-                }
-                
+                getHataListesi();
             }
-
-            if (xtraTabControl1.SelectedTabPage.Equals(tabEgitim))
+            if (xtraTabControl1.SelectedTabPage.Equals(tabEgitim) && egitimGrid.DataSource == null)
             {
-                if (egitimGrid.DataSource == null)
-                {
-                    egitimler();
-                }
+                egitimler();
             }
         }
 
-        void egitimler()
+        private void egitimler()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            try
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spSelectEgitimByPersonel;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spSelectEgitimByPersonel;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
-
-                    mySqlCommand.Parameters.Add(new MySqlParameter("_personelID",_personelID));
+                    mySqlCommand.Parameters.Add(new MySqlParameter("_personelID", _personelID));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
                         egitimGrid.DataSource = dataTable;
@@ -1158,84 +1236,149 @@ namespace Break_List
                     mySqlConnection.Close();
                 }
             }
-        }
-        private void gridView6_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-            DevExpress.XtraGrid.Columns.GridColumn Column = e.Column;
-            if (Column == gridColumn1)
+            finally
             {
-                
-                DialogResult result = MessageBox.Show("Off alacagini geri vereceksiniz.", "Emin misiniz?",
-                           MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                if (mySqlConnection != null)
                 {
-                    using (Forms.Personel.frmOdemeTarihi frmOdemeTarihi = new Forms.Personel.frmOdemeTarihi())
+                    mySqlConnection.Dispose();
+                }
+            }
+        }
+        private void gridView6_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            var Column = e.Column;
+            if (Column != gridColumn1)
+            {
+                return;
+            }
+            if (MessageBox.Show("Off alacagini geri vereceksiniz.", "Emin misiniz?",
+                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                var frmOdemeTarihi = new frmOdemeTarihi();
+                try
+                {
+                    var dr = frmOdemeTarihi.ShowDialog();
+                    if (dr == DialogResult.OK)
                     {
-                       
-                        DialogResult dr = frmOdemeTarihi.ShowDialog();
-                        if (dr == DialogResult.OK)
+                        var _odemeTarihi = Convert.ToDateTime(frmOdemeTarihi.dateEdit1.EditValue.ToString());
+                        var rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
+                        using (var con = new MySqlConnection(Settings.Default.livegameConnectionString2))
                         {
-                            DateTime _odemeTarihi = Convert.ToDateTime(frmOdemeTarihi.dateEdit1.EditValue.ToString());
-                            int rowid;
-                            rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
-                            using (MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                            using (var cmd = new MySqlCommand("spOffOde;", con)
                             {
-                                using (MySqlCommand cmd = new MySqlCommand("spOffOde;", con)
+                                CommandType = CommandType.StoredProcedure
+                            })
+                            {
+                                cmd.Parameters.Add(new MySqlParameter("rowID", rowid));
+                                cmd.Parameters.Add(new MySqlParameter("userName", _UserNameFromMainForm));
+                                cmd.Parameters.Add(new MySqlParameter("odemeTarihi", _odemeTarihi));
+                                con.Open();
+                                cmd.ExecuteNonQuery();
+                                using (var mySqlDataAdapter = new MySqlDataAdapter())
                                 {
-                                    CommandType = CommandType.StoredProcedure
-                                })
-                                {
-
-                                    cmd.Parameters.Add(new MySqlParameter("rowID", rowid));
-                                    cmd.Parameters.Add(new MySqlParameter("userName", _UserNameFromMainForm));
-                                    cmd.Parameters.Add(new MySqlParameter("odemeTarihi",_odemeTarihi));
-                                    con.Open();
-                                    cmd.ExecuteNonQuery();
-                                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                                    using (var dataTable = new DataTable())
                                     {
-                                        DataTable dataTable = new DataTable();
-                                        mySqlDataAdapter.SelectCommand = cmd;
-
                                     }
-                                    con.Close();
+                                    mySqlDataAdapter.SelectCommand = cmd;
                                 }
-                                getOffAlacaklari();
-                                getToplamOffAlacagi();
-                                getOdenenOfflar();
+                                con.Close();
                             }
+                            getOffAlacaklari();
+                            getToplamOffAlacagi();
+                            getOdenenOfflar();
                         }
                     }
-                    
                 }
-                else if (result == DialogResult.No)
+                finally
                 {
-                    //code for No
+                    if (frmOdemeTarihi != null)
+                    {
+                        frmOdemeTarihi.Dispose();
+                    }
                 }
-                else if (result == DialogResult.Cancel)
-                {
-                    //code for Cancel
-                }
-
-                                
             }
-            
+            else
+            {
+                switch (MessageBox.Show("Off alacagini geri vereceksiniz.", "Emin misiniz?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning))
+                {
+                    case DialogResult.No:
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.None:
+                        break;
+                    case DialogResult.OK:
+                        break;
+                    case DialogResult.Abort:
+                        break;
+                    case DialogResult.Retry:
+                        break;
+                    case DialogResult.Ignore:
+                        break;
+                    case DialogResult.Yes:
+                        break;
+                }
+            }
         }
 
         private void salaryGridview_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            DevExpress.XtraGrid.Columns.GridColumn Column = e.Column;
+            var Column = e.Column;
 
-            if(Column == gridColumn6)
+            if (Column != gridColumn6)
             {
-                int rowid;
-                rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
-                using (Forms.Maas.frmMaasArtisiGoster frmMaasGoster = new Forms.Maas.frmMaasArtisiGoster())
+                return;
+            }
+            var rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
+            var frmMaasGoster = new Forms.Maas.frmMaasArtisiGoster();
+            try
+            {
+                frmMaasGoster.rowid = rowid;
+                frmMaasGoster.Text = txtNameSurname.Text;
+                frmMaasGoster.ShowDialog();
+            }
+            finally
+            {
+                if (frmMaasGoster != null)
                 {
-                    frmMaasGoster.rowid = rowid;
-                    frmMaasGoster.Text = txtNameSurname.Text;
-                    frmMaasGoster.ShowDialog();
+                    frmMaasGoster.Dispose();
                 }
             }
         }
+
+        private void dtEnd_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+        {
+            if (e.Value == null || e.Value.ToString() != String.Empty)
+            {
+                return;
+            }
+            e.Value = null;
+        }
+
+        private void cmbDepartment_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Caption != "add")
+            {
+                return;
+            }
+            using (var frmDepartments = new frmDepartments())
+            {
+                frmDepartments.ShowDialog();
+            }
+        }
+
+        private void txtPosition_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Caption != "add")
+            {
+                return;
+            }
+            using (var frmPositions = new frmPositions())
+            {
+                frmPositions.ShowDialog();
+            }
+        }
+
+        
     }
 }
