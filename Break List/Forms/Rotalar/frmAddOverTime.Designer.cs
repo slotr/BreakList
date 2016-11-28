@@ -595,6 +595,7 @@ namespace Break_List.Forms.Rotalar
             this.Name = "frmAddOverTime";
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.OnAppointmentFormActivated);
+            this.Shown += new System.EventHandler(this.frmAddOverTime_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.tbSubject.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAllDay.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtStartDate.Properties.CalendarTimeProperties)).EndInit();

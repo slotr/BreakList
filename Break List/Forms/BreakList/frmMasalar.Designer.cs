@@ -159,10 +159,10 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Image = global::Break_List.Properties.Resources.black_jack;
+            this.simpleButton2.Image = global::Break_List.Properties.Resources.cards;
             this.simpleButton2.Location = new System.Drawing.Point(13, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(97, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(129, 23);
             this.simpleButton2.TabIndex = 1;
             this.simpleButton2.Text = "Yeni Masa Ekle";
             this.simpleButton2.Visible = false;

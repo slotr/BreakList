@@ -69,6 +69,9 @@
     <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Snap.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Snap.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Snap.v16.1.Extensions, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.1.UI, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -88,12 +91,14 @@
     <Reference Include="DevExpress.XtraReports.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v16.1.Extensions, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v16.1.Extensions, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v16.1.Reporting.Extensions, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v16.1.Extensions, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraScheduler.v16.1.Reporting, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
@@ -176,6 +181,7 @@
     <Compile Include="Class\CustomScales.cs" />
     <Compile Include="Class\CustomTimeScaleDay.cs" />
     <Compile Include="Class\DateTimeExtension.cs" />
+    <Compile Include="Class\dbConnection.cs" />
     <Compile Include="Forms\BreakList\BreakListPrint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,18 @@
     </Compile>
     <Compile Include="Forms\Personel\frmSifre.Designer.cs">
       <DependentUpon>frmSifre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prosedur\frmProsedurDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prosedur\frmProsedurDisplay.Designer.cs">
+      <DependentUpon>frmProsedurDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Prosedur\frmProsedurler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Prosedur\frmProsedurler.Designer.cs">
+      <DependentUpon>frmProsedurler.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reader\frmreader.cs">
       <SubType>Form</SubType>
@@ -437,6 +455,12 @@
     <EmbeddedResource Include="Forms\Personel\frmSifre.resx">
       <DependentUpon>frmSifre.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prosedur\frmProsedurDisplay.resx">
+      <DependentUpon>frmProsedurDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Prosedur\frmProsedurler.resx">
+      <DependentUpon>frmProsedurler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reader\frmreader.resx">
       <DependentUpon>frmreader.cs</DependentUpon>
     </EmbeddedResource>
@@ -551,6 +575,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1479156211_Card_file.ico" />
+    <None Include="Resources\cards.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

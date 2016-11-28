@@ -52,6 +52,8 @@
             this.btnOnayaDusenler = new DevExpress.XtraBars.BarButtonItem();
             this.btnPersonelCount = new DevExpress.XtraBars.BarButtonItem();
             this.btnEgitim = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEskiBreak = new DevExpress.XtraBars.BarButtonItem();
+            this.btnProsedur = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonBreak = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPersonel = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -68,6 +70,8 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnEgitimler = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbnProsedur = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.tabFormDefaultManager1 = new DevExpress.XtraBars.TabFormDefaultManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -87,7 +91,7 @@
             this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.btnEskiBreak = new DevExpress.XtraBars.BarButtonItem();
+            this.btnYeniProsedur = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).BeginInit();
@@ -122,9 +126,11 @@
             this.btnOnayaDusenler,
             this.btnPersonelCount,
             this.btnEgitim,
-            this.btnEskiBreak});
+            this.btnEskiBreak,
+            this.btnProsedur,
+            this.btnYeniProsedur});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 16;
+            this.ribbon.MaxItemId = 18;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonBreak,
@@ -134,7 +140,8 @@
             this.ribbonRapor,
             this.rbnPageKasa,
             this.rbnOnaylar,
-            this.rbnEgitimler});
+            this.rbnEgitimler,
+            this.rbnProsedur});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.Size = new System.Drawing.Size(1227, 83);
             this.ribbon.StatusBar = this.ribbonStatusBar;
@@ -316,6 +323,24 @@
             this.btnEgitim.Name = "btnEgitim";
             this.btnEgitim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEgitim_ItemClick);
             // 
+            // btnEskiBreak
+            // 
+            this.btnEskiBreak.Caption = "Eski Break List";
+            this.btnEskiBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.Glyph")));
+            this.btnEskiBreak.Id = 15;
+            this.btnEskiBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.LargeGlyph")));
+            this.btnEskiBreak.Name = "btnEskiBreak";
+            this.btnEskiBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEskiBreak_ItemClick);
+            // 
+            // btnProsedur
+            // 
+            this.btnProsedur.Caption = "Prosedurler";
+            this.btnProsedur.Glyph = ((System.Drawing.Image)(resources.GetObject("btnProsedur.Glyph")));
+            this.btnProsedur.Id = 16;
+            this.btnProsedur.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnProsedur.LargeGlyph")));
+            this.btnProsedur.Name = "btnProsedur";
+            this.btnProsedur.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProsedur_ItemClick);
+            // 
             // ribbonBreak
             // 
             this.ribbonBreak.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -428,6 +453,20 @@
             this.ribbonPageGroup7.ItemLinks.Add(this.btnEgitim);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "ribbonPageGroup7";
+            // 
+            // rbnProsedur
+            // 
+            this.rbnProsedur.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup8});
+            this.rbnProsedur.Name = "rbnProsedur";
+            this.rbnProsedur.Text = "Prosedurler";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnProsedur);
+            this.ribbonPageGroup8.ItemLinks.Add(this.btnYeniProsedur);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
             // 
             // ribbonStatusBar
             // 
@@ -581,14 +620,14 @@
             this.xtraTabbedMdiManager1.SetNextMdiChildMode = DevExpress.XtraTabbedMdi.SetNextMdiChildMode.TabControl;
             this.xtraTabbedMdiManager1.ShowHeaderFocus = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // btnEskiBreak
+            // btnYeniProsedur
             // 
-            this.btnEskiBreak.Caption = "Eski Break List";
-            this.btnEskiBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.Glyph")));
-            this.btnEskiBreak.Id = 15;
-            this.btnEskiBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.LargeGlyph")));
-            this.btnEskiBreak.Name = "btnEskiBreak";
-            this.btnEskiBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEskiBreak_ItemClick);
+            this.btnYeniProsedur.Caption = "Yeni Prosedur";
+            this.btnYeniProsedur.Glyph = ((System.Drawing.Image)(resources.GetObject("btnYeniProsedur.Glyph")));
+            this.btnYeniProsedur.Id = 17;
+            this.btnYeniProsedur.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnYeniProsedur.LargeGlyph")));
+            this.btnYeniProsedur.Name = "btnYeniProsedur";
+            this.btnYeniProsedur.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYeniProsedur_ItemClick);
             // 
             // frmMDIMain
             // 
@@ -687,5 +726,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnEgitimler;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem btnEskiBreak;
+        private DevExpress.XtraBars.BarButtonItem btnProsedur;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbnProsedur;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.BarButtonItem btnYeniProsedur;
     }
 }

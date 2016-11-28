@@ -15997,7 +15997,7 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public spTipListesiAllPersonelRow AddspTipListesiAllPersonelRow(int Personel_No, string Personel, double Tip_Puani, int Sick_Call, int No_Call_No_Show, int Sick_Sent_Home, int Rapor, decimal Late, decimal Suspend, decimal SentHomeD, string Department, decimal Tip_Avansi, decimal Bankaya_Yatan) {
+            public spTipListesiAllPersonelRow AddspTipListesiAllPersonelRow(int Personel_No, string Personel, decimal Tip_Puani, decimal Sick_Call, decimal No_Call_No_Show, decimal Sick_Sent_Home, decimal Rapor, decimal Late, decimal Suspend, decimal SentHomeD, string Department, decimal Tip_Avansi, decimal Bankaya_Yatan) {
                 spTipListesiAllPersonelRow rowspTipListesiAllPersonelRow = ((spTipListesiAllPersonelRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Personel_No,
@@ -16057,15 +16057,15 @@ namespace Break_List {
                 base.Columns.Add(this.columnPersonel_No);
                 this.columnPersonel = new global::System.Data.DataColumn("Personel", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPersonel);
-                this.columnTip_Puani = new global::System.Data.DataColumn("Tip Puani", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnTip_Puani = new global::System.Data.DataColumn("Tip Puani", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTip_Puani);
-                this.columnSick_Call = new global::System.Data.DataColumn("Sick Call", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnSick_Call = new global::System.Data.DataColumn("Sick Call", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSick_Call);
-                this.columnNo_Call_No_Show = new global::System.Data.DataColumn("No Call No Show", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnNo_Call_No_Show = new global::System.Data.DataColumn("No Call No Show", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNo_Call_No_Show);
-                this.columnSick_Sent_Home = new global::System.Data.DataColumn("Sick Sent Home", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnSick_Sent_Home = new global::System.Data.DataColumn("Sick Sent Home", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSick_Sent_Home);
-                this.columnRapor = new global::System.Data.DataColumn("Rapor", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnRapor = new global::System.Data.DataColumn("Rapor", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRapor);
                 this.columnLate = new global::System.Data.DataColumn("Late", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLate);
@@ -31756,10 +31756,10 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double Tip_Puani {
+            public decimal Tip_Puani {
                 get {
                     try {
-                        return ((double)(this[this.tablespTipListesiAllPersonel.Tip_PuaniColumn]));
+                        return ((decimal)(this[this.tablespTipListesiAllPersonel.Tip_PuaniColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Tip Puani\' in table \'spTipListesiAllPersonel\' is DBNull.", e);
@@ -31772,10 +31772,10 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Sick_Call {
+            public decimal Sick_Call {
                 get {
                     try {
-                        return ((int)(this[this.tablespTipListesiAllPersonel.Sick_CallColumn]));
+                        return ((decimal)(this[this.tablespTipListesiAllPersonel.Sick_CallColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Sick Call\' in table \'spTipListesiAllPersonel\' is DBNull.", e);
@@ -31788,10 +31788,10 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int No_Call_No_Show {
+            public decimal No_Call_No_Show {
                 get {
                     try {
-                        return ((int)(this[this.tablespTipListesiAllPersonel.No_Call_No_ShowColumn]));
+                        return ((decimal)(this[this.tablespTipListesiAllPersonel.No_Call_No_ShowColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'No Call No Show\' in table \'spTipListesiAllPersonel\' is DBNu" +
@@ -31805,10 +31805,10 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Sick_Sent_Home {
+            public decimal Sick_Sent_Home {
                 get {
                     try {
-                        return ((int)(this[this.tablespTipListesiAllPersonel.Sick_Sent_HomeColumn]));
+                        return ((decimal)(this[this.tablespTipListesiAllPersonel.Sick_Sent_HomeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Sick Sent Home\' in table \'spTipListesiAllPersonel\' is DBNul" +
@@ -31822,10 +31822,10 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Rapor {
+            public decimal Rapor {
                 get {
                     try {
-                        return ((int)(this[this.tablespTipListesiAllPersonel.RaporColumn]));
+                        return ((decimal)(this[this.tablespTipListesiAllPersonel.RaporColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Rapor\' in table \'spTipListesiAllPersonel\' is DBNull.", e);

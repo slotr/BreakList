@@ -12,6 +12,7 @@ using DevExpress.XtraScheduler.Drawing;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 using DevExpress.XtraScheduler.Services.Internal;
+using Break_List.Class;
 
 namespace Break_List.Forms.BreakList
 {
@@ -23,6 +24,7 @@ namespace Break_List.Forms.BreakList
         public DateTime _EndDate { get; set; }
 
         public TimeSpan _Duration { get; set; }
+        
         public frmBreakList()
         {
             InitializeComponent();
@@ -46,8 +48,7 @@ namespace Break_List.Forms.BreakList
             try
             {
                 scales.Clear();
-                scales.Add(new TimeScaleFixedInterval(TimeSpan.FromDays(1), tsStart, maxTime));
-                //scales.Add(new TimeInterval(TimeSpan.FromHours(1), tsStart, maxTime));
+                scales.Add(new TimeScaleFixedInterval(TimeSpan.FromDays(1), tsStart, maxTime));                
                 scales.Add(new TimeScaleFixedInterval(TimeSpan.FromMinutes(20), minTime, maxTime));
                 schedulerControl.LimitInterval.Start = _operationDate;
                 schedulerControl.LimitInterval.End = _EndDate;
@@ -79,8 +80,9 @@ namespace Break_List.Forms.BreakList
         GridHitInfo downHitInfo;
 
 
-        void getNames()
+        void getNames() // Break LIst Isimlerini Getiriyor.
         {
+
             using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
                 MySqlCommand cmd = new MySqlCommand("spBreakListNames;", conn) { CommandType = CommandType.StoredProcedure };
@@ -105,7 +107,7 @@ namespace Break_List.Forms.BreakList
 
         }
 
-        void getNamesGelecek()
+        void getNamesGelecek() // Rotadaki gelecek isimler
         {
             using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
@@ -128,7 +130,7 @@ namespace Break_List.Forms.BreakList
             }
 
         }
-        void getTables()
+        void getTables() // Masalar
         {
             using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
             using (var command = new MySqlCommand("SELECT * FROM livegame.tables where open = 1", conn)
@@ -210,8 +212,7 @@ namespace Break_List.Forms.BreakList
                 apt.Location = location;
                 apt.CustomFields["Department"] = _departmentNameFromMainForm;
                 apt.CustomFields["ActualShiftDate"] = _operationDate;
-                apt.Duration = TimeSpan.FromMinutes(20);
-                //apt.CustomFields["Sure"] = 20;                          
+                apt.Duration = TimeSpan.FromMinutes(20);                                         
                 appointments.Add(apt);
 
             }
@@ -266,6 +267,7 @@ namespace Break_List.Forms.BreakList
                 resourceID = (int)hi.ViewInfo.Resource.Id;
                 resourceName = (string)hi.ViewInfo.Resource.Caption;
                 e.Menu.Items.Add(new SchedulerMenuItem(resourceName + " Bitir", eveGonder));
+                e.Menu.Items.Add(new SchedulerMenuItem(resourceName + " Geri Gönder", geriGonder));
                 
             }
 
@@ -291,6 +293,30 @@ namespace Break_List.Forms.BreakList
             }
                 
         }
+        public void geriGonder(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = XtraMessageBox.Show(string.Format("{0} Geri Gönderilecek", resourceName), "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                {
+                    MySqlCommand cmd = new MySqlCommand("spBreakPersonelGeriGotur;", conn) { CommandType = CommandType.StoredProcedure };
+                    cmd.Parameters.Add(new MySqlParameter("resourceID", resourceID));
+                    cmd.Parameters.Add(new MySqlParameter("operationDate", _operationDate));
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                
+                getNames();
+                getNamesGelecek();
+            }
+            else
+            {
+                XtraMessageBox.Show("OK Sen Bilirsin", "Bitirilmedi");
+            }
+
+        }
         public void eveGonder(object sender, EventArgs e)
         {
             DialogResult dialogResult = XtraMessageBox.Show(string.Format("{0} Bitirilecek", resourceName), "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -304,8 +330,7 @@ namespace Break_List.Forms.BreakList
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                }
-                XtraMessageBox.Show(string.Format("{0} Bitirildi", resourceName));
+                }               
                 getNames();
             }
             else

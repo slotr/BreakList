@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression4 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.colOverTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colErkenGonderim = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -62,6 +62,7 @@
             this.colTRV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCTV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHVA = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
@@ -182,25 +183,28 @@
             this.colTR,
             this.colTRV,
             this.colCT,
-            this.colCTV});
-            gridFormatRule3.Column = this.colOverTime;
-            gridFormatRule3.Name = "Format0";
-            formatConditionRuleExpression3.Expression = "[Over Time] <> \'YOK\'";
-            formatConditionRuleExpression3.PredefinedName = "Green Fill";
-            gridFormatRule3.Rule = formatConditionRuleExpression3;
-            gridFormatRule4.Column = this.colErkenGonderim;
-            gridFormatRule4.Name = "Format1";
-            formatConditionRuleExpression4.Expression = "[Erken Gonderim] <> \'YOK\'";
-            formatConditionRuleExpression4.PredefinedName = "Red Fill";
-            gridFormatRule4.Rule = formatConditionRuleExpression4;
-            this.gridView1.FormatRules.Add(gridFormatRule3);
-            this.gridView1.FormatRules.Add(gridFormatRule4);
+            this.colCTV,
+            this.colHVA});
+            gridFormatRule1.Column = this.colOverTime;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleExpression1.Expression = "[Over Time] <> \'YOK\'";
+            formatConditionRuleExpression1.PredefinedName = "Green Fill";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            gridFormatRule2.Column = this.colErkenGonderim;
+            gridFormatRule2.Name = "Format1";
+            formatConditionRuleExpression2.Expression = "[Erken Gonderim] <> \'YOK\'";
+            formatConditionRuleExpression2.PredefinedName = "Red Fill";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
+            this.gridView1.FormatRules.Add(gridFormatRule2);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.PlainText;
+            this.gridView1.OptionsMenu.EnableGroupPanelMenu = false;
+            this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridView1.OptionsPrint.AutoWidth = false;
             this.gridView1.OptionsPrint.ExpandAllGroups = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
@@ -379,6 +383,15 @@
             this.colCTV.VisibleIndex = 19;
             this.colCTV.Width = 42;
             // 
+            // colHVA
+            // 
+            this.colHVA.Caption = "HVA";
+            this.colHVA.FieldName = "HVA";
+            this.colHVA.Name = "colHVA";
+            this.colHVA.Visible = true;
+            this.colHVA.VisibleIndex = 21;
+            this.colHVA.Width = 38;
+            // 
             // frmCcalismaSaatleriByManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,7 +401,9 @@
             this.Controls.Add(this.panelControl1);
             this.Name = "frmCcalismaSaatleriByManager";
             this.Text = "Manager Rapor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCcalismaSaatleriByManager_FormClosing);
             this.Load += new System.EventHandler(this.frmCcalismaSaatleriByManager_Load);
+            this.Shown += new System.EventHandler(this.frmCcalismaSaatleriByManager_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -433,5 +448,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCT;
         private DevExpress.XtraGrid.Columns.GridColumn colCTV;
         private DevExpress.XtraEditors.SimpleButton btnPrint;
+        private DevExpress.XtraGrid.Columns.GridColumn colHVA;
     }
 }

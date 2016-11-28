@@ -532,5 +532,10 @@ namespace Break_List.Forms.Rotalar
         {
             txtRapor.Text = radioGroup7.EditValue.ToString();
         }
+
+        private void frmAddOverTime_Shown(object sender, EventArgs e)
+        {
+            this.Text = "Kesinti Ekleme";
+        }
     }
 }

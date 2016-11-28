@@ -96,6 +96,7 @@
             this.kesinti = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colTipAvansi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             this.colBankayaYatan = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.Alacak = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -140,7 +141,6 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.repositoryItemHyperLinkEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemHyperLinkEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -178,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -217,7 +218,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -533,6 +533,8 @@
             this.bandedGridView1.FixedLineWidth = 4;
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.GroupCount = 1;
+            this.bandedGridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Tip Puani", this.colDepartment, "")});
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.bandedGridView1.OptionsBehavior.Editable = false;
@@ -549,8 +551,8 @@
             this.bandedGridView1.OptionsFind.ShowCloseButton = false;
             this.bandedGridView1.OptionsFind.ShowFindButton = false;
             this.bandedGridView1.OptionsLayout.Columns.AddNewColumns = false;
-            this.bandedGridView1.OptionsMenu.EnableColumnMenu = false;
             this.bandedGridView1.OptionsMenu.EnableGroupPanelMenu = false;
+            this.bandedGridView1.OptionsMenu.ShowConditionalFormattingItem = true;
             this.bandedGridView1.OptionsPrint.PrintBandHeader = false;
             this.bandedGridView1.OptionsView.ColumnAutoWidth = false;
             this.bandedGridView1.OptionsView.ShowFooter = true;
@@ -616,7 +618,7 @@
             this.toplamtip.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Underline);
             this.toplamtip.AppearanceCell.Options.UseFont = true;
             this.toplamtip.Caption = "Toplam Tip";
-            this.toplamtip.DisplayFormat.FormatString = "n0";
+            this.toplamtip.DisplayFormat.FormatString = "n1";
             this.toplamtip.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.toplamtip.FieldName = "toplamtip";
             this.toplamtip.Name = "toplamtip";
@@ -643,6 +645,8 @@
             // 
             // colSickCall
             // 
+            this.colSickCall.DisplayFormat.FormatString = "n1";
+            this.colSickCall.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSickCall.FieldName = "Sick Call";
             this.colSickCall.Name = "colSickCall";
             this.colSickCall.Visible = true;
@@ -651,6 +655,8 @@
             // colNoCallNoShow
             // 
             this.colNoCallNoShow.Caption = "No Call";
+            this.colNoCallNoShow.DisplayFormat.FormatString = "n1";
+            this.colNoCallNoShow.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colNoCallNoShow.FieldName = "No Call No Show";
             this.colNoCallNoShow.Name = "colNoCallNoShow";
             this.colNoCallNoShow.Visible = true;
@@ -658,7 +664,8 @@
             // 
             // colSickSentHome
             // 
-            this.colSickSentHome.Caption = "Sick S. Home";
+            this.colSickSentHome.DisplayFormat.FormatString = "n1";
+            this.colSickSentHome.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSickSentHome.FieldName = "Sick Sent Home";
             this.colSickSentHome.Name = "colSickSentHome";
             this.colSickSentHome.Visible = true;
@@ -666,6 +673,8 @@
             // 
             // colRapor
             // 
+            this.colRapor.DisplayFormat.FormatString = "n1";
+            this.colRapor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colRapor.FieldName = "Rapor";
             this.colRapor.Name = "colRapor";
             this.colRapor.Visible = true;
@@ -683,6 +692,8 @@
             // colSuspend
             // 
             this.colSuspend.Caption = "Susp.";
+            this.colSuspend.DisplayFormat.FormatString = "n1";
+            this.colSuspend.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSuspend.FieldName = "Suspend";
             this.colSuspend.Name = "colSuspend";
             this.colSuspend.Visible = true;
@@ -690,6 +701,8 @@
             // 
             // colSentHomeD
             // 
+            this.colSentHomeD.DisplayFormat.FormatString = "n1";
+            this.colSentHomeD.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSentHomeD.FieldName = "SentHomeD";
             this.colSentHomeD.Name = "colSentHomeD";
             this.colSentHomeD.Visible = true;
@@ -736,7 +749,7 @@
             this.kesinti.AppearanceCell.Options.UseFont = true;
             this.kesinti.AppearanceCell.Options.UseForeColor = true;
             this.kesinti.Caption = "Top Kesinti";
-            this.kesinti.DisplayFormat.FormatString = "n0";
+            this.kesinti.DisplayFormat.FormatString = "n1";
             this.kesinti.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.kesinti.FieldName = "kesinti";
             this.kesinti.Name = "kesinti";
@@ -761,14 +774,23 @@
             // 
             this.colTipAvansi.Caption = "Avans";
             this.colTipAvansi.ColumnEdit = this.repositoryItemHyperLinkEdit1;
+            this.colTipAvansi.DisplayFormat.FormatString = "n1";
+            this.colTipAvansi.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colTipAvansi.FieldName = "Tip Avansi";
             this.colTipAvansi.Name = "colTipAvansi";
             this.colTipAvansi.Visible = true;
             this.colTipAvansi.Width = 54;
             // 
+            // repositoryItemHyperLinkEdit1
+            // 
+            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
+            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
+            // 
             // colBankayaYatan
             // 
             this.colBankayaYatan.Caption = "Bankaya Yatan";
+            this.colBankayaYatan.DisplayFormat.FormatString = "n1";
+            this.colBankayaYatan.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBankayaYatan.FieldName = "Bankaya Yatan";
             this.colBankayaYatan.Name = "colBankayaYatan";
             this.colBankayaYatan.Visible = true;
@@ -789,7 +811,7 @@
             this.Alacak.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             this.Alacak.AppearanceCell.Options.UseFont = true;
             this.Alacak.Caption = "Alacağı";
-            this.Alacak.DisplayFormat.FormatString = "n0";
+            this.Alacak.DisplayFormat.FormatString = "n1";
             this.Alacak.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.Alacak.FieldName = "gridColumn1";
             this.Alacak.Name = "Alacak";
@@ -823,6 +845,8 @@
             // 
             this.tipAvans.Caption = "Tip Avansi Ekle";
             this.tipAvans.ColumnEdit = this.repositoryItemButtonEdit2;
+            this.tipAvans.DisplayFormat.FormatString = "n1";
+            this.tipAvans.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.tipAvans.Name = "tipAvans";
             this.tipAvans.OptionsColumn.Printable = DevExpress.Utils.DefaultBoolean.False;
             this.tipAvans.Visible = true;
@@ -832,6 +856,8 @@
             // 
             this.BankayaYatan.Caption = "Bankaya Yatan Ekle";
             this.BankayaYatan.ColumnEdit = this.repositoryItemButtonEdit3;
+            this.BankayaYatan.DisplayFormat.FormatString = "n1";
+            this.BankayaYatan.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.BankayaYatan.Name = "BankayaYatan";
             this.BankayaYatan.OptionsColumn.Printable = DevExpress.Utils.DefaultBoolean.False;
             this.BankayaYatan.Visible = true;
@@ -1306,11 +1332,6 @@
             this.panelControl3.Size = new System.Drawing.Size(939, 601);
             this.panelControl3.TabIndex = 4;
             // 
-            // repositoryItemHyperLinkEdit1
-            // 
-            this.repositoryItemHyperLinkEdit1.AutoHeight = false;
-            this.repositoryItemHyperLinkEdit1.Name = "repositoryItemHyperLinkEdit1";
-            // 
             // frmTipListesi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1323,7 +1344,9 @@
             this.Name = "frmTipListesi";
             this.Text = "Tip Listesi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTipListesi_FormClosing);
             this.Load += new System.EventHandler(this.frmTipListesi_Load);
+            this.Shown += new System.EventHandler(this.frmTipListesi_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -1362,6 +1385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -1401,7 +1425,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }

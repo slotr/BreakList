@@ -13,6 +13,9 @@ using Break_List.Properties;
 using DevExpress.XtraPivotGrid;
 using System.Linq.Expressions;
 using System.IO;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
+using System.Diagnostics;
 
 namespace Break_List.Forms.BreakList
 {
@@ -24,6 +27,7 @@ namespace Break_List.Forms.BreakList
         public BreakListPrint()
         {
             InitializeComponent();
+            gridView1.CustomDrawCell += gridView1_CustomDrawCell;
         }
 
         private void BreakListPrint_Load(object sender, EventArgs e)
@@ -89,7 +93,7 @@ namespace Break_List.Forms.BreakList
                             item => item.Personel,
                             items => items.Any() ? items.First().Masa : null);
                             gridControl1.DataSource = pivotDataTable;
-                        
+                          gridView1.Columns["Personel"].Width = 150;
                     }
                     
                 }
@@ -99,22 +103,22 @@ namespace Break_List.Forms.BreakList
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+
             var saveDialog = new SaveFileDialog();
             try
             {
-                saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
                 if (saveDialog.ShowDialog() != DialogResult.Cancel)
                 {
                     var exportFilePath = saveDialog.FileName;
                     var fileExtenstion = new FileInfo(exportFilePath).Extension;
                     DevExpress.Export.ExportSettings.DefaultExportType = DevExpress.Export.ExportType.WYSIWYG;
+
                     switch (fileExtenstion)
                     {
-                        case ".xls":
-                            gridControl1.ExportToXls(exportFilePath);
-                            break;
+                        
                         case ".xlsx":
-                            gridControl1.ExportToXlsx(exportFilePath);
+                            gridControl1.ExportToXlsx(exportFilePath, new XlsxExportOptions(TextExportMode.Text));
                             break;
                         case ".rtf":
                             gridControl1.ExportToRtf(exportFilePath);
@@ -136,7 +140,7 @@ namespace Break_List.Forms.BreakList
                     {
                         try
                         {
-                            System.Diagnostics.Process.Start(exportFilePath);
+                            Process.Start(exportFilePath);
                         }
                         catch
                         {
@@ -155,6 +159,24 @@ namespace Break_List.Forms.BreakList
             {
                 if (saveDialog != null)
                     saveDialog.Dispose();
+            }
+        }
+
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.DisplayText == "/")
+                e.Appearance.ForeColor = Color.DarkRed;
+        }
+
+        private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName != "Personel")
+            {
+                if (e.DisplayText == "BREAK-/")
+                    e.DisplayText = "/";
+                string A = e.DisplayText;
+                string str = A.Substring(A.IndexOf('-') + 1);
+                e.DisplayText = str;
             }
         }
     }

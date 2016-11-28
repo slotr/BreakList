@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
+using System.IO;
 
 namespace Break_List.Forms.Raporlar
 {
@@ -89,6 +90,19 @@ namespace Break_List.Forms.Raporlar
         private void btnPrint_Click(object sender, EventArgs e)
         {
             gridControl1.ShowPrintPreview();
+        }
+
+        private void frmCcalismaSaatleriByManager_Shown(object sender, EventArgs e)
+        {
+            if (File.Exists("calismasaatleriFormview.xml"))
+            {
+                gridView1.RestoreLayoutFromXml("calismasaatleriFormview.xml", DevExpress.Utils.OptionsLayoutBase.FullLayout);
+            }
+        }
+
+        private void frmCcalismaSaatleriByManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            gridView1.SaveLayoutToXml("calismasaatleriFormview.xml", DevExpress.Utils.OptionsLayoutBase.FullLayout);
         }
     }
 }

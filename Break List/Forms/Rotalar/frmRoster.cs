@@ -38,6 +38,7 @@ namespace Break_List.Forms.Rotalar
             schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
             schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
             schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
+            schedulerControl1.MouseWheel += schedulerControl_MouseWheel; 
         }
         private void OnAppointmentChangedInsertedDeleted(object sender, PersistentObjectsEventArgs e)
         {
@@ -45,6 +46,15 @@ namespace Break_List.Forms.Rotalar
             roster1TableAdapter.Update(livegameDataSet1);
             livegameDataSet1.AcceptChanges();
             roster1TableAdapter.Fill(livegameDataSet1.roster1);
+        }
+
+        void schedulerControl_MouseWheel(object sender, MouseEventArgs e) // Mouse asagi yukari hareket ediyor.
+        {
+            int index = schedulerControl1.ActiveView.FirstVisibleResourceIndex;
+            if (e.Delta > 0 && index != 0)
+                schedulerControl1.ActiveView.FirstVisibleResourceIndex--;
+            if (e.Delta < 0 && index != schedulerControl1.Storage.Resources.Count - 1)
+                schedulerControl1.ActiveView.FirstVisibleResourceIndex++;
         }
         void getNames()
         {
@@ -64,7 +74,7 @@ namespace Break_List.Forms.Rotalar
                     {
                         adapter.Fill(dt);
                         schedulerStorage1.Resources.DataSource = dt;
-                        Text = _department + " Rotası ";
+                        //Text = _department + " Rotası ";
                     }
                 }
                 conn.Close();
@@ -74,11 +84,11 @@ namespace Break_List.Forms.Rotalar
 
         private void frmRoster_Load(object sender, EventArgs e)
         {
+            //schedulerControl1.MouseWheel += schedulerControl_MouseWheel;
+            //roster1TableAdapter.Fill(livegameDataSet1.roster1);
+            //getNames();
+            //getShifts();
             
-            roster1TableAdapter.Fill(livegameDataSet1.roster1);
-            getNames();
-            getShifts();
-
         }
 
         private void UpdateScaleWidth()
@@ -270,6 +280,19 @@ namespace Break_List.Forms.Rotalar
                 header.Appearance.HeaderCaption.ForeColor = Color.Blue;
 
             }
+        }
+
+        private void frmRoster_Shown(object sender, EventArgs e)
+        {
+            roster1TableAdapter.Fill(livegameDataSet1.roster1);
+            getNames();
+            getShifts();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            
+            
         }
     }
 }

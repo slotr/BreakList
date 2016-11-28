@@ -135,6 +135,7 @@ namespace Break_List.Forms.Kasa
 
         private void frmTipListesi_Load(object sender, EventArgs e)
         {
+            
         }
 
         private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
@@ -187,6 +188,11 @@ namespace Break_List.Forms.Kasa
                             gridView.OptionsBehavior.Editable = false;
                             grid.ViewCollection.Add(gridView);
                             grid.MainView = gridView;
+                            gridView.OptionsMenu.ShowConditionalFormattingItem = true;
+                            if (File.Exists("view.xml"))
+                            {
+                                gridView.RestoreLayoutFromXml("view.xml", DevExpress.Utils.OptionsLayoutBase.FullLayout);
+                            }
                             form.Bounds = new Rectangle(100, 100, 800, 600);
                             form.StartPosition = FormStartPosition.CenterScreen;
                             form.FormBorderEffect = FormBorderEffect.Shadow;
@@ -332,6 +338,19 @@ namespace Break_List.Forms.Kasa
         private void gridControl1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmTipListesi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bandedGridView1.SaveLayoutToXml("tipFormview.xml", DevExpress.Utils.OptionsLayoutBase.FullLayout);
+        }
+
+        private void frmTipListesi_Shown(object sender, EventArgs e)
+        {
+            if (File.Exists("tipFormview.xml"))
+            {
+                bandedGridView1.RestoreLayoutFromXml("tipFormview.xml", DevExpress.Utils.OptionsLayoutBase.FullLayout);
+            }
         }
     }
 }

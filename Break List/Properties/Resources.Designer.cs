@@ -73,9 +73,9 @@ namespace Break_List.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap black_jack {
+        internal static System.Drawing.Bitmap cards {
             get {
-                object obj = ResourceManager.GetObject("black-jack", resourceCulture);
+                object obj = ResourceManager.GetObject("cards", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

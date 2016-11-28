@@ -5,7 +5,7 @@ using Break_List.Properties;
 using MySql.Data.MySqlClient;
 using Break_List.Forms.Rotalar;
 using Break_List.Forms.Personel;
-
+using Break_List.Forms.Prosedur;
 
 namespace Break_List.Forms
 {
@@ -247,6 +247,21 @@ namespace Break_List.Forms
             BreakList.BreakListPrint printBreak = new BreakList.BreakListPrint();
             printBreak.MdiParent = this;
             printBreak.Show();
+        }
+
+        private void btnProsedur_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmProsedurler prosedur = new frmProsedurler();
+            prosedur.MdiParent = this;
+            prosedur._departmentNameFromMainForm = prop._department;
+            prosedur.Show();
+        }
+
+        private void btnYeniProsedur_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmProsedurDisplay yeniProsedur = new frmProsedurDisplay();
+            yeniProsedur.goster = false;
+            yeniProsedur.Show();
         }
     }
 }

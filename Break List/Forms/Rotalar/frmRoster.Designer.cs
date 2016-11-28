@@ -43,6 +43,7 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roster1BindingSource)).BeginInit();
@@ -87,7 +88,7 @@
             this.schedulerControl1.Views.MonthView.Enabled = false;
             this.schedulerControl1.Views.TimelineView.Appearance.Appointment.BorderColor = System.Drawing.Color.Purple;
             this.schedulerControl1.Views.TimelineView.Appearance.Appointment.Options.UseBorderColor = true;
-            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 15;
+            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 22;
             this.schedulerControl1.Views.TimelineView.ShowMoreButtons = false;
             this.schedulerControl1.Views.TimelineView.TimeIndicatorDisplayOptions.Visibility = DevExpress.XtraScheduler.TimeIndicatorVisibility.CurrentDate;
             this.schedulerControl1.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));
@@ -129,7 +130,6 @@
             this.schedulerStorage1.Resources.Mappings.Caption = "ResourceName";
             this.schedulerStorage1.Resources.Mappings.Color = "Color";
             this.schedulerStorage1.Resources.Mappings.Id = "ResourceID";
-            this.schedulerStorage1.Resources.Mappings.Image = "Image";
             // 
             // roster1BindingSource
             // 
@@ -192,6 +192,10 @@
             this.panelControl2.Size = new System.Drawing.Size(741, 594);
             this.panelControl2.TabIndex = 2;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // frmRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +206,7 @@
             this.Name = "frmRoster";
             this.Text = "Rotalar";
             this.Load += new System.EventHandler(this.frmRoster_Load);
+            this.Shown += new System.EventHandler(this.frmRoster_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roster1BindingSource)).EndInit();
@@ -230,5 +235,6 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
