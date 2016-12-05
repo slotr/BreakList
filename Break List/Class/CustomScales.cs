@@ -1,11 +1,5 @@
-﻿//Custom
-
+﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.XtraScheduler;
 
 namespace Break_List
 {
@@ -16,7 +10,7 @@ namespace Break_List
 
         public TimeScaleFixedInterval(TimeSpan span, TimeSpan spanStart, TimeSpan spanEnd) : base(span)
         {
-            this.Width = 50;
+            this.Width = 35;
             start = spanStart;
             end = spanEnd;
         }

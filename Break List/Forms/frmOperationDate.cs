@@ -21,11 +21,10 @@ namespace Break_List.Forms
         private void dateEdit1_EditValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.operationDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
-            Properties.Settings.Default.StartDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
-            Properties.Settings.Default.Save();
+            Properties.Settings.Default.StartDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());            
             EndDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
             dateEdit2.EditValue = EndDate.AddHours(24);
-            
+            Properties.Settings.Default.Save();
         }
 
         private void dateEdit2_EditValueChanged(object sender, EventArgs e)
@@ -33,6 +32,7 @@ namespace Break_List.Forms
             if (dateEdit2.EditValue != null)
             {
                 Properties.Settings.Default.EndDate = Convert.ToDateTime(dateEdit2.EditValue.ToString());
+                Properties.Settings.Default.Save();
                 simpleButton1.Visible = true;
             }
         }
@@ -42,7 +42,7 @@ namespace Break_List.Forms
         {
             if (dateEdit1.EditValue == null)
             {
-                MessageBox.Show("Shift Başlangıç tarihi ayarlanmadı", "Hata");
+                MessageBox.Show("Shift Başlangıç tarihi ayarlanmadı", @"Bir Hata Oluştu.");
             }
             else
             {

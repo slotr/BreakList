@@ -16,6 +16,7 @@ namespace Break_List.Forms.Personel
         public string _UserNameFromMainForm { get; set; }
         public string _UserID { get; set; }
         Boolean haspermissionToAllPersonel { get; set; }
+        public string personelName;
         public frmPersonelList()
         {
             InitializeComponent();           
@@ -188,13 +189,14 @@ namespace Break_List.Forms.Personel
         {
 
             personelID = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
-
-            var personel = new frmPersonelDetails
+            personelName = (string)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "FullName");
+            var personel = new FrmPersonelDetails
             {
                 MdiParent = ParentForm,
-                _personelID = personelID.ToString(),
-                _UserNameFromMainForm = _UserNameFromMainForm,
-                _UserID = labelControl1.Text
+                PersonelId = personelID.ToString(),
+                UserNameFromMainForm = _UserNameFromMainForm,
+                UserId = labelControl1.Text,
+                PersonelName = personelName
 
             };
 

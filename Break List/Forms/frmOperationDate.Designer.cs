@@ -33,6 +33,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.btnVazgec = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
@@ -81,6 +82,7 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton1.Location = new System.Drawing.Point(238, 122);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
@@ -105,11 +107,21 @@
             this.labelControl2.TabIndex = 4;
             this.labelControl2.Text = "Shift Bitiş:";
             // 
+            // btnVazgec
+            // 
+            this.btnVazgec.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnVazgec.Location = new System.Drawing.Point(101, 122);
+            this.btnVazgec.Name = "btnVazgec";
+            this.btnVazgec.Size = new System.Drawing.Size(75, 23);
+            this.btnVazgec.TabIndex = 5;
+            this.btnVazgec.Text = "İptal";
+            // 
             // frmOperationDate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 182);
+            this.Controls.Add(this.btnVazgec);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);
@@ -133,8 +145,9 @@
         #endregion
         private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.DateEdit dateEdit2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnVazgec;
+        public DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

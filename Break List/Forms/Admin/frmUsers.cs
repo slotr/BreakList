@@ -133,7 +133,7 @@ namespace Break_List
             if (count == 1)
             {
                 
-                MessageBox.Show( "Böyle bir Kullanıcı ismi daha önce kullanılmış", "Hata");
+                MessageBox.Show( "Böyle bir Kullanıcı ismi daha önce kullanılmış", @"Bir Hata Oluştu.");
                 
 
             }
@@ -163,7 +163,7 @@ namespace Break_List
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show( ex.ToString(), "Bir Hata Olustu");
+                    MessageBox.Show( ex.ToString(), @"Bir Hata Oluştu.");
                 }
             }
 

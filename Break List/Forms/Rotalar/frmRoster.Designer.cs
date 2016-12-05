@@ -88,7 +88,7 @@
             this.schedulerControl1.Views.MonthView.Enabled = false;
             this.schedulerControl1.Views.TimelineView.Appearance.Appointment.BorderColor = System.Drawing.Color.Purple;
             this.schedulerControl1.Views.TimelineView.Appearance.Appointment.Options.UseBorderColor = true;
-            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 22;
+            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 18;
             this.schedulerControl1.Views.TimelineView.ShowMoreButtons = false;
             this.schedulerControl1.Views.TimelineView.TimeIndicatorDisplayOptions.Visibility = DevExpress.XtraScheduler.TimeIndicatorVisibility.CurrentDate;
             this.schedulerControl1.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));

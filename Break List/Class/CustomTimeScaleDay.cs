@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.XtraScheduler;
+﻿using System;using DevExpress.XtraScheduler;
 namespace Break_List.Class
 {
     public class CustomTimeScaleDay : TimeScaleDay
@@ -13,7 +8,7 @@ namespace Break_List.Class
             if (date == DateTime.MinValue)
                 return date.AddHours(8);
 
-            DateTime start = base.Floor(date);
+            var start = base.Floor(date);
             if (date.Hour < 8)
                 start = start.AddDays(-1);
 
@@ -25,13 +20,11 @@ namespace Break_List.Class
         private const int StartHour = 8;
         private const int FinishHour = 19;
 
-        protected override string DefaultDisplayFormat { get { return "HH:mm"; } }
-        protected override string DefaultMenuCaption { get { return "8:00-19:00"; } }
+        protected override string DefaultDisplayFormat => "HH:mm";
+        protected override string DefaultMenuCaption => "8:00-19:00";
 
-        protected override TimeSpan SortingWeight
-        {
-            get { return TimeSpan.FromHours(FinishHour - StartHour + 1); }
-        }
+        protected override TimeSpan SortingWeight => TimeSpan.FromHours(FinishHour - StartHour + 1);
+
         public override DateTime Floor(DateTime date)
         {
             if (date == DateTime.MinValue || date == DateTime.MaxValue)

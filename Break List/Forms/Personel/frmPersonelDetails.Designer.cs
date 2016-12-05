@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmPersonelDetails
+    partial class FrmPersonelDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -19,22 +19,22 @@
                 {
                     components.Dispose();
                 }
-                if (con != null)
-                    con.Dispose();
-                if (cmd != null)
+                if (_con != null)
+                    _con.Dispose();
+                if (_cmd != null)
                 {
-                    cmd.Dispose();
-                    cmd = null;
+                    _cmd.Dispose();
+                    _cmd = null;
                 }
-                if (fs != null)
+                if (_fs != null)
                 {
-                    fs.Dispose();
-                    fs = null;
+                    _fs.Dispose();
+                    _fs = null;
                 }
-                if (br != null)
+                if (_br != null)
                 {
-                    br.Dispose();
-                    br = null;
+                    _br.Dispose();
+                    _br = null;
                 }
             }
             base.Dispose(disposing);
@@ -49,8 +49,7 @@
         ///
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPersonelDetails));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPersonelDetails));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -59,7 +58,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.cmbistenayrilma = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -117,7 +116,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabIzinler = new DevExpress.XtraTab.XtraTabPage();
             this.vacationgrid = new DevExpress.XtraGrid.GridControl();
-            this.spSelectVacationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.spSelectVacationsBindingSource = new System.Windows.Forms.BindingSource();
             this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -231,11 +230,11 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
-            this.popvacation = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.popMaas = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.popHata = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popvacation = new DevExpress.XtraBars.PopupMenu();
+            this.popMaas = new DevExpress.XtraBars.PopupMenu();
+            this.popHata = new DevExpress.XtraBars.PopupMenu();
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.popOffAlacak = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popOffAlacak = new DevExpress.XtraBars.PopupMenu();
             this.colIsleyen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colalacaksayisi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarih = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -271,7 +270,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.spSelectVacationsTableAdapter = new Break_List.livegameDataSet1TableAdapters.spSelectVacationsTableAdapter();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbistenayrilma.Properties)).BeginInit();
@@ -3149,7 +3148,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmPersonelDetails";
+            this.Name = "FrmPersonelDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personel Detayları";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

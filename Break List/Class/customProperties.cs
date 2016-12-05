@@ -17,5 +17,7 @@ namespace Break_List
         public DateTime _StartDate { get; set; }
         public DateTime _EndDate { get; set; }
         public string _userName {get; set;}
+        public bool _logedin { get; set; }
+        public string _computerName { get; set; }
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
@@ -14,12 +9,14 @@ using Break_List.Properties;
 
 namespace Break_List.Forms.Maas
 {
-    public partial class frmMaasArtisi : DevExpress.XtraEditors.XtraForm
+    public partial class frmMaasArtisi : XtraForm
     {
         public string personelID { get; set; }
         public string UserName { get; set; }
+        public string personelName{ get; set; }
         private MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2);
         private MySqlCommand cmd;
+        private MySqlCommand cmd2;
         private FileStream fs;
         private BinaryReader br;
         public frmMaasArtisi()
@@ -27,7 +24,7 @@ namespace Break_List.Forms.Maas
             InitializeComponent();
 
         }
-        customProperties prop = new customProperties();
+        
         private void simpleButton1_Click(object sender, EventArgs e)
         {
 
@@ -50,7 +47,7 @@ namespace Break_List.Forms.Maas
                             ImageData = br.ReadBytes((int)fs.Length);
                             br.Close();
                             fs.Close();
-                            UserName = prop._userName;
+                            
                             cmd = new MySqlCommand("INSERT INTO maaslar(resourceID, tarih, tip, CreatedBy,Dokuman, Onaylayan, ArtisNedeni, Kategori) VALUES(@resourceID, @tarih, @tip, @CreatedBy, @Dokuman, @Onaylayan, @ArtisNedeni,@Kategori)", con);
                             cmd.Parameters.Add("@resourceID", MySqlDbType.VarChar, 45);
                             cmd.Parameters.Add("@tarih", MySqlDbType.DateTime);
@@ -68,12 +65,18 @@ namespace Break_List.Forms.Maas
                             cmd.Parameters["@Onaylayan"].Value = txtOnay.Text;
                             cmd.Parameters["@ArtisNedeni"].Value = memoEdit1.Text;
                             cmd.Parameters["@Kategori"].Value = comboBoxEdit1.EditValue.ToString();
+                            cmd2 = new MySqlCommand("INSERT audit (yapilan, computer, tarih, user) VALUES(@yapilan, @computer, @tarih, @user)", con);
+                            string yapilan = personelName + " isimli kişiye " + txtMaas.Text +" oraninda tip artisi yapilmis. ";
+                            cmd2.Parameters.Add(new MySqlParameter("@yapilan", yapilan));
+                            cmd2.Parameters.Add(new MySqlParameter("@computer", Environment.MachineName));
+                            cmd2.Parameters.Add(new MySqlParameter("@tarih", DateTime.Now));
+                            cmd2.Parameters.Add(new MySqlParameter("@user", UserName));
                             con.Open();
-
+                           
                         }
                         if (cmd.ExecuteNonQuery() > 0)
                         {
-
+                            cmd2.ExecuteNonQuery();
                         }
                         con.Close();
 
@@ -111,7 +114,7 @@ namespace Break_List.Forms.Maas
                             ImageData = br.ReadBytes((int)fs.Length);
                             br.Close();
                             fs.Close();
-                            UserName = prop._userName;
+                            
                             cmd = new MySqlCommand("INSERT INTO maaslar(resourceID, tarih, maas, CreatedBy,Dokuman, Onaylayan, ArtisNedeni, Kategori) VALUES(@resourceID, @tarih, @maas, @CreatedBy, @Dokuman, @Onaylayan, @ArtisNedeni,@Kategori)", con);
                             cmd.Parameters.Add("@resourceID", MySqlDbType.VarChar, 45);
                             cmd.Parameters.Add("@tarih", MySqlDbType.DateTime);
@@ -129,12 +132,19 @@ namespace Break_List.Forms.Maas
                             cmd.Parameters["@Onaylayan"].Value = txtOnay.Text;
                             cmd.Parameters["@ArtisNedeni"].Value = memoEdit1.Text;
                             cmd.Parameters["@Kategori"].Value = comboBoxEdit1.EditValue.ToString();
+
+                            cmd2 = new MySqlCommand("INSERT audit (yapilan, computer, tarih, user) VALUES(@yapilan, @computer, @tarih, @user)", con);
+                            string yapilan = personelName + " isimli kişiye " + txtMaas.Text + " oraninda maas artisi yapilmis. ";
+                            cmd2.Parameters.Add(new MySqlParameter("@yapilan", yapilan));
+                            cmd2.Parameters.Add(new MySqlParameter("@computer", Environment.MachineName));
+                            cmd2.Parameters.Add(new MySqlParameter("@tarih", DateTime.Now));
+                            cmd2.Parameters.Add(new MySqlParameter("@user", UserName));
                             con.Open();
 
                         }
                         if (cmd.ExecuteNonQuery() > 0)
                         {
-
+                            cmd2.ExecuteNonQuery();
                         }
                         con.Close();
 

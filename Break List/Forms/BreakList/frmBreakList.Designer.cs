@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.BreakList
 {
-    partial class frmBreakList
+    partial class FrmBreakList
     {
         /// <summary>
         /// Required designer variable.
@@ -36,13 +36,10 @@
             DevExpress.XtraScheduler.TimeScaleFixedInterval timeScaleFixedInterval1 = new DevExpress.XtraScheduler.TimeScaleFixedInterval();
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBreakList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBreakList));
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridMasa = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colGame = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
@@ -68,13 +65,11 @@
             this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController();
             this.appointmentsTableAdapter = new Break_List.livegameDataSet1TableAdapters.appointmentsTableAdapter();
-            this.resourcesTableAdapter = new Break_List.livegameDataSet1TableAdapters.resourcesTableAdapter();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnYeniGun = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnMasalar = new DevExpress.XtraEditors.SimpleButton();
+            this.btnYenile = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.resourcesTableAdapter1 = new Break_List.livegameDataSet1TableAdapters.resourcesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMasa)).BeginInit();
@@ -144,10 +139,6 @@
             // 
             this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.gridView1.Appearance.Row.Options.UseFont = true;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colGame,
-            this.colNo,
-            this.gridColumn1});
             this.gridView1.GridControl = this.gridMasa;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -155,27 +146,6 @@
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
-            this.gridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseDown);
-            this.gridView1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseMove);
-            // 
-            // colGame
-            // 
-            this.colGame.FieldName = "Game";
-            this.colGame.Name = "colGame";
-            this.colGame.Visible = true;
-            this.colGame.VisibleIndex = 0;
-            // 
-            // colNo
-            // 
-            this.colNo.FieldName = "No";
-            this.colNo.Name = "colNo";
-            this.colNo.Visible = true;
-            this.colNo.VisibleIndex = 1;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "People";
-            this.gridColumn1.Name = "gridColumn1";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -296,7 +266,7 @@
             this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleDay1);
             this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleHour1);
             this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleFixedInterval1);
-            this.schedulerControl.Views.TimelineView.SelectionBar.Visible = false;
+            this.schedulerControl.Views.TimelineView.SelectionBar.Height = 50;
             this.schedulerControl.Views.TimelineView.ShowMoreButtons = false;
             this.schedulerControl.Views.TimelineView.TimeIndicatorDisplayOptions.Visibility = DevExpress.XtraScheduler.TimeIndicatorVisibility.Always;
             this.schedulerControl.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));
@@ -304,8 +274,9 @@
             this.schedulerControl.Views.WorkWeekView.Enabled = false;
             this.schedulerControl.Views.WorkWeekView.TimeRulers.Add(timeRuler3);
             this.schedulerControl.InitAppointmentDisplayText += new DevExpress.XtraScheduler.AppointmentDisplayTextEventHandler(this.schedulerControl_InitAppointmentDisplayText);
-            this.schedulerControl.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl_AppointmentViewInfoCustomizing_1);
+            this.schedulerControl.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl_AppointmentViewInfoCustomizing);
             this.schedulerControl.PopupMenuShowing += new DevExpress.XtraScheduler.PopupMenuShowingEventHandler(this.schedulerControl_PopupMenuShowing);
+            this.schedulerControl.CustomDrawTimeCell += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl_CustomDrawTimeCell);
             this.schedulerControl.CustomDrawResourceHeader += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl_CustomDrawResourceHeader);
             this.schedulerControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.schedulerControl_MouseDoubleClick);
             // 
@@ -314,6 +285,7 @@
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Sure", "Sure"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Department", "Department"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("ActualShiftDate", "ActualShiftDate"));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Logismosno", "logismosno"));
             this.schedulerStorage1.Appointments.DataSource = this.appointmentsBindingSource;
             this.schedulerStorage1.Appointments.Mappings.AllDay = "AllDay";
             this.schedulerStorage1.Appointments.Mappings.Description = "Description";
@@ -329,6 +301,7 @@
             this.schedulerStorage1.Appointments.Mappings.TimeZoneId = "TimeZoneId";
             this.schedulerStorage1.Appointments.Mappings.Type = "Type";
             this.schedulerStorage1.Resources.CustomFieldMappings.Add(new DevExpress.XtraScheduler.ResourceCustomFieldMapping("Position", "Position"));
+            this.schedulerStorage1.Resources.CustomFieldMappings.Add(new DevExpress.XtraScheduler.ResourceCustomFieldMapping("Rotagrup", "rotagrup"));
             this.schedulerStorage1.Resources.DataSource = this.resourcesBindingSource;
             this.schedulerStorage1.Resources.Mappings.Caption = "ResourceName";
             this.schedulerStorage1.Resources.Mappings.Color = "Color";
@@ -515,16 +488,12 @@
             // 
             this.appointmentsTableAdapter.ClearBeforeFill = true;
             // 
-            // resourcesTableAdapter
-            // 
-            this.resourcesTableAdapter.ClearBeforeFill = true;
-            // 
             // panelControl1
             // 
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.btnYeniGun);
-            this.panelControl1.Controls.Add(this.simpleButton2);
-            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Controls.Add(this.btnMasalar);
+            this.panelControl1.Controls.Add(this.btnYenile);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
@@ -541,23 +510,23 @@
             this.btnYeniGun.Text = "Günü Bitir";
             this.btnYeniGun.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
-            // simpleButton2
+            // btnMasalar
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(102, 12);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton2.TabIndex = 0;
-            this.simpleButton2.Text = "Masalar";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.btnMasalar.Location = new System.Drawing.Point(102, 12);
+            this.btnMasalar.Name = "btnMasalar";
+            this.btnMasalar.Size = new System.Drawing.Size(75, 23);
+            this.btnMasalar.TabIndex = 0;
+            this.btnMasalar.Text = "Masalar";
+            this.btnMasalar.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // simpleButton1
+            // btnYenile
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(12, 12);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Yenile";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnYenile.Location = new System.Drawing.Point(12, 12);
+            this.btnYenile.Name = "btnYenile";
+            this.btnYenile.Size = new System.Drawing.Size(75, 23);
+            this.btnYenile.TabIndex = 0;
+            this.btnYenile.Text = "Yenile";
+            this.btnYenile.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panelControl2
             // 
@@ -568,11 +537,7 @@
             this.panelControl2.Size = new System.Drawing.Size(1108, 656);
             this.panelControl2.TabIndex = 5;
             // 
-            // resourcesTableAdapter1
-            // 
-            this.resourcesTableAdapter1.ClearBeforeFill = true;
-            // 
-            // frmBreakList
+            // FrmBreakList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -582,7 +547,7 @@
             this.Controls.Add(this.popupControlContainer1);
             this.Controls.Add(this.popupControlContainer2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmBreakList";
+            this.Name = "FrmBreakList";
             this.Text = "Break List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -635,23 +600,18 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colGame;
-        private DevExpress.XtraGrid.Columns.GridColumn colNo;
         private livegameDataSet1 livegameDataSet1;
         private DevExpress.XtraScheduler.SchedulerControl schedulerControl;
         private DevExpress.XtraScheduler.SchedulerStorage schedulerStorage1;
         private System.Windows.Forms.BindingSource appointmentsBindingSource;
         private livegameDataSet1TableAdapters.appointmentsTableAdapter appointmentsTableAdapter;
         private System.Windows.Forms.BindingSource resourcesBindingSource;
-        private livegameDataSet1TableAdapters.resourcesTableAdapter resourcesTableAdapter;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnMasalar;
+        private DevExpress.XtraEditors.SimpleButton btnYenile;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private livegameDataSet1TableAdapters.resourcesTableAdapter resourcesTableAdapter1;
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraGrid.GridControl gridPErsonel;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewPers;

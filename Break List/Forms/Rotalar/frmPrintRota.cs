@@ -145,7 +145,7 @@ namespace Break_List
             dtEnd = Convert.ToDateTime(dateEdit2.EditValue.ToString());
             if (dtEnd < dtStart)
             {
-                MessageBox.Show("End Date Can not be earlier date that Start Date");
+                MessageBox.Show(@"Personel Bilgisi Update edildi");
                 return;
             }
 

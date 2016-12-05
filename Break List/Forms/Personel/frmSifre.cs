@@ -24,7 +24,7 @@ namespace Break_List.Forms.Personel
                 simpleButton1.DialogResult = DialogResult.OK;
             }
             else {
-                MessageBox.Show("Erişim yetkiniz yok");
+                MessageBox.Show(@"Personel Bilgisi Update edildi");
                 simpleButton1.DialogResult = DialogResult.Cancel;
                 Close();
             }

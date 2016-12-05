@@ -14,7 +14,7 @@ namespace Break_List.Forms.Prosedur
 {
     public partial class frmProsedurDisplay : XtraForm
     {
-        public int rowid { get; set; }
+        public string rowid { get; set; }
         public bool goster { get; set; }
         public frmProsedurDisplay()
         {

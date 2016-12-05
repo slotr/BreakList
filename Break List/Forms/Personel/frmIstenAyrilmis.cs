@@ -195,12 +195,12 @@ namespace Break_List
            
                 personelID = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
 
-            var personel = new Break_List.Forms.Personel.frmPersonelDetails
+            var personel = new Break_List.Forms.Personel.FrmPersonelDetails
             {
                 MdiParent = this.ParentForm,
-                _personelID = personelID.ToString(),
-                _UserNameFromMainForm = _UserNameFromMainForm,
-                _UserID = labelControl1.Text
+                PersonelId = personelID.ToString(),
+                UserNameFromMainForm = _UserNameFromMainForm,
+                UserId = labelControl1.Text
               
             };
             personel.Show();

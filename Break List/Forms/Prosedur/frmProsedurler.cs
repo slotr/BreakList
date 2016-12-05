@@ -60,7 +60,7 @@ namespace Break_List.Forms.Prosedur
                 int rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "No");
 
                 frmProsedurDisplay display = new frmProsedurDisplay();
-                display.rowid = rowid;
+                display.rowid = rowid.ToString();
                 display.goster = true;
                 display.Show();
 

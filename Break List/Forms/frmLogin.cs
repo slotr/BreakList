@@ -1,65 +1,76 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Break_List.Properties;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
-using Break_List.Properties;
 
-namespace Break_List
+namespace Break_List.Forms
 {
-    public partial class frmLogin : DevExpress.XtraEditors.XtraForm
+    public partial class FrmLogin : XtraForm
     {
-        public string UserName { get; set; }
-        public string UserID { get; set; }
-        public string Department { get; set; }
-        public frmLogin()
+        public FrmLogin()
         {
             InitializeComponent();
         }
 
+        public string UserName { get; set; }
+        public string UserId { get; set; }
+        public string Department { get; set; }
+
+        private static customProperties GetProp()
+        {
+            var prop = new customProperties();
+            return prop;
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            DoLogin();
+        }
+
+        private void DoLogin()
         {
             try
             {
                 if (textEdit1.Text != string.Empty)
-                {
                     if (textEdit2.Text != string.Empty)
                     {
                         var str = Settings.Default.livegameConnectionString2;
-                        var query = string.Format("select * from users where UserName = '{0}'and Password = '{1}'",
-                            textEdit1.Text, textEdit2.Text);
+                        var query =
+                            $"select * from users where UserName = '{textEdit1.Text}'and Password = '{textEdit2.Text}'";
                         var con = new MySqlConnection(str);
                         var cmd = new MySqlCommand(query, con);
                         con.Open();
                         var dbr = cmd.ExecuteReader();
                         var count = 0;
-                        while (dbr != null && dbr.Read())
-                        {
-                            
+                        while ((dbr != null) && dbr.Read())
                             count = count + 1;
-                        }
                         if (count == 1)
                         {
-                            customProperties prop = new customProperties();
-                            UserName = textEdit1.Text;
-                            prop._userName = UserName;
-
-                            var mainform = new Forms.frmMDIMain
+                            var prop = GetProp();
+                            prop._userName = textEdit1.Text;
+                            prop._logedin = true;
+                            prop._computerName = Environment.MachineName;
+                            var mainform = new FrmMdiMain
                             {
-                                _userNameFromLogin = UserName
+                                UserNameFromLogin = prop._userName
                             };
                             mainform.Show();
                             Hide();
-
-
-
                             con.Close();
+                            con.Dispose();
+                            var str2 = Settings.Default.livegameConnectionString2;
+                            var insertquery =
+                                "insert into loginlog (user,loggedinat, computer) values(@user, @time,@comp)";
+                            var con1 = new MySqlConnection(str2);
+                            var cmdinsert = new MySqlCommand(insertquery, con1);
+                            cmdinsert.Parameters.Add(new MySqlParameter("@user", textEdit1.Text));
+                            cmdinsert.Parameters.Add(new MySqlParameter("@time", DateTime.Now));
+                            cmdinsert.Parameters.Add(new MySqlParameter("@comp", prop._computerName));
+                            con1.Open();
+                            cmdinsert.ExecuteNonQuery();
+                            con1.Close();
+                            con1.Dispose();
                         }
                         else if (count > 1)
                         {
@@ -74,20 +85,20 @@ namespace Break_List
                     {
                         XtraMessageBox.Show(@" password empty", @"Warning");
                     }
-                }
 
                 else
-                {
                     XtraMessageBox.Show(@" username empty", @"Warning");
-                }
-
-
             }
             catch (Exception es)
             {
                 XtraMessageBox.Show(es.Message);
-
             }
+        }
+
+        private void textEdit2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+                DoLogin();
         }
     }
 }

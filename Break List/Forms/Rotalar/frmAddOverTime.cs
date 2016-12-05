@@ -109,7 +109,7 @@ namespace Break_List.Forms.Rotalar
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "Bir Hata Olustu. IT ye soyleyin");
+                MessageBox.Show(e.ToString(), @"Bir Hata Oluþtu.");
             }
 
             

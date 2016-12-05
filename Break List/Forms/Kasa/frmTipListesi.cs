@@ -64,7 +64,7 @@ namespace Break_List.Forms.Kasa
             }
             else
             {
-                MessageBox.Show("Tarih Giriniz");
+                MessageBox.Show(@"Personel Bilgisi Update edildi");
             }
         }
 
