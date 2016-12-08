@@ -70,6 +70,7 @@
             this.btnMasalar = new DevExpress.XtraEditors.SimpleButton();
             this.btnYenile = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
             this.splitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMasa)).BeginInit();
@@ -197,6 +198,7 @@
             this.schedulerControl.Appearance.ResourceHeaderCaption.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.schedulerControl.Appearance.ResourceHeaderCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.schedulerControl.Appearance.ResourceHeaderCaption.Options.UseFont = true;
+            this.schedulerControl.BackColor = System.Drawing.Color.White;
             this.schedulerControl.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.schedulerControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.schedulerControl.DateNavigationBar.Visible = false;
@@ -255,6 +257,10 @@
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.Options.UseFont = true;
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.Options.UseTextOptions = true;
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.schedulerControl.Views.TimelineView.Appearance.Selection.BackColor = System.Drawing.Color.Black;
+            this.schedulerControl.Views.TimelineView.Appearance.Selection.ForeColor = System.Drawing.Color.White;
+            this.schedulerControl.Views.TimelineView.Appearance.Selection.Options.UseBackColor = true;
+            this.schedulerControl.Views.TimelineView.Appearance.Selection.Options.UseForeColor = true;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.AppointmentHeight = 25;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ContinueArrowDisplayType = DevExpress.XtraScheduler.AppointmentContinueArrowDisplayType.Never;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ShowRecurrence = false;
@@ -537,6 +543,15 @@
             this.panelControl2.Size = new System.Drawing.Size(1108, 656);
             this.panelControl2.TabIndex = 5;
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Checkmark_50.png");
+            this.imageList1.Images.SetKeyName(1, "Checked User Male_50.png");
+            this.imageList1.Images.SetKeyName(2, "Rewind_50.png");
+            this.imageList1.Images.SetKeyName(3, "Date To_50.png");
+            // 
             // FrmBreakList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -622,5 +637,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPozisyon;
         private DevExpress.XtraGrid.Columns.GridColumn colShift;
         private DevExpress.XtraEditors.SimpleButton btnYeniGun;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

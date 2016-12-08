@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMdiMain));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
@@ -42,7 +43,17 @@
             this.lblOperasyonTarihi = new DevExpress.XtraBars.Ribbon.RecentLabelItem();
             this.lblDepartman = new DevExpress.XtraBars.Ribbon.RecentLabelItem();
             this.recentButtonItem1 = new DevExpress.XtraBars.Ribbon.RecentButtonItem();
+            this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+            this.recentItemControl2 = new DevExpress.XtraBars.Ribbon.RecentItemControl();
+            this.recentStackPanel4 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
+            this.recentStackPanel3 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
+            this.backstageViewTabItem2 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
+            this.backstageViewItemSeparator2 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
             this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
+            this.backstageViewItemSeparator1 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
+            this.backstageViewButtonItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
+            this.backstageViewItemSeparator3 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
+            this.backstageViewButtonItem3 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
             this.btnBreak = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.btnStaffList = new DevExpress.XtraBars.BarButtonItem();
@@ -99,25 +110,16 @@
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.tabFormDefaultManager3 = new DevExpress.XtraBars.TabFormDefaultManager();
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl7 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
-            this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
-            this.backstageViewTabItem2 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
-            this.recentItemControl2 = new DevExpress.XtraBars.Ribbon.RecentItemControl();
-            this.recentStackPanel3 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
-            this.recentStackPanel4 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
-            this.backstageViewItemSeparator1 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
-            this.backstageViewButtonItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
-            this.backstageViewItemSeparator2 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.backstageViewItemSeparator3 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
             this.backstageViewButtonItem2 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
-            this.backstageViewButtonItem3 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
+            this.backstageViewButtonItem4 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -125,12 +127,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.recentItemControl1)).BeginInit();
             this.recentItemControl1.SuspendLayout();
             this.recentControlItemControlContainer1.SuspendLayout();
+            this.backstageViewClientControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
-            this.backstageViewClientControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -187,8 +189,8 @@
             // backstageViewControl1
             // 
             this.backstageViewControl1.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
-            this.backstageViewControl1.Controls.Add(this.backstageViewClientControl1);
             this.backstageViewControl1.Controls.Add(this.backstageViewClientControl2);
+            this.backstageViewControl1.Controls.Add(this.backstageViewClientControl1);
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem2);
             this.backstageViewControl1.Items.Add(this.backstageViewItemSeparator2);
             this.backstageViewControl1.Items.Add(this.backstageViewTabItem1);
@@ -196,6 +198,7 @@
             this.backstageViewControl1.Items.Add(this.backstageViewButtonItem1);
             this.backstageViewControl1.Items.Add(this.backstageViewItemSeparator3);
             this.backstageViewControl1.Items.Add(this.backstageViewButtonItem3);
+            this.backstageViewControl1.Items.Add(this.backstageViewButtonItem4);
             this.backstageViewControl1.Location = new System.Drawing.Point(41, 124);
             this.backstageViewControl1.Name = "backstageViewControl1";
             this.backstageViewControl1.OwnerControl = this.ribbon;
@@ -299,6 +302,50 @@
             this.recentButtonItem1.SuperTip = null;
             this.recentButtonItem1.ItemClick += new DevExpress.XtraBars.Ribbon.RecentItemEventHandler(this.recentButtonItem1_ItemClick);
             // 
+            // backstageViewClientControl2
+            // 
+            this.backstageViewClientControl2.Controls.Add(this.recentItemControl2);
+            this.backstageViewClientControl2.Location = new System.Drawing.Point(134, 63);
+            this.backstageViewClientControl2.Name = "backstageViewClientControl2";
+            this.backstageViewClientControl2.Size = new System.Drawing.Size(985, 556);
+            this.backstageViewClientControl2.TabIndex = 2;
+            // 
+            // recentItemControl2
+            // 
+            this.recentItemControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.recentItemControl2.DefaultContentPanel = this.recentStackPanel4;
+            this.recentItemControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recentItemControl2.Location = new System.Drawing.Point(0, 0);
+            this.recentItemControl2.MainPanel = this.recentStackPanel3;
+            this.recentItemControl2.Name = "recentItemControl2";
+            this.recentItemControl2.SelectedTab = null;
+            this.recentItemControl2.Size = new System.Drawing.Size(985, 556);
+            this.recentItemControl2.TabIndex = 0;
+            this.recentItemControl2.Title = "Program Hakkında";
+            // 
+            // recentStackPanel4
+            // 
+            this.recentStackPanel4.Name = "recentStackPanel4";
+            this.recentStackPanel4.SelectedItem = null;
+            // 
+            // recentStackPanel3
+            // 
+            this.recentStackPanel3.Name = "recentStackPanel3";
+            this.recentStackPanel3.SelectedItem = null;
+            // 
+            // backstageViewTabItem2
+            // 
+            this.backstageViewTabItem2.Caption = "About";
+            this.backstageViewTabItem2.ContentControl = this.backstageViewClientControl2;
+            this.backstageViewTabItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("backstageViewTabItem2.Glyph")));
+            this.backstageViewTabItem2.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
+            this.backstageViewTabItem2.Name = "backstageViewTabItem2";
+            this.backstageViewTabItem2.Selected = true;
+            // 
+            // backstageViewItemSeparator2
+            // 
+            this.backstageViewItemSeparator2.Name = "backstageViewItemSeparator2";
+            // 
             // backstageViewTabItem1
             // 
             this.backstageViewTabItem1.Caption = "Ayarlar";
@@ -307,6 +354,30 @@
             this.backstageViewTabItem1.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
             this.backstageViewTabItem1.Name = "backstageViewTabItem1";
             this.backstageViewTabItem1.Selected = false;
+            // 
+            // backstageViewItemSeparator1
+            // 
+            this.backstageViewItemSeparator1.Name = "backstageViewItemSeparator1";
+            // 
+            // backstageViewButtonItem1
+            // 
+            this.backstageViewButtonItem1.Caption = "Logout";
+            this.backstageViewButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("backstageViewButtonItem1.Glyph")));
+            this.backstageViewButtonItem1.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
+            this.backstageViewButtonItem1.Name = "backstageViewButtonItem1";
+            this.backstageViewButtonItem1.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem1_ItemClick);
+            // 
+            // backstageViewItemSeparator3
+            // 
+            this.backstageViewItemSeparator3.Name = "backstageViewItemSeparator3";
+            // 
+            // backstageViewButtonItem3
+            // 
+            this.backstageViewButtonItem3.Caption = "Çıkış";
+            this.backstageViewButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("backstageViewButtonItem3.Glyph")));
+            this.backstageViewButtonItem3.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
+            this.backstageViewButtonItem3.Name = "backstageViewButtonItem3";
+            this.backstageViewButtonItem3.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem3_ItemClick);
             // 
             // btnBreak
             // 
@@ -820,62 +891,6 @@
             this.xtraTabbedMdiManager1.PinPageButtonShowMode = DevExpress.XtraTab.PinPageButtonShowMode.InAllTabPageHeaders;
             this.xtraTabbedMdiManager1.SetNextMdiChildMode = DevExpress.XtraTabbedMdi.SetNextMdiChildMode.TabControl;
             // 
-            // backstageViewClientControl2
-            // 
-            this.backstageViewClientControl2.Controls.Add(this.recentItemControl2);
-            this.backstageViewClientControl2.Location = new System.Drawing.Point(134, 63);
-            this.backstageViewClientControl2.Name = "backstageViewClientControl2";
-            this.backstageViewClientControl2.Size = new System.Drawing.Size(985, 556);
-            this.backstageViewClientControl2.TabIndex = 2;
-            // 
-            // backstageViewTabItem2
-            // 
-            this.backstageViewTabItem2.Caption = "About";
-            this.backstageViewTabItem2.ContentControl = this.backstageViewClientControl2;
-            this.backstageViewTabItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("backstageViewTabItem2.Glyph")));
-            this.backstageViewTabItem2.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
-            this.backstageViewTabItem2.Name = "backstageViewTabItem2";
-            this.backstageViewTabItem2.Selected = true;
-            // 
-            // recentItemControl2
-            // 
-            this.recentItemControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.recentItemControl2.DefaultContentPanel = this.recentStackPanel4;
-            this.recentItemControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recentItemControl2.Location = new System.Drawing.Point(0, 0);
-            this.recentItemControl2.MainPanel = this.recentStackPanel3;
-            this.recentItemControl2.Name = "recentItemControl2";
-            this.recentItemControl2.SelectedTab = null;
-            this.recentItemControl2.Size = new System.Drawing.Size(985, 556);
-            this.recentItemControl2.TabIndex = 0;
-            this.recentItemControl2.Title = "Program Hakkında";
-            // 
-            // recentStackPanel3
-            // 
-            this.recentStackPanel3.Name = "recentStackPanel3";
-            this.recentStackPanel3.SelectedItem = null;
-            // 
-            // recentStackPanel4
-            // 
-            this.recentStackPanel4.Name = "recentStackPanel4";
-            this.recentStackPanel4.SelectedItem = null;
-            // 
-            // backstageViewItemSeparator1
-            // 
-            this.backstageViewItemSeparator1.Name = "backstageViewItemSeparator1";
-            // 
-            // backstageViewButtonItem1
-            // 
-            this.backstageViewButtonItem1.Caption = "Logout";
-            this.backstageViewButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("backstageViewButtonItem1.Glyph")));
-            this.backstageViewButtonItem1.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
-            this.backstageViewButtonItem1.Name = "backstageViewButtonItem1";
-            this.backstageViewButtonItem1.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem1_ItemClick);
-            // 
-            // backstageViewItemSeparator2
-            // 
-            this.backstageViewItemSeparator2.Name = "backstageViewItemSeparator2";
-            // 
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -888,21 +903,17 @@
             this.labelControl2.TabIndex = 28;
             this.labelControl2.Text = "Casino  Staff Management and Payroll";
             // 
-            // backstageViewItemSeparator3
+            // backstageViewButtonItem2
             // 
-            this.backstageViewItemSeparator3.Name = "backstageViewItemSeparator3";
+            this.backstageViewButtonItem2.Name = "backstageViewButtonItem2";
             // 
-           
+            // backstageViewButtonItem4
             // 
-            // backstageViewButtonItem3
+            this.backstageViewButtonItem4.Caption = "Update";
+            this.backstageViewButtonItem4.Name = "backstageViewButtonItem4";
+            this.backstageViewButtonItem4.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem4_ItemClick);
             // 
-            this.backstageViewButtonItem3.Caption = "Çıkış";
-            this.backstageViewButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("backstageViewButtonItem3.Glyph")));
-            this.backstageViewButtonItem3.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
-            this.backstageViewButtonItem3.Name = "backstageViewButtonItem3";
-            this.backstageViewButtonItem3.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem3_ItemClick);
-            // 
-            // frmMDIMain
+            // FrmMdiMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -941,12 +952,12 @@
             this.recentItemControl1.ResumeLayout(false);
             this.recentControlItemControlContainer1.ResumeLayout(false);
             this.recentControlItemControlContainer1.PerformLayout();
+            this.backstageViewClientControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
-            this.backstageViewClientControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1043,5 +1054,6 @@
         private DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator backstageViewItemSeparator3;
         private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem3;
         private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem2;
+        private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem4;
     }
 }

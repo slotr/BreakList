@@ -7,12 +7,11 @@ using Break_List.Properties;
 using DevExpress.Data;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraScheduler;
 using DevExpress.XtraScheduler.Drawing;
 using MySql.Data.MySqlClient;
 using PopupMenuShowingEventArgs = DevExpress.XtraScheduler.PopupMenuShowingEventArgs;
-using System.Linq;
+
 
 namespace Break_List.Forms.BreakList
 {
@@ -227,8 +226,8 @@ namespace Break_List.Forms.BreakList
                 e.Menu.Items.Clear();
                 ResourceId = (int) hi.ViewInfo.Resource.Id;
                 ResourceName = hi.ViewInfo.Resource.Caption;
-                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Bitir", EveGonder));
-                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Geri Gönder", GeriGonder));
+                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Bitir", EveGonder, image: imageList1.Images[1]));
+                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Geri Gönder", GeriGonder, image: imageList1.Images[2]));
             }
 
             if (hi.HitTest == SchedulerHitTest.Cell)
@@ -236,21 +235,30 @@ namespace Break_List.Forms.BreakList
                 {
                     
                     e.Menu.Items.Clear();
-                    e.Menu.Items.Add(new SchedulerMenuItem("İşaretle", Isaretle));
+                    e.Menu.Items.Add(new SchedulerMenuItem("İşaretle", Isaretle,image:imageList1.Images[0]));
                     e.Menu.Items.Add(new SchedulerMenuItem("İşareti Kaldır", IsaretiKaldir));
+                    
                     e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
-                        GoToNow));
+                        GoToNow, image: imageList1.Images[3]));
+
                 }
             
             else
             {
                 e.Menu.Items.Clear();
                  e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
-                        GoToNow));
+                        GoToNow, image: imageList1.Images[3]));
+            }
+            if (hi.HitTest == SchedulerHitTest.TimeScaleHeader)
+            {
+                e.Menu.Items.Clear();
+               
             }
            
         }
 
+     
+      
         private void GoToNow(object sender, EventArgs e)
         {
             var tTime = new TimeInterval { Start = DateTime.Now };
