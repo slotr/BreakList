@@ -21,5 +21,6 @@ namespace Break_List.Class
         public bool breakList { get; set; }
         public bool egitim { get; set; }
         public bool loggedIN { get; set; }
+        public bool count { get; set; }
     }
 }

@@ -73,6 +73,11 @@
     <Reference Include="Accessibility">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Awesomium.Core, Version=1.7.5.1, Culture=neutral, PublicKeyToken=e1a0d7c8071a5214" />
+    <Reference Include="Awesomium.Windows.Forms, Version=1.7.5.1, Culture=neutral, PublicKeyToken=9bd24830fbe304a0, processorArchitecture=x86" />
+    <Reference Include="DevComponents.DotNetBar.Keyboard, Version=12.7.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -200,11 +205,65 @@
     <Compile Include="Class\CustomScales.cs" />
     <Compile Include="Class\CustomTimeScaleDay.cs" />
     <Compile Include="Class\DateTimeExtension.cs" />
+    <Compile Include="Controls\Admin\UCDepartments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\UCDepartments.Designer.cs">
+      <DependentUpon>UCDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Audit\frmLoginLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Audit\frmLoginLogs.Designer.cs">
+      <DependentUpon>frmLoginLogs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BreakList\BreakListPrint.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\BreakList\BreakListPrint.Designer.cs">
       <DependentUpon>BreakListPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\frmInitiator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\frmInitiator.Designer.cs">
+      <DependentUpon>frmInitiator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\frmPrintCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\frmPrintCount.Designer.cs">
+      <DependentUpon>frmPrintCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\frmTableCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\frmTableCount.Designer.cs">
+      <DependentUpon>frmTableCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\frmTipAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\frmTipAdd.Designer.cs">
+      <DependentUpon>frmTipAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\frmTipCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\frmTipCount.Designer.cs">
+      <DependentUpon>frmTipCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\rptCount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\rptCount.Designer.cs">
+      <DependentUpon>rptCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Envanter\frmEnvanter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Envanter\frmEnvanter.Designer.cs">
+      <DependentUpon>frmEnvanter.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Hatalar\frmHataEkle.cs">
       <SubType>Form</SubType>
@@ -410,6 +469,12 @@
     <Compile Include="Forms\Rotalar\frmRotaGruplar.Designer.cs">
       <DependentUpon>frmRotaGruplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Teknik\frmTeknikTakip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Teknik\frmTeknikTakip.Designer.cs">
+      <DependentUpon>frmTeknikTakip.cs</DependentUpon>
+    </Compile>
     <Compile Include="livegameDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -454,8 +519,29 @@
     <Compile Include="rptMaasArtisi.Designer.cs">
       <DependentUpon>rptMaasArtisi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\Admin\UCDepartments.resx">
+      <DependentUpon>UCDepartments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BreakList\BreakListPrint.resx">
       <DependentUpon>BreakListPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\frmInitiator.resx">
+      <DependentUpon>frmInitiator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\frmPrintCount.resx">
+      <DependentUpon>frmPrintCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\frmTableCount.resx">
+      <DependentUpon>frmTableCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\frmTipAdd.resx">
+      <DependentUpon>frmTipAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\frmTipCount.resx">
+      <DependentUpon>frmTipCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\rptCount.resx">
+      <DependentUpon>rptCount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Hatalar\frmHataEkle.resx">
       <DependentUpon>frmHataEkle.cs</DependentUpon>
@@ -628,7 +714,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Audit\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>

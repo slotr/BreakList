@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMdiMain));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
+            this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
+            this.recentItemControl2 = new DevExpress.XtraBars.Ribbon.RecentItemControl();
+            this.recentStackPanel4 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
+            this.recentStackPanel3 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
             this.backstageViewClientControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
             this.recentItemControl1 = new DevExpress.XtraBars.Ribbon.RecentItemControl();
             this.recentControlItemControlContainer1 = new DevExpress.XtraBars.Ribbon.RecentControlItemControlContainer();
@@ -43,10 +47,6 @@
             this.lblOperasyonTarihi = new DevExpress.XtraBars.Ribbon.RecentLabelItem();
             this.lblDepartman = new DevExpress.XtraBars.Ribbon.RecentLabelItem();
             this.recentButtonItem1 = new DevExpress.XtraBars.Ribbon.RecentButtonItem();
-            this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
-            this.recentItemControl2 = new DevExpress.XtraBars.Ribbon.RecentItemControl();
-            this.recentStackPanel4 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
-            this.recentStackPanel3 = new DevExpress.XtraBars.Ribbon.RecentStackPanel();
             this.backstageViewTabItem2 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.backstageViewItemSeparator2 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
             this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
@@ -54,6 +54,7 @@
             this.backstageViewButtonItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
             this.backstageViewItemSeparator3 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
             this.backstageViewButtonItem3 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
+            this.backstageViewButtonItem4 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
             this.btnBreak = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.btnStaffList = new DevExpress.XtraBars.BarButtonItem();
@@ -81,6 +82,7 @@
             this.btnGroup = new DevExpress.XtraBars.BarButtonItem();
             this.btnDetayliRapor = new DevExpress.XtraBars.BarButtonItem();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCount = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonBreak = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPersonel = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -99,6 +101,8 @@
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnProsedur = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbnCount = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tabFormDefaultManager1 = new DevExpress.XtraBars.TabFormDefaultManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -119,16 +123,23 @@
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.backstageViewButtonItem2 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
-            this.backstageViewButtonItem4 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
+            this.rbnEnvanter = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rbnTeknik = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnAudit = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEnvanter = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTeknikListe = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
+            this.backstageViewClientControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).BeginInit();
             this.backstageViewClientControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recentItemControl1)).BeginInit();
             this.recentItemControl1.SuspendLayout();
             this.recentControlItemControlContainer1.SuspendLayout();
-            this.backstageViewClientControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).BeginInit();
@@ -169,9 +180,13 @@
             this.btnYeniProsedur,
             this.btnGroup,
             this.btnDetayliRapor,
-            this.btnLogout});
+            this.btnLogout,
+            this.btnCount,
+            this.btnAudit,
+            this.btnEnvanter,
+            this.btnTeknikListe});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 2;
+            this.ribbon.MaxItemId = 6;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonBreak,
@@ -182,7 +197,10 @@
             this.rbnPageKasa,
             this.rbnOnaylar,
             this.rbnEgitimler,
-            this.rbnProsedur});
+            this.rbnProsedur,
+            this.rbnCount,
+            this.rbnEnvanter,
+            this.rbnTeknik});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.Size = new System.Drawing.Size(1227, 83);
             // 
@@ -207,6 +225,37 @@
             this.backstageViewControl1.Size = new System.Drawing.Size(1120, 620);
             this.backstageViewControl1.TabIndex = 15;
             this.backstageViewControl1.SizeChanged += new System.EventHandler(this.backstageViewControl1_SizeChanged);
+            // 
+            // backstageViewClientControl2
+            // 
+            this.backstageViewClientControl2.Controls.Add(this.recentItemControl2);
+            this.backstageViewClientControl2.Location = new System.Drawing.Point(134, 63);
+            this.backstageViewClientControl2.Name = "backstageViewClientControl2";
+            this.backstageViewClientControl2.Size = new System.Drawing.Size(985, 556);
+            this.backstageViewClientControl2.TabIndex = 2;
+            // 
+            // recentItemControl2
+            // 
+            this.recentItemControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.recentItemControl2.DefaultContentPanel = this.recentStackPanel4;
+            this.recentItemControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recentItemControl2.Location = new System.Drawing.Point(0, 0);
+            this.recentItemControl2.MainPanel = this.recentStackPanel3;
+            this.recentItemControl2.Name = "recentItemControl2";
+            this.recentItemControl2.SelectedTab = null;
+            this.recentItemControl2.Size = new System.Drawing.Size(985, 556);
+            this.recentItemControl2.TabIndex = 0;
+            this.recentItemControl2.Title = "Program Hakkında";
+            // 
+            // recentStackPanel4
+            // 
+            this.recentStackPanel4.Name = "recentStackPanel4";
+            this.recentStackPanel4.SelectedItem = null;
+            // 
+            // recentStackPanel3
+            // 
+            this.recentStackPanel3.Name = "recentStackPanel3";
+            this.recentStackPanel3.SelectedItem = null;
             // 
             // backstageViewClientControl1
             // 
@@ -302,37 +351,6 @@
             this.recentButtonItem1.SuperTip = null;
             this.recentButtonItem1.ItemClick += new DevExpress.XtraBars.Ribbon.RecentItemEventHandler(this.recentButtonItem1_ItemClick);
             // 
-            // backstageViewClientControl2
-            // 
-            this.backstageViewClientControl2.Controls.Add(this.recentItemControl2);
-            this.backstageViewClientControl2.Location = new System.Drawing.Point(134, 63);
-            this.backstageViewClientControl2.Name = "backstageViewClientControl2";
-            this.backstageViewClientControl2.Size = new System.Drawing.Size(985, 556);
-            this.backstageViewClientControl2.TabIndex = 2;
-            // 
-            // recentItemControl2
-            // 
-            this.recentItemControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.recentItemControl2.DefaultContentPanel = this.recentStackPanel4;
-            this.recentItemControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.recentItemControl2.Location = new System.Drawing.Point(0, 0);
-            this.recentItemControl2.MainPanel = this.recentStackPanel3;
-            this.recentItemControl2.Name = "recentItemControl2";
-            this.recentItemControl2.SelectedTab = null;
-            this.recentItemControl2.Size = new System.Drawing.Size(985, 556);
-            this.recentItemControl2.TabIndex = 0;
-            this.recentItemControl2.Title = "Program Hakkında";
-            // 
-            // recentStackPanel4
-            // 
-            this.recentStackPanel4.Name = "recentStackPanel4";
-            this.recentStackPanel4.SelectedItem = null;
-            // 
-            // recentStackPanel3
-            // 
-            this.recentStackPanel3.Name = "recentStackPanel3";
-            this.recentStackPanel3.SelectedItem = null;
-            // 
             // backstageViewTabItem2
             // 
             this.backstageViewTabItem2.Caption = "About";
@@ -378,6 +396,12 @@
             this.backstageViewButtonItem3.GlyphLocation = DevExpress.Utils.Drawing.ItemLocation.Left;
             this.backstageViewButtonItem3.Name = "backstageViewButtonItem3";
             this.backstageViewButtonItem3.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem3_ItemClick);
+            // 
+            // backstageViewButtonItem4
+            // 
+            this.backstageViewButtonItem4.Caption = "Update";
+            this.backstageViewButtonItem4.Name = "backstageViewButtonItem4";
+            this.backstageViewButtonItem4.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem4_ItemClick);
             // 
             // btnBreak
             // 
@@ -605,6 +629,14 @@
             this.btnLogout.Id = 1;
             this.btnLogout.Name = "btnLogout";
             // 
+            // btnCount
+            // 
+            this.btnCount.Caption = "Count";
+            this.btnCount.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCount.Glyph")));
+            this.btnCount.Id = 2;
+            this.btnCount.Name = "btnCount";
+            this.btnCount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCount_ItemClick);
+            // 
             // ribbonBreak
             // 
             this.ribbonBreak.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -659,7 +691,8 @@
             // rbnAdmin
             // 
             this.rbnAdmin.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.pgUserAdministration});
+            this.pgUserAdministration,
+            this.ribbonPageGroup12});
             this.rbnAdmin.KeyTip = "AD";
             this.rbnAdmin.Name = "rbnAdmin";
             this.rbnAdmin.Text = "Admin";
@@ -751,6 +784,19 @@
             this.ribbonPageGroup8.KeyTip = "R";
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             this.ribbonPageGroup8.Text = "ribbonPageGroup8";
+            // 
+            // rbnCount
+            // 
+            this.rbnCount.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup9});
+            this.rbnCount.Name = "rbnCount";
+            this.rbnCount.Text = "Count";
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.btnCount);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
             // 
             // tabFormDefaultManager1
             // 
@@ -907,11 +953,58 @@
             // 
             this.backstageViewButtonItem2.Name = "backstageViewButtonItem2";
             // 
-            // backstageViewButtonItem4
+            // rbnEnvanter
             // 
-            this.backstageViewButtonItem4.Caption = "Update";
-            this.backstageViewButtonItem4.Name = "backstageViewButtonItem4";
-            this.backstageViewButtonItem4.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem4_ItemClick);
+            this.rbnEnvanter.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup10});
+            this.rbnEnvanter.Name = "rbnEnvanter";
+            this.rbnEnvanter.Text = "Envanter";
+            // 
+            // rbnTeknik
+            // 
+            this.rbnTeknik.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup11});
+            this.rbnTeknik.Name = "rbnTeknik";
+            this.rbnTeknik.Text = "Teknik Takip";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.btnEnvanter);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "ribbonPageGroup10";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.btnTeknikListe);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            this.ribbonPageGroup11.Text = "ribbonPageGroup11";
+            // 
+            // ribbonPageGroup12
+            // 
+            this.ribbonPageGroup12.ItemLinks.Add(this.btnAudit);
+            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
+            this.ribbonPageGroup12.Text = "Audit";
+            // 
+            // btnAudit
+            // 
+            this.btnAudit.Caption = "Audit Login";
+            this.btnAudit.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAudit.Glyph")));
+            this.btnAudit.Id = 3;
+            this.btnAudit.Name = "btnAudit";
+            // 
+            // btnEnvanter
+            // 
+            this.btnEnvanter.Caption = "Envanter";
+            this.btnEnvanter.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEnvanter.Glyph")));
+            this.btnEnvanter.Id = 4;
+            this.btnEnvanter.Name = "btnEnvanter";
+            // 
+            // btnTeknikListe
+            // 
+            this.btnTeknikListe.Caption = "Görev Listesi";
+            this.btnTeknikListe.Glyph = ((System.Drawing.Image)(resources.GetObject("btnTeknikListe.Glyph")));
+            this.btnTeknikListe.Id = 5;
+            this.btnTeknikListe.Name = "btnTeknikListe";
             // 
             // FrmMdiMain
             // 
@@ -947,13 +1040,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).EndInit();
             this.backstageViewControl1.ResumeLayout(false);
+            this.backstageViewClientControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).EndInit();
             this.backstageViewClientControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.recentItemControl1)).EndInit();
             this.recentItemControl1.ResumeLayout(false);
             this.recentControlItemControlContainer1.ResumeLayout(false);
             this.recentControlItemControlContainer1.PerformLayout();
-            this.backstageViewClientControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.recentItemControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).EndInit();
@@ -1055,5 +1148,16 @@
         private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem3;
         private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem2;
         private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem btnCount;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbnCount;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.BarButtonItem btnAudit;
+        private DevExpress.XtraBars.BarButtonItem btnEnvanter;
+        private DevExpress.XtraBars.BarButtonItem btnTeknikListe;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbnEnvanter;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbnTeknik;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
     }
 }

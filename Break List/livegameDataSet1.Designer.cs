@@ -7120,6 +7120,10 @@ namespace Break_List {
             
             private global::System.Data.DataColumn columnprosedur;
             
+            private global::System.Data.DataColumn columnegitim;
+            
+            private global::System.Data.DataColumn columncount;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public permissionsDataTable() {
@@ -7347,6 +7351,22 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn egitimColumn {
+                get {
+                    return this.columnegitim;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn countColumn {
+                get {
+                    return this.columncount;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7405,7 +7425,9 @@ namespace Break_List {
                         ulong maasedit, 
                         ulong kasa, 
                         ulong onay, 
-                        ulong prosedur) {
+                        ulong prosedur, 
+                        ulong egitim, 
+                        ulong count) {
                 permissionsRow rowpermissionsRow = ((permissionsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -7431,7 +7453,9 @@ namespace Break_List {
                         maasedit,
                         kasa,
                         onay,
-                        prosedur};
+                        prosedur,
+                        egitim,
+                        count};
                 rowpermissionsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpermissionsRow);
                 return rowpermissionsRow;
@@ -7485,6 +7509,8 @@ namespace Break_List {
                 this.columnkasa = base.Columns["kasa"];
                 this.columnonay = base.Columns["onay"];
                 this.columnprosedur = base.Columns["prosedur"];
+                this.columnegitim = base.Columns["egitim"];
+                this.columncount = base.Columns["count"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7538,6 +7564,10 @@ namespace Break_List {
                 base.Columns.Add(this.columnonay);
                 this.columnprosedur = new global::System.Data.DataColumn("prosedur", typeof(ulong), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprosedur);
+                this.columnegitim = new global::System.Data.DataColumn("egitim", typeof(ulong), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnegitim);
+                this.columncount = new global::System.Data.DataColumn("count", typeof(ulong), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncount);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidpermissions}, true));
                 this.columnidpermissions.AutoIncrement = true;
@@ -26514,6 +26544,38 @@ namespace Break_List {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ulong egitim {
+                get {
+                    try {
+                        return ((ulong)(this[this.tablepermissions.egitimColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'egitim\' in table \'permissions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepermissions.egitimColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ulong count {
+                get {
+                    try {
+                        return ((ulong)(this[this.tablepermissions.countColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'count\' in table \'permissions\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablepermissions.countColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsUsersNull() {
                 return this.IsNull(this.tablepermissions.UsersColumn);
             }
@@ -26786,6 +26848,30 @@ namespace Break_List {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetprosedurNull() {
                 this[this.tablepermissions.prosedurColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsegitimNull() {
+                return this.IsNull(this.tablepermissions.egitimColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetegitimNull() {
+                this[this.tablepermissions.egitimColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscountNull() {
+                return this.IsNull(this.tablepermissions.countColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcountNull() {
+                this[this.tablepermissions.countColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -46424,6 +46510,8 @@ namespace Break_List.livegameDataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("kasa", "kasa");
             tableMapping.ColumnMappings.Add("onay", "onay");
             tableMapping.ColumnMappings.Add("prosedur", "prosedur");
+            tableMapping.ColumnMappings.Add("egitim", "egitim");
+            tableMapping.ColumnMappings.Add("count", "count");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -46446,7 +46534,8 @@ namespace Break_List.livegameDataSet1TableAdapters {
                 "el` = @p39)) AND ((@p40 = 1 AND `maasedit` IS NULL) OR (`maasedit` = @p41)) AND " +
                 "((@p42 = 1 AND `kasa` IS NULL) OR (`kasa` = @p43)) AND ((@p44 = 1 AND `onay` IS " +
                 "NULL) OR (`onay` = @p45)) AND ((@p46 = 1 AND `prosedur` IS NULL) OR (`prosedur` " +
-                "= @p47)))";
+                "= @p47)) AND ((@p48 = 1 AND `count` IS NULL) OR (`count` = @p49)) AND ((@p50 = 1" +
+                " AND `egitim` IS NULL) OR (`egitim` = @p51)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -46847,9 +46936,43 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.SourceColumn = "prosedur";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p48";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "count";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p49";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "count";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p50";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "egitim";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p51";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "egitim";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `permissions` (`Users`, `UserDepartments`, `Appointments`, `Resources`, `Roster`, `Positions`, `UserID`, `Vacations`, `UserName`, `Rapor`, `CalismaIznleri`, `Dokumanlar`, `Egitimler`, `MaasArtisi`, `Uyarilar`, `Yorumlar`, `personelEkle`, `Department`, `AllPersonel`, `maasedit`, `kasa`, `onay`, `prosedur`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `permissions` (`Users`, `UserDepartments`, `Appointments`, `Resources`, `Roster`, `Positions`, `UserID`, `Vacations`, `UserName`, `Rapor`, `CalismaIznleri`, `Dokumanlar`, `Egitimler`, `MaasArtisi`, `Uyarilar`, `Yorumlar`, `personelEkle`, `Department`, `AllPersonel`, `maasedit`, `kasa`, `onay`, `prosedur`, `count`, `egitim`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -47012,6 +47135,20 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "prosedur";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p24";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "count";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p25";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "egitim";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE `permissions` SET `Users` = @p1, `UserDepartments` = @p2, `Appointments` =" +
@@ -47019,26 +47156,28 @@ namespace Break_List.livegameDataSet1TableAdapters {
                 "ations` = @p8, `UserName` = @p9, `Rapor` = @p10, `CalismaIznleri` = @p11, `Dokum" +
                 "anlar` = @p12, `Egitimler` = @p13, `MaasArtisi` = @p14, `Uyarilar` = @p15, `Yoru" +
                 "mlar` = @p16, `personelEkle` = @p17, `Department` = @p18, `AllPersonel` = @p19, " +
-                "`maasedit` = @p20, `kasa` = @p21, `onay` = @p22, `prosedur` = @p23 WHERE ((`idpe" +
-                "rmissions` = @p24) AND ((@p25 = 1 AND `Users` IS NULL) OR (`Users` = @p26)) AND " +
-                "((@p27 = 1 AND `UserDepartments` IS NULL) OR (`UserDepartments` = @p28)) AND ((@" +
-                "p29 = 1 AND `Appointments` IS NULL) OR (`Appointments` = @p30)) AND ((@p31 = 1 A" +
-                "ND `Resources` IS NULL) OR (`Resources` = @p32)) AND ((@p33 = 1 AND `Roster` IS " +
-                "NULL) OR (`Roster` = @p34)) AND ((@p35 = 1 AND `Positions` IS NULL) OR (`Positio" +
-                "ns` = @p36)) AND ((@p37 = 1 AND `UserID` IS NULL) OR (`UserID` = @p38)) AND ((@p" +
-                "39 = 1 AND `Vacations` IS NULL) OR (`Vacations` = @p40)) AND ((@p41 = 1 AND `Use" +
-                "rName` IS NULL) OR (`UserName` = @p42)) AND ((@p43 = 1 AND `Rapor` IS NULL) OR (" +
-                "`Rapor` = @p44)) AND ((@p45 = 1 AND `CalismaIznleri` IS NULL) OR (`CalismaIznler" +
-                "i` = @p46)) AND ((@p47 = 1 AND `Dokumanlar` IS NULL) OR (`Dokumanlar` = @p48)) A" +
-                "ND ((@p49 = 1 AND `Egitimler` IS NULL) OR (`Egitimler` = @p50)) AND ((@p51 = 1 A" +
-                "ND `MaasArtisi` IS NULL) OR (`MaasArtisi` = @p52)) AND ((@p53 = 1 AND `Uyarilar`" +
-                " IS NULL) OR (`Uyarilar` = @p54)) AND ((@p55 = 1 AND `Yorumlar` IS NULL) OR (`Yo" +
-                "rumlar` = @p56)) AND ((@p57 = 1 AND `personelEkle` IS NULL) OR (`personelEkle` =" +
-                " @p58)) AND ((@p59 = 1 AND `Department` IS NULL) OR (`Department` = @p60)) AND (" +
-                "(@p61 = 1 AND `AllPersonel` IS NULL) OR (`AllPersonel` = @p62)) AND ((@p63 = 1 A" +
-                "ND `maasedit` IS NULL) OR (`maasedit` = @p64)) AND ((@p65 = 1 AND `kasa` IS NULL" +
-                ") OR (`kasa` = @p66)) AND ((@p67 = 1 AND `onay` IS NULL) OR (`onay` = @p68)) AND" +
-                " ((@p69 = 1 AND `prosedur` IS NULL) OR (`prosedur` = @p70)))";
+                "`maasedit` = @p20, `kasa` = @p21, `onay` = @p22, `prosedur` = @p23, `count` = @p" +
+                "24, `egitim` = @p25 WHERE ((`idpermissions` = @p26) AND ((@p27 = 1 AND `Users` I" +
+                "S NULL) OR (`Users` = @p28)) AND ((@p29 = 1 AND `UserDepartments` IS NULL) OR (`" +
+                "UserDepartments` = @p30)) AND ((@p31 = 1 AND `Appointments` IS NULL) OR (`Appoin" +
+                "tments` = @p32)) AND ((@p33 = 1 AND `Resources` IS NULL) OR (`Resources` = @p34)" +
+                ") AND ((@p35 = 1 AND `Roster` IS NULL) OR (`Roster` = @p36)) AND ((@p37 = 1 AND " +
+                "`Positions` IS NULL) OR (`Positions` = @p38)) AND ((@p39 = 1 AND `UserID` IS NUL" +
+                "L) OR (`UserID` = @p40)) AND ((@p41 = 1 AND `Vacations` IS NULL) OR (`Vacations`" +
+                " = @p42)) AND ((@p43 = 1 AND `UserName` IS NULL) OR (`UserName` = @p44)) AND ((@" +
+                "p45 = 1 AND `Rapor` IS NULL) OR (`Rapor` = @p46)) AND ((@p47 = 1 AND `CalismaIzn" +
+                "leri` IS NULL) OR (`CalismaIznleri` = @p48)) AND ((@p49 = 1 AND `Dokumanlar` IS " +
+                "NULL) OR (`Dokumanlar` = @p50)) AND ((@p51 = 1 AND `Egitimler` IS NULL) OR (`Egi" +
+                "timler` = @p52)) AND ((@p53 = 1 AND `MaasArtisi` IS NULL) OR (`MaasArtisi` = @p5" +
+                "4)) AND ((@p55 = 1 AND `Uyarilar` IS NULL) OR (`Uyarilar` = @p56)) AND ((@p57 = " +
+                "1 AND `Yorumlar` IS NULL) OR (`Yorumlar` = @p58)) AND ((@p59 = 1 AND `personelEk" +
+                "le` IS NULL) OR (`personelEkle` = @p60)) AND ((@p61 = 1 AND `Department` IS NULL" +
+                ") OR (`Department` = @p62)) AND ((@p63 = 1 AND `AllPersonel` IS NULL) OR (`AllPe" +
+                "rsonel` = @p64)) AND ((@p65 = 1 AND `maasedit` IS NULL) OR (`maasedit` = @p66)) " +
+                "AND ((@p67 = 1 AND `kasa` IS NULL) OR (`kasa` = @p68)) AND ((@p69 = 1 AND `onay`" +
+                " IS NULL) OR (`onay` = @p70)) AND ((@p71 = 1 AND `prosedur` IS NULL) OR (`prosed" +
+                "ur` = @p72)) AND ((@p73 = 1 AND `count` IS NULL) OR (`count` = @p74)) AND ((@p75" +
+                " = 1 AND `egitim` IS NULL) OR (`egitim` = @p76)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -47203,6 +47342,20 @@ namespace Break_List.livegameDataSet1TableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p24";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "count";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p25";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "egitim";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p26";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -47210,28 +47363,11 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p25";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "Users";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p26";
-            param.DbType = global::System.Data.DbType.SByte;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
-            param.IsNullable = true;
-            param.SourceColumn = "Users";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p27";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "UserDepartments";
+            param.SourceColumn = "Users";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47240,7 +47376,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "UserDepartments";
+            param.SourceColumn = "Users";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47248,7 +47384,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Appointments";
+            param.SourceColumn = "UserDepartments";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47257,7 +47393,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Appointments";
+            param.SourceColumn = "UserDepartments";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47265,7 +47401,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Resources";
+            param.SourceColumn = "Appointments";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47274,7 +47410,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Resources";
+            param.SourceColumn = "Appointments";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47282,7 +47418,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Roster";
+            param.SourceColumn = "Resources";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47291,7 +47427,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Roster";
+            param.SourceColumn = "Resources";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47299,7 +47435,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Positions";
+            param.SourceColumn = "Roster";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47308,7 +47444,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Positions";
+            param.SourceColumn = "Roster";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47316,16 +47452,16 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "UserID";
+            param.SourceColumn = "Positions";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p38";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "UserID";
+            param.SourceColumn = "Positions";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47333,16 +47469,16 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Vacations";
+            param.SourceColumn = "UserID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p40";
-            param.DbType = global::System.Data.DbType.SByte;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Vacations";
+            param.SourceColumn = "UserID";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47350,16 +47486,16 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "UserName";
+            param.SourceColumn = "Vacations";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p42";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "UserName";
+            param.SourceColumn = "Vacations";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47367,16 +47503,16 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Rapor";
+            param.SourceColumn = "UserName";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p44";
-            param.DbType = global::System.Data.DbType.SByte;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
-            param.SourceColumn = "Rapor";
+            param.SourceColumn = "UserName";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47384,7 +47520,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "CalismaIznleri";
+            param.SourceColumn = "Rapor";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47393,7 +47529,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "CalismaIznleri";
+            param.SourceColumn = "Rapor";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47401,7 +47537,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Dokumanlar";
+            param.SourceColumn = "CalismaIznleri";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47410,7 +47546,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Dokumanlar";
+            param.SourceColumn = "CalismaIznleri";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47418,7 +47554,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Egitimler";
+            param.SourceColumn = "Dokumanlar";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47427,7 +47563,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Egitimler";
+            param.SourceColumn = "Dokumanlar";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47435,7 +47571,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "MaasArtisi";
+            param.SourceColumn = "Egitimler";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47444,7 +47580,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "MaasArtisi";
+            param.SourceColumn = "Egitimler";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47452,7 +47588,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Uyarilar";
+            param.SourceColumn = "MaasArtisi";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47461,7 +47597,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Uyarilar";
+            param.SourceColumn = "MaasArtisi";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47469,7 +47605,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Yorumlar";
+            param.SourceColumn = "Uyarilar";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47478,7 +47614,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Yorumlar";
+            param.SourceColumn = "Uyarilar";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47486,7 +47622,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "personelEkle";
+            param.SourceColumn = "Yorumlar";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47495,7 +47631,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "personelEkle";
+            param.SourceColumn = "Yorumlar";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47503,16 +47639,16 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "Department";
+            param.SourceColumn = "personelEkle";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p60";
-            param.DbType = global::System.Data.DbType.String;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "Department";
+            param.SourceColumn = "personelEkle";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47520,16 +47656,16 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "AllPersonel";
+            param.SourceColumn = "Department";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p62";
-            param.DbType = global::System.Data.DbType.SByte;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
-            param.SourceColumn = "AllPersonel";
+            param.SourceColumn = "Department";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47537,7 +47673,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "maasedit";
+            param.SourceColumn = "AllPersonel";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47546,7 +47682,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "maasedit";
+            param.SourceColumn = "AllPersonel";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47554,7 +47690,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "kasa";
+            param.SourceColumn = "maasedit";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47563,7 +47699,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "kasa";
+            param.SourceColumn = "maasedit";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47571,7 +47707,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "onay";
+            param.SourceColumn = "kasa";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47580,7 +47716,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
-            param.SourceColumn = "onay";
+            param.SourceColumn = "kasa";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
@@ -47588,7 +47724,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
-            param.SourceColumn = "prosedur";
+            param.SourceColumn = "onay";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
@@ -47597,7 +47733,58 @@ namespace Break_List.livegameDataSet1TableAdapters {
             param.DbType = global::System.Data.DbType.SByte;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
             param.IsNullable = true;
+            param.SourceColumn = "onay";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p71";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
             param.SourceColumn = "prosedur";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p72";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "prosedur";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p73";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "count";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p74";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "count";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p75";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "egitim";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            param.SourceColumnNullMapping = true;
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p76";
+            param.DbType = global::System.Data.DbType.SByte;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Byte;
+            param.IsNullable = true;
+            param.SourceColumn = "egitim";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
         }
@@ -47615,7 +47802,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[1];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT idpermissions, Users, UserDepartments, Appointments, Resources, Roster, Positions, UserID, Vacations, UserName, Rapor, CalismaIznleri, Dokumanlar, Egitimler, MaasArtisi, Uyarilar, Yorumlar, personelEkle, Department, AllPersonel, maasedit, kasa, onay, prosedur FROM permissions";
+            this._commandCollection[0].CommandText = @"SELECT idpermissions, Users, UserDepartments, Appointments, Resources, Roster, Positions, UserID, Vacations, UserName, Rapor, CalismaIznleri, Dokumanlar, Egitimler, MaasArtisi, Uyarilar, Yorumlar, personelEkle, Department, AllPersonel, maasedit, kasa, onay, prosedur, `count`, egitim FROM permissions";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -47700,7 +47887,9 @@ namespace Break_List.livegameDataSet1TableAdapters {
                     global::System.Nullable<byte> p41, 
                     global::System.Nullable<byte> p43, 
                     global::System.Nullable<byte> p45, 
-                    global::System.Nullable<byte> p47) {
+                    global::System.Nullable<byte> p47, 
+                    global::System.Nullable<byte> p49, 
+                    global::System.Nullable<byte> p51) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p1));
             if ((p3.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -47886,6 +48075,22 @@ namespace Break_List.livegameDataSet1TableAdapters {
                 this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
+            if ((p49.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((byte)(p49.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
+            }
+            if ((p51.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((byte)(p51.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -47929,7 +48134,9 @@ namespace Break_List.livegameDataSet1TableAdapters {
                     global::System.Nullable<byte> p20, 
                     global::System.Nullable<byte> p21, 
                     global::System.Nullable<byte> p22, 
-                    global::System.Nullable<byte> p23) {
+                    global::System.Nullable<byte> p23, 
+                    global::System.Nullable<byte> p24, 
+                    global::System.Nullable<byte> p25) {
             if ((p1.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((byte)(p1.Value));
             }
@@ -48068,6 +48275,18 @@ namespace Break_List.livegameDataSet1TableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
+            if ((p24.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((byte)(p24.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((p25.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((byte)(p25.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -48112,17 +48331,18 @@ namespace Break_List.livegameDataSet1TableAdapters {
                     global::System.Nullable<byte> p21, 
                     global::System.Nullable<byte> p22, 
                     global::System.Nullable<byte> p23, 
-                    int p24, 
-                    global::System.Nullable<byte> p26, 
+                    global::System.Nullable<byte> p24, 
+                    global::System.Nullable<byte> p25, 
+                    int p26, 
                     global::System.Nullable<byte> p28, 
                     global::System.Nullable<byte> p30, 
                     global::System.Nullable<byte> p32, 
                     global::System.Nullable<byte> p34, 
                     global::System.Nullable<byte> p36, 
-                    global::System.Nullable<int> p38, 
-                    global::System.Nullable<byte> p40, 
-                    string p42, 
-                    global::System.Nullable<byte> p44, 
+                    global::System.Nullable<byte> p38, 
+                    global::System.Nullable<int> p40, 
+                    global::System.Nullable<byte> p42, 
+                    string p44, 
                     global::System.Nullable<byte> p46, 
                     global::System.Nullable<byte> p48, 
                     global::System.Nullable<byte> p50, 
@@ -48130,12 +48350,15 @@ namespace Break_List.livegameDataSet1TableAdapters {
                     global::System.Nullable<byte> p54, 
                     global::System.Nullable<byte> p56, 
                     global::System.Nullable<byte> p58, 
-                    string p60, 
-                    global::System.Nullable<byte> p62, 
+                    global::System.Nullable<byte> p60, 
+                    string p62, 
                     global::System.Nullable<byte> p64, 
                     global::System.Nullable<byte> p66, 
                     global::System.Nullable<byte> p68, 
-                    global::System.Nullable<byte> p70) {
+                    global::System.Nullable<byte> p70, 
+                    global::System.Nullable<byte> p72, 
+                    global::System.Nullable<byte> p74, 
+                    global::System.Nullable<byte> p76) {
             if ((p1.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((byte)(p1.Value));
             }
@@ -48274,15 +48497,19 @@ namespace Break_List.livegameDataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(p24));
-            if ((p26.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((byte)(p26.Value));
+            if ((p24.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((byte)(p24.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
+            if ((p25.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((byte)(p25.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(p26));
             if ((p28.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((byte)(p28.Value));
@@ -48325,7 +48552,7 @@ namespace Break_List.livegameDataSet1TableAdapters {
             }
             if ((p38.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((int)(p38.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((byte)(p38.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
@@ -48333,27 +48560,27 @@ namespace Break_List.livegameDataSet1TableAdapters {
             }
             if ((p40.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((byte)(p40.Value));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((int)(p40.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((p42 == null)) {
+            if ((p42.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((byte)(p42.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(p42));
-            }
-            if ((p44.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((byte)(p44.Value));
-            }
-            else {
+            if ((p44 == null)) {
                 this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(p44));
             }
             if ((p46.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
@@ -48411,21 +48638,21 @@ namespace Break_List.livegameDataSet1TableAdapters {
                 this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
             }
-            if ((p60 == null)) {
+            if ((p60.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((byte)(p60.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(p60));
-            }
-            if ((p62.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((byte)(p62.Value));
-            }
-            else {
+            if ((p62 == null)) {
                 this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((string)(p62));
             }
             if ((p64.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
@@ -48458,6 +48685,30 @@ namespace Break_List.livegameDataSet1TableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
+            }
+            if ((p72.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((byte)(p72.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
+            }
+            if ((p74.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((byte)(p74.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
+            }
+            if ((p76.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((byte)(p76.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 

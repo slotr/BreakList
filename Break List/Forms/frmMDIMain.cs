@@ -7,6 +7,7 @@ using Break_List.Forms.Rotalar;
 using Break_List.Forms.Personel;
 using Break_List.Forms.Prosedur;
 using Break_List.Forms.Raporlar;
+using Break_List.Forms.Counts;
 using Break_List.Class;
 using System.Deployment.Application;
 
@@ -37,8 +38,10 @@ namespace Break_List.Forms
             ribbonPersonel.Visible = _p.personel;
             ribbonBreak.Visible = _p.breakList;
             rbnEgitimler.Visible = _p.egitim;
+            rbnCount.Visible = _p.count;
             backstageViewControl1.Controls.Add(labelControl2);
             labelControl2.Top = 5;
+            
         }
 
         private void frmMDIMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -231,9 +234,6 @@ namespace Break_List.Forms
             }
             conn1.Close();
             conn1.Dispose();
-            // department.Caption = "Department: " + prop._department;
-            //bstuserName.Caption = "User: " + prop._FullName;
-
 
             var conn = new MySqlConnection(_str);
             var command = conn.CreateCommand();
@@ -259,6 +259,7 @@ namespace Break_List.Forms
                 _p.prosedur = Convert.ToBoolean(reader["prosedur"].ToString());
                 _p.personel = Convert.ToBoolean(reader["resources"].ToString());
                 _p.egitim = Convert.ToBoolean(reader["egitim"].ToString());
+                _p.count = Convert.ToBoolean(reader["count"].ToString());
             }
             conn.Close();
             if (_p.breakList)
@@ -288,6 +289,7 @@ namespace Break_List.Forms
             ribbonPersonel.Visible = _p.personel;
             ribbonBreak.Visible = _p.breakList;
             rbnEgitimler.Visible = _p.egitim;
+            rbnCount.Visible = _p.count;
         }
 
 
@@ -394,6 +396,13 @@ namespace Break_List.Forms
                     }
                 }
             }
+        }
+
+        private void btnCount_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmTableCount count = new frmTableCount();
+            count.MdiParent = this;
+            count.Show();
         }
     }
 }

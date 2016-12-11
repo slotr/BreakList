@@ -193,7 +193,7 @@ namespace Break_List.Forms.BreakList
                 GetBolgeler();
                 btnMasalar.Visible = false;
                 btnYenile.Visible = false;
-                gridView1.Columns["logismosno"].Visible = false;
+                //gridView1.Columns["logismosno"].Visible = false;
             }
             else
             {
@@ -384,22 +384,43 @@ namespace Break_List.Forms.BreakList
 
         private void schedulerStorage1_AppointmentDeleting(object sender, PersistentObjectCancelEventArgs e)
         {
-            var apt = (Appointment) e.Object;
-            LocationData = apt.Location;
-            SubjectData = apt.Subject;
-            LogismosNo = apt.CustomFields["Logismosno"].ToString();
-            var sourceTable = gridMasa.DataSource as DataTable;
-            if (sourceTable == null) return;
-            var row = sourceTable.NewRow();
             if (DepartmentNameFromMainForm == "Live Game")
-                if (SubjectData != "BREAK")
-                {
-                    row["Game"] = SubjectData;
-                    row["No"] = LocationData;
-                    row["logismosno"] = LogismosNo;
-                    sourceTable.Rows.Add(row);
-                    gridView1.Columns["No"].SortOrder = ColumnSortOrder.Ascending;
-                }
+            {
+                var apt = (Appointment)e.Object;
+                LocationData = apt.Location;
+                SubjectData = apt.Subject;
+                LogismosNo = apt.CustomFields["Logismosno"].ToString();
+                var sourceTable = gridMasa.DataSource as DataTable;
+                if (sourceTable == null) return;
+                var row = sourceTable.NewRow();
+                if (DepartmentNameFromMainForm == "Live Game")
+                    if (SubjectData != "BREAK")
+                    {
+                        row["Game"] = SubjectData;
+                        row["No"] = LocationData;
+                        row["logismosno"] = LogismosNo;
+                        sourceTable.Rows.Add(row);
+                        gridView1.Columns["No"].SortOrder = ColumnSortOrder.Ascending;
+                    }
+            }
+            else
+            {
+                var apt = (Appointment)e.Object;
+                LocationData = apt.Location;
+                SubjectData = apt.Subject;
+                
+                var sourceTable = gridMasa.DataSource as DataTable;
+                if (sourceTable == null) return;
+                var row = sourceTable.NewRow();
+                if (DepartmentNameFromMainForm != "Live Game")
+                    if (SubjectData != "BREAK")
+                    {
+                        row["Bolge"] = SubjectData;
+                        row["bolge2"] = LocationData;
+                        sourceTable.Rows.Add(row);
+                    }
+            }
+               
             
         }
 
@@ -454,6 +475,9 @@ namespace Break_List.Forms.BreakList
                         var location = (string)gridView1.GetRowCellValue(rowIndex, "bolge2");
                         apt.Subject = subject;
                         apt.Location = location;
+                        apt.ResourceId = resource;
+                        apt.Start = StartTime;
+                        apt.End = EndTime;
                         apt.CustomFields["Department"] = DepartmentNameFromMainForm;
                         apt.CustomFields["ActualShiftDate"] = OperationDate;
                         apt.Duration = TimeSpan.FromMinutes(20);

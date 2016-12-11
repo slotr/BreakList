@@ -64,6 +64,8 @@ namespace Break_List.Forms
             this.colDepartment = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKasa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOnay = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEgitim = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCount = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingNavigator)).BeginInit();
@@ -179,7 +181,9 @@ namespace Break_List.Forms
             this.colpersonelEkle,
             this.colDepartment,
             this.colKasa,
-            this.colOnay});
+            this.colOnay,
+            this.colEgitim,
+            this.colCount});
             this.permissionGrid.GridControl = this.permissionsGridControl;
             this.permissionGrid.GroupCount = 1;
             this.permissionGrid.Name = "permissionGrid";
@@ -339,8 +343,6 @@ namespace Break_List.Forms
             this.colEgitimler.ColumnEdit = this.repositoryItemCheckEdit1;
             this.colEgitimler.FieldName = "Egitimler";
             this.colEgitimler.Name = "colEgitimler";
-            this.colEgitimler.Visible = true;
-            this.colEgitimler.VisibleIndex = 15;
             // 
             // colCalismaIznleri
             // 
@@ -348,7 +350,7 @@ namespace Break_List.Forms
             this.colCalismaIznleri.FieldName = "CalismaIznleri";
             this.colCalismaIznleri.Name = "colCalismaIznleri";
             this.colCalismaIznleri.Visible = true;
-            this.colCalismaIznleri.VisibleIndex = 16;
+            this.colCalismaIznleri.VisibleIndex = 15;
             // 
             // colpersonelEkle
             // 
@@ -357,7 +359,7 @@ namespace Break_List.Forms
             this.colpersonelEkle.FieldName = "personelEkle";
             this.colpersonelEkle.Name = "colpersonelEkle";
             this.colpersonelEkle.Visible = true;
-            this.colpersonelEkle.VisibleIndex = 17;
+            this.colpersonelEkle.VisibleIndex = 16;
             // 
             // colDepartment
             // 
@@ -373,7 +375,7 @@ namespace Break_List.Forms
             this.colKasa.FieldName = "kasa";
             this.colKasa.Name = "colKasa";
             this.colKasa.Visible = true;
-            this.colKasa.VisibleIndex = 18;
+            this.colKasa.VisibleIndex = 17;
             // 
             // colOnay
             // 
@@ -382,7 +384,25 @@ namespace Break_List.Forms
             this.colOnay.FieldName = "onay";
             this.colOnay.Name = "colOnay";
             this.colOnay.Visible = true;
-            this.colOnay.VisibleIndex = 19;
+            this.colOnay.VisibleIndex = 18;
+            // 
+            // colEgitim
+            // 
+            this.colEgitim.Caption = "Egitim";
+            this.colEgitim.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colEgitim.FieldName = "egitim";
+            this.colEgitim.Name = "colEgitim";
+            this.colEgitim.Visible = true;
+            this.colEgitim.VisibleIndex = 19;
+            // 
+            // colCount
+            // 
+            this.colCount.Caption = "Count";
+            this.colCount.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colCount.FieldName = "count";
+            this.colCount.Name = "colCount";
+            this.colCount.Visible = true;
+            this.colCount.VisibleIndex = 20;
             // 
             // frmPermissions
             // 
@@ -442,5 +462,7 @@ namespace Break_List.Forms
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn colKasa;
         private DevExpress.XtraGrid.Columns.GridColumn colOnay;
+        private DevExpress.XtraGrid.Columns.GridColumn colEgitim;
+        private DevExpress.XtraGrid.Columns.GridColumn colCount;
     }
 }

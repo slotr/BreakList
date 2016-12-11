@@ -16,6 +16,7 @@ using System.Data.SqlClient;
 using Oracle.ManagedDataAccess.Client;
 using DevExpress.Utils;
 using DevExpress.XtraPivotGrid;
+using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
 
 namespace Break_List.Forms.Raporlar
 {
@@ -69,6 +70,7 @@ namespace Break_List.Forms.Raporlar
             }
             else
             {
+                
                 MessageBox.Show("Mercek İşaretine bir kere basınca rapor verir", @"Bir Hata Oluştu.");
                 gridControl1.Enabled = true;
             }
