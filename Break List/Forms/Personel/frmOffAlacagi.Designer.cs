@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmOffAlacagi
+    partial class FrmOffAlacagi
     {
         /// <summary>
         /// Required designer variable.
@@ -75,7 +75,7 @@
             this.Controls.Add(this.dateEdit1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmOffAlacagi";
+            this.Name = "FrmOffAlacagi";
             this.Text = "Off Alacağı";
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();

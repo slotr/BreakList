@@ -1,21 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 namespace Break_List.Forms.Counts
 {
-    public partial class frmPrintCount : DevExpress.XtraEditors.XtraForm
+    public partial class FrmPrintCount : XtraForm
     {
-        public frmPrintCount()
+        public DateTime Tarih;
+        public FrmPrintCount()
         {
             InitializeComponent();
+        }
+        public bool Tip;
+        private void frmPrintCount_Load(object sender, EventArgs e)
+        {
+            if(Tip)
+            {
+                RptTip report = new RptTip();
+                report.Parameters["parameter1"].Value = Tarih;
+                report.Parameters["parameter1"].Visible = false;
+                documentViewer1.DocumentSource = report;
+                report.CreateDocument(true);
+            }
+            else
+            {
+                RptCount report = new RptCount();
+                report.Parameters["parameter1"].Value = Tarih;
+                report.Parameters["parameter1"].Visible = false;
+                documentViewer1.DocumentSource = report;
+                report.CreateDocument(true);
+            }
+            
         }
     }
 }

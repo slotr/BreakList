@@ -1,11 +1,17 @@
-﻿namespace Break_List
+﻿using System.ComponentModel;
+using DevExpress.XtraBars.Docking2010;
+using DevExpress.XtraDataLayout;
+using DevExpress.XtraEditors;
+using DevExpress.XtraLayout;
+
+namespace Break_List.Forms.Admin
 {
-    partial class frmDepartments
+    partial class FrmDepartments
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -146,7 +152,7 @@
             this.Controls.Add(this.labelControl);
             this.Controls.Add(this.windowsUIButtonPanelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmDepartments";
+            this.Name = "FrmDepartments";
             this.Text = "Departments";
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
@@ -159,12 +165,12 @@
 
         #endregion
 
-        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanelMain;
-        private DevExpress.XtraEditors.LabelControl labelControl;
-        private DevExpress.XtraEditors.TextEdit txtDepartment;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DataLayoutControl dataLayoutControl1;
+        private LayoutControlGroup layoutControlGroup1;
+        private WindowsUIButtonPanel windowsUIButtonPanelMain;
+        private LabelControl labelControl;
+        private TextEdit txtDepartment;
+        private LayoutControlItem layoutControlItem1;
     }
 
 }

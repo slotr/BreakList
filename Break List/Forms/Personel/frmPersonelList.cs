@@ -9,15 +9,15 @@ using Break_List.Properties;
 
 namespace Break_List.Forms.Personel
 {
-    public partial class frmPersonelList : XtraForm
+    public partial class FrmPersonelList : XtraForm
     {
-        public string _departmentNameFromMainForm { get; set; }
-        public int personelID;
-        public string _UserNameFromMainForm { get; set; }
-        public string _UserID { get; set; }
-        Boolean haspermissionToAllPersonel { get; set; }
-        public string personelName;
-        public frmPersonelList()
+        public string DepartmentNameFromMainForm { get; set; }
+        public int PersonelId;
+        public string UserNameFromMainForm { get; set; }
+        public string UserId { get; set; }
+        Boolean HaspermissionToAllPersonel { get; set; }
+        public string PersonelName;
+        public FrmPersonelList()
         {
             InitializeComponent();           
             
@@ -26,15 +26,15 @@ namespace Break_List.Forms.Personel
         private void frmPersonel_Load(object sender, EventArgs e)
         {
             
-            getNames();            
+            GetNames();            
             SetupView();
-            labelControl1.Text = _UserID;
+            labelControl1.Text = UserId;
         }
 
-        void getNames()
+        void GetNames()
         {
-            checkPermissions();
-            if (haspermissionToAllPersonel)
+            CheckPermissions();
+            if (HaspermissionToAllPersonel)
             {
                 using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
@@ -60,8 +60,8 @@ namespace Break_List.Forms.Personel
                 using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
                     MySqlCommand cmd = new MySqlCommand("spPersonel;", conn) { CommandType = CommandType.StoredProcedure };
-                    string _department = _departmentNameFromMainForm;
-                    cmd.Parameters.Add(new MySqlParameter("DepartmentName", _department));
+                    string department = DepartmentNameFromMainForm;
+                    cmd.Parameters.Add(new MySqlParameter("DepartmentName", department));
 
                     conn.Open();
 
@@ -81,23 +81,23 @@ namespace Break_List.Forms.Personel
 
         }
 
-        void checkPermissions() //Department , Role ve Full adi aliyor.
+        void CheckPermissions() //Department , Role ve Full adi aliyor.
         {
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = string.Format("SELECT * from permissions WHERE UserID ='{0}'", _UserID);
+            command.CommandText = $"SELECT * from permissions WHERE UserID ='{UserId}'";
             try
             {
                 conn.Open();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("There were an Error", ex.ToString());
+                MessageBox.Show(@"There were an Error", ex.ToString());
             }
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-               haspermissionToAllPersonel = Convert.ToBoolean(reader["AllPersonel"].ToString());
+               HaspermissionToAllPersonel = Convert.ToBoolean(reader["AllPersonel"].ToString());
                 
 
             }
@@ -147,7 +147,7 @@ namespace Break_List.Forms.Personel
                 splitLine.TextLocation = new Point(110, 0);
                 splitLine.Appearance.Normal.BackColor = Color.White;
                 //
-                nameSurnameCaption.Text = "Adı Soyadı";
+                nameSurnameCaption.Text = @"Adı Soyadı";
                 nameSurnameCaption.TextAlignment = TileItemContentAlignment.TopLeft;
                 nameSurnameCaption.Appearance.Normal.FontSizeDelta = -1;
                 //
@@ -157,7 +157,7 @@ namespace Break_List.Forms.Personel
                 addressValue.MaxWidth = 100;
                 addressValue.Appearance.Normal.FontStyleDelta = FontStyle.Bold;
                 //
-                departmentCaption.Text = "Departman";
+                departmentCaption.Text = @"Departman";
                 departmentCaption.AnchorElement = addressValue;
                 departmentCaption.AnchorIndent = 14;
                 departmentCaption.Appearance.Normal.FontSizeDelta = -1;
@@ -169,7 +169,7 @@ namespace Break_List.Forms.Personel
                 //
                 price.Column = tileView1.Columns["Personel ID"];
                 price.TextAlignment = TileItemContentAlignment.BottomLeft;
-                price.Appearance.Normal.Font = new Font("Segoe UI Semilight", 16F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                price.Appearance.Normal.Font = new Font("Segoe UI Semilight", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
                 //
                 image.Column = tileView1.Columns["Image"];
                 image.ImageSize = new Size(220, 220);
@@ -188,19 +188,26 @@ namespace Break_List.Forms.Personel
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
 
-            personelID = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
-            personelName = (string)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "FullName");
+            PersonelId = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
+            PersonelName = (string)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "FullName");
             var personel = new FrmPersonelDetails
             {
-                MdiParent = ParentForm,
-                PersonelId = personelID.ToString(),
-                UserNameFromMainForm = _UserNameFromMainForm,
+                //MdiParent = ParentForm,
+                PersonelId = PersonelId.ToString(),
+                UserNameFromMainForm = UserNameFromMainForm,
                 UserId = labelControl1.Text,
-                PersonelName = personelName
+                PersonelName = PersonelName
 
             };
 
-            personel.Show();
+            var dr = personel.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                GetNames();
+            }
+            else
+            {
+                GetNames();}
 
 
         }

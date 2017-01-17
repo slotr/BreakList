@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmCalismaIzinleri
+    partial class FrmCalismaIzinleri
     {
         /// <summary>
         /// Required designer variable.
@@ -32,26 +32,16 @@
             DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
-            this.spCalismaIzinTakibiBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
+            this.spCalismaIzinTakibiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.spCalismaIzinTakibiTableAdapter = new Break_List.livegameDataSet1TableAdapters.spCalismaIzinTakibiTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.spCalismaIzinTakibiBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spCalismaIzinTakibiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // spCalismaIzinTakibiBindingSource
-            // 
-            this.spCalismaIzinTakibiBindingSource.DataMember = "spCalismaIzinTakibi";
-            this.spCalismaIzinTakibiBindingSource.DataSource = this.livegameDataSet1;
-            // 
-            // livegameDataSet1
-            // 
-            this.livegameDataSet1.DataSetName = "livegameDataSet1";
-            this.livegameDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // schedulerControl1
             // 
@@ -108,6 +98,16 @@
             this.schedulerStorage1.Appointments.Mappings.Start = "Calisma Izni Bitis Tarihi";
             this.schedulerStorage1.Appointments.Mappings.Subject = "Personel";
             // 
+            // spCalismaIzinTakibiBindingSource
+            // 
+            this.spCalismaIzinTakibiBindingSource.DataMember = "spCalismaIzinTakibi";
+            this.spCalismaIzinTakibiBindingSource.DataSource = this.livegameDataSet1;
+            // 
+            // livegameDataSet1
+            // 
+            this.livegameDataSet1.DataSetName = "livegameDataSet1";
+            this.livegameDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // spCalismaIzinTakibiTableAdapter
             // 
             this.spCalismaIzinTakibiTableAdapter.ClearBeforeFill = true;
@@ -118,13 +118,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 564);
             this.Controls.Add(this.schedulerControl1);
-            this.Name = "frmCalismaIzinleri";
+            this.Name = "FrmCalismaIzinleri";
             this.Text = "Çalışma İzni Takibi";
             this.Load += new System.EventHandler(this.frmCalismaIzinleri_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.spCalismaIzinTakibiBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spCalismaIzinTakibiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

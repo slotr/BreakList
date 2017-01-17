@@ -27,16 +27,22 @@
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.0.1\public\hakan\publish\</UpdateUrl>
+    <SupportUrl>http://www.hkaraca.eu</SupportUrl>
+    <ErrorReportUrl>http://www.hkaraca.eu/error</ErrorReportUrl>
+    <ProductName>Casino Management Application</ProductName>
     <PublisherName>Hakan Karaca</PublisherName>
-    <MinimumRequiredVersion>1.0.0.5</MinimumRequiredVersion>
-    <ApplicationRevision>6</ApplicationRevision>
+    <SuiteName>Casino Management by Hakan Karaca</SuiteName>
+    <MinimumRequiredVersion>1.0.0.25</MinimumRequiredVersion>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>26</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -69,15 +75,39 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Awesomium.Core, Version=1.7.5.1, Culture=neutral, PublicKeyToken=e1a0d7c8071a5214" />
-    <Reference Include="Awesomium.Windows.Forms, Version=1.7.5.1, Culture=neutral, PublicKeyToken=9bd24830fbe304a0, processorArchitecture=x86" />
     <Reference Include="DevComponents.DotNetBar.Keyboard, Version=12.7.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.7.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04" />
     <Reference Include="DevExpress.BonusSkins.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -122,16 +152,45 @@
     <Reference Include="DevExpress.XtraScheduler.v16.1.Reporting, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.CSharp">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="NodaTime, Version=1.3.0.0, Culture=neutral, PublicKeyToken=4226afe0d9b296d1, processorArchitecture=MSIL">
-      <HintPath>..\packages\NodaTime.1.3.2\lib\net35-Client\NodaTime.dll</HintPath>
+    <Reference Include="Google.Apis, Version=1.20.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.20.0\lib\net45\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.20.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.20.0\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.20.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.20.0\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Calendar.v3, Version=1.20.0.710, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Calendar.v3.1.20.0.710\lib\net45\Google.Apis.Calendar.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.20.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.20.0\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.20.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.20.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
@@ -198,18 +257,23 @@
     <Reference Include="WindowsBase">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\clsPermissions.cs" />
+    <Compile Include="Class\clsTurnuva.cs" />
     <Compile Include="Class\customProperties.cs" />
     <Compile Include="Class\CustomScales.cs" />
     <Compile Include="Class\CustomTimeScaleDay.cs" />
     <Compile Include="Class\DateTimeExtension.cs" />
-    <Compile Include="Controls\Admin\UCDepartments.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Forms\Admin\frmChangePassword.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\Admin\UCDepartments.Designer.cs">
-      <DependentUpon>UCDepartments.cs</DependentUpon>
+    <Compile Include="Forms\Admin\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Audit\frmLoginLogs.cs">
       <SubType>Form</SubType>
@@ -222,6 +286,12 @@
     </Compile>
     <Compile Include="Forms\BreakList\BreakListPrint.Designer.cs">
       <DependentUpon>BreakListPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Counts\frmCountChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\frmCountChooser.Designer.cs">
+      <DependentUpon>frmCountChooser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Counts\frmInitiator.cs">
       <SubType>Form</SubType>
@@ -259,11 +329,29 @@
     <Compile Include="Forms\Counts\rptCount.Designer.cs">
       <DependentUpon>rptCount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Counts\rptTip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Counts\rptTip.Designer.cs">
+      <DependentUpon>rptTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DashBoard\frmDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DashBoard\frmDashBoard.Designer.cs">
+      <DependentUpon>frmDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Envanter\frmEnvanter.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Envanter\frmEnvanter.Designer.cs">
       <DependentUpon>frmEnvanter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLostPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLostPassword.Designer.cs">
+      <DependentUpon>frmLostPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Hatalar\frmHataEkle.cs">
       <SubType>Form</SubType>
@@ -282,6 +370,18 @@
     </Compile>
     <Compile Include="Forms\Kasa\frmTipListesi.Designer.cs">
       <DependentUpon>frmTipListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Kasa\Operasyon\FrmCageMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kasa\Operasyon\FrmCageMain.Designer.cs">
+      <DependentUpon>FrmCageMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LiveGame\Masa\FrmTouch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LiveGame\Masa\FrmTouch.Designer.cs">
+      <DependentUpon>FrmTouch.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Maas\frmMaasArtisi.cs">
       <SubType>Form</SubType>
@@ -391,6 +491,12 @@
     <Compile Include="Forms\Reader\frmreader.Designer.cs">
       <DependentUpon>frmreader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Resepsiyon\FrmRespsiyonKayit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Resepsiyon\FrmRespsiyonKayit.Designer.cs">
+      <DependentUpon>FrmRespsiyonKayit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Rotalar\frmAddOverTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +551,12 @@
     <Compile Include="Forms\Personel\frmPersonelList.Designer.cs">
       <DependentUpon>frmPersonelList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Rotalar\frmDepartmaSecici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Rotalar\frmDepartmaSecici.Designer.cs">
+      <DependentUpon>frmDepartmaSecici.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Rotalar\frmGroupDegistir.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -469,18 +581,90 @@
     <Compile Include="Forms\Rotalar\frmRotaGruplar.Designer.cs">
       <DependentUpon>frmRotaGruplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Teknik\frmAddGorev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Teknik\frmAddGorev.Designer.cs">
+      <DependentUpon>frmAddGorev.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Teknik\frmTeknikTakip.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Teknik\frmTeknikTakip.Designer.cs">
       <DependentUpon>frmTeknikTakip.cs</DependentUpon>
     </Compile>
-    <Compile Include="livegameDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>livegameDataSet1.xsd</DependentUpon>
+    <Compile Include="Forms\TopPlayers\frmExchaneRates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmExchaneRates.Designer.cs">
+      <DependentUpon>frmExchaneRates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmPlayers.Designer.cs">
+      <DependentUpon>frmPlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmSlotRapor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmSlotRapor.Designer.cs">
+      <DependentUpon>frmSlotRapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmSlots.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmSlots.Designer.cs">
+      <DependentUpon>frmSlots.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmTables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\frmTables.Designer.cs">
+      <DependentUpon>frmTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\WaitForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TopPlayers\WaitForm2.Designer.cs">
+      <DependentUpon>WaitForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Turnuva\FrmAddRebuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\FrmAddRebuy.Designer.cs">
+      <DependentUpon>FrmAddRebuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Turnuva\frmKatilimcics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\frmKatilimcics.Designer.cs">
+      <DependentUpon>frmKatilimcics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Turnuva\frmTurnuva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\frmTurnuva.Designer.cs">
+      <DependentUpon>frmTurnuva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Turnuva\FrmTVScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\FrmTVScreen.Designer.cs">
+      <DependentUpon>FrmTVScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Turnuva\frmYeniTurnuva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\frmYeniTurnuva.Designer.cs">
+      <DependentUpon>frmYeniTurnuva.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\PivotClass.cs" />
+    <Compile Include="livegameDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>livegameDataSet13.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\Vacations\frmNewVacation.cs">
@@ -513,17 +697,20 @@
     <Compile Include="Forms\Admin\frmUsers.Designer.cs">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="rptMaasArtisi.cs">
+    <Compile Include="Reports\rptMaasArtisi.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="rptMaasArtisi.Designer.cs">
+    <Compile Include="Reports\rptMaasArtisi.Designer.cs">
       <DependentUpon>rptMaasArtisi.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\Admin\UCDepartments.resx">
-      <DependentUpon>UCDepartments.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Admin\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BreakList\BreakListPrint.resx">
       <DependentUpon>BreakListPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\frmCountChooser.resx">
+      <DependentUpon>frmCountChooser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Counts\frmInitiator.resx">
       <DependentUpon>frmInitiator.cs</DependentUpon>
@@ -542,6 +729,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Counts\rptCount.resx">
       <DependentUpon>rptCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Counts\rptTip.resx">
+      <DependentUpon>rptTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DashBoard\frmDashBoard.resx">
+      <DependentUpon>frmDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Envanter\frmEnvanter.resx">
+      <DependentUpon>frmEnvanter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLostPassword.resx">
+      <DependentUpon>frmLostPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Hatalar\frmHataEkle.resx">
       <DependentUpon>frmHataEkle.cs</DependentUpon>
@@ -628,11 +827,53 @@
     <EmbeddedResource Include="Forms\frmMDIMain.resx">
       <DependentUpon>frmMDIMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Rotalar\frmDepartmaSecici.resx">
+      <DependentUpon>frmDepartmaSecici.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Rotalar\frmGroupDegistir.resx">
       <DependentUpon>frmGroupDegistir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Rotalar\frmRotaGruplar.resx">
       <DependentUpon>frmRotaGruplar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Teknik\frmAddGorev.resx">
+      <DependentUpon>frmAddGorev.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Teknik\frmTeknikTakip.resx">
+      <DependentUpon>frmTeknikTakip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TopPlayers\frmExchaneRates.resx">
+      <DependentUpon>frmExchaneRates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TopPlayers\frmPlayers.resx">
+      <DependentUpon>frmPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TopPlayers\frmSlotRapor.resx">
+      <DependentUpon>frmSlotRapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TopPlayers\frmSlots.resx">
+      <DependentUpon>frmSlots.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TopPlayers\frmTables.resx">
+      <DependentUpon>frmTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TopPlayers\WaitForm2.resx">
+      <DependentUpon>WaitForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\FrmAddRebuy.resx">
+      <DependentUpon>FrmAddRebuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\frmKatilimcics.resx">
+      <DependentUpon>frmKatilimcics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\frmTurnuva.resx">
+      <DependentUpon>frmTurnuva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\FrmTVScreen.resx">
+      <DependentUpon>FrmTVScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\frmYeniTurnuva.resx">
+      <DependentUpon>frmYeniTurnuva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Vacations\frmNewVacation.resx">
       <DependentUpon>frmNewVacation.cs</DependentUpon>
@@ -663,7 +904,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -672,23 +913,56 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="rptMaasArtisi.resx">
+    <EmbeddedResource Include="Reports\rptMaasArtisi.resx">
       <DependentUpon>rptMaasArtisi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="Break List_TemporaryKey.pfx" />
+    <None Include="client_secret.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="livegameDataSet1.xsc">
       <DependentUpon>livegameDataSet1.xsd</DependentUpon>
     </None>
     <None Include="livegameDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>livegameDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="livegameDataSet1.xss">
       <DependentUpon>livegameDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="livegameDataSet11.xsc">
+      <DependentUpon>livegameDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="livegameDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="livegameDataSet11.xss">
+      <DependentUpon>livegameDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="livegameDataSet12.xsc">
+      <DependentUpon>livegameDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="livegameDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="livegameDataSet12.xss">
+      <DependentUpon>livegameDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="livegameDataSet13.xsc">
+      <DependentUpon>livegameDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="livegameDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>livegameDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="livegameDataSet13.xss">
+      <DependentUpon>livegameDataSet13.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -714,7 +988,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reports\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\black-jack.png" />
@@ -733,7 +1007,33 @@
     <Content Include="OraOps11w.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\_FMS4718a.jpg" />
+    <None Include="Resources\black.jpg" />
+    <None Include="Resources\footer.jpg" />
+    <None Include="Resources\header44.jpg" />
+    <None Include="Resources\tick.png" />
+    <None Include="Resources\calendar-8.png" />
+    <None Include="Resources\slot.png" />
+    <None Include="Resources\BlackJackGreen00.jpgc455e3c4-0ec2-4d78-a5e6-ac33e3fadd18Original.jpg" />
     <None Include="Resources\cards.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="DevComponents.DotNetBar2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Bar\Sigara\" />
+    <Folder Include="Forms\Bar\Siparis\" />
+    <Folder Include="Forms\Bar\Stok\" />
+    <Folder Include="Forms\Member\Operations\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

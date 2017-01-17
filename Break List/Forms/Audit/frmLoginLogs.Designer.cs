@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Audit
 {
-    partial class frmLoginLogs
+    partial class FrmLoginLogs
     {
         /// <summary>
         /// Required designer variable.

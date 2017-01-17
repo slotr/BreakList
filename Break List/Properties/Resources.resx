@@ -117,11 +117,83 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TopDenom2" xml:space="preserve">
+    <value>5K</value>
+    <comment>Formun Başında görülecek açıklama</comment>
+  </data>
+  <data name="Rebuy1" xml:space="preserve">
+    <value>150</value>
+    <comment>Sadece Rakam Giriniz</comment>
+  </data>
+  <data name="TurnuvaAdi" xml:space="preserve">
+    <value>160,000 $ Aralık Turnuvası</value>
+    <comment>Turnuva Adını Buraya Yazınız</comment>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cards" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cards.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendar-8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendar-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlackJackGreen00.jpgc455e3c4-0ec2-4d78-a5e6-ac33e3fadd18Original" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlackJackGreen00.jpgc455e3c4-0ec2-4d78-a5e6-ac33e3fadd18Original.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rebuy4" xml:space="preserve">
+    <value>1000</value>
+    <comment>Sadece Rakam Giriniz</comment>
+  </data>
+  <data name="TopDenom3" xml:space="preserve">
+    <value>10K</value>
+    <comment>Formun Başında görülecek açıklama</comment>
+  </data>
+  <data name="tick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cards" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cards.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="footer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\footer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopDenom4" xml:space="preserve">
+    <value>25K</value>
+    <comment>Formun Başında görülecek açıklama</comment>
+  </data>
+  <data name="Rebuy3" xml:space="preserve">
+    <value>500</value>
+    <comment>Sadece Rakam Giriniz</comment>
+  </data>
+  <data name="TurnuvaTarih" xml:space="preserve">
+    <value>30-Sep-16</value>
+    <comment>Turnuva Tarihini Giriniz</comment>
+  </data>
+  <data name="slot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rebuy5" xml:space="preserve">
+    <value>5000</value>
+    <comment>Sadece Rakam Giriniz</comment>
+  </data>
+  <data name="header44" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\header44.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopDenom5" xml:space="preserve">
+    <value>50K</value>
+    <comment>Formun Başında görülecek açıklama</comment>
+  </data>
+  <data name="Rebuy2" xml:space="preserve">
+    <value>300</value>
+    <comment>Sadece Rakam Giriniz</comment>
+  </data>
+  <data name="TopDenom1" xml:space="preserve">
+    <value>İlk Spin 5K</value>
+    <comment>Formun Başında görülecek açıklama</comment>
+  </data>
+  <data name="black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\black.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_FMS4718a" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\_FMS4718a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

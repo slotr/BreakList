@@ -7,16 +7,16 @@ using Break_List.Properties;
 using System.Speech.Synthesis;
 namespace Break_List.Forms.Reader
 {
-    public partial class frmreader : DevExpress.XtraEditors.XtraForm
+    public partial class Frmreader : DevExpress.XtraEditors.XtraForm
     {
-        public frmreader()
+        public Frmreader()
         {
             InitializeComponent();
         }
 
-       public string personel { get; set; }
-        public string data { get; set; }  
-        Boolean iceride { get; set; }        
+       public string Personel { get; set; }
+        public string Data { get; set; }  
+        Boolean Iceride { get; set; }        
         private void textEdit1_TextChanged(object sender, EventArgs e)
         {
             
@@ -38,7 +38,7 @@ namespace Break_List.Forms.Reader
                         CommandType = CommandType.StoredProcedure
                     })
                     {
-                        mySqlCommand.Parameters.Add(new MySqlParameter("rfid", data));
+                        mySqlCommand.Parameters.Add(new MySqlParameter("rfid", Data));
                         mySqlConnection.Open();
                         mySqlCommand.ExecuteNonQuery();
                         mySqlConnection.Close();
@@ -50,40 +50,35 @@ namespace Break_List.Forms.Reader
         private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
         {
             var str = textEdit1.Text;
-            var charsToRemove = new string[] { "?", ";", "ş", ":" };
+            var charsToRemove = new[] { "?", ";", "ş", ":" };
             foreach (var c in charsToRemove)
             {
                 str = str.Replace(c, string.Empty);
             }
-            
-            if (str.Length == 17) // RFID yapinca karakter sayisi degisebilir. Magnetic stripe icin suan boyle.
-            {
-                labelControl1.Text = "Lütfen Bekleyin";
-                labelControl1.BackColor = Color.Red;
-                data = str;
-                timer1.Start();
-                
-            }
-            
-            
+
+            if (str.Length != 17) return;
+            labelControl1.Text = @"Lütfen Bekleyin";
+            labelControl1.BackColor = Color.Red;
+            Data = str;
+            timer1.Start();
         }
-        void konus()
+        void Konus()
         {
-            MessageBox.Show(data);
+            MessageBox.Show(Data);
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT ResourceName FROM resources WHERE rfid ='" + data + "' GROUp by ResourceName ORDER BY rfid DESC Limit 1";
+            command.CommandText = "SELECT ResourceName FROM resources WHERE rfid ='" + Data + "' GROUp by ResourceName ORDER BY rfid DESC Limit 1";
             try
             {
                 conn.Open();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("There were an Error", ex.ToString());
+                MessageBox.Show(@"There were an Error", ex.ToString());
             }
             MySqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            personel = reader["resourceName"].ToString();
+            Personel = reader["resourceName"].ToString();
             conn.Close();
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -91,8 +86,8 @@ namespace Break_List.Forms.Reader
             
             timer1.Stop();
 
-            getflag();
-            if (iceride == true)
+            Getflag();
+            if (Iceride)
             {
                 using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
@@ -101,7 +96,7 @@ namespace Break_List.Forms.Reader
                         CommandType = CommandType.StoredProcedure
                     })
                     {
-                        mySqlCommand.Parameters.Add(new MySqlParameter("_rfidNo", data));
+                        mySqlCommand.Parameters.Add(new MySqlParameter("_rfidNo", Data));
 
                         mySqlConnection.Open();
                         mySqlCommand.ExecuteNonQuery();
@@ -111,22 +106,22 @@ namespace Break_List.Forms.Reader
                 }
                 textEdit1.Text = "";
                 labelControl1.BackColor = Color.Green;
-                labelControl1.Text = "Lütfen Kartınızı Geçirin";
+                labelControl1.Text = @"Lütfen Kartınızı Geçirin";
                 SpeechSynthesizer synth = new SpeechSynthesizer();
 
                 // Configure the audio output. 
                 synth.SetOutputToDefaultAudioDevice();
 
                 // Speak a string.
-                synth.Speak("Gulea Gulea, " + personel);
+                synth.Speak("Gulea Gulea, " + Personel);
             }
-            else if (iceride == false)
+            else if (Iceride == false)
             {
                 simpleButton1.PerformClick();
                 textEdit1.Text = "";
                 labelControl1.BackColor = Color.Green;
-                labelControl1.Text = "Lütfen Kartınızı Geçirin";
-                konus();
+                labelControl1.Text = @"Lütfen Kartınızı Geçirin";
+                Konus();
                 
                 SpeechSynthesizer synth = new SpeechSynthesizer();
 
@@ -134,7 +129,7 @@ namespace Break_List.Forms.Reader
                 synth.SetOutputToDefaultAudioDevice();
 
                 // Speak a string.
-                synth.Speak("Hoshgeldin, " +personel);
+                synth.Speak("Hoshgeldin, " +Personel);
 
             }
 
@@ -146,7 +141,7 @@ namespace Break_List.Forms.Reader
         {
             if(textEdit1.Text == "")
             {
-                labelControl1.Text = "Lütfen Kartınızı Geçirin";
+                labelControl1.Text = @"Lütfen Kartınızı Geçirin";
                 labelControl1.BackColor = Color.Green;
                 labelControl1.ForeColor = Color.White;
                 
@@ -154,34 +149,34 @@ namespace Break_List.Forms.Reader
         }
 
         
-        void getflag() 
+        void Getflag() 
         {
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
             MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT Max(ID) as ID , iceride, cikti FROM tblrfiddata WHERE rfidno ='" + data + "' GROUp by iceride, cikti ORDER BY ID DESC Limit 1";
+            command.CommandText = "SELECT Max(ID) as ID , iceride, cikti FROM tblrfiddata WHERE rfidno ='" + Data + "' GROUp by iceride, cikti ORDER BY ID DESC Limit 1";
             try
             {
                 conn.Open();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("There were an Error", ex.ToString());
+                MessageBox.Show(@"There were an Error", ex.ToString());
             }
             MySqlDataReader reader = command.ExecuteReader();
             reader.Read();
             if (reader.HasRows == false)
             {
-                iceride = false;               
+                Iceride = false;               
             }
 
-            else if (Convert.ToBoolean(reader["iceride"]) == true && Convert.ToBoolean(reader["cikti"])== false)
+            else if (Convert.ToBoolean(reader["iceride"]) && Convert.ToBoolean(reader["cikti"])== false)
             {                
-                iceride = true;                
+                Iceride = true;                
                 
             }
-            else if (Convert.ToBoolean(reader["iceride"]) == true && Convert.ToBoolean(reader["cikti"]) == true)
+            else if (Convert.ToBoolean(reader["iceride"]) && Convert.ToBoolean(reader["cikti"]))
             {
-                iceride = false;                
+                Iceride = false;                
             }
             
             conn.Close();

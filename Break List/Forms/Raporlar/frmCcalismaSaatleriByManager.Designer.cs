@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Raporlar
 {
-    partial class frmCcalismaSaatleriByManager
+    partial class FrmCcalismaSaatleriByManager
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression3 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression4 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCcalismaSaatleriByManager));
             this.colOverTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colErkenGonderim = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPersonel = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,13 +58,24 @@
             this.colCT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCTV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHVA = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.dateEdit = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.btnGoster = new DevExpress.XtraBars.BarButtonItem();
+            this.DptcomboBox = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
+            this.btnYazdır = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // colOverTime
@@ -88,73 +94,13 @@
             this.colErkenGonderim.VisibleIndex = 8;
             this.colErkenGonderim.Width = 92;
             // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.btnPrint);
-            this.panelControl1.Controls.Add(this.labelControl3);
-            this.panelControl1.Controls.Add(this.labelControl2);
-            this.panelControl1.Controls.Add(this.comboBoxEdit1);
-            this.panelControl1.Controls.Add(this.dateEdit1);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1398, 65);
-            this.panelControl1.TabIndex = 0;
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(514, 22);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(75, 23);
-            this.btnPrint.TabIndex = 7;
-            this.btnPrint.Text = "Yazdir";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(336, 27);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(162, 13);
-            this.labelControl3.TabIndex = 6;
-            this.labelControl3.Text = "departmanının raporunu Göster...";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(182, 27);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(42, 13);
-            this.labelControl2.TabIndex = 5;
-            this.labelControl2.Text = "tarihinde";
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(230, 24);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(100, 20);
-            this.comboBoxEdit1.TabIndex = 2;
-            this.comboBoxEdit1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit1_SelectedIndexChanged);
-            // 
-            // dateEdit1
-            // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(12, 24);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(153, 20);
-            this.dateEdit1.TabIndex = 0;
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 65);
+            this.gridControl1.Location = new System.Drawing.Point(0, 83);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1398, 518);
+            this.gridControl1.Size = new System.Drawing.Size(1398, 479);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -184,19 +130,20 @@
             this.colTRV,
             this.colCT,
             this.colCTV,
-            this.colHVA});
-            gridFormatRule1.Column = this.colOverTime;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleExpression1.Expression = "[Over Time] <> \'YOK\'";
-            formatConditionRuleExpression1.PredefinedName = "Green Fill";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            gridFormatRule2.Column = this.colErkenGonderim;
-            gridFormatRule2.Name = "Format1";
-            formatConditionRuleExpression2.Expression = "[Erken Gonderim] <> \'YOK\'";
-            formatConditionRuleExpression2.PredefinedName = "Red Fill";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.gridView1.FormatRules.Add(gridFormatRule1);
-            this.gridView1.FormatRules.Add(gridFormatRule2);
+            this.colHVA,
+            this.colID});
+            gridFormatRule3.Column = this.colOverTime;
+            gridFormatRule3.Name = "Format0";
+            formatConditionRuleExpression3.Expression = "[Over Time] <> \'YOK\'";
+            formatConditionRuleExpression3.PredefinedName = "Green Fill";
+            gridFormatRule3.Rule = formatConditionRuleExpression3;
+            gridFormatRule4.Column = this.colErkenGonderim;
+            gridFormatRule4.Name = "Format1";
+            formatConditionRuleExpression4.Expression = "[Erken Gonderim] <> \'YOK\'";
+            formatConditionRuleExpression4.PredefinedName = "Red Fill";
+            gridFormatRule4.Rule = formatConditionRuleExpression4;
+            this.gridView1.FormatRules.Add(gridFormatRule3);
+            this.gridView1.FormatRules.Add(gridFormatRule4);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
@@ -213,6 +160,7 @@
             this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colPozisyon, DevExpress.Data.ColumnSortOrder.Descending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colPersonel, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
             // colPersonel
             // 
@@ -276,6 +224,7 @@
             // 
             // colAR
             // 
+            this.colAR.Caption = "AR";
             this.colAR.FieldName = "AR";
             this.colAR.Name = "colAR";
             this.colAR.Visible = true;
@@ -284,6 +233,7 @@
             // 
             // colBJ
             // 
+            this.colBJ.Caption = "BJ";
             this.colBJ.FieldName = "BJ";
             this.colBJ.Name = "colBJ";
             this.colBJ.Visible = true;
@@ -292,7 +242,8 @@
             // 
             // colCSP
             // 
-            this.colCSP.FieldName = "CSP";
+            this.colCSP.Caption = "CP";
+            this.colCSP.FieldName = "CP";
             this.colCSP.Name = "colCSP";
             this.colCSP.Visible = true;
             this.colCSP.VisibleIndex = 11;
@@ -300,7 +251,8 @@
             // 
             // colRPK
             // 
-            this.colRPK.FieldName = "RPK";
+            this.colRPK.Caption = "RP";
+            this.colRPK.FieldName = "RP";
             this.colRPK.Name = "colRPK";
             this.colRPK.Visible = true;
             this.colRPK.VisibleIndex = 12;
@@ -308,7 +260,8 @@
             // 
             // colSPK
             // 
-            this.colSPK.FieldName = "SPK";
+            this.colSPK.Caption = "SP";
+            this.colSPK.FieldName = "SP";
             this.colSPK.Name = "colSPK";
             this.colSPK.Visible = true;
             this.colSPK.VisibleIndex = 13;
@@ -316,7 +269,8 @@
             // 
             // colUPK
             // 
-            this.colUPK.FieldName = "UTP";
+            this.colUPK.Caption = "UT";
+            this.colUPK.FieldName = "UT";
             this.colUPK.Name = "colUPK";
             this.colUPK.Visible = true;
             this.colUPK.VisibleIndex = 14;
@@ -324,7 +278,8 @@
             // 
             // colNPK
             // 
-            this.colNPK.FieldName = "NPK";
+            this.colNPK.Caption = "NP";
+            this.colNPK.FieldName = "NP";
             this.colNPK.Name = "colNPK";
             this.colNPK.Visible = true;
             this.colNPK.VisibleIndex = 15;
@@ -376,8 +331,8 @@
             // 
             // colCTV
             // 
-            this.colCTV.Caption = "CTV";
-            this.colCTV.FieldName = "CTV";
+            this.colCTV.Caption = "CH";
+            this.colCTV.FieldName = "CH";
             this.colCTV.Name = "colCTV";
             this.colCTV.Visible = true;
             this.colCTV.VisibleIndex = 19;
@@ -392,37 +347,145 @@
             this.colHVA.VisibleIndex = 21;
             this.colHVA.Width = 38;
             // 
-            // frmCcalismaSaatleriByManager
+            // colID
+            // 
+            this.colID.Caption = "gridColumn1";
+            this.colID.FieldName = "ID";
+            this.colID.Name = "colID";
+            // 
+            // ribbonControl1
+            // 
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.dateEdit,
+            this.btnGoster,
+            this.DptcomboBox,
+            this.btnYazdır});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaxItemId = 5;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1,
+            this.repositoryItemComboBox1});
+            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
+            this.ribbonControl1.Size = new System.Drawing.Size(1398, 83);
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+            // 
+            // dateEdit
+            // 
+            this.dateEdit.Caption = "Tarih:";
+            this.dateEdit.Edit = this.repositoryItemDateEdit1;
+            this.dateEdit.EditWidth = 150;
+            this.dateEdit.Glyph = ((System.Drawing.Image)(resources.GetObject("dateEdit.Glyph")));
+            this.dateEdit.Id = 1;
+            this.dateEdit.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("dateEdit.LargeGlyph")));
+            this.dateEdit.Name = "dateEdit";
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // btnGoster
+            // 
+            this.btnGoster.Caption = "Göster";
+            this.btnGoster.Glyph = ((System.Drawing.Image)(resources.GetObject("btnGoster.Glyph")));
+            this.btnGoster.Id = 2;
+            this.btnGoster.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnGoster.LargeGlyph")));
+            this.btnGoster.Name = "btnGoster";
+            this.btnGoster.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnGoster_ItemClick);
+            // 
+            // DptcomboBox
+            // 
+            this.DptcomboBox.Caption = "Departman";
+            this.DptcomboBox.Edit = this.repositoryItemComboBox1;
+            this.DptcomboBox.EditWidth = 150;
+            this.DptcomboBox.Glyph = ((System.Drawing.Image)(resources.GetObject("DptcomboBox.Glyph")));
+            this.DptcomboBox.Id = 3;
+            this.DptcomboBox.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("DptcomboBox.LargeGlyph")));
+            this.DptcomboBox.Name = "DptcomboBox";
+            // 
+            // repositoryItemComboBox1
+            // 
+            this.repositoryItemComboBox1.AutoHeight = false;
+            this.repositoryItemComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemComboBox1.Name = "repositoryItemComboBox1";
+            // 
+            // btnYazdır
+            // 
+            this.btnYazdır.Caption = "Yazdır";
+            this.btnYazdır.Glyph = ((System.Drawing.Image)(resources.GetObject("btnYazdır.Glyph")));
+            this.btnYazdır.Id = 4;
+            this.btnYazdır.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
+            this.btnYazdır.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnYazdır.LargeGlyph")));
+            this.btnYazdır.Name = "btnYazdır";
+            this.btnYazdır.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYazdır_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Raporlamalar";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.dateEdit);
+            this.ribbonPageGroup1.ItemLinks.Add(this.DptcomboBox);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnGoster);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnYazdır);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 562);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1398, 21);
+            // 
+            // FrmCcalismaSaatleriByManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1398, 583);
             this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.panelControl1);
-            this.Name = "frmCcalismaSaatleriByManager";
+            this.Controls.Add(this.ribbonStatusBar1);
+            this.Controls.Add(this.ribbonControl1);
+            this.Name = "FrmCcalismaSaatleriByManager";
+            this.Ribbon = this.ribbonControl1;
+            this.StatusBar = this.ribbonStatusBar1;
             this.Text = "Manager Rapor";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCcalismaSaatleriByManager_FormClosing);
             this.Load += new System.EventHandler(this.frmCcalismaSaatleriByManager_Load);
             this.Shown += new System.EventHandler(this.frmCcalismaSaatleriByManager_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colPersonel;
@@ -447,7 +510,18 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTRV;
         private DevExpress.XtraGrid.Columns.GridColumn colCT;
         private DevExpress.XtraGrid.Columns.GridColumn colCTV;
-        private DevExpress.XtraEditors.SimpleButton btnPrint;
         private DevExpress.XtraGrid.Columns.GridColumn colHVA;
+        private DevExpress.XtraGrid.Columns.GridColumn colID;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+        private DevExpress.XtraBars.BarEditItem dateEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraBars.BarButtonItem btnGoster;
+        private DevExpress.XtraBars.BarEditItem DptcomboBox;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox1;
+        private DevExpress.XtraBars.BarButtonItem btnYazdır;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }

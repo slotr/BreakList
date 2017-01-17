@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Counts
 {
-    partial class frmPrintCount
+    partial class FrmPrintCount
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrintCount));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrintCount));
             this.documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             this.documentViewerBarManager1 = new DevExpress.XtraPrinting.Preview.DocumentViewerBarManager(this.components);
             this.previewBar1 = new DevExpress.XtraPrinting.Preview.PreviewBar();
@@ -109,7 +109,6 @@
             // documentViewer1
             // 
             this.documentViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.documentViewer1.DocumentSource = typeof(Break_List.Forms.Counts.rptCount);
             this.documentViewer1.IsMetric = false;
             this.documentViewer1.Location = new System.Drawing.Point(0, 52);
             this.documentViewer1.Name = "documentViewer1";
@@ -923,9 +922,10 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmPrintCount";
+            this.Name = "FrmPrintCount";
             this.Text = "Count";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmPrintCount_Load);
             ((System.ComponentModel.ISupportInitialize)(this.documentViewerBarManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printPreviewRepositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();

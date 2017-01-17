@@ -1,11 +1,18 @@
-﻿namespace Break_List
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using DevExpress.XtraBars.Docking2010;
+using DevExpress.XtraDataLayout;
+using DevExpress.XtraEditors;
+using DevExpress.XtraLayout;
+
+namespace Break_List.Forms.Admin
 {
-    partial class frmUsers
+    partial class FrmUsers
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -53,6 +60,8 @@
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.permissionsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.txtemail = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
@@ -64,11 +73,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtemail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.AllowCustomization = false;
+            this.dataLayoutControl1.Controls.Add(this.txtemail);
             this.dataLayoutControl1.Controls.Add(this.txtUserName);
             this.dataLayoutControl1.Controls.Add(this.txtPassword);
             this.dataLayoutControl1.Controls.Add(this.txtFulName);
@@ -78,7 +90,7 @@
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(820, 303, 250, 350);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(305, 117);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(305, 141);
             this.dataLayoutControl1.TabIndex = 0;
             // 
             // txtUserName
@@ -126,10 +138,11 @@
             this.layoutControlItem3,
             this.layoutControlItem6,
             this.layoutControlItem7,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(305, 117);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(305, 141);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
@@ -146,7 +159,7 @@
             this.layoutControlItem6.Control = this.txtPassword;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(285, 25);
+            this.layoutControlItem6.Size = new System.Drawing.Size(285, 24);
             this.layoutControlItem6.Text = "Password";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(61, 13);
             // 
@@ -192,7 +205,7 @@
             this.windowsUIButtonPanelMain.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.windowsUIButtonPanelMain.EnableImageTransparency = true;
             this.windowsUIButtonPanelMain.ForeColor = System.Drawing.Color.White;
-            this.windowsUIButtonPanelMain.Location = new System.Drawing.Point(0, 147);
+            this.windowsUIButtonPanelMain.Location = new System.Drawing.Point(0, 171);
             this.windowsUIButtonPanelMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.windowsUIButtonPanelMain.MaximumSize = new System.Drawing.Size(0, 60);
             this.windowsUIButtonPanelMain.MinimumSize = new System.Drawing.Size(60, 60);
@@ -208,6 +221,9 @@
             this.labelControl.AllowHtmlString = true;
             this.labelControl.Appearance.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelControl.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+            this.labelControl.Appearance.Options.UseFont = true;
+            this.labelControl.Appearance.Options.UseForeColor = true;
+            this.labelControl.Appearance.Options.UseTextOptions = true;
             this.labelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.labelControl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
             this.labelControl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -278,6 +294,23 @@
             this.permissionsBindingNavigatorSaveItem.Name = "permissionsBindingNavigatorSaveItem";
             this.permissionsBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
             // 
+            // txtemail
+            // 
+            this.txtemail.Location = new System.Drawing.Point(76, 108);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(217, 20);
+            this.txtemail.StyleController = this.dataLayoutControl1;
+            this.txtemail.TabIndex = 11;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.txtemail;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 96);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(285, 25);
+            this.layoutControlItem1.Text = "Email";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(61, 13);
+            // 
             // frmUsers
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -285,11 +318,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(305, 207);
+            this.ClientSize = new System.Drawing.Size(305, 231);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.labelControl);
             this.Controls.Add(this.windowsUIButtonPanelMain);
-            this.Name = "frmUsers";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "FrmUsers";
             this.Load += new System.EventHandler(this.frmUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
@@ -302,36 +336,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtemail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel windowsUIButtonPanelMain;
-        private DevExpress.XtraEditors.LabelControl labelControl;
-        private DevExpress.XtraEditors.TextEdit txtUserName;
-        private DevExpress.XtraEditors.TextEdit txtPassword;
-        private DevExpress.XtraEditors.TextEdit txtFulName;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbDepartment;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ToolStripButton permissionsBindingNavigatorSaveItem;
+        private DataLayoutControl dataLayoutControl1;
+        private LayoutControlGroup layoutControlGroup1;
+        private WindowsUIButtonPanel windowsUIButtonPanelMain;
+        private LabelControl labelControl;
+        private TextEdit txtUserName;
+        private TextEdit txtPassword;
+        private TextEdit txtFulName;
+        private ComboBoxEdit cmbDepartment;
+        private LayoutControlItem layoutControlItem3;
+        private LayoutControlItem layoutControlItem6;
+        private LayoutControlItem layoutControlItem7;
+        private LayoutControlItem layoutControlItem5;
+        private ToolStripButton bindingNavigatorAddNewItem;
+        private ToolStripLabel bindingNavigatorCountItem;
+        private ToolStripButton bindingNavigatorDeleteItem;
+        private ToolStripButton bindingNavigatorMoveFirstItem;
+        private ToolStripButton bindingNavigatorMovePreviousItem;
+        private ToolStripSeparator bindingNavigatorSeparator;
+        private ToolStripTextBox bindingNavigatorPositionItem;
+        private ToolStripSeparator bindingNavigatorSeparator1;
+        private ToolStripButton bindingNavigatorMoveNextItem;
+        private ToolStripButton bindingNavigatorMoveLastItem;
+        private ToolStripSeparator bindingNavigatorSeparator2;
+        private ToolStripButton permissionsBindingNavigatorSaveItem;
+        private TextEdit txtemail;
+        private LayoutControlItem layoutControlItem1;
     }
 
 }

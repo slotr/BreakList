@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmEgitimler
+    partial class FrmEgitimler
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEgitimler));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEgitimler));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -193,7 +193,7 @@
             this.ClientSize = new System.Drawing.Size(937, 700);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl1);
-            this.Name = "frmEgitimler";
+            this.Name = "FrmEgitimler";
             this.Text = " Eğiitimler";
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

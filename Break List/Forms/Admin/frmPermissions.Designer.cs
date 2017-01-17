@@ -1,13 +1,21 @@
-﻿using System;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using Break_List.livegameDataSet1TableAdapters;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid;
 
-namespace Break_List.Forms
+namespace Break_List.Forms.Admin
 {
-    partial class frmPermissions
+    partial class FrmPermissions
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -31,13 +39,11 @@ namespace Break_List.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPermissions));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPermissions));
             this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.permissionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.permissionsTableAdapter = new Break_List.livegameDataSet1TableAdapters.permissionsTableAdapter();
             this.tableAdapterManager = new Break_List.livegameDataSet1TableAdapters.TableAdapterManager();
-            this.permissionsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.permissionsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.permissionsGridControl = new DevExpress.XtraGrid.GridControl();
             this.permissionGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colidpermissions = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,13 +72,22 @@ namespace Break_List.Forms
             this.colOnay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEgitim = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDashboar = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEnvanter = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTurnuva = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSlot = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colProsedur = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.Kaydet = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.colIstatistik = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingNavigator)).BeginInit();
-            this.permissionsBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // livegameDataSet1
@@ -93,65 +108,53 @@ namespace Break_List.Forms
             // 
             this.tableAdapterManager.appointmentsTableAdapter = null;
             this.tableAdapterManager.apps_countriesTableAdapter = null;
+            this.tableAdapterManager.auditTableAdapter = null;
             this.tableAdapterManager.avanslarTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.barbolgeTableAdapter = null;
+            this.tableAdapterManager.bitenshiftlerTableAdapter = null;
             this.tableAdapterManager.departmentsTableAdapter = null;
             this.tableAdapterManager.documentsTableAdapter = null;
             this.tableAdapterManager.kesintilerTableAdapter = null;
             this.tableAdapterManager.lghataTableAdapter = null;
+            this.tableAdapterManager.loginlogTableAdapter = null;
             this.tableAdapterManager.maaslarTableAdapter = null;
+            this.tableAdapterManager.maastipredTableAdapter = null;
             this.tableAdapterManager.offalacaklariTableAdapter = null;
             this.tableAdapterManager.permissionsTableAdapter = this.permissionsTableAdapter;
             this.tableAdapterManager.positionsTableAdapter = null;
+            this.tableAdapterManager.prosedurTableAdapter = null;
+            this.tableAdapterManager.resimTableAdapter = null;
             this.tableAdapterManager.resourcesTableAdapter = null;
             this.tableAdapterManager.rolesTableAdapter = null;
-            this.tableAdapterManager.roster1TableAdapter = null;
+            this.tableAdapterManager.rosterTableAdapter = null;
             this.tableAdapterManager.shiftsTableAdapter = null;
             this.tableAdapterManager.tablesTableAdapter = null;
             this.tableAdapterManager.tblcalismaizinleriTableAdapter = null;
+            this.tableAdapterManager.tblcountTableAdapter = null;
+            this.tableAdapterManager.tblegitimlerTableAdapter = null;
+            this.tableAdapterManager.tblenvanter_kategoriTableAdapter = null;
+            this.tableAdapterManager.tblenvanterTableAdapter = null;
+            this.tableAdapterManager.tblpreviouscountTableAdapter = null;
+            this.tableAdapterManager.tblrfiddataTableAdapter = null;
+            this.tableAdapterManager.tblslotresultsTableAdapter = null;
+            this.tableAdapterManager.tbltekniktakipTableAdapter = null;
+            this.tableAdapterManager.tblturnuvaTableAdapter = null;
             this.tableAdapterManager.tiplerTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Break_List.livegameDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.usersTableAdapter = null;
             this.tableAdapterManager.vacationsTableAdapter = null;
             // 
-            // permissionsBindingNavigator
-            // 
-            this.permissionsBindingNavigator.AddNewItem = null;
-            this.permissionsBindingNavigator.BindingSource = this.permissionsBindingSource;
-            this.permissionsBindingNavigator.CountItem = null;
-            this.permissionsBindingNavigator.DeleteItem = null;
-            this.permissionsBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.permissionsBindingNavigatorSaveItem});
-            this.permissionsBindingNavigator.Location = new System.Drawing.Point(0, 0);
-            this.permissionsBindingNavigator.MoveFirstItem = null;
-            this.permissionsBindingNavigator.MoveLastItem = null;
-            this.permissionsBindingNavigator.MoveNextItem = null;
-            this.permissionsBindingNavigator.MovePreviousItem = null;
-            this.permissionsBindingNavigator.Name = "permissionsBindingNavigator";
-            this.permissionsBindingNavigator.PositionItem = null;
-            this.permissionsBindingNavigator.Size = new System.Drawing.Size(1086, 25);
-            this.permissionsBindingNavigator.TabIndex = 0;
-            this.permissionsBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // permissionsBindingNavigatorSaveItem
-            // 
-            this.permissionsBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.permissionsBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("permissionsBindingNavigatorSaveItem.Image")));
-            this.permissionsBindingNavigatorSaveItem.Name = "permissionsBindingNavigatorSaveItem";
-            this.permissionsBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
-            this.permissionsBindingNavigatorSaveItem.Text = "Save Data";
-            this.permissionsBindingNavigatorSaveItem.Click += new System.EventHandler(this.permissionsBindingNavigatorSaveItem_Click_1);
-            // 
             // permissionsGridControl
             // 
             this.permissionsGridControl.DataSource = this.permissionsBindingSource;
             this.permissionsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.permissionsGridControl.Location = new System.Drawing.Point(0, 25);
+            this.permissionsGridControl.Location = new System.Drawing.Point(0, 83);
             this.permissionsGridControl.MainView = this.permissionGrid;
             this.permissionsGridControl.Name = "permissionsGridControl";
             this.permissionsGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.permissionsGridControl.Size = new System.Drawing.Size(1086, 508);
+            this.permissionsGridControl.Size = new System.Drawing.Size(1086, 450);
             this.permissionsGridControl.TabIndex = 1;
             this.permissionsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.permissionGrid});
@@ -183,7 +186,13 @@ namespace Break_List.Forms
             this.colKasa,
             this.colOnay,
             this.colEgitim,
-            this.colCount});
+            this.colCount,
+            this.colDashboar,
+            this.colEnvanter,
+            this.colTurnuva,
+            this.colSlot,
+            this.colProsedur,
+            this.colIstatistik});
             this.permissionGrid.GridControl = this.permissionsGridControl;
             this.permissionGrid.GroupCount = 1;
             this.permissionGrid.Name = "permissionGrid";
@@ -192,6 +201,8 @@ namespace Break_List.Forms
             this.permissionGrid.OptionsView.ShowGroupPanel = false;
             this.permissionGrid.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colDepartment, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.permissionGrid.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.permissionGrid_RowClick);
+            this.permissionGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.permissionGrid_MouseDown);
             // 
             // colidpermissions
             // 
@@ -286,6 +297,8 @@ namespace Break_List.Forms
             this.colUserName.Caption = "Personel";
             this.colUserName.FieldName = "UserName";
             this.colUserName.Name = "colUserName";
+            this.colUserName.OptionsColumn.AllowEdit = false;
+            this.colUserName.OptionsColumn.ReadOnly = true;
             this.colUserName.Visible = true;
             this.colUserName.VisibleIndex = 0;
             // 
@@ -404,25 +417,115 @@ namespace Break_List.Forms
             this.colCount.Visible = true;
             this.colCount.VisibleIndex = 20;
             // 
-            // frmPermissions
+            // colDashboar
+            // 
+            this.colDashboar.Caption = "Dashboard";
+            this.colDashboar.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colDashboar.FieldName = "dashboard";
+            this.colDashboar.Name = "colDashboar";
+            this.colDashboar.Visible = true;
+            this.colDashboar.VisibleIndex = 21;
+            // 
+            // colEnvanter
+            // 
+            this.colEnvanter.Caption = "Envanter";
+            this.colEnvanter.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colEnvanter.FieldName = "envanter";
+            this.colEnvanter.Name = "colEnvanter";
+            this.colEnvanter.Visible = true;
+            this.colEnvanter.VisibleIndex = 22;
+            // 
+            // colTurnuva
+            // 
+            this.colTurnuva.Caption = "Turnuva";
+            this.colTurnuva.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colTurnuva.FieldName = "turnuva";
+            this.colTurnuva.Name = "colTurnuva";
+            this.colTurnuva.Visible = true;
+            this.colTurnuva.VisibleIndex = 23;
+            // 
+            // colSlot
+            // 
+            this.colSlot.Caption = "Slot";
+            this.colSlot.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colSlot.FieldName = "slot";
+            this.colSlot.Name = "colSlot";
+            this.colSlot.Visible = true;
+            this.colSlot.VisibleIndex = 24;
+            // 
+            // colProsedur
+            // 
+            this.colProsedur.Caption = "Prosedur";
+            this.colProsedur.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colProsedur.FieldName = "prosedur";
+            this.colProsedur.Name = "colProsedur";
+            this.colProsedur.Visible = true;
+            this.colProsedur.VisibleIndex = 25;
+            // 
+            // ribbonControl1
+            // 
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.Kaydet});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaxItemId = 2;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
+            this.ribbonControl1.Size = new System.Drawing.Size(1086, 83);
+            // 
+            // Kaydet
+            // 
+            this.Kaydet.Caption = "Kaydet";
+            this.Kaydet.Glyph = ((System.Drawing.Image)(resources.GetObject("Kaydet.Glyph")));
+            this.Kaydet.Id = 1;
+            this.Kaydet.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("Kaydet.LargeGlyph")));
+            this.Kaydet.Name = "Kaydet";
+            this.Kaydet.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Kaydet_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Admin";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.Kaydet);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            // 
+            // colIstatistik
+            // 
+            this.colIstatistik.Caption = "Istatistik";
+            this.colIstatistik.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.colIstatistik.FieldName = "istatistik";
+            this.colIstatistik.Name = "colIstatistik";
+            this.colIstatistik.Visible = true;
+            this.colIstatistik.VisibleIndex = 26;
+            // 
+            // FrmPermissions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 533);
             this.Controls.Add(this.permissionsGridControl);
-            this.Controls.Add(this.permissionsBindingNavigator);
+            this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmPermissions";
+            this.Name = "FrmPermissions";
+            this.Ribbon = this.ribbonControl1;
             this.Text = "Kullanici Haklari";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPermissions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.permissionsBindingNavigator)).EndInit();
-            this.permissionsBindingNavigator.ResumeLayout(false);
-            this.permissionsBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.permissionsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.permissionGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,38 +534,46 @@ namespace Break_List.Forms
         #endregion
 
         private livegameDataSet1 livegameDataSet1;
-        private System.Windows.Forms.BindingSource permissionsBindingSource;
-        private livegameDataSet1TableAdapters.permissionsTableAdapter permissionsTableAdapter;
-        private livegameDataSet1TableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingNavigator permissionsBindingNavigator;
-        private System.Windows.Forms.ToolStripButton permissionsBindingNavigatorSaveItem;
-        private DevExpress.XtraGrid.GridControl permissionsGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView permissionGrid;
-        private DevExpress.XtraGrid.Columns.GridColumn colidpermissions;
-        private DevExpress.XtraGrid.Columns.GridColumn colUsers;
-        private DevExpress.XtraGrid.Columns.GridColumn colUserDepartments;
-        private DevExpress.XtraGrid.Columns.GridColumn colAppointments;
-        private DevExpress.XtraGrid.Columns.GridColumn colResources;
-        private DevExpress.XtraGrid.Columns.GridColumn colRoster;
-        private DevExpress.XtraGrid.Columns.GridColumn colPositions;
-        private DevExpress.XtraGrid.Columns.GridColumn colUserID;
-        private DevExpress.XtraGrid.Columns.GridColumn colVacations;
-        private DevExpress.XtraGrid.Columns.GridColumn colUserName;
-        private DevExpress.XtraGrid.Columns.GridColumn colRapor;
-        private DevExpress.XtraGrid.Columns.GridColumn colMaasArtisi;
-        private DevExpress.XtraGrid.Columns.GridColumn colDokumanlar;
-        private DevExpress.XtraGrid.Columns.GridColumn colUyarilar;
-        private DevExpress.XtraGrid.Columns.GridColumn colYorumlar;
-        private DevExpress.XtraGrid.Columns.GridColumn colEgitimler;
-        private DevExpress.XtraGrid.Columns.GridColumn colCalismaIznleri;
-        private DevExpress.XtraGrid.Columns.GridColumn colpersonelEkle;
-        private DevExpress.XtraGrid.Columns.GridColumn colDepartment;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn colKasa;
-        private DevExpress.XtraGrid.Columns.GridColumn colOnay;
-        private DevExpress.XtraGrid.Columns.GridColumn colEgitim;
-        private DevExpress.XtraGrid.Columns.GridColumn colCount;
+        private BindingSource permissionsBindingSource;
+        private permissionsTableAdapter permissionsTableAdapter;
+        private TableAdapterManager tableAdapterManager;
+        private GridControl permissionsGridControl;
+        private GridView permissionGrid;
+        private GridColumn colidpermissions;
+        private GridColumn colUsers;
+        private GridColumn colUserDepartments;
+        private GridColumn colAppointments;
+        private GridColumn colResources;
+        private GridColumn colRoster;
+        private GridColumn colPositions;
+        private GridColumn colUserID;
+        private GridColumn colVacations;
+        private GridColumn colUserName;
+        private GridColumn colRapor;
+        private GridColumn colMaasArtisi;
+        private GridColumn colDokumanlar;
+        private GridColumn colUyarilar;
+        private GridColumn colYorumlar;
+        private GridColumn colEgitimler;
+        private GridColumn colCalismaIznleri;
+        private GridColumn colpersonelEkle;
+        private GridColumn colDepartment;
+        private RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private GridColumn gridColumn1;
+        private GridColumn gridColumn2;
+        private GridColumn colKasa;
+        private GridColumn colOnay;
+        private GridColumn colEgitim;
+        private GridColumn colCount;
+        private GridColumn colDashboar;
+        private GridColumn colEnvanter;
+        private GridColumn colTurnuva;
+        private RibbonControl ribbonControl1;
+        private RibbonPage ribbonPage1;
+        private RibbonPageGroup ribbonPageGroup1;
+        private BarButtonItem Kaydet;
+        private GridColumn colSlot;
+        private GridColumn colProsedur;
+        private GridColumn colIstatistik;
     }
 }

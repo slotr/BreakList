@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Counts
 {
-    partial class frmTipCount
+    partial class FrmTipCount
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@
             this.ClientSize = new System.Drawing.Size(776, 625);
             this.Controls.Add(this.tileControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmTipCount";
+            this.Name = "FrmTipCount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tip Count";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

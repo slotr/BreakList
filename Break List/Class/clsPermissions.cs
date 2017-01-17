@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Break_List.Class
+﻿namespace Break_List.Class
 {
-    public class clsPermissions
+    public class ClsPermissions
     {
-        public bool appointment { get; set; }
-        public bool rota { get; set; }
-        public bool staff { get; set; }
-        public bool admin { get; set; }
-        public bool prosedur { get; set; }
-        public bool addPersonel { get; set; }
-        public bool kasa { get; set; }
-        public bool onay { get; set; }        
-        public bool rapor { get; set; }
-        public bool personel { get; set; }
-        public bool breakList { get; set; }
-        public bool egitim { get; set; }
-        public bool loggedIN { get; set; }
-        public bool count { get; set; }
+        public bool Appointment { get; set; }
+        public bool Rota { get; set; }
+        public bool Staff { get; set; }
+        public bool Admin { get; set; }
+        public bool Prosedur { get; set; }
+        public bool AddPersonel { get; set; }
+        public bool Kasa { get; set; }
+        public bool Onay { get; set; }        
+        public bool Rapor { get; set; }
+        public bool Personel { get; set; }
+        public bool BreakList { get; set; }
+        public bool Egitim { get; set; }
+        public bool LoggedIn { get; set; }
+        public bool Count { get; set; }
+        public bool Envanter { get; set; }
+        public bool Dashboard { get; set; }
+        public bool Turnuva { get; set; }
+        public bool Slot { get; set; }
+        public bool Istatistik { get; set; }
     }
 }

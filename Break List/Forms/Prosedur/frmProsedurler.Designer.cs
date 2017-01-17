@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Prosedur
 {
-    partial class frmProsedurler
+    partial class FrmProsedurler
     {
         /// <summary>
         /// Required designer variable.
@@ -128,7 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(965, 721);
             this.Controls.Add(this.gridControl1);
-            this.Name = "frmProsedurler";
+            this.Name = "FrmProsedurler";
             this.Text = "Prosedurler";
             this.Load += new System.EventHandler(this.frmProsedurler_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

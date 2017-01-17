@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Counts
 {
-    partial class frmTipAdd
+    partial class FrmTipAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -130,7 +130,7 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.simpleButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmTipAdd";
+            this.Name = "FrmTipAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmTipAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();

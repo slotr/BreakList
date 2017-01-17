@@ -1,6 +1,6 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms.Personel
 {
-    partial class frmIstenAyrilmis
+    partial class FrmIstenAyrilmis
     {
         /// <summary>
         /// Required designer variable.
@@ -127,7 +127,7 @@
             this.ClientSize = new System.Drawing.Size(456, 599);
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
-            this.Name = "frmIstenAyrilmis";
+            this.Name = "FrmIstenAyrilmis";
             this.Text = "İşten Ayrılanlar";
             this.Load += new System.EventHandler(this.frmPersonel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).EndInit();

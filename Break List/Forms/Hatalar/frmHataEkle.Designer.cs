@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Hatalar
 {
-    partial class frmHataEkle
+    partial class FrmHataEkle
     {
         /// <summary>
         /// Required designer variable.
@@ -19,15 +19,15 @@
                 {
                     components.Dispose();
                 }
-                if (con != null)
+                if (_con != null)
                 {
-                    con.Dispose();
-                    con = null;
+                    _con.Dispose();
+                    _con = null;
                 }
-                if (cmd != null)
+                if (_cmd != null)
                 {
-                    cmd.Dispose();
-                    cmd = null;
+                    _cmd.Dispose();
+                    _cmd = null;
                 }
             }
             base.Dispose(disposing);
@@ -198,7 +198,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.textEdit1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
-            this.Name = "frmHataEkle";
+            this.Name = "FrmHataEkle";
             this.Text = "Hata Ekle";
             this.Load += new System.EventHandler(this.frmHataEkle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();

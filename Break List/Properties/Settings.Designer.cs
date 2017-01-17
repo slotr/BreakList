@@ -69,5 +69,17 @@ namespace Break_List.Properties {
                 this["EndDate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("txtTurnuvaAdi")]
+        public string TurnuvaAdi {
+            get {
+                return ((string)(this["TurnuvaAdi"]));
+            }
+            set {
+                this["TurnuvaAdi"] = value;
+            }
+        }
     }
 }

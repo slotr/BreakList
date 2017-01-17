@@ -1,6 +1,6 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms.Rotalar
 {
-    partial class frmPrintRota
+    partial class FrmPrintRota
     {
         /// <summary>
         /// Required designer variable.
@@ -234,7 +234,7 @@
             this.ClientSize = new System.Drawing.Size(940, 671);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Name = "frmPrintRota";
+            this.Name = "FrmPrintRota";
             this.Text = "frmPrintRota";
             this.Load += new System.EventHandler(this.frmPrintRota_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();

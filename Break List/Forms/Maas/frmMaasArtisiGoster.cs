@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Break_List.Forms.Maas
 {
-    public partial class frmMaasArtisiGoster : DevExpress.XtraEditors.XtraForm
+    public partial class FrmMaasArtisiGoster : DevExpress.XtraEditors.XtraForm
     {
-        public int rowid { get; set; }
-        public frmMaasArtisiGoster()
+        public int Rowid { get; set; }
+        public FrmMaasArtisiGoster()
         {
             InitializeComponent();
         }
@@ -24,9 +15,9 @@ namespace Break_List.Forms.Maas
         {
             try
             {
-                spMaasartisiniGosterTableAdapter.Fill(livegameDataSet1.spMaasartisiniGoster, rowid);
+                spMaasartisiniGosterTableAdapter.Fill(livegameDataSet1.spMaasartisiniGoster, Rowid);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }

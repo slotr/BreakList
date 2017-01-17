@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Break_List.Class;
 using Break_List.Properties;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
@@ -17,9 +18,9 @@ namespace Break_List.Forms
         public string UserId { get; set; }
         public string Department { get; set; }
 
-        private static customProperties GetProp()
+        private static CustomProperties GetProp()
         {
-            var prop = new customProperties();
+            var prop = new CustomProperties();
             return prop;
         }
 
@@ -48,12 +49,12 @@ namespace Break_List.Forms
                         if (count == 1)
                         {
                             var prop = GetProp();
-                            prop._userName = textEdit1.Text;
-                            prop._logedin = true;
-                            prop._computerName = Environment.MachineName;
+                            prop.UserName = textEdit1.Text;
+                            prop.Logedin = true;
+                            prop.ComputerName = Environment.MachineName;
                             var mainform = new FrmMdiMain
                             {
-                                UserNameFromLogin = prop._userName
+                                UserNameFromLogin = prop.UserName
                             };
                             mainform.Show();
                             Hide();
@@ -66,7 +67,7 @@ namespace Break_List.Forms
                             var cmdinsert = new MySqlCommand(insertquery, con1);
                             cmdinsert.Parameters.Add(new MySqlParameter("@user", textEdit1.Text));
                             cmdinsert.Parameters.Add(new MySqlParameter("@time", DateTime.Now));
-                            cmdinsert.Parameters.Add(new MySqlParameter("@comp", prop._computerName));
+                            cmdinsert.Parameters.Add(new MySqlParameter("@comp", prop.ComputerName));
                             con1.Open();
                             cmdinsert.ExecuteNonQuery();
                             con1.Close();
@@ -99,6 +100,12 @@ namespace Break_List.Forms
         {
             if (e.KeyCode == Keys.Return)
                 DoLogin();
+        }
+
+        private void hyperlinkLabelControl1_Click(object sender, EventArgs e)
+        {
+            FrmLostPassword lostPassword = new FrmLostPassword();
+            lostPassword.ShowDialog();
         }
     }
 }

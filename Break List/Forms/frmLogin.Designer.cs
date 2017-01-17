@@ -34,6 +34,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             this.SuspendLayout();
@@ -81,11 +82,22 @@
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "Şifre:";
             // 
-            // frmLogin
+            // hyperlinkLabelControl1
+            // 
+            this.hyperlinkLabelControl1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(94, 102);
+            this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
+            this.hyperlinkLabelControl1.Size = new System.Drawing.Size(76, 13);
+            this.hyperlinkLabelControl1.TabIndex = 4;
+            this.hyperlinkLabelControl1.Text = "Şifremi Unuttum";
+            this.hyperlinkLabelControl1.Click += new System.EventHandler(this.hyperlinkLabelControl1_Click);
+            // 
+            // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(184, 108);
+            this.ClientSize = new System.Drawing.Size(182, 122);
+            this.Controls.Add(this.hyperlinkLabelControl1);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);
@@ -110,5 +122,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControl1;
     }
 }

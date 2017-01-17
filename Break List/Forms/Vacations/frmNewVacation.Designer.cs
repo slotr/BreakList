@@ -1,6 +1,6 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms.Vacations
 {
-    partial class frmNewVacation
+    partial class FrmNewVacation
     {
         /// <summary>
         /// Required designer variable.
@@ -544,7 +544,7 @@
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.labelControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmNewVacation";
+            this.Name = "FrmNewVacation";
             this.Load += new System.EventHandler(this.frmNewVacation_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);

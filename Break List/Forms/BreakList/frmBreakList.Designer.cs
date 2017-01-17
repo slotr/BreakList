@@ -31,12 +31,10 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraScheduler.TimeRuler timeRuler1 = new DevExpress.XtraScheduler.TimeRuler();
             DevExpress.XtraScheduler.TimeRuler timeRuler2 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.XtraScheduler.TimeScaleDay timeScaleDay1 = new DevExpress.XtraScheduler.TimeScaleDay();
-            DevExpress.XtraScheduler.TimeScaleHour timeScaleHour1 = new DevExpress.XtraScheduler.TimeScaleHour();
             DevExpress.XtraScheduler.TimeScaleFixedInterval timeScaleFixedInterval1 = new DevExpress.XtraScheduler.TimeScaleFixedInterval();
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBreakList));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.gridMasa = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -44,7 +42,14 @@
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.schedulerSplitContainerControl = new DevExpress.XtraEditors.SplitContainerControl();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
             this.schedulerControl = new DevExpress.XtraScheduler.SchedulerControl();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.btnYenile = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMasalar = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
             this.appointmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.livegameDataSet1 = new Break_List.livegameDataSet1();
@@ -65,10 +70,6 @@
             this.someLabelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.schedulerBarController1 = new DevExpress.XtraScheduler.UI.SchedulerBarController();
             this.appointmentsTableAdapter = new Break_List.livegameDataSet1TableAdapters.appointmentsTableAdapter();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnYeniGun = new DevExpress.XtraEditors.SimpleButton();
-            this.btnMasalar = new DevExpress.XtraEditors.SimpleButton();
-            this.btnYenile = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).BeginInit();
@@ -81,7 +82,10 @@
             this.schedulerSplitContainerControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
+            this.panelControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
@@ -97,8 +101,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainer1)).BeginInit();
             this.popupControlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerBarController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.SuspendLayout();
@@ -113,8 +115,8 @@
             this.splitContainerControl.Panel1.Text = "Panel1";
             this.splitContainerControl.Panel2.Controls.Add(this.schedulerSplitContainerControl);
             this.splitContainerControl.Panel2.Text = "Panel2";
-            this.splitContainerControl.Size = new System.Drawing.Size(1104, 652);
-            this.splitContainerControl.SplitterPosition = 159;
+            this.splitContainerControl.Size = new System.Drawing.Size(1104, 616);
+            this.splitContainerControl.SplitterPosition = 57;
             this.splitContainerControl.TabIndex = 0;
             this.splitContainerControl.Text = "splitContainerControl1";
             // 
@@ -130,7 +132,7 @@
             this.gridMasa.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemComboBox1});
-            this.gridMasa.Size = new System.Drawing.Size(159, 640);
+            this.gridMasa.Size = new System.Drawing.Size(57, 604);
             this.gridMasa.TabIndex = 0;
             this.gridMasa.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -138,8 +140,18 @@
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView1.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gridView1.Appearance.FocusedCell.ForeColor = System.Drawing.Color.White;
+            this.gridView1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gridView1.Appearance.FocusedCell.Options.UseFont = true;
+            this.gridView1.Appearance.FocusedCell.Options.UseForeColor = true;
+            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.gridView1.Appearance.Row.Options.UseFont = true;
+            this.gridView1.Appearance.SelectedRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.gridView1.Appearance.SelectedRow.Options.UseBackColor = true;
             this.gridView1.GridControl = this.gridMasa;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -175,7 +187,7 @@
             this.schedulerSplitContainerControl.Panel1.Text = "Panel1";
             this.schedulerSplitContainerControl.Panel2.Text = "Panel2";
             this.schedulerSplitContainerControl.PanelVisibility = DevExpress.XtraEditors.SplitPanelVisibility.Panel1;
-            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(921, 640);
+            this.schedulerSplitContainerControl.Size = new System.Drawing.Size(1023, 604);
             this.schedulerSplitContainerControl.SplitterPosition = 225;
             this.schedulerSplitContainerControl.TabIndex = 2;
             this.schedulerSplitContainerControl.Text = "splitContainerControl1";
@@ -183,17 +195,26 @@
             // panelControl4
             // 
             this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl4.Controls.Add(this.schedulerControl);
+            this.panelControl4.Controls.Add(this.panelControl6);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(200, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(721, 640);
+            this.panelControl4.Size = new System.Drawing.Size(823, 604);
             this.panelControl4.TabIndex = 2;
+            // 
+            // panelControl6
+            // 
+            this.panelControl6.Controls.Add(this.schedulerControl);
+            this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl6.Location = new System.Drawing.Point(0, 0);
+            this.panelControl6.Name = "panelControl6";
+            this.panelControl6.Size = new System.Drawing.Size(823, 604);
+            this.panelControl6.TabIndex = 1;
             // 
             // schedulerControl
             // 
             this.schedulerControl.ActiveViewType = DevExpress.XtraScheduler.SchedulerViewType.Timeline;
-            this.schedulerControl.Appearance.Appointment.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Bold);
+            this.schedulerControl.Appearance.Appointment.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.schedulerControl.Appearance.Appointment.Options.UseFont = true;
             this.schedulerControl.Appearance.ResourceHeaderCaption.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.schedulerControl.Appearance.ResourceHeaderCaption.FontStyleDelta = System.Drawing.FontStyle.Bold;
@@ -204,8 +225,9 @@
             this.schedulerControl.DateNavigationBar.Visible = false;
             this.schedulerControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.schedulerControl.Font = new System.Drawing.Font("Tahoma", 7F);
-            this.schedulerControl.Location = new System.Drawing.Point(0, 0);
+            this.schedulerControl.Location = new System.Drawing.Point(2, 2);
             this.schedulerControl.LookAndFeel.SkinName = "Office 2016 Colorful";
+            this.schedulerControl.MenuManager = this.ribbonControl1;
             this.schedulerControl.Name = "schedulerControl";
             this.schedulerControl.OptionsBehavior.ShowRemindersForm = false;
             this.schedulerControl.OptionsCustomization.AllowAppointmentConflicts = DevExpress.XtraScheduler.AppointmentConflictsMode.Forbidden;
@@ -219,12 +241,11 @@
             this.schedulerControl.OptionsView.NavigationButtons.PrevCaption = "Onceki";
             this.schedulerControl.OptionsView.NavigationButtons.Visibility = DevExpress.XtraScheduler.NavigationButtonVisibility.Never;
             this.schedulerControl.OptionsView.ResourceHeaders.Height = 150;
-            this.schedulerControl.OptionsView.ResourceHeaders.ImageSize = new System.Drawing.Size(30, 30);
-            this.schedulerControl.OptionsView.ResourceHeaders.ImageSizeMode = DevExpress.XtraScheduler.HeaderImageSizeMode.StretchImage;
+            this.schedulerControl.OptionsView.ResourceHeaders.ImageSizeMode = DevExpress.XtraScheduler.HeaderImageSizeMode.Normal;
             this.schedulerControl.OptionsView.ResourceHeaders.RotateCaption = false;
             this.schedulerControl.OptionsView.ShowOnlyResourceAppointments = true;
             this.schedulerControl.OptionsView.ToolTipVisibility = DevExpress.XtraScheduler.ToolTipVisibility.Never;
-            this.schedulerControl.Size = new System.Drawing.Size(721, 640);
+            this.schedulerControl.Size = new System.Drawing.Size(819, 600);
             this.schedulerControl.Start = new System.DateTime(2016, 9, 11, 0, 0, 0, 0);
             this.schedulerControl.Storage = this.schedulerStorage1;
             this.schedulerControl.TabIndex = 0;
@@ -243,36 +264,40 @@
             this.schedulerControl.Views.FullWeekView.TimeRulers.Add(timeRuler2);
             this.schedulerControl.Views.GanttView.Enabled = false;
             this.schedulerControl.Views.MonthView.Enabled = false;
-            this.schedulerControl.Views.TimelineView.Appearance.Appointment.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold);
+            this.schedulerControl.Views.TimelineView.Appearance.Appointment.Font = new System.Drawing.Font("Arial", 7F);
             this.schedulerControl.Views.TimelineView.Appearance.Appointment.Options.UseFont = true;
-            this.schedulerControl.Views.TimelineView.Appearance.HeaderCaption.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.schedulerControl.Views.TimelineView.Appearance.HeaderCaption.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.schedulerControl.Views.TimelineView.Appearance.HeaderCaption.Options.UseFont = true;
-            this.schedulerControl.Views.TimelineView.Appearance.HeaderCaptionLine.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.schedulerControl.Views.TimelineView.Appearance.HeaderCaptionLine.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.schedulerControl.Views.TimelineView.Appearance.HeaderCaptionLine.Options.UseFont = true;
-            this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaption.Font = new System.Drawing.Font("Tahoma", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaption.Font = new System.Drawing.Font("Tahoma", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaption.Options.UseFont = true;
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaption.Options.UseTextOptions = true;
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.Font = new System.Drawing.Font("Tahoma", 6F);
+            this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.Font = new System.Drawing.Font("Tahoma", 4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.Options.UseFont = true;
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.Options.UseTextOptions = true;
             this.schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaptionLine.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.schedulerControl.Views.TimelineView.Appearance.Selection.BackColor = System.Drawing.Color.Black;
+            this.schedulerControl.Views.TimelineView.Appearance.Selection.Font = new System.Drawing.Font("Tahoma", 6F);
             this.schedulerControl.Views.TimelineView.Appearance.Selection.ForeColor = System.Drawing.Color.White;
             this.schedulerControl.Views.TimelineView.Appearance.Selection.Options.UseBackColor = true;
+            this.schedulerControl.Views.TimelineView.Appearance.Selection.Options.UseFont = true;
             this.schedulerControl.Views.TimelineView.Appearance.Selection.Options.UseForeColor = true;
-            this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.AppointmentHeight = 25;
+            this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.AppointmentHeight = 15;
+            this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.AppointmentInterspacing = 0;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ContinueArrowDisplayType = DevExpress.XtraScheduler.AppointmentContinueArrowDisplayType.Never;
+            this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.EndTimeVisibility = DevExpress.XtraScheduler.AppointmentTimeVisibility.Never;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ShowRecurrence = false;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.ShowReminder = false;
             this.schedulerControl.Views.TimelineView.AppointmentDisplayOptions.StartTimeVisibility = DevExpress.XtraScheduler.AppointmentTimeVisibility.Never;
+            this.schedulerControl.Views.TimelineView.CellsAutoHeightOptions.Enabled = true;
             this.schedulerControl.Views.TimelineView.DateTimeScrollbarVisible = false;
+            this.schedulerControl.Views.TimelineView.DisplayName = "BreakList Timeline";
             this.schedulerControl.Views.TimelineView.ResourcesPerPage = 25;
             timeScaleFixedInterval1.Value = System.TimeSpan.Parse("00:20:00");
-            this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleDay1);
-            this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleHour1);
             this.schedulerControl.Views.TimelineView.Scales.Add(timeScaleFixedInterval1);
-            this.schedulerControl.Views.TimelineView.SelectionBar.Height = 50;
+            this.schedulerControl.Views.TimelineView.SelectionBar.Height = 25;
             this.schedulerControl.Views.TimelineView.ShowMoreButtons = false;
             this.schedulerControl.Views.TimelineView.TimeIndicatorDisplayOptions.Visibility = DevExpress.XtraScheduler.TimeIndicatorVisibility.Always;
             this.schedulerControl.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));
@@ -282,9 +307,77 @@
             this.schedulerControl.InitAppointmentDisplayText += new DevExpress.XtraScheduler.AppointmentDisplayTextEventHandler(this.schedulerControl_InitAppointmentDisplayText);
             this.schedulerControl.AppointmentViewInfoCustomizing += new DevExpress.XtraScheduler.AppointmentViewInfoCustomizingEventHandler(this.schedulerControl_AppointmentViewInfoCustomizing);
             this.schedulerControl.PopupMenuShowing += new DevExpress.XtraScheduler.PopupMenuShowingEventHandler(this.schedulerControl_PopupMenuShowing);
+            this.schedulerControl.CustomDrawAppointment += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl_CustomDrawAppointment);
             this.schedulerControl.CustomDrawTimeCell += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl_CustomDrawTimeCell);
             this.schedulerControl.CustomDrawResourceHeader += new DevExpress.XtraScheduler.CustomDrawObjectEventHandler(this.schedulerControl_CustomDrawResourceHeader);
             this.schedulerControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.schedulerControl_MouseDoubleClick);
+            // 
+            // ribbonControl1
+            // 
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.btnYenile,
+            this.btnMasalar,
+            this.barButtonItem2});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.OnlyWhenMaximized;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.OptionsTouch.TouchUI = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
+            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.Size = new System.Drawing.Size(1108, 80);
+            this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
+            // 
+            // btnYenile
+            // 
+            this.btnYenile.Caption = "Yenile";
+            this.btnYenile.Glyph = ((System.Drawing.Image)(resources.GetObject("btnYenile.Glyph")));
+            this.btnYenile.Id = 1;
+            this.btnYenile.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnYenile.LargeGlyph")));
+            this.btnYenile.MergeOrder = 1;
+            this.btnYenile.Name = "btnYenile";
+            this.btnYenile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Yenile_ItemClick);
+            // 
+            // btnMasalar
+            // 
+            this.btnMasalar.Caption = "Masalar";
+            this.btnMasalar.Glyph = global::Break_List.Properties.Resources.BlackJackGreen00_jpgc455e3c4_0ec2_4d78_a5e6_ac33e3fadd18Original;
+            this.btnMasalar.Id = 2;
+            this.btnMasalar.MergeOrder = 2;
+            this.btnMasalar.Name = "btnMasalar";
+            this.btnMasalar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Gunu Bitir";
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
+            this.barButtonItem2.Id = 3;
+            this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
+            this.barButtonItem2.MergeOrder = 3;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.MergeOrder = 1;
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Break List";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnYenile);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnMasalar);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup1.MergeOrder = 2;
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Operatif";
             // 
             // schedulerStorage1
             // 
@@ -292,6 +385,7 @@
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Department", "Department"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("ActualShiftDate", "ActualShiftDate"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Logismosno", "logismosno"));
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("User", "user"));
             this.schedulerStorage1.Appointments.DataSource = this.appointmentsBindingSource;
             this.schedulerStorage1.Appointments.Mappings.AllDay = "AllDay";
             this.schedulerStorage1.Appointments.Mappings.Description = "Description";
@@ -336,7 +430,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(200, 640);
+            this.panelControl3.Size = new System.Drawing.Size(200, 604);
             this.panelControl3.TabIndex = 2;
             // 
             // gridPErsonel
@@ -347,7 +441,7 @@
             this.gridPErsonel.Name = "gridPErsonel";
             this.gridPErsonel.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gridPErsonel.Size = new System.Drawing.Size(200, 640);
+            this.gridPErsonel.Size = new System.Drawing.Size(200, 604);
             this.gridPErsonel.TabIndex = 0;
             this.gridPErsonel.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPers});
@@ -398,7 +492,7 @@
             this.colResourceName.Name = "colResourceName";
             this.colResourceName.Visible = true;
             this.colResourceName.VisibleIndex = 0;
-            this.colResourceName.Width = 104;
+            this.colResourceName.Width = 154;
             // 
             // colResourceID
             // 
@@ -413,7 +507,7 @@
             this.colGetir.Name = "colGetir";
             this.colGetir.Visible = true;
             this.colGetir.VisibleIndex = 1;
-            this.colGetir.Width = 29;
+            this.colGetir.Width = 20;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -494,53 +588,13 @@
             // 
             this.appointmentsTableAdapter.ClearBeforeFill = true;
             // 
-            // panelControl1
-            // 
-            this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl1.Controls.Add(this.btnYeniGun);
-            this.panelControl1.Controls.Add(this.btnMasalar);
-            this.panelControl1.Controls.Add(this.btnYenile);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1108, 44);
-            this.panelControl1.TabIndex = 4;
-            // 
-            // btnYeniGun
-            // 
-            this.btnYeniGun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnYeniGun.Location = new System.Drawing.Point(1004, 12);
-            this.btnYeniGun.Name = "btnYeniGun";
-            this.btnYeniGun.Size = new System.Drawing.Size(75, 23);
-            this.btnYeniGun.TabIndex = 1;
-            this.btnYeniGun.Text = "Günü Bitir";
-            this.btnYeniGun.Click += new System.EventHandler(this.simpleButton3_Click);
-            // 
-            // btnMasalar
-            // 
-            this.btnMasalar.Location = new System.Drawing.Point(102, 12);
-            this.btnMasalar.Name = "btnMasalar";
-            this.btnMasalar.Size = new System.Drawing.Size(75, 23);
-            this.btnMasalar.TabIndex = 0;
-            this.btnMasalar.Text = "Masalar";
-            this.btnMasalar.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
-            // btnYenile
-            // 
-            this.btnYenile.Location = new System.Drawing.Point(12, 12);
-            this.btnYenile.Name = "btnYenile";
-            this.btnYenile.Size = new System.Drawing.Size(75, 23);
-            this.btnYenile.TabIndex = 0;
-            this.btnYenile.Text = "Yenile";
-            this.btnYenile.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.splitContainerControl);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 44);
+            this.panelControl2.Location = new System.Drawing.Point(0, 80);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1108, 656);
+            this.panelControl2.Size = new System.Drawing.Size(1108, 620);
             this.panelControl2.TabIndex = 5;
             // 
             // imageList1
@@ -558,13 +612,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 700);
             this.Controls.Add(this.panelControl2);
-            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.popupControlContainer1);
             this.Controls.Add(this.popupControlContainer2);
+            this.Controls.Add(this.ribbonControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmBreakList";
+            this.Ribbon = this.ribbonControl1;
             this.Text = "Break List";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmBreakList_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl)).EndInit();
             this.splitContainerControl.ResumeLayout(false);
@@ -576,7 +632,10 @@
             this.schedulerSplitContainerControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
+            this.panelControl6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
@@ -593,11 +652,10 @@
             this.popupControlContainer1.ResumeLayout(false);
             this.popupControlContainer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerBarController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -621,13 +679,10 @@
         private System.Windows.Forms.BindingSource appointmentsBindingSource;
         private livegameDataSet1TableAdapters.appointmentsTableAdapter appointmentsTableAdapter;
         private System.Windows.Forms.BindingSource resourcesBindingSource;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.SimpleButton btnMasalar;
-        private DevExpress.XtraEditors.SimpleButton btnYenile;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private System.Windows.Forms.Timer timer1;
+        
         private DevExpress.XtraGrid.GridControl gridPErsonel;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewPers;
         private DevExpress.XtraGrid.Columns.GridColumn colResourceName;
@@ -636,7 +691,13 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colPozisyon;
         private DevExpress.XtraGrid.Columns.GridColumn colShift;
-        private DevExpress.XtraEditors.SimpleButton btnYeniGun;
         private System.Windows.Forms.ImageList imageList1;
+        private DevExpress.XtraEditors.PanelControl panelControl6;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem btnYenile;
+        private DevExpress.XtraBars.BarButtonItem btnMasalar;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

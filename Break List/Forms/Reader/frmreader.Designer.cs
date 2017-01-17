@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Reader
 {
-    partial class frmreader
+    partial class Frmreader
     {
         /// <summary>
         /// Required designer variable.
@@ -78,7 +78,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.textEdit1);
-            this.Name = "frmreader";
+            this.Name = "Frmreader";
             this.Text = "frmreader";
             this.Load += new System.EventHandler(this.frmreader_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();

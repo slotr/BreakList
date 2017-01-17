@@ -6,9 +6,9 @@ using Break_List.Properties;
 
 namespace Break_List.Forms.Counts
 {
-    public partial class frmInitiator : XtraForm
+    public partial class FrmInitiator : XtraForm
     {
-        public frmInitiator()
+        public FrmInitiator()
         {
             InitializeComponent();
         }

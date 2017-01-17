@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using MySql.Data.MySqlClient;
-using Break_List.Properties;
-using DevExpress.XtraPivotGrid;
-using System.Linq.Expressions;
-using System.IO;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraPrinting;
 using System.Diagnostics;
+using System.Linq;
+using System.Windows.Forms;
+using Break_List.Class;
+using Break_List.Properties;
+using DevExpress.XtraPrinting;
+using MySql.Data.MySqlClient;
+using System.Drawing;
+using System.IO;
 
 namespace Break_List.Forms.BreakList
 {
-    public partial class BreakListPrint : XtraForm
+    public partial class BreakListPrint : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DateTime Tarih { get; set; }
         
@@ -32,31 +25,32 @@ namespace Break_List.Forms.BreakList
 
         private void BreakListPrint_Load(object sender, EventArgs e)
         {
-            getDepartments();
+            GetDepartments();
         }
-        void getDepartments() // Yeni Kayit Olusturulurken Aliyor
+
+        private void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
             var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            using (var cnn = new MySqlConnection(connectionString))
+            using (var cmd = cnn.CreateCommand())
             {
                 cnn.Open();
                 cmd.CommandText = "spDepartment";
                 cmd.CommandType = CommandType.StoredProcedure;
-                DataTable dt = new DataTable();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                var dt = new DataTable();
+                using (var da = new MySqlDataAdapter(cmd))
                 {
                     da.Fill(dt);
 
-                    foreach (DataRow Row in dt.Rows)
+                    foreach (DataRow row in dt.Rows)
                     {
 
-                        comboBoxEdit1.Properties.Items.Add(Row["DepartmentName"]);
+                        repositoryItemComboBox1.Items.Add(row["DepartmentName"]);
 
                     }
 
-                    comboBoxEdit1.Properties.Sorted = true;
+                    repositoryItemComboBox1.Sorted = true;
 
 
                 }
@@ -65,49 +59,66 @@ namespace Break_List.Forms.BreakList
         }
 
 
-        private void dateEdit1_DateTimeChanged(object sender, EventArgs e)
+
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            
-            using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            if (e.DisplayText == "/")
+                e.Appearance.ForeColor = Color.DarkRed;
+        }
+
+        private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName != "Personel")
             {
-                MySqlCommand cmd = new MySqlCommand("spPrintEskiBreakList;", conn) { CommandType = CommandType.StoredProcedure };
-                cmd.Parameters.Add(new MySqlParameter("ShiftDate", dateEdit1.EditValue));
-                cmd.Parameters.Add(new MySqlParameter("DepartmentName", comboBoxEdit1.EditValue));
+                if (e.DisplayText == "BREAK-/")
+                    e.DisplayText = "/";
+                var a = e.DisplayText;
+                var str = a.Substring(a.IndexOf('-') + 1);
+                e.DisplayText = str;
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            {
+                var cmd = new MySqlCommand("spPrintEskiBreakList;", conn) { CommandType = CommandType.StoredProcedure };
+                cmd.Parameters.Add(new MySqlParameter("ShiftDate", barEditItem1.EditValue));
+                cmd.Parameters.Add(new MySqlParameter("DepartmentName", barEditItem2.EditValue));
                 conn.Open();
 
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+                using (var adapter = new MySqlDataAdapter())
                 {
-                    DataTable dt = new DataTable();
+                    var dt = new DataTable();
                     adapter.SelectCommand = cmd;
                     {
-                        adapter.Fill(dt);  
-                        var data2 = dt.AsEnumerable().Select(x => new {                           
-                            Personel = x.Field<String>("Personel"),
-                            Saat = x.Field<String>("Saat"),
-                            Masa = x.Field<String>("Masa")
+                        adapter.Fill(dt);
+                        var data2 = dt.AsEnumerable().Select(x => new {
+                            Personel = x.Field<string>("Personel"),
+                            Saat = x.Field<string>("Saat"),
+                            Masa = x.Field<string>("Masa")
                         });
 
-                        DataTable pivotDataTable = data2.ToPivotTable(
-                            
+                        var pivotDataTable = data2.ToPivotTable(
+
                             item => item.Saat,
                             item => item.Personel,
                             items => items.Any() ? items.First().Masa : null);
-                            gridControl1.DataSource = pivotDataTable;
-                          gridView1.Columns["Personel"].Width = 150;
+                        gridControl1.DataSource = pivotDataTable;
+                        gridView1.Columns["Personel"].Width = 150;
                     }
-                    
+
                 }
                 conn.Close();
             }
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
             var saveDialog = new SaveFileDialog();
             try
             {
-                saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                saveDialog.Filter = @"Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
                 if (saveDialog.ShowDialog() != DialogResult.Cancel)
                 {
                     var exportFilePath = saveDialog.FileName;
@@ -116,7 +127,7 @@ namespace Break_List.Forms.BreakList
 
                     switch (fileExtenstion)
                     {
-                        
+
                         case ".xlsx":
                             gridControl1.ExportToXlsx(exportFilePath, new XlsxExportOptions(TextExportMode.Text));
                             break;
@@ -132,8 +143,6 @@ namespace Break_List.Forms.BreakList
                         case ".mht":
                             gridControl1.ExportToMht(exportFilePath);
                             break;
-                        default:
-                            break;
                     }
 
                     if (File.Exists(exportFilePath))
@@ -144,41 +153,23 @@ namespace Break_List.Forms.BreakList
                         }
                         catch
                         {
-                            var msg = string.Format("The file could not be opened.{0}{1}Path: {2}", Environment.NewLine, Environment.NewLine, exportFilePath);
-                            MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            var msg =
+                                $"The file could not be opened.{Environment.NewLine}{Environment.NewLine}Path: {exportFilePath}";
+                            MessageBox.Show(msg, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        var msg = string.Format("The file could not be saved.{0}{1}Path: {2}", Environment.NewLine, Environment.NewLine, exportFilePath);
-                        MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var msg =
+                            $"The file could not be saved.{Environment.NewLine}{Environment.NewLine}Path: {exportFilePath}";
+                        MessageBox.Show(msg, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             finally
             {
-                if (saveDialog != null)
-                    saveDialog.Dispose();
-            }
-        }
-
-        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-            if (e.DisplayText == "/")
-                e.Appearance.ForeColor = Color.DarkRed;
-        }
-
-        private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-            if (e.Column.FieldName != "Personel")
-            {
-                if (e.DisplayText == "BREAK-/")
-                    e.DisplayText = "/";
-                string A = e.DisplayText;
-                string str = A.Substring(A.IndexOf('-') + 1);
-                e.DisplayText = str;
-            }
-        }
+                saveDialog.Dispose();
+            }}
     }
     
 }

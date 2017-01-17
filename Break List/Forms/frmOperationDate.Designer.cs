@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms
 {
-    partial class frmOperationDate
+    partial class FrmOperationDate
     {
         /// <summary>
         /// Required designer variable.
@@ -129,7 +129,7 @@
             this.Controls.Add(this.dateEdit1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmOperationDate";
+            this.Name = "FrmOperationDate";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Operasyon Tarihi";
             this.Load += new System.EventHandler(this.frmOperationDate_Load);

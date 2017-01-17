@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Raporlar
 {
-    partial class frmPersonelPerformance
+    partial class FrmPersonelPerformance
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 688);
-            this.Name = "frmPersonelPerformance";
+            this.Name = "FrmPersonelPerformance";
             this.Text = "frmPersonelPerformance";
             this.ResumeLayout(false);
 

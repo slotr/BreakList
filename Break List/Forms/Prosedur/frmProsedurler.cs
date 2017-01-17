@@ -1,35 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.IO;
 using MySql.Data.MySqlClient;
 using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using Break_List.Properties;
 
 namespace Break_List.Forms.Prosedur
 {
-    public partial class frmProsedurler : DevExpress.XtraEditors.XtraForm
+    public partial class FrmProsedurler : DevExpress.XtraEditors.XtraForm
     {
-        public frmProsedurler()
+        public FrmProsedurler()
         {
             InitializeComponent();
         }
 
         private void frmProsedurler_Load(object sender, EventArgs e)
         {
-            getProcedures();
+            GetProcedures();
 
         }
-        public string _departmentNameFromMainForm { get; set; }
-        void getProcedures()
+        public string DepartmentNameFromMainForm { get; set; }
+        void GetProcedures()
         {
             using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {
@@ -54,14 +43,16 @@ namespace Break_List.Forms.Prosedur
 
         private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            var Column = e.Column;
-            if (Column == colGoruntule)
+            var column = e.Column;
+            if (column == colGoruntule)
             {
                 int rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "No");
 
-                frmProsedurDisplay display = new frmProsedurDisplay();
-                display.rowid = rowid.ToString();
-                display.goster = true;
+                var display = new FrmProsedurDisplay
+                {
+                    Rowid = rowid.ToString(),
+                    Goster = true
+                };
                 display.Show();
 
                

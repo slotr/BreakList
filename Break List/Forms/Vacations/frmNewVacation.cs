@@ -1,33 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
-using MySql.Data.MySqlClient;
+using System.Windows.Forms;
+using Break_List.Forms.Personel;
 using Break_List.Properties;
-using static Break_List.Forms.Personel.FrmPersonelDetails;
+using DevExpress.XtraEditors;
+using MySql.Data.MySqlClient;
 
-namespace Break_List
+namespace Break_List.Forms.Vacations
 {
-    public partial class frmNewVacation : DevExpress.XtraEditors.XtraForm
+    public partial class FrmNewVacation : XtraForm
     {
-        public string personelID { get; set; }
+        public string PersonelId { get; set; }
         public string UserName { get; set; }
-        public string personelName { get; set; }
-        private MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2);
-        private MySqlCommand cmd;
-        private FileStream fs;
-        private BinaryReader br;
-        public frmNewVacation()
+        public string PersonelName { get; set; }
+        private readonly MySqlConnection _con = new MySqlConnection(Settings.Default.livegameConnectionString2);
+        private MySqlCommand _cmd;
+        private FileStream _fs;
+        private BinaryReader _br;
+        public FrmNewVacation()
         {
             InitializeComponent();
 
@@ -38,14 +30,14 @@ namespace Break_List
         {
             try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog()
+                var openFileDialog = new OpenFileDialog()
                 {
-                    Filter = "Image files | *.jpg"
+                    Filter = @"Image files | *.jpg"
                 };
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    this.btnresim.Text = openFileDialog.FileName.ToString();
-                    this.pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+                    btnresim.Text = openFileDialog.FileName;
+                    pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
                 }
             }
             catch (Exception exception)
@@ -60,39 +52,38 @@ namespace Break_List
             {
                 try
                 {
-                    if ((labelControl.Text.Length <= 0 ? true : btnresim.Text.Length <= 0))
+                    if ((labelControl.Text.Length <= 0 || btnresim.Text.Length <= 0))
                     {
-                        MessageBox.Show("Döküman Eklenmedi", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        MessageBox.Show(@"Döküman Eklenmedi", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     }
                     else
                     {
-                        string FileName = btnresim.Text;
-                        byte[] ImageData;
-                        fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
-                        br = new BinaryReader(fs);
-                        ImageData = br.ReadBytes((int)fs.Length);
-                        br.Close();
-                        fs.Close();
+                        string fileName = btnresim.Text;
+                        _fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                        _br = new BinaryReader(_fs);
+                        var imageData = _br.ReadBytes((int)_fs.Length);
+                        _br.Close();
+                        _fs.Close();
                         
-                        cmd = new MySqlCommand("INSERT INTO vacations(ResourceID, StartDate,EndDate,VacationType, Dokuman) VALUES(@ResourceID, @StartDate,@EndDate,@VacationType, @Dokuman)", con);
-                        cmd.Parameters.Add("@ResourceID", MySqlDbType.VarChar, 45);
-                        cmd.Parameters.Add("@StartDate", MySqlDbType.DateTime);
-                        cmd.Parameters.Add("@EndDate", MySqlDbType.DateTime);
-                        cmd.Parameters.Add("@VacationType", MySqlDbType.VarChar, 45);
-                        cmd.Parameters.Add("@Dokuman", MySqlDbType.Blob);                       
-                        cmd.Parameters["@ResourceID"].Value = personelID;
-                        cmd.Parameters["@StartDate"].Value = Convert.ToDateTime(dtStart.EditValue.ToString());
-                        cmd.Parameters["@EndDate"].Value = Convert.ToDateTime(dtEnd.EditValue.ToString());
-                        cmd.Parameters["@VacationType"].Value = cmbTip.EditValue.ToString();
-                        cmd.Parameters["@Dokuman"].Value = ImageData;
-                        con.Open();
+                        _cmd = new MySqlCommand("INSERT INTO vacations(ResourceID, StartDate,EndDate,VacationType, Dokuman) VALUES(@ResourceID, @StartDate,@EndDate,@VacationType, @Dokuman)", _con);
+                        _cmd.Parameters.Add("@ResourceID", MySqlDbType.VarChar, 45);
+                        _cmd.Parameters.Add("@StartDate", MySqlDbType.DateTime);
+                        _cmd.Parameters.Add("@EndDate", MySqlDbType.DateTime);
+                        _cmd.Parameters.Add("@VacationType", MySqlDbType.VarChar, 45);
+                        _cmd.Parameters.Add("@Dokuman", MySqlDbType.Blob);                       
+                        _cmd.Parameters["@ResourceID"].Value = PersonelId;
+                        _cmd.Parameters["@StartDate"].Value = Convert.ToDateTime(dtStart.EditValue.ToString());
+                        _cmd.Parameters["@EndDate"].Value = Convert.ToDateTime(dtEnd.EditValue.ToString());
+                        _cmd.Parameters["@VacationType"].Value = cmbTip.EditValue.ToString();
+                        _cmd.Parameters["@Dokuman"].Value = imageData;
+                        _con.Open();
 
                     }
-                    if (cmd.ExecuteNonQuery() > 0)
+                    if (_cmd.ExecuteNonQuery() > 0)
                     {
 
                     }
-                    con.Close();
+                    _con.Close();
 
                 }
                 catch (Exception exception)
@@ -102,9 +93,9 @@ namespace Break_List
             }
             finally
             {
-                if (con.State == ConnectionState.Open)
+                if (_con.State == ConnectionState.Open)
                 {
-                    con.Close();
+                    _con.Close();
                     Close();
                 }
             }
@@ -112,7 +103,7 @@ namespace Break_List
 
         private void frmNewVacation_Load(object sender, EventArgs e)
         {
-            labelControl.Text = personelName;
+            labelControl.Text = PersonelName;
         }
 
         private void cmbTip_EditValueChanged(object sender, EventArgs e)
@@ -122,22 +113,22 @@ namespace Break_List
 
         private void dtEnd_EditValueChanged(object sender, EventArgs e)
         {
-            long istenenSure = Break_List.Forms.Personel.FrmPersonelDetails.DateTimeUtil.DateDiff(DateInterval.Day, Convert.ToDateTime(dtStart.EditValue), Convert.ToDateTime(dtEnd.EditValue));
-            long kalanSure = Convert.ToInt32(lblKalan.Text.ToString());
+            long istenenSure = FrmPersonelDetails.DateTimeUtil.DateDiff(FrmPersonelDetails.DateInterval.Day, Convert.ToDateTime(dtStart.EditValue), Convert.ToDateTime(dtEnd.EditValue));
+            long kalanSure = Convert.ToInt32(lblKalan.Text);
             long verilecekIzinSuresi = istenenSure;
             lblverilecekTotal.Text = verilecekIzinSuresi.ToString();
             if (istenenSure > kalanSure)
             {
-                if(cmbTip.Text == "Ücretli İzin")
+                if(cmbTip.Text == @"Ücretli İzin")
                 {
                     if (kalanSure == 0)
                     {
-                        XtraMessageBox.Show(personelName + " isimli kişinin Ücretli İzin hakkı Bulunmamaktadır.", "Yetersiz izin hakkı");
+                        XtraMessageBox.Show(PersonelName + " isimli kişinin Ücretli İzin hakkı Bulunmamaktadır.", "Yetersiz izin hakkı");
                     }
                     else
                     {
 
-                        DialogResult result = MessageBox.Show(personelName + " isimli kişiye sadece " + kalanSure + "gün ücretli izin verebilirsiniz." + "\r\n" + "Bu kişiye daha fazla izin vermek istiyorsanız" + "\r\n" + "Açılacak olan kutudan gerekli bilgileri doldurun.", "Warning",
+                        DialogResult result = MessageBox.Show(PersonelName + @" isimli kişiye sadece " + kalanSure + @"gün ücretli izin verebilirsiniz." + @"\r\n" + @"Bu kişiye daha fazla izin vermek istiyorsanız" + @"\r\n" + @"Açılacak olan kutudan gerekli bilgileri doldurun.", @"Warning",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (result == DialogResult.Yes)
                         {

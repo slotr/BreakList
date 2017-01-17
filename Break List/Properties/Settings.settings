@@ -19,5 +19,8 @@
     <Setting Name="EndDate" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">2016-10-11</Value>
     </Setting>
+    <Setting Name="TurnuvaAdi" Type="System.String" Scope="User">
+      <Value Profile="(Default)">txtTurnuvaAdi</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

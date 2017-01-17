@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Maas
 {
-    partial class frmMaasTipOnaylari
+    partial class FrmMaasTipOnaylari
     {
         /// <summary>
         /// Required designer variable.
@@ -211,7 +211,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 499);
             this.Controls.Add(this.spMaasTipOnayiGridControl);
-            this.Name = "frmMaasTipOnaylari";
+            this.Name = "FrmMaasTipOnaylari";
             this.Text = "Onay Bekleyenler";
             this.Load += new System.EventHandler(this.frmMaasTipOnaylari_Load);
             ((System.ComponentModel.ISupportInitialize)(this.spMaasTipOnayiGridControl)).EndInit();

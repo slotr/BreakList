@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Maas
 {
-    partial class frmMaasArtisi
+    partial class FrmMaasArtisi
     {
         /// <summary>
         /// Required designer variable.
@@ -229,7 +229,7 @@
             this.Controls.Add(this.btnSec);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
-            this.Name = "frmMaasArtisi";
+            this.Name = "FrmMaasArtisi";
             this.Text = "Maas Artisi";
             this.Load += new System.EventHandler(this.frmMaasArtisi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtTarih.Properties.CalendarTimeProperties)).EndInit();

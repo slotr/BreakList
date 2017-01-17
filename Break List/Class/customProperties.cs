@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Break_List
+namespace Break_List.Class
 {
-    class customProperties
+    class CustomProperties
     {
-        public string _roleID { get; set; } // Diger formlara gonderiliyor
-        public string _department { get; set; } // Main Form set ediliyor
-        public string _FullName { get; set; } // Main Form Set ediliyor
-        public string _userID { get; set; } // Main Form Set ediliyor
-        public string _RoleName { get; set; } // Main Form Set ediliyor
-        public DateTime _OperationDate { get; set; } // Main Form Set ediliyor
-        public DateTime _StartDate { get; set; }
-        public DateTime _EndDate { get; set; }
-        public string _userName {get; set;}
-        public bool _logedin { get; set; }
-        public string _computerName { get; set; }
+        public string RoleId { get; set; } // Diger formlara gonderiliyor
+        public string Department { get; set; } // Main Form set ediliyor
+        public string FullName { get; set; } // Main Form Set ediliyor
+        public string UserId { get; set; } // Main Form Set ediliyor
+        public string RoleName { get; set; } // Main Form Set ediliyor
+        public DateTime OperationDate { get; set; } // Main Form Set ediliyor
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string UserName {get; set;}
+        public bool Logedin { get; set; }
+        public string ComputerName { get; set; }
     }
 }

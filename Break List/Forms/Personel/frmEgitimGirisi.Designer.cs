@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmEgitimGirisi
+    partial class FrmEgitimGirisi
     {
         /// <summary>
         /// Required designer variable.
@@ -184,7 +184,7 @@
             this.Controls.Add(this.textEdit2);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.dateEdit1);
-            this.Name = "frmEgitimGirisi";
+            this.Name = "FrmEgitimGirisi";
             this.Text = "Personel Eğitim Girişi";
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();

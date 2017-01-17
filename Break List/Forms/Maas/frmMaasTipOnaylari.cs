@@ -1,30 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 
 namespace Break_List.Forms.Maas
 {
-    public partial class frmMaasTipOnaylari : DevExpress.XtraEditors.XtraForm
+    public partial class FrmMaasTipOnaylari : DevExpress.XtraEditors.XtraForm
     {
-        public frmMaasTipOnaylari()
+        public FrmMaasTipOnaylari()
         {
             InitializeComponent();
         }
 
         private void frmMaasTipOnaylari_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'livegameDataSet1.spMaasTipOnayi' table. You can move, or remove it, as needed.
-            this.spMaasTipOnayiTableAdapter.Fill(this.livegameDataSet1.spMaasTipOnayi);
+           
+            spMaasTipOnayiTableAdapter.Fill(livegameDataSet1.spMaasTipOnayi);
 
 
         }
@@ -38,82 +31,71 @@ namespace Break_List.Forms.Maas
         {
 
         }
-        public string _UserNameFromMainForm { get; set; }
+        public string UserNameFromMainForm { get; set; }
         private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            DevExpress.XtraGrid.Columns.GridColumn Column = e.Column;
-            if (Column == gridColumn1)
+            var column = e.Column;
+            if (column == gridColumn1)
             {
 
-                DialogResult result = MessageBox.Show("Maas veya tip artisina onay vereceksiniz.", "Emin misiniz?",
+                var result = MessageBox.Show(@"Maas veya tip artisina onay vereceksiniz.", @"Emin misiniz?",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                if (result != DialogResult.Yes) return;
+                var rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
+                using (var con = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
-                    int rowid;
-                    rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
-                    using (MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                    using (var cmd = new MySqlCommand("spMaastipOnalya;", con)
                     {
-                        using (MySqlCommand cmd = new MySqlCommand("spMaastipOnalya;", con)
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+
+                        cmd.Parameters.Add(new MySqlParameter("rowID", rowid));
+                        cmd.Parameters.Add(new MySqlParameter("userName", UserNameFromMainForm));
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        using (var mySqlDataAdapter = new MySqlDataAdapter())
                         {
-                            CommandType = CommandType.StoredProcedure
-                        })
-                        {
-
-                            cmd.Parameters.Add(new MySqlParameter("rowID", rowid));
-                            cmd.Parameters.Add(new MySqlParameter("userName", _UserNameFromMainForm));
-
-                            con.Open();
-                            cmd.ExecuteNonQuery();
-                            using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
-                            {
-                                DataTable dataTable = new DataTable();
-                                mySqlDataAdapter.SelectCommand = cmd;
-
-                            }
-                            con.Close();
+                            
+                            mySqlDataAdapter.SelectCommand = cmd;
                         }
-                        this.spMaasTipOnayiTableAdapter.Fill(this.livegameDataSet1.spMaasTipOnayi);
-                        spMaasTipOnayiGridControl.Refresh();
+                        con.Close();
                     }
+                    spMaasTipOnayiTableAdapter.Fill(livegameDataSet1.spMaasTipOnayi);
+                    spMaasTipOnayiGridControl.Refresh();
                 }
-               
             }
-            else if (Column == gridColumn2)
+            else if (column == gridColumn2)
             {
 
-                DialogResult result1 = MessageBox.Show("Maas veya tip artisina Rededeceksiniz.", "Emin misiniz?",
+                var result1 = MessageBox.Show(@"Maas veya tip artisina Rededeceksiniz.", @"Emin misiniz?",
                            MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if (result1 == DialogResult.Yes)
+                if (result1 != DialogResult.Yes) return;
+                var rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
+                using (var con = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
-                    int rowid;
-                    rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
-                    using (MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                    using (var cmd = new MySqlCommand("Delete from maaslar where id=" + rowid, con)
                     {
-                        using (MySqlCommand cmd = new MySqlCommand("Delete from maaslar where id=" + rowid, con)
+                        CommandType = CommandType.Text
+                    })
+                    {
+
+                        cmd.Parameters.Add(new MySqlParameter("rowID", rowid));
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        using (var mySqlDataAdapter = new MySqlDataAdapter())
                         {
-                            CommandType = CommandType.Text
-                        })
-                        {
+                            mySqlDataAdapter.SelectCommand = cmd;
 
-                            cmd.Parameters.Add(new MySqlParameter("rowID", rowid));
-
-                            con.Open();
-                            cmd.ExecuteNonQuery();
-                            using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
-                            {
-                                DataTable dataTable = new DataTable();
-                                mySqlDataAdapter.SelectCommand = cmd;
-
-                            }
-                            con.Close();
                         }
-                        this.spMaasTipOnayiTableAdapter.Fill(this.livegameDataSet1.spMaasTipOnayi);
-                        spMaasTipOnayiGridControl.Refresh();
+                        con.Close();
                     }
+                    spMaasTipOnayiTableAdapter.Fill(livegameDataSet1.spMaasTipOnayi);
+                    spMaasTipOnayiGridControl.Refresh();
                 }
-
-
             }
         }
     }

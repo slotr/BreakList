@@ -1,7 +1,7 @@
 using DevExpress.XtraScheduler.UI;
 namespace Break_List.Forms.Rotalar
 {
-    partial class frmAddOverTime
+    sealed partial class FrmAddOverTime
     {
         protected override void Dispose(bool disposing)
         {
@@ -22,7 +22,7 @@ namespace Break_List.Forms.Rotalar
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddOverTime));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddOverTime));
             this.lblSubject = new DevExpress.XtraEditors.LabelControl();
             this.lblLocation = new DevExpress.XtraEditors.LabelControl();
             this.tbSubject = new DevExpress.XtraEditors.TextEdit();
@@ -592,7 +592,7 @@ namespace Break_List.Forms.Rotalar
             this.Controls.Add(this.edtEndTime);
             this.Controls.Add(this.edtShowTimeAs);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmAddOverTime";
+            this.Name = "FrmAddOverTime";
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.OnAppointmentFormActivated);
             this.Shown += new System.EventHandler(this.frmAddOverTime_Shown);
@@ -644,37 +644,37 @@ namespace Break_List.Forms.Rotalar
         }
         #endregion
 
-        protected DevExpress.XtraEditors.LabelControl lblSubject;
-        protected DevExpress.XtraEditors.LabelControl lblLocation;
-        protected DevExpress.XtraEditors.LabelControl lblLabel;
-        protected DevExpress.XtraEditors.LabelControl lblStartTime;
-        protected DevExpress.XtraEditors.LabelControl lblEndTime;
-        protected DevExpress.XtraEditors.LabelControl lblShowTimeAs;
-        protected DevExpress.XtraEditors.CheckEdit chkAllDay;
-        protected DevExpress.XtraEditors.SimpleButton btnOk;
-        protected DevExpress.XtraEditors.SimpleButton btnCancel;
-        protected DevExpress.XtraEditors.SimpleButton btnDelete;
-        protected DevExpress.XtraEditors.SimpleButton btnRecurrence;
-        protected DevExpress.XtraEditors.DateEdit edtStartDate;
-        protected DevExpress.XtraEditors.DateEdit edtEndDate;
-        protected DevExpress.XtraScheduler.UI.SchedulerTimeEdit edtStartTime;
-        protected DevExpress.XtraScheduler.UI.SchedulerTimeEdit edtEndTime;
-        protected DevExpress.XtraScheduler.UI.AppointmentLabelEdit edtLabel;
-        protected DevExpress.XtraScheduler.UI.AppointmentStatusEdit edtShowTimeAs;
-        protected DevExpress.XtraEditors.TextEdit tbSubject;
-        protected DevExpress.XtraScheduler.UI.AppointmentResourceEdit edtResource;
-        protected DevExpress.XtraEditors.LabelControl lblResource;
-        protected DevExpress.XtraScheduler.UI.AppointmentResourcesEdit edtResources;
-        protected DevExpress.XtraEditors.CheckEdit chkReminder;
-        protected DevExpress.XtraEditors.MemoEdit tbDescription;
-        protected DevExpress.XtraScheduler.UI.DurationEdit cbReminder;
+        private DevExpress.XtraEditors.LabelControl lblSubject;
+        private DevExpress.XtraEditors.LabelControl lblLocation;
+        private DevExpress.XtraEditors.LabelControl lblLabel;
+        private DevExpress.XtraEditors.LabelControl lblStartTime;
+        private DevExpress.XtraEditors.LabelControl lblEndTime;
+        private DevExpress.XtraEditors.LabelControl lblShowTimeAs;
+        private DevExpress.XtraEditors.CheckEdit chkAllDay;
+        private DevExpress.XtraEditors.SimpleButton btnOk;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
+        private DevExpress.XtraEditors.SimpleButton btnRecurrence;
+        private DevExpress.XtraEditors.DateEdit edtStartDate;
+        private DevExpress.XtraEditors.DateEdit edtEndDate;
+        private DevExpress.XtraScheduler.UI.SchedulerTimeEdit edtStartTime;
+        private DevExpress.XtraScheduler.UI.SchedulerTimeEdit edtEndTime;
+        private DevExpress.XtraScheduler.UI.AppointmentLabelEdit edtLabel;
+        private DevExpress.XtraScheduler.UI.AppointmentStatusEdit edtShowTimeAs;
+        private DevExpress.XtraEditors.TextEdit tbSubject;
+        private DevExpress.XtraScheduler.UI.AppointmentResourceEdit edtResource;
+        private DevExpress.XtraEditors.LabelControl lblResource;
+        private DevExpress.XtraScheduler.UI.AppointmentResourcesEdit edtResources;
+        private DevExpress.XtraEditors.CheckEdit chkReminder;
+        private DevExpress.XtraEditors.MemoEdit tbDescription;
+        private DevExpress.XtraScheduler.UI.DurationEdit cbReminder;
         private System.ComponentModel.IContainer components = null;
-        protected DevExpress.XtraEditors.TextEdit tbLocation;
-        protected DevExpress.XtraEditors.PanelControl panel1;
-        protected System.Windows.Forms.Panel progressPanel;
-        protected DevExpress.XtraEditors.TrackBarControl tbProgress;
-        protected DevExpress.XtraEditors.LabelControl lblPercentComplete;
-        protected DevExpress.XtraEditors.LabelControl lblPercentCompleteValue;
+        private DevExpress.XtraEditors.TextEdit tbLocation;
+        private DevExpress.XtraEditors.PanelControl panel1;
+        private System.Windows.Forms.Panel progressPanel;
+        private DevExpress.XtraEditors.TrackBarControl tbProgress;
+        private DevExpress.XtraEditors.LabelControl lblPercentComplete;
+        private DevExpress.XtraEditors.LabelControl lblPercentCompleteValue;
         private DevExpress.XtraEditors.TextEdit txtOverTime;
         private DevExpress.XtraEditors.TextEdit txtErkenGonderim;
         private DevExpress.XtraEditors.LabelControl labelControl1;

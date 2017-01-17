@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
@@ -9,9 +10,9 @@ using DevComponents.DotNetBar.Keyboard;
 
 namespace Break_List.Forms.Counts
 {
-    public partial class frmTableCount : XtraForm
+    public partial class FrmTableCount : XtraForm
     {
-        public frmTableCount()
+        public FrmTableCount()
         {
             InitializeComponent();
             keyboardControl1.Keyboard = CreateNumericKeyboard();
@@ -56,6 +57,7 @@ namespace Break_List.Forms.Counts
         {
             ChechkIfThereIsCount();
             btnSave.Enabled = false;
+            GetTotalTables();
             foreach (Control c in panelControl1.Controls)
             {
                 if (c is TextEdit)
@@ -71,7 +73,7 @@ namespace Break_List.Forms.Counts
             var con = new MySqlConnection(_str);
             var command1 = con.CreateCommand();
             command1.CommandText =
-                $"select * from tblcount";
+                "select * from tblcount";
             try
             {
                 con.Open();
@@ -106,21 +108,23 @@ namespace Break_List.Forms.Counts
             }
             
         }
-
+        public DateTime CountTarihi;
         private void ShowCountInitiator()
         {
-            using (var form = new frmInitiator())
+            using (var form = new FrmInitiator())
             {
                 var dr = form.ShowDialog();
                 if (dr == DialogResult.OK)
+                CountTarihi = form.dateEdit1.DateTime;
                 mainPanel.Visible = true;
                 BringNonCountedTables();
                 BringCountedTables();
+                
             }
         }
 
         
-        public int updateid;
+        public int Updateid;
         private void SetInsertUpdate()
         {
 
@@ -131,19 +135,19 @@ namespace Break_List.Forms.Counts
                 {
                     MySqlCommand cmd = new MySqlCommand("spInsertUpdateCount;", conn)
                     { CommandType = CommandType.StoredProcedure };
-                    cmd.Parameters.Add(new MySqlParameter("_click", txtClick.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_return", txtReturn.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_advance", txtAdvance.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q5000", txt5000.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q1000", txt1000.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q500", txt500.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q100", txt100.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q25", txt25.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q5", txt5.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_q1", txt1.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_drop", txtDrop.Text));
-                    cmd.Parameters.Add(new MySqlParameter("_result", txtResult.Text));
-                    cmd.Parameters.Add(new MySqlParameter("updateid", updateid));
+                    cmd.Parameters.Add(new MySqlParameter("_click",     txtClick.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_return",    txtReturn.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_advance",   txtAdvance.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q5000",     txt5000.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q1000",     txt1000.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q500",      txt500.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q100",      txt100.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q25",       txt25.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q5",        txt5.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_q1",        txt1.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_drop",      txtDrop.Text));
+                    cmd.Parameters.Add(new MySqlParameter("_result",    txtResult.Text));
+                    cmd.Parameters.Add(new MySqlParameter("updateid", Updateid));
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -156,7 +160,35 @@ namespace Break_List.Forms.Counts
                 XtraMessageBox.Show(ex.ToString(), "Bir Hata oluştu");
             }
         }
+        void DuzeltmeEgerVarsa()
+        {
+            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            {
+                var mySqlCommand = new MySqlCommand("spHatalimasa;", mySqlConnection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
 
+
+                mySqlCommand.Parameters.Add(new MySqlParameter("uniqueID", Updateid));
+                mySqlConnection.Open();
+                var mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
+                var dataSet = new DataSet();
+                mySqlDataAdapter.Fill(dataSet, "spHatalimasa");
+
+                 txtClick.Text =dataSet.Tables["spHatalimasa"].Rows[0]["click"].ToString();
+                 txtReturn.Text =dataSet.Tables["spHatalimasa"].Rows[0]["return"].ToString();
+                 txtAdvance.Text = dataSet.Tables["spHatalimasa"].Rows[0]["advance"].ToString();
+                txt5000.Text     = dataSet.Tables["spHatalimasa"].Rows[0]["q5000"].ToString();
+                txt1000.Text     = dataSet.Tables["spHatalimasa"].Rows[0]["q1000"].ToString();
+                txt500.Text      = dataSet.Tables["spHatalimasa"].Rows[0]["q500"].ToString();
+                txt100.Text      = dataSet.Tables["spHatalimasa"].Rows[0]["q100"].ToString();
+                txt25.Text       = dataSet.Tables["spHatalimasa"].Rows[0]["q25"].ToString();
+                txt5.Text        = dataSet.Tables["spHatalimasa"].Rows[0]["q5"].ToString();
+                txt1.Text        = dataSet.Tables["spHatalimasa"].Rows[0]["q1"].ToString();
+
+            }
+        }
         private void txtClick_EditValueChanged(object sender, EventArgs e)
         {
             if (txtClick.Text.Trim().Length == 0)
@@ -167,26 +199,26 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txtClcikTotal.Text = (Convert.ToDouble(txtClick.Text) * 100).ToString();
+                txtClcikTotal.Text = (Convert.ToDouble(txtClick.Text) * 100).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
-        public double drop;
-        public double reuslt;
+        public double Drop;
+        public double Reuslt;
         private void Hesapla()
         {
-            drop = Convert.ToDouble(txt5000Total.Text) +
+            Drop = Convert.ToDouble(txt5000Total.Text) +
                 Convert.ToDouble(txt1000Total.Text) +
                 Convert.ToDouble(txt500Total.Text) +
                 Convert.ToDouble(txt100Total.Text) +
                 Convert.ToDouble(txt25Total.Text) +
                 Convert.ToDouble(txt5Total.Text) +
                 Convert.ToDouble(txt1Total.Text);
-            txtDrop.Text = drop.ToString();
-            reuslt = drop + Convert.ToDouble(txtreturnTotal.Text) -
+            txtDrop.Text = Drop.ToString(CultureInfo.InvariantCulture);
+            Reuslt = Drop + Convert.ToDouble(txtreturnTotal.Text) -
                      Convert.ToDouble(txtAdvanceTotal.Text);
-            txtResult.Text = reuslt.ToString();
-            txtClDrop.Text = (Convert.ToDouble(txtClcikTotal.Text) - drop).ToString();
+            txtResult.Text = Reuslt.ToString(CultureInfo.InvariantCulture);
+            txtClDrop.Text = (Convert.ToDouble(txtClcikTotal.Text) - Drop).ToString(CultureInfo.InvariantCulture);
 
         }
 
@@ -230,7 +262,7 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txt5000Total.Text = (Convert.ToDouble(txt5000.Text)*5000).ToString();
+                txt5000Total.Text = (Convert.ToDouble(txt5000.Text)*5000).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
@@ -245,7 +277,7 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txt1000Total.Text = (Convert.ToDouble(txt1000.Text) * 1000).ToString();
+                txt1000Total.Text = (Convert.ToDouble(txt1000.Text) * 1000).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
@@ -260,7 +292,7 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txt500Total.Text = (Convert.ToDouble(txt500.Text) * 500).ToString();
+                txt500Total.Text = (Convert.ToDouble(txt500.Text) * 500).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
@@ -275,7 +307,7 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txt100Total.Text = (Convert.ToDouble(txt100.Text) * 100).ToString();
+                txt100Total.Text = (Convert.ToDouble(txt100.Text) * 100).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
@@ -290,7 +322,7 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txt25Total.Text = (Convert.ToDouble(txt25.Text) * 25).ToString();
+                txt25Total.Text = (Convert.ToDouble(txt25.Text) * 25).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
@@ -305,7 +337,7 @@ namespace Break_List.Forms.Counts
             else
             {
 
-                txt5Total.Text = (Convert.ToDouble(txt5.Text) * 5).ToString();
+                txt5Total.Text = (Convert.ToDouble(txt5.Text) * 5).ToString(CultureInfo.InvariantCulture);
             }
             Hesapla();
         }
@@ -331,11 +363,12 @@ namespace Break_List.Forms.Counts
             BringNonCountedTables();
             BringCountedTables();
             GetTotals();
+            GetTotalTables();
             foreach (Control c in panelControl1.Controls)
             {
                 if (c is TextEdit)
                 {
-                    c.Text = "0";
+                    c.Text = @"0";
                     c.Enabled = false;
                 }
             }
@@ -344,7 +377,31 @@ namespace Break_List.Forms.Counts
             txtClick.SelectAll();
         }
 
+        void GetTotalTables()
+        {
+            
 
+                 using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            {
+                using (MySqlCommand mySqlCommand = new MySqlCommand("spSumCountTables;", mySqlConnection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    
+                    mySqlConnection.Open();
+                    mySqlCommand.ExecuteNonQuery();
+                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    {
+                        DataTable dataTable = new DataTable();
+                        mySqlDataAdapter.SelectCommand = mySqlCommand;
+                        mySqlDataAdapter.Fill(dataTable);
+                        gridControl1.DataSource = dataTable;
+                    }
+                    mySqlConnection.Close();
+                }
+            }
+        }
 
         private void GetTotals()
         {
@@ -401,8 +458,8 @@ namespace Break_List.Forms.Counts
                                 item.Text = Convert.ToString(t["masa"]);
                                 //item.Text3 = Convert.ToString(rows[i]["Guid"]);
                                 item.Tag = Convert.ToString(t["id"]);
-                                @group.Items.Add(item);
-                                @group.Text = "Sayılmış Masalar";
+                                group.Items.Add(item);
+                                group.Text = @"Sayılmış Masalar";
                             }
 
                             tileSayilanMasalar.Groups.Add(group);
@@ -444,8 +501,8 @@ namespace Break_List.Forms.Counts
                                 item.Text = Convert.ToString(t["masa"]);
                                 //item.Text3 = Convert.ToString(rows[i]["Guid"]);
                                 item.Tag = Convert.ToString(t["id"]);
-                                @group.Items.Add(item);
-                                @group.Text = "Sayılmış Masalar";
+                                group.Items.Add(item);
+                                group.Text = @"Sayılmış Masalar";
                             }
 
                             tileSayilanMasalar.Groups.Add(group);
@@ -493,8 +550,8 @@ namespace Break_List.Forms.Counts
                                 item.Text = Convert.ToString(t["masa"]);
                                 //item.Text3 = Convert.ToString(rows[i]["Guid"]);
                                 item.Tag = Convert.ToString(t["id"]);
-                                @group.Items.Add(item);
-                                @group.Text = "Sayılacak Masalar";
+                                group.Items.Add(item);
+                                group.Text = @"Sayılacak Masalar";
                             }
                             tileNonCounted.Groups.Add(group);
                         }
@@ -534,8 +591,8 @@ namespace Break_List.Forms.Counts
                                 item.Text = Convert.ToString(t["masa"]);
                                 //item.Text3 = Convert.ToString(rows[i]["Guid"]);
                                 item.Tag = Convert.ToString(t["id"]);
-                                @group.Items.Add(item);
-                                @group.Text = "Sayılacak Masalar";
+                                group.Items.Add(item);
+                                group.Text = @"Sayılacak Masalar";
                             }
                             tileNonCounted.Groups.Add(group);
                         }
@@ -554,8 +611,8 @@ namespace Break_List.Forms.Counts
 
         private void tileNonCounted_ItemClick(object sender, TileItemEventArgs e)
         {
-            updateid = Convert.ToInt32(e.Item.Tag);
-            lblMasa.Text = "Sayılan Masa No: " + e.Item.Text;
+            Updateid = Convert.ToInt32(e.Item.Tag);
+            lblMasa.Text = @"Sayılan Masa No: " + e.Item.Text;
             foreach (Control c in panelControl1.Controls)
             {
                 if (c is TextEdit)
@@ -571,46 +628,59 @@ namespace Break_List.Forms.Counts
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-
-            DialogResult dialogResult = MessageBox.Show("Eğer varsa sayılmamış masalar da sayılmış" 
-                + "\n" + "kabul edilecek ve günün countu bitirilecek", "Emin misiniz?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            var dialogResult = MessageBox.Show(@"Eğer varsa sayılmamış masalar da sayılmış" 
+                + @"\n" + @"kabul edilecek ve günün countu bitirilecek", @"Emin misiniz?", MessageBoxButtons.YesNo);
+            switch (dialogResult)
             {
-                try
-                {
-                    using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                case DialogResult.Yes:
+                    try
                     {
-                        MySqlCommand cmd = new MySqlCommand("spFinishCount;", conn)
-                        { CommandType = CommandType.StoredProcedure };
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
+                        using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                        {
+                            var cmd = new MySqlCommand("spFinishCount;", conn)
+                                { CommandType = CommandType.StoredProcedure };
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
 
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
+                    catch (Exception ex)
+                    {
 
-                    XtraMessageBox.Show(ex.ToString(), "Bir Hata oluştu");
-                }
-                Close();
+                        XtraMessageBox.Show(ex.ToString(), "Bir Hata oluştu");
+                    }
+                    Close();
+                    break;
+                case DialogResult.No:
+
+                    break;
+                case DialogResult.None:
+                    break;
+                case DialogResult.OK:
+                    break;
+                case DialogResult.Cancel:
+                    break;
+                case DialogResult.Abort:
+                    break;
+                case DialogResult.Retry:
+                    break;
+                case DialogResult.Ignore:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            else if (dialogResult == DialogResult.No)
-            {
-                
-            }
-           
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            frmTipCount tip = new frmTipCount();
+            FrmTipCount tip = new FrmTipCount();
             tip.ShowDialog();
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            frmPrintCount print = new frmPrintCount();
+            var print = new FrmPrintCount {Tarih = CountTarihi};
             print.ShowDialog();
         }
 
@@ -662,6 +732,24 @@ namespace Break_List.Forms.Counts
         private void txt1_Enter(object sender, EventArgs e)
         {
             txt1.SelectAll();
+        }
+
+        private void tileSayilanMasalar_ItemClick(object sender, TileItemEventArgs e)
+        {
+            Updateid = Convert.ToInt32(e.Item.Tag);
+            lblMasa.Text = @"Düzeltilecek Masa No: " + e.Item.Text;
+            foreach (Control c in panelControl1.Controls)
+            {
+                if (c is TextEdit)
+                {
+
+                    c.Enabled = true;
+                }
+            }
+            btnSave.Enabled = true;
+            txtClick.Focus();
+            txtClick.SelectAll();
+            DuzeltmeEgerVarsa();
         }
     }
 }

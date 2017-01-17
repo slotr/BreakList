@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 
 namespace Break_List.Forms.Personel
 {
-    public partial class frmEgitimGirisi : DevExpress.XtraEditors.XtraForm
+    public partial class FrmEgitimGirisi : DevExpress.XtraEditors.XtraForm
     {
-        public int personelID { get; set;}
-        public frmEgitimGirisi()
+        public int PersonelId { get; set;}
+        public FrmEgitimGirisi()
         {
             InitializeComponent();
         }
@@ -31,13 +23,13 @@ namespace Break_List.Forms.Personel
                 })
                 {
                     DateTime tarih = Convert.ToDateTime(dateEdit1.EditValue);
-                    int _personelID = personelID;
+                    int personelId = PersonelId;
                     string egitim = textEdit1.Text;
                     string aciklama = memoEdit2.Text;
                     string egitimveren = textEdit2.Text;
                     string sonuc = memoEdit1.Text;
                     mySqlCommand.Parameters.Add(new MySqlParameter("tarih", tarih));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("personelID", _personelID));
+                    mySqlCommand.Parameters.Add(new MySqlParameter("personelID", personelId));
                     mySqlCommand.Parameters.Add(new MySqlParameter("egitim", egitim));
                     mySqlCommand.Parameters.Add(new MySqlParameter("aciklama", aciklama));
                     mySqlCommand.Parameters.Add(new MySqlParameter("egitimveren", egitimveren));

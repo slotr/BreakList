@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Rotalar
 {
-    partial class frmRotaGruplar
+    partial class FrmRotaGruplar
     {
         /// <summary>
         /// Required designer variable.
@@ -123,7 +123,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 779);
             this.Controls.Add(this.gridControl1);
-            this.Name = "frmRotaGruplar";
+            this.Name = "FrmRotaGruplar";
             this.Text = "Rota Gruplari";
             this.Load += new System.EventHandler(this.frmRotaGruplar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

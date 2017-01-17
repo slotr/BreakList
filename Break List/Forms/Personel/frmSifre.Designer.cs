@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmSifre
+    partial class FrmSifre
     {
         /// <summary>
         /// Required designer variable.
@@ -57,7 +57,7 @@
             this.ClientSize = new System.Drawing.Size(262, 81);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.textEdit1);
-            this.Name = "frmSifre";
+            this.Name = "FrmSifre";
             this.Text = "frmSifre";
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);

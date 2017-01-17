@@ -1,6 +1,6 @@
-﻿namespace Break_List
+﻿namespace Break_List.Forms.BreakList
 {
-    partial class frmMasalar
+    partial class FrmMasalar
     {
         /// <summary>
         /// Required designer variable.
@@ -70,22 +70,36 @@
             // 
             this.tableAdapterManager.appointmentsTableAdapter = null;
             this.tableAdapterManager.apps_countriesTableAdapter = null;
+            this.tableAdapterManager.auditTableAdapter = null;
             this.tableAdapterManager.avanslarTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.barbolgeTableAdapter = null;
+            this.tableAdapterManager.bitenshiftlerTableAdapter = null;
             this.tableAdapterManager.departmentsTableAdapter = null;
             this.tableAdapterManager.documentsTableAdapter = null;
             this.tableAdapterManager.kesintilerTableAdapter = null;
             this.tableAdapterManager.lghataTableAdapter = null;
+            this.tableAdapterManager.loginlogTableAdapter = null;
             this.tableAdapterManager.maaslarTableAdapter = null;
+            this.tableAdapterManager.maastipredTableAdapter = null;
             this.tableAdapterManager.offalacaklariTableAdapter = null;
             this.tableAdapterManager.permissionsTableAdapter = null;
             this.tableAdapterManager.positionsTableAdapter = null;
+            this.tableAdapterManager.prosedurTableAdapter = null;
+            this.tableAdapterManager.resimTableAdapter = null;
             this.tableAdapterManager.resourcesTableAdapter = null;
             this.tableAdapterManager.rolesTableAdapter = null;
-            this.tableAdapterManager.roster1TableAdapter = null;
+            this.tableAdapterManager.rosterTableAdapter = null;
             this.tableAdapterManager.shiftsTableAdapter = null;
             this.tableAdapterManager.tablesTableAdapter = this.tablesTableAdapter;
             this.tableAdapterManager.tblcalismaizinleriTableAdapter = null;
+            this.tableAdapterManager.tblcountTableAdapter = null;
+            this.tableAdapterManager.tblegitimlerTableAdapter = null;
+            this.tableAdapterManager.tblenvanter_kategoriTableAdapter = null;
+            this.tableAdapterManager.tblenvanterTableAdapter = null;
+            this.tableAdapterManager.tblpreviouscountTableAdapter = null;
+            this.tableAdapterManager.tblrfiddataTableAdapter = null;
+            this.tableAdapterManager.tblturnuvaTableAdapter = null;
             this.tableAdapterManager.tiplerTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Break_List.livegameDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.usersTableAdapter = null;
@@ -95,6 +109,7 @@
             // 
             this.tablesGridControl.DataSource = this.tablesBindingSource;
             this.tablesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablesGridControl.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tablesGridControl.Location = new System.Drawing.Point(2, 2);
             this.tablesGridControl.MainView = this.gridView1;
             this.tablesGridControl.Name = "tablesGridControl";
@@ -196,7 +211,7 @@
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmMasalar";
+            this.Name = "FrmMasalar";
             this.Text = "Masalar";
             this.Load += new System.EventHandler(this.frmMasalar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();

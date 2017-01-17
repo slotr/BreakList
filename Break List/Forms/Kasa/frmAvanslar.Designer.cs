@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Kasa
 {
-    partial class frmAvanslar
+    partial class FrmAvanslar
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@
             // 
             this.textEdit1.Location = new System.Drawing.Point(129, 82);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Mask.EditMask = "f2";
+            this.textEdit1.Properties.Mask.EditMask = "n2";
             this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEdit1.Size = new System.Drawing.Size(100, 20);
             this.textEdit1.TabIndex = 1;
@@ -97,7 +97,7 @@
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Miktar $ cinsinden";
             // 
-            // frmAvanslar
+            // FrmAvanslar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -108,7 +108,7 @@
             this.Controls.Add(this.lblPersonel);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.dateEdit1);
-            this.Name = "frmAvanslar";
+            this.Name = "FrmAvanslar";
             this.Text = "frmAvanslar";
             this.Load += new System.EventHandler(this.frmAvanslar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 namespace Break_List.Forms
 {
-    public partial class frmOperationDate : XtraForm
+    public partial class FrmOperationDate : XtraForm
     {
-        public frmOperationDate()
+        public FrmOperationDate()
         {
             InitializeComponent();
         }
@@ -23,7 +21,7 @@ namespace Break_List.Forms
             Properties.Settings.Default.operationDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
             Properties.Settings.Default.StartDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());            
             EndDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
-            dateEdit2.EditValue = EndDate.AddHours(24);
+            dateEdit2.EditValue = EndDate.AddHours(26);
             Properties.Settings.Default.Save();
         }
 
@@ -42,7 +40,7 @@ namespace Break_List.Forms
         {
             if (dateEdit1.EditValue == null)
             {
-                MessageBox.Show("Shift Başlangıç tarihi ayarlanmadı", @"Bir Hata Oluştu.");
+                MessageBox.Show(@"Shift Başlangıç tarihi ayarlanmadı", @"Bir Hata Oluştu.");
             }
             else
             {

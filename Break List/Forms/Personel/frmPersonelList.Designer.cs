@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmPersonelList
+    partial class FrmPersonelList
     {
         /// <summary>
         /// Required designer variable.
@@ -128,7 +128,7 @@
             this.ClientSize = new System.Drawing.Size(456, 599);
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
-            this.Name = "frmPersonelList";
+            this.Name = "FrmPersonelList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Çalışan Personel Listesi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

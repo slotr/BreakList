@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Rotalar
 {
-    partial class frmGroupDegistir
+    partial class FrmGroupDegistir
     {
         /// <summary>
         /// Required designer variable.
@@ -69,7 +69,7 @@
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.labelControl1);
-            this.Name = "frmGroupDegistir";
+            this.Name = "FrmGroupDegistir";
             this.Text = "Grup Değiştirme";
             this.Load += new System.EventHandler(this.frmGroupDegistir_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();

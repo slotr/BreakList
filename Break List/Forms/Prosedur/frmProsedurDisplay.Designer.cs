@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Prosedur
 {
-    partial class frmProsedurDisplay
+    partial class FrmProsedurDisplay
     {
         /// <summary>
         /// Required designer variable.
@@ -747,7 +747,7 @@
             DevExpress.Utils.SuperToolTip superToolTip447 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem447 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem447 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProsedurDisplay));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProsedurDisplay));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.richEditDetay = new DevExpress.XtraRichEdit.RichEditControl();
@@ -5211,7 +5211,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "frmProsedurDisplay";
+            this.Name = "FrmProsedurDisplay";
             this.Text = "Prosedur";
             this.Load += new System.EventHandler(this.frmProsedurDisplay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

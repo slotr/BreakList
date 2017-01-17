@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using MySql.Data.MySqlClient;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Tile;
 using Break_List.Properties;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Tile;
+using MySql.Data.MySqlClient;
 
-namespace Break_List
+namespace Break_List.Forms.Personel
 {
-    public partial class frmIstenAyrilmis : XtraForm
+    public partial class FrmIstenAyrilmis : XtraForm
     {
-        public string _departmentNameFromMainForm { get; set; }
-        public int personelID;
-        public string _UserNameFromMainForm { get; set; }
-        public string _UserID { get; set; }
-        Boolean haspermissionToAllPersonel { get; set; }
-        public frmIstenAyrilmis()
+        public string DepartmentNameFromMainForm { get; set; }
+        public int PersonelId;
+        public string UserNameFromMainForm { get; set; }
+        public string UserId { get; set; }
+        Boolean HaspermissionToAllPersonel { get; set; }
+        public FrmIstenAyrilmis()
         {
             InitializeComponent();           
             
@@ -30,27 +24,30 @@ namespace Break_List
 
         private void frmPersonel_Load(object sender, EventArgs e)
         {
-            getNames();
+            GetNames();
             SetupView();
-            labelControl1.Text = _UserID;
+            labelControl1.Text = UserId;
         }
 
-        void getNames()
+        void GetNames()
         {
-            checkPermissions();
-            if(haspermissionToAllPersonel == true)
+            CheckPermissions();
+            if(HaspermissionToAllPersonel)
             {
-                using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
+                using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
-                    MySqlCommand command = new MySqlCommand("spPersonelIstenAyrilmisAll", conn);
-                    command.CommandType = CommandType.StoredProcedure;                  
-                    
+                    var command = new MySqlCommand("spPersonelIstenAyrilmisAll", conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+
 
                     conn.Open();
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+                    using (var adapter = new MySqlDataAdapter())
                     {
-                        DataTable dt = new DataTable();
+                        var dt = new DataTable();
                         adapter.SelectCommand = command;
                         {
                             adapter.Fill(dt);
@@ -62,18 +59,20 @@ namespace Break_List
             }
             else
             {
-                using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
+                using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
-                    MySqlCommand command = new MySqlCommand("spPersonelIstenAyrilmis;", conn);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    string _department = _departmentNameFromMainForm;
-                    command.Parameters.Add(new MySqlParameter("DepartmentName", _department));
+                    var command = new MySqlCommand("spPersonelIstenAyrilmis;", conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    var department = DepartmentNameFromMainForm;
+                    command.Parameters.Add(new MySqlParameter("DepartmentName", department));
                     
                     conn.Open();
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+                    using (var adapter = new MySqlDataAdapter())
                     {
-                        DataTable dt = new DataTable();
+                        var dt = new DataTable();
                         adapter.SelectCommand = command;
                         {
                             adapter.Fill(dt);
@@ -87,23 +86,23 @@ namespace Break_List
 
         }
 
-        void checkPermissions() //Department , Role ve Full adi aliyor.
+        void CheckPermissions() //Department , Role ve Full adi aliyor.
         {
-            MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
-            MySqlCommand command = conn.CreateCommand();
-            command.CommandText = "SELECT * from permissions WHERE UserID ='" + _UserID + "'";
+            var conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var command = conn.CreateCommand();
+            command.CommandText = "SELECT * from permissions WHERE UserID ='" + UserId + "'";
             try
             {
                 conn.Open();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("There were an Error", ex.ToString());
+                MessageBox.Show(@"There were an Error", ex.ToString());
             }
-            MySqlDataReader reader = command.ExecuteReader();
+            var reader = command.ExecuteReader();
             while (reader.Read())
             {
-               haspermissionToAllPersonel = Convert.ToBoolean(reader["AllPersonel"].ToString());
+               HaspermissionToAllPersonel = Convert.ToBoolean(reader["AllPersonel"].ToString());
                 
 
             }
@@ -124,14 +123,14 @@ namespace Break_List
                 tileView1.Appearance.ItemNormal.ForeColor = Color.White;
                 tileView1.Appearance.ItemNormal.BorderColor = Color.FromArgb(52, 73, 94);
                 //Setup tiles template
-                TileViewItemElement leftPanel = new TileViewItemElement();
-                TileViewItemElement splitLine = new TileViewItemElement();
-                TileViewItemElement nameSurnameCaption = new TileViewItemElement();
-                TileViewItemElement addressValue = new TileViewItemElement();
-                TileViewItemElement departmentCaption = new TileViewItemElement();
-                TileViewItemElement departmentValue = new TileViewItemElement();
-                TileViewItemElement price = new TileViewItemElement();
-                TileViewItemElement image = new TileViewItemElement();
+                var leftPanel = new TileViewItemElement();
+                var splitLine = new TileViewItemElement();
+                var nameSurnameCaption = new TileViewItemElement();
+                var addressValue = new TileViewItemElement();
+                var departmentCaption = new TileViewItemElement();
+                var departmentValue = new TileViewItemElement();
+                var price = new TileViewItemElement();
+                var image = new TileViewItemElement();
                 tileView1.TileTemplate.Add(leftPanel);
                 tileView1.TileTemplate.Add(splitLine);
                 tileView1.TileTemplate.Add(nameSurnameCaption);
@@ -152,7 +151,7 @@ namespace Break_List
                 splitLine.TextLocation = new Point(110, 0);
                 splitLine.Appearance.Normal.BackColor = Color.White;
                 //
-                nameSurnameCaption.Text = "Name Surname";
+                nameSurnameCaption.Text = @"Name Surname";
                 nameSurnameCaption.TextAlignment = TileItemContentAlignment.TopLeft;
                 nameSurnameCaption.Appearance.Normal.FontSizeDelta = -1;
                 //
@@ -162,7 +161,7 @@ namespace Break_List
                 addressValue.MaxWidth = 100;
                 addressValue.Appearance.Normal.FontStyleDelta = FontStyle.Bold;
                 //
-                departmentCaption.Text = "Department";
+                departmentCaption.Text = @"Department";
                 departmentCaption.AnchorElement = addressValue;
                 departmentCaption.AnchorIndent = 14;
                 departmentCaption.Appearance.Normal.FontSizeDelta = -1;
@@ -174,7 +173,7 @@ namespace Break_List
                 //
                 price.Column = tileView1.Columns["Personel ID"];
                 price.TextAlignment = TileItemContentAlignment.BottomLeft;
-                price.Appearance.Normal.Font = new Font("Segoe UI Semilight", 25.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                price.Appearance.Normal.Font = new Font("Segoe UI Semilight", 25.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
                 //
                 image.Column = tileView1.Columns["Image"];
                 image.ImageSize = new Size(280, 220);
@@ -193,13 +192,13 @@ namespace Break_List
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
            
-                personelID = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
+                PersonelId = (int)((TileView)sender).GetRowCellValue(e.Item.RowHandle, "Personel ID");
 
-            var personel = new Break_List.Forms.Personel.FrmPersonelDetails
+            var personel = new FrmPersonelDetails
             {
-                MdiParent = this.ParentForm,
-                PersonelId = personelID.ToString(),
-                UserNameFromMainForm = _UserNameFromMainForm,
+                MdiParent = ParentForm,
+                PersonelId = PersonelId.ToString(),
+                UserNameFromMainForm = UserNameFromMainForm,
                 UserId = labelControl1.Text
               
             };

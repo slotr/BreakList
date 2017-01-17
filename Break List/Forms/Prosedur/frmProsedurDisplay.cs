@@ -1,45 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 
 namespace Break_List.Forms.Prosedur
 {
-    public partial class frmProsedurDisplay : XtraForm
+    public partial class FrmProsedurDisplay : XtraForm
     {
-        public string rowid { get; set; }
-        public bool goster { get; set; }
-        public frmProsedurDisplay()
+        public string Rowid { get; set; }
+        public bool Goster { get; set; }
+        public FrmProsedurDisplay()
         {
             InitializeComponent();
         }
 
         private void frmProsedurDisplay_Load(object sender, EventArgs e)
         {
-            if (goster == true)
+            if (Goster)
             {
-                getProcedure();
+                GetProcedure();
             }
                 
         }
-        private const string conString = "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
-        private readonly MySqlConnection con = new MySqlConnection(conString);
-        void getProcedure()
+        private const string ConString = "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
+
+        private void GetProcedure()
         {
-            using (var mySqlConnection = new MySqlConnection(conString))
+            using (var mySqlConnection = new MySqlConnection(ConString))
             {
                 var mySqlCommand = new MySqlCommand("spSingleProcedure;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                mySqlCommand.Parameters.Add(new MySqlParameter("rowid", rowid));
+                mySqlCommand.Parameters.Add(new MySqlParameter("rowid", Rowid));
                 mySqlConnection.Open();
                 var mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
                 var dataSet = new DataSet();
@@ -64,9 +57,9 @@ namespace Break_List.Forms.Prosedur
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (goster == true) // Prosedur update ediliyor
+            if (Goster) // Prosedur update ediliyor
             {
-                using (var conn = new MySqlConnection(conString))
+                using (var conn = new MySqlConnection(ConString))
                 {
                     using (var cmd = new MySqlCommand("spUpdateProcedure;", conn)
                     {
@@ -80,7 +73,7 @@ namespace Break_List.Forms.Prosedur
                         cmd.Parameters.Add(new MySqlParameter("onay", txtOnay.Text));
                         cmd.Parameters.Add(new MySqlParameter("amac", memoAmac.Text));
                         cmd.Parameters.Add(new MySqlParameter("detay", richEditDetay.RtfText));
-                        cmd.Parameters.Add(new MySqlParameter("uniqueID", rowid));
+                        cmd.Parameters.Add(new MySqlParameter("uniqueID", Rowid));
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -91,7 +84,7 @@ namespace Break_List.Forms.Prosedur
             }
             else // Yeni Prosedur kaydi yapiliyor.
             {
-                using (var conn = new MySqlConnection(conString))
+                using (var conn = new MySqlConnection(ConString))
                 {
                     using (var cmd = new MySqlCommand("spInsertProcedure;", conn)
                     {

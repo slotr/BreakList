@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Rotalar
 {
-    partial class frmRoster
+    partial class FrmRoster
     {
         /// <summary>
         /// Required designer variable.
@@ -34,19 +34,18 @@
             DevExpress.XtraScheduler.TimeRuler timeRuler3 = new DevExpress.XtraScheduler.TimeRuler();
             this.schedulerControl1 = new DevExpress.XtraScheduler.SchedulerControl();
             this.schedulerStorage1 = new DevExpress.XtraScheduler.SchedulerStorage(this.components);
-            this.roster1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rosterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.resourcesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.roster1TableAdapter = new Break_List.livegameDataSet1TableAdapters.roster1TableAdapter();
             this.resourcesTableAdapter = new Break_List.livegameDataSet1TableAdapters.resourcesTableAdapter();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.rosterTableAdapter = new Break_List.livegameDataSet1TableAdapters.rosterTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roster1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rosterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourcesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -65,7 +64,6 @@
             this.schedulerControl1.Name = "schedulerControl1";
             this.schedulerControl1.OptionsCustomization.AllowAppointmentConflicts = DevExpress.XtraScheduler.AppointmentConflictsMode.Forbidden;
             this.schedulerControl1.OptionsCustomization.AllowAppointmentCreate = DevExpress.XtraScheduler.UsedAppointmentType.None;
-            this.schedulerControl1.OptionsCustomization.AllowAppointmentEdit = DevExpress.XtraScheduler.UsedAppointmentType.NonRecurring;
             this.schedulerControl1.OptionsCustomization.AllowAppointmentMultiSelect = false;
             this.schedulerControl1.OptionsCustomization.AllowAppointmentResize = DevExpress.XtraScheduler.UsedAppointmentType.None;
             this.schedulerControl1.OptionsCustomization.AllowInplaceEditor = DevExpress.XtraScheduler.UsedAppointmentType.None;
@@ -88,7 +86,8 @@
             this.schedulerControl1.Views.MonthView.Enabled = false;
             this.schedulerControl1.Views.TimelineView.Appearance.Appointment.BorderColor = System.Drawing.Color.Purple;
             this.schedulerControl1.Views.TimelineView.Appearance.Appointment.Options.UseBorderColor = true;
-            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 18;
+            this.schedulerControl1.Views.TimelineView.CellsAutoHeightOptions.Enabled = true;
+            this.schedulerControl1.Views.TimelineView.ResourcesPerPage = 20;
             this.schedulerControl1.Views.TimelineView.ShowMoreButtons = false;
             this.schedulerControl1.Views.TimelineView.TimeIndicatorDisplayOptions.Visibility = DevExpress.XtraScheduler.TimeIndicatorVisibility.CurrentDate;
             this.schedulerControl1.Views.TimelineView.WorkTime = new DevExpress.XtraScheduler.WorkTimeInterval(System.TimeSpan.Parse("00:20:00"), System.TimeSpan.Parse("24.00:00:00"));
@@ -120,7 +119,8 @@
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Createdby", "createdby"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("UpdatedAt", "updatedAt"));
             this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Updatedby", "updatedby"));
-            this.schedulerStorage1.Appointments.DataSource = this.roster1BindingSource;
+            this.schedulerStorage1.Appointments.CustomFieldMappings.Add(new DevExpress.XtraScheduler.AppointmentCustomFieldMapping("Bitir", "Bitir"));
+            this.schedulerStorage1.Appointments.DataSource = this.rosterBindingSource;
             this.schedulerStorage1.Appointments.Mappings.End = "EndDate";
             this.schedulerStorage1.Appointments.Mappings.ResourceId = "ResourceID";
             this.schedulerStorage1.Appointments.Mappings.Start = "StartDate";
@@ -131,10 +131,10 @@
             this.schedulerStorage1.Resources.Mappings.Color = "Color";
             this.schedulerStorage1.Resources.Mappings.Id = "ResourceID";
             // 
-            // roster1BindingSource
+            // rosterBindingSource
             // 
-            this.roster1BindingSource.DataMember = "roster1";
-            this.roster1BindingSource.DataSource = this.livegameDataSet1;
+            this.rosterBindingSource.DataMember = "roster";
+            this.rosterBindingSource.DataSource = this.livegameDataSet1;
             // 
             // livegameDataSet1
             // 
@@ -145,10 +145,6 @@
             // 
             this.resourcesBindingSource.DataMember = "resources";
             this.resourcesBindingSource.DataSource = this.livegameDataSet1;
-            // 
-            // roster1TableAdapter
-            // 
-            this.roster1TableAdapter.ClearBeforeFill = true;
             // 
             // resourcesTableAdapter
             // 
@@ -192,24 +188,24 @@
             this.panelControl2.Size = new System.Drawing.Size(741, 594);
             this.panelControl2.TabIndex = 2;
             // 
-            // backgroundWorker1
+            // rosterTableAdapter
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.rosterTableAdapter.ClearBeforeFill = true;
             // 
-            // frmRoster
+            // FrmRoster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 594);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Name = "frmRoster";
+            this.Name = "FrmRoster";
             this.Text = "Rotalar";
             this.Load += new System.EventHandler(this.frmRoster_Load);
             this.Shown += new System.EventHandler(this.frmRoster_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.schedulerControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerStorage1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.roster1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rosterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourcesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -227,14 +223,13 @@
         private DevExpress.XtraScheduler.SchedulerControl schedulerControl1;
         private DevExpress.XtraScheduler.SchedulerStorage schedulerStorage1;
         private livegameDataSet1 livegameDataSet1;
-        private System.Windows.Forms.BindingSource roster1BindingSource;
-        private livegameDataSet1TableAdapters.roster1TableAdapter roster1TableAdapter;
         private System.Windows.Forms.BindingSource resourcesBindingSource;
         private livegameDataSet1TableAdapters.resourcesTableAdapter resourcesTableAdapter;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.BindingSource rosterBindingSource;
+        private livegameDataSet1TableAdapters.rosterTableAdapter rosterTableAdapter;
     }
 }

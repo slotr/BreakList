@@ -3,9 +3,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Break_List.Forms.Admin;
 using Break_List.Forms.Hatalar;
 using Break_List.Forms.Maas;
+using Break_List.Forms.Vacations;
 using Break_List.Properties;
+using Break_List.Reports;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraEditors;
@@ -126,7 +129,7 @@ namespace Break_List.Forms.Personel
                 }
                 windowsUIButtonPanelMain.Buttons["Save"].Properties.Caption = "Edit";
                 windowsUIButtonPanelMain.Buttons["Save And New"].Properties.Visible = false;
-                windowsUIButtonPanelMain.Buttons["Save And Close"].Properties.Visible = false;
+                windowsUIButtonPanelMain.Buttons["Save And Close"].Properties.Visible = true;
             }
             else
             {
@@ -781,6 +784,11 @@ namespace Break_List.Forms.Personel
                         AddPersonel();
                         Close();
                     }
+                    else
+                    {
+                        UpdatePersonel();
+                        Close();
+                    }
 
 
                     break;
@@ -910,12 +918,12 @@ namespace Break_List.Forms.Personel
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frmvacation = new frmNewVacation())
+            using (var frmvacation = new FrmNewVacation())
             {
-                frmvacation.personelID = PersonelId;
+                frmvacation.PersonelId = PersonelId;
                 frmvacation.UserName = UserNameFromMainForm;
                 frmvacation.lblKalan.Text = lblKalan.Text;
-                frmvacation.personelName = txtNameSurname.Text;
+                frmvacation.PersonelName = txtNameSurname.Text;
                 var dr = frmvacation.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
@@ -941,11 +949,11 @@ namespace Break_List.Forms.Personel
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frmMaasArtisi = new frmMaasArtisi())
+            using (var frmMaasArtisi = new FrmMaasArtisi())
             {
-                frmMaasArtisi.personelID = PersonelId;
+                frmMaasArtisi.PersonelId = PersonelId;
                 frmMaasArtisi.UserName = UserNameFromMainForm;
-                frmMaasArtisi.personelName = PersonelName;
+                frmMaasArtisi.PersonelName = PersonelName;
                 var dr = frmMaasArtisi.ShowDialog();
                 if (dr == DialogResult.OK)
                     MessageBox.Show(@"Maas Artis Talebi Onaya gonderilmistir.", @"Bir Hata Oluştu.");
@@ -961,17 +969,17 @@ namespace Break_List.Forms.Personel
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var report = new rptMaasArtisi {RequestParameters = false};
+            var report = new RptMaasArtisi {RequestParameters = false};
             report.Parameters[0].Value = PersonelId;
             new ReportPrintTool(report).ShowPreview();
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var frmHatalar = new frmHataEkle();
+            var frmHatalar = new FrmHataEkle();
             try
             {
-                frmHatalar.personelID = PersonelId;
+                frmHatalar.PersonelId = PersonelId;
 
                 var dr = frmHatalar.ShowDialog();
                 if (dr == DialogResult.OK)
@@ -1029,10 +1037,10 @@ namespace Break_List.Forms.Personel
 
         private void btnOffAlacagi_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var frmAlacaklar = new frmOffAlacagi();
+            var frmAlacaklar = new FrmOffAlacagi();
             try
             {
-                frmAlacaklar.personelID = PersonelId;
+                frmAlacaklar.PersonelId = PersonelId;
                 frmAlacaklar.UserName = UserNameFromMainForm;
                 var dr = frmAlacaklar.ShowDialog();
                 if (dr == DialogResult.OK)
@@ -1206,7 +1214,7 @@ namespace Break_List.Forms.Personel
             if (MessageBox.Show(@"Off alacagini geri vereceksiniz.", @"Emin misiniz?",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                var frmOdemeTarihi = new frmOdemeTarihi();
+                var frmOdemeTarihi = new FrmOdemeTarihi();
                 try
                 {
                     var dr = frmOdemeTarihi.ShowDialog();
@@ -1277,10 +1285,10 @@ namespace Break_List.Forms.Personel
             if (column != gridColumn6)
                 return;
             var rowid = (int) ((GridView) sender).GetRowCellValue(e.RowHandle, "id");
-            var frmMaasGoster = new frmMaasArtisiGoster();
+            var frmMaasGoster = new FrmMaasArtisiGoster();
             try
             {
-                frmMaasGoster.rowid = rowid;
+                frmMaasGoster.Rowid = rowid;
                 frmMaasGoster.Text = txtNameSurname.Text;
                 frmMaasGoster.ShowDialog();
             }
@@ -1301,7 +1309,7 @@ namespace Break_List.Forms.Personel
         {
             if (e.Button.Caption != "add")
                 return;
-            using (var frmDepartments = new frmDepartments())
+            using (var frmDepartments = new FrmDepartments())
             {
                 frmDepartments.ShowDialog();
             }
@@ -1311,7 +1319,7 @@ namespace Break_List.Forms.Personel
         {
             if (e.Button.Caption != "add")
                 return;
-            using (var frmPositions = new frmPositions())
+            using (var frmPositions = new FrmPositions())
             {
                 frmPositions.ShowDialog();
             }

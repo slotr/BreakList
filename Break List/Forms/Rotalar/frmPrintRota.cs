@@ -1,41 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
+using System.IO;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using Break_List.Properties;
 using DevExpress.Data.PivotGrid;
-using System.IO;
+using MySql.Data.MySqlClient;
 
-namespace Break_List
+namespace Break_List.Forms.Rotalar
 {
-    public partial class frmPrintRota : DevExpress.XtraEditors.XtraForm
+    public partial class FrmPrintRota : DevExpress.XtraEditors.XtraForm
     {
-         public frmPrintRota()
+         public FrmPrintRota()
         {
             InitializeComponent();
-            getDepartments();
+            GetDepartments();
         }
-        void getDepartments() // Yeni Kayit Olusturulurken Aliyor
+        void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
             var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            using (var cnn = new MySqlConnection(connectionString))
+            using (var cmd = cnn.CreateCommand())
             {
                 cnn.Open();
                 cmd.CommandText = "spDepartment";
                 cmd.CommandType = CommandType.StoredProcedure;
-                DataTable dt = new DataTable();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                var dt = new DataTable();
+                using (var da = new MySqlDataAdapter(cmd))
                 {
                     da.Fill(dt);
 
-                    foreach (DataRow Row in dt.Rows)
+                    foreach (DataRow row in dt.Rows)
                     {
 
-                        comboBoxEdit1.Properties.Items.Add(Row["DepartmentName"]);
+                        comboBoxEdit1.Properties.Items.Add(row["DepartmentName"]);
 
                     }
 
@@ -53,18 +51,18 @@ namespace Break_List
             pivotGridControl1.OptionsView.ShowRowGrandTotals = false;
         }
 
-        void getRota()
+        private void GetRota()
         {
-            string connStr = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection conn = new MySqlConnection(connStr))
+            var connStr = Settings.Default.livegameConnectionString2;
+            using (var conn = new MySqlConnection(connStr))
             {
-                MySqlCommand cmd = new MySqlCommand() { Connection = conn, CommandText = "CALL spPrintRota(@rDepartmentName, @rStartDate, @rEndDate);" };
+                var cmd = new MySqlCommand() { Connection = conn, CommandText = "CALL spPrintRota(@rDepartmentName, @rStartDate, @rEndDate);" };
                 cmd.Parameters.AddWithValue("@rDepartmentName", comboBoxEdit1.EditValue);
-                cmd.Parameters.AddWithValue("@rStartDate", dtStart);
-                cmd.Parameters.AddWithValue("@rEndDate", dtEnd);
+                cmd.Parameters.AddWithValue("@rStartDate", DtStart);
+                cmd.Parameters.AddWithValue("@rEndDate", DtEnd);
 
-                DataTable dt = new DataTable();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                var dt = new DataTable();
+                using (var da = new MySqlDataAdapter(cmd))
                 {
                     da.Fill(dt);
                     pivotGridControl1.DataSource = dt;
@@ -74,84 +72,81 @@ namespace Break_List
                 conn.Open();
                 
                 cmd.ExecuteNonQuery();
-                
-                conn.Clone();
+
+                conn.Close();
             }
 
         }
 
-        public DateTime dtStart { get; set; }
-        public DateTime dtEnd { get; set; }
+        public DateTime DtStart { get; set; }
+        public DateTime DtEnd { get; set; }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            using (var saveDialog = new SaveFileDialog())
             {
-                saveDialog.Filter = "Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
-                if (saveDialog.ShowDialog() != DialogResult.Cancel)
+                saveDialog.Filter = @"Excel (2003)(.xls)|*.xls|Excel (2010) (.xlsx)|*.xlsx |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                if (saveDialog.ShowDialog() == DialogResult.Cancel) return;
+                var exportFilePath = saveDialog.FileName;
+                var fileExtenstion = new FileInfo(exportFilePath).Extension;
+                DevExpress.Export.ExportSettings.DefaultExportType = DevExpress.Export.ExportType.WYSIWYG;
+                switch (fileExtenstion)
                 {
-                    string exportFilePath = saveDialog.FileName;
-                    string fileExtenstion = new FileInfo(exportFilePath).Extension;
-                    DevExpress.Export.ExportSettings.DefaultExportType = DevExpress.Export.ExportType.WYSIWYG;
-                    switch (fileExtenstion)
-                    {
-                        case ".xls":
-                            pivotGridControl1.ExportToXls(exportFilePath);
-                            break;
-                        case ".xlsx":
-                            pivotGridControl1.ExportToXlsx(exportFilePath);
-                            break;
-                        case ".rtf":
-                            pivotGridControl1.ExportToRtf(exportFilePath);
-                            break;
-                        case ".pdf":
-                            pivotGridControl1.ExportToPdf(exportFilePath);
-                            break;
-                        case ".html":
-                            pivotGridControl1.ExportToHtml(exportFilePath);
-                            break;
-                        case ".mht":
-                            pivotGridControl1.ExportToMht(exportFilePath);
-                            break;
-                        default:
-                            break;
-                    }
+                    case ".xls":
+                        pivotGridControl1.ExportToXls(exportFilePath);
+                        break;
+                    case ".xlsx":
+                        pivotGridControl1.ExportToXlsx(exportFilePath);
+                        break;
+                    case ".rtf":
+                        pivotGridControl1.ExportToRtf(exportFilePath);
+                        break;
+                    case ".pdf":
+                        pivotGridControl1.ExportToPdf(exportFilePath);
+                        break;
+                    case ".html":
+                        pivotGridControl1.ExportToHtml(exportFilePath);
+                        break;
+                    case ".mht":
+                        pivotGridControl1.ExportToMht(exportFilePath);
+                        break;
+                }
 
-                    if (File.Exists(exportFilePath))
+                if (File.Exists(exportFilePath))
+                {
+                    try
                     {
-                        try
-                        {
-                            //Try to open the file and let windows decide how to open it.
-                            System.Diagnostics.Process.Start(exportFilePath);
-                        }
-                        catch
-                        {
-                            String msg = string.Format("The file could not be opened.{0}{1}Path: {2}", Environment.NewLine, Environment.NewLine, exportFilePath);
-                            MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        //Try to open the file and let windows decide how to open it.
+                        System.Diagnostics.Process.Start(exportFilePath);
                     }
-                    else
+                    catch
                     {
-                        String msg = string.Format("The file could not be saved.{0}{1}Path: {2}", Environment.NewLine, Environment.NewLine, exportFilePath);
-                        MessageBox.Show(msg, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var msg =
+                            $"The file could not be opened.{Environment.NewLine}{Environment.NewLine}Path: {exportFilePath}";
+                        MessageBox.Show(msg, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+                else
+                {
+                    var msg =
+                        $"The file could not be saved.{Environment.NewLine}{Environment.NewLine}Path: {exportFilePath}";
+                    MessageBox.Show(msg, @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dtStart = Convert.ToDateTime(dateEdit1.EditValue.ToString());
-            dtEnd = Convert.ToDateTime(dateEdit2.EditValue.ToString());
-            if (dtEnd < dtStart)
+            DtStart = Convert.ToDateTime(dateEdit1.EditValue.ToString());
+            DtEnd = Convert.ToDateTime(dateEdit2.EditValue.ToString());
+            if (DtEnd < DtStart)
             {
                 MessageBox.Show(@"Personel Bilgisi Update edildi");
-                return;
             }
 
             else
             {
-                getRota();
+                GetRota();
             }
         }
     }

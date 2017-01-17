@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmOdemeTarihi
+    partial class FrmOdemeTarihi
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@
             this.Controls.Add(this.dateEdit1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmOdemeTarihi";
+            this.Name = "FrmOdemeTarihi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmOdemeTarihi";
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();

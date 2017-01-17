@@ -1,33 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
+﻿using System.Data;
 using Break_List.Properties;
+using DevExpress.XtraBars.Docking2010;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using MySql.Data.MySqlClient;
 
-namespace Break_List
+namespace Break_List.Forms.Admin
 {
-    public partial class frmPositions : DevExpress.XtraEditors.XtraForm
+    public partial class FrmPositions : XtraForm
     {
-        private MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2);
-        private MySqlCommand cmd;
-        public frmPositions()
+        private readonly MySqlConnection _con = new MySqlConnection(Settings.Default.livegameConnectionString2);
+        private MySqlCommand _cmd;
+        public FrmPositions()
         {
             InitializeComponent();
-            getDepartments();
+            GetDepartments();
            
         }
-        void getDepartments() // Yeni Kayit Olusturulurken Aliyor
+        void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
             var connectionString = Settings.Default.livegameConnectionString2;
@@ -42,10 +32,10 @@ namespace Break_List
                 {
                     da.Fill(dt);
 
-                    foreach (DataRow Row in dt.Rows)
+                    foreach (DataRow row in dt.Rows)
                     {
 
-                        comboBoxEdit1.Properties.Items.Add(Row["DepartmentName"]);
+                        comboBoxEdit1.Properties.Items.Add(row["DepartmentName"]);
 
                     }
 
@@ -59,17 +49,17 @@ namespace Break_List
 
         void InsertPosition()
         {
-            con.Open();
-            cmd = new MySqlCommand("INSERT INTO positions(DepartmentName, PositionName) VALUES(@DepartmentName, @PositionName)", con);
-            cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
-            cmd.Parameters.Add("@PositionName", MySqlDbType.VarChar, 45);
-            cmd.Parameters["@DepartmentName"].Value = comboBoxEdit1.EditValue.ToString();
-            cmd.Parameters["@PositionName"].Value = textEdit1.Text;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            _con.Open();
+            _cmd = new MySqlCommand("INSERT INTO positions(DepartmentName, PositionName) VALUES(@DepartmentName, @PositionName)", _con);
+            _cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
+            _cmd.Parameters.Add("@PositionName", MySqlDbType.VarChar, 45);
+            _cmd.Parameters["@DepartmentName"].Value = comboBoxEdit1.EditValue.ToString();
+            _cmd.Parameters["@PositionName"].Value = textEdit1.Text;
+            _cmd.ExecuteNonQuery();
+            _con.Close();
         }
 
-        private void windowsUIButtonPanelMain_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        private void windowsUIButtonPanelMain_ButtonClick(object sender, ButtonEventArgs e)
         {
             switch (e.Button.Properties.Caption)
             {
@@ -87,13 +77,12 @@ namespace Break_List
             }
         }
 
-        private void comboBoxEdit1_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void comboBoxEdit1_Properties_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
-            if(e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)
+            if(e.Button.Kind == ButtonPredefines.Plus)
             {
-                frmDepartments Departments = new frmDepartments();
-                Departments.MdiParent = this;
-                Departments.Show();
+                FrmDepartments departments = new FrmDepartments {MdiParent = this};
+                departments.Show();
             }
             
         }

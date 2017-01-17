@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Maas
 {
-    partial class frmMaasArtisiGoster
+    partial class FrmMaasArtisiGoster
     {
         /// <summary>
         /// Required designer variable.
@@ -202,7 +202,7 @@
             tableAdapterManager.positionsTableAdapter = null;
             tableAdapterManager.resourcesTableAdapter = null;
             tableAdapterManager.rolesTableAdapter = null;
-            tableAdapterManager.roster1TableAdapter = null;
+            tableAdapterManager.rosterTableAdapter = null;
             tableAdapterManager.shiftsTableAdapter = null;
             tableAdapterManager.tablesTableAdapter = null;
             tableAdapterManager.tblcalismaizinleriTableAdapter = null;
@@ -249,7 +249,7 @@
             this.Controls.Add(this.artisNedeniLinkLabel);
             this.Controls.Add(dokumanLabel);
             this.Controls.Add(this.dokumanPictureEdit);
-            this.Name = "frmMaasArtisiGoster";
+            this.Name = "FrmMaasArtisiGoster";
             this.Text = "frmMaasArtisiGoster";
             this.Load += new System.EventHandler(this.frmMaasArtisiGoster_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dokumanPictureEdit.Properties)).EndInit();

@@ -8,10 +8,10 @@ using Break_List.Properties;
 
 namespace Break_List.Forms.Counts
 {
-    public partial class frmTipAdd : XtraForm
+    public partial class FrmTipAdd : XtraForm
     {
-        public int rowID;
-        public frmTipAdd()
+        public int RowId;
+        public FrmTipAdd()
         {
             InitializeComponent();
             textEdit1.Focus();
@@ -69,7 +69,7 @@ namespace Break_List.Forms.Counts
                     { CommandType = CommandType.StoredProcedure };
                     
                     cmd.Parameters.Add(new MySqlParameter("tip", textEdit1.Text));
-                    cmd.Parameters.Add(new MySqlParameter("rowid", rowID));
+                    cmd.Parameters.Add(new MySqlParameter("rowid", RowId));
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();

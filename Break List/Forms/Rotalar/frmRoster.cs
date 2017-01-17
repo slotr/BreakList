@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraScheduler;
@@ -12,16 +10,17 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraScheduler.Drawing;
 namespace Break_List.Forms.Rotalar
 {
-    public partial class frmRoster : XtraForm
+    public partial class FrmRoster : XtraForm
     {
-        public string _departmentNameFromMainForm { get; set; }
+        public string DepartmentNameFromMainForm { get; set; }
         public string UserName { get; set; }
-        public frmRoster()
+        public FrmRoster()
         {
+           
             InitializeComponent();
             schedulerControl1.ActiveViewType = SchedulerViewType.Timeline;
             schedulerControl1.GroupType = SchedulerGroupType.Resource;
-            TimeScaleCollection scales = schedulerControl1.TimelineView.Scales;
+            var scales = schedulerControl1.TimelineView.Scales;
             schedulerControl1.TimelineView.AppointmentDisplayOptions.StartTimeVisibility = AppointmentTimeVisibility.Never;
             schedulerControl1.TimelineView.AppointmentDisplayOptions.EndTimeVisibility = AppointmentTimeVisibility.Never;
             scales.Clear();
@@ -30,7 +29,7 @@ namespace Break_List.Forms.Rotalar
             //scales.Add(new TimeScaleWeek());
             scales.Add(new TimeScaleDay());
 
-            DateTime startDate = schedulerControl1.SelectedInterval.Start;
+            var startDate = schedulerControl1.SelectedInterval.Start;
             schedulerControl1.Start = new DateTime(startDate.Year, startDate.Month, 1);
 
             UpdateScaleWidth();
@@ -38,17 +37,24 @@ namespace Break_List.Forms.Rotalar
             schedulerStorage1.AppointmentsChanged += OnAppointmentChangedInsertedDeleted;
             schedulerStorage1.AppointmentsInserted += OnAppointmentChangedInsertedDeleted;
             schedulerStorage1.AppointmentsDeleted += OnAppointmentChangedInsertedDeleted;
-            schedulerControl1.MouseWheel += schedulerControl_MouseWheel; 
-        }
+            }
         private void OnAppointmentChangedInsertedDeleted(object sender, PersistentObjectsEventArgs e)
         {
-
-            roster1TableAdapter.Update(livegameDataSet1);
-            livegameDataSet1.AcceptChanges();
-            roster1TableAdapter.Fill(livegameDataSet1.roster1);
+            try
+            {
+                rosterTableAdapter.Update(livegameDataSet1);
+                livegameDataSet1.AcceptChanges();
+                rosterTableAdapter.Fill(livegameDataSet1.roster);
+            }
+            catch (DBConcurrencyException ex)
+            {
+                XtraMessageBox.Show(ex.ToString(), "Database de bir hata olustu.");
+                
+            }
+            
         }
 
-        void schedulerControl_MouseWheel(object sender, MouseEventArgs e) // Mouse asagi yukari hareket ediyor.
+        private void schedulerControl_MouseWheel(object sender, MouseEventArgs e) // Mouse asagi yukari hareket ediyor.
         {
             int index = schedulerControl1.ActiveView.FirstVisibleResourceIndex;
             if (e.Delta > 0 && index != 0)
@@ -56,25 +62,26 @@ namespace Break_List.Forms.Rotalar
             if (e.Delta < 0 && index != schedulerControl1.Storage.Resources.Count - 1)
                 schedulerControl1.ActiveView.FirstVisibleResourceIndex++;
         }
-        void getNames()
+
+        private void GetNames()
         {
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
+            using (var conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {
-                MySqlCommand cmd = new MySqlCommand("spRotaPersonel;", conn) { CommandType = CommandType.StoredProcedure };
-                string _department = _departmentNameFromMainForm;
+                var cmd = new MySqlCommand("spRotaPersonel;", conn) { CommandType = CommandType.StoredProcedure };
+                var department = DepartmentNameFromMainForm;
                 // Add your parameters here if you need them
-                cmd.Parameters.Add(new MySqlParameter("DepartmentName", _department));
+                cmd.Parameters.Add(new MySqlParameter("DepartmentName", department));
 
                 conn.Open();
 
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+                using (var adapter = new MySqlDataAdapter())
                 {
-                    DataTable dt = new DataTable();
+                    var dt = new DataTable();
                     adapter.SelectCommand = cmd;
                     {
                         adapter.Fill(dt);
                         schedulerStorage1.Resources.DataSource = dt;
-                        //Text = _department + " Rotası ";
+                        Text = department + @" Rotası ";
                     }
                 }
                 conn.Close();
@@ -84,72 +91,72 @@ namespace Break_List.Forms.Rotalar
 
         private void frmRoster_Load(object sender, EventArgs e)
         {
-            //schedulerControl1.MouseWheel += schedulerControl_MouseWheel;
-            //roster1TableAdapter.Fill(livegameDataSet1.roster1);
-            //getNames();
-            //getShifts();
-            
+            rosterTableAdapter.Fill(livegameDataSet1.roster);
+            schedulerControl1.MouseWheel += schedulerControl_MouseWheel;
+            GetNames();
+            GetShifts();
+
         }
 
         private void UpdateScaleWidth()
         {
             schedulerControl1.TimelineView.GetBaseTimeScale().Width = 50;
         }
-        void getShifts()
+
+        private void GetShifts()
         {
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
+            using (var conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {
-                MySqlCommand cmd = new MySqlCommand("Select ShiftNo as Shift, ShiftStart as Start, Hour as Hours from shifts", conn) { CommandType = CommandType.Text };
-
-
-
+                var cmd = new MySqlCommand("Select ShiftNo as Shift, ShiftStart as Start, Hour as Hours from shifts", conn)
+                { CommandType = CommandType.Text };
                 conn.Open();
 
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter())
+                using (var adapter = new MySqlDataAdapter())
                 {
-                    DataTable dt = new DataTable();
+                    var dt = new DataTable();
                     adapter.SelectCommand = cmd;
                     {
                         adapter.Fill(dt);
                         gridControl1.DataSource = dt;
-
                     }
                 }
                 conn.Close();
             }
 
         }
-        GridHitInfo downHitInfo;
-        readonly TimeSpan minTime = new TimeSpan(0, 0, 0);
-        readonly TimeSpan maxTime = new TimeSpan(24, 0, 0);
+
+        private GridHitInfo _downHitInfo;
+        private readonly TimeSpan _minTime = new TimeSpan(0, 0, 0);
+        private readonly TimeSpan _maxTime = new TimeSpan(24, 0, 0);
         #region #GetDragData
-        SchedulerDragData GetDragData(GridView view)
+
+        private SchedulerDragData GetDragData(GridView view)
         {
-            int[] selection = view.GetSelectedRows();
+            var selection = view.GetSelectedRows();
             if (selection == null)
                 return null;
 
-            AppointmentBaseCollection appointments = new AppointmentBaseCollection();
-            int count = selection.Length;
-            for (int i = 0; i < count; i++)
+            var appointments = new AppointmentBaseCollection();
+            var count = selection.Length;
+            for (var i = 0; i < count; i++)
             {
 
-                int rowIndex = selection[i];
-                Appointment apt = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
-                string subject = (string)view.GetRowCellValue(rowIndex, "Shift");
-                TimeSpan start = (TimeSpan)view.GetRowCellValue(rowIndex, "Start");
-                TimeSpan hour = (TimeSpan)view.GetRowCellValue(rowIndex, "Hours");
-                TimeSpan end = start + hour;
-                double totalDuration = Convert.ToDouble(hour.TotalHours);
-                double totalHours = Convert.ToDouble(end.TotalHours);
+                var rowIndex = selection[i];
+                var apt = schedulerStorage1.CreateAppointment(AppointmentType.Normal);
+                var subject = (string)view.GetRowCellValue(rowIndex, "Shift");
+                var start = (TimeSpan)view.GetRowCellValue(rowIndex, "Start");
+                var hour = (TimeSpan)view.GetRowCellValue(rowIndex, "Hours");
+                var end = start + hour;
+                var totalDuration = Convert.ToDouble(hour.TotalHours);
+                var totalHours = Convert.ToDouble(end.TotalHours);
                 // MessageBox.Show(totalHours.ToString());
                 if (totalHours > 24)
                 {
-                    TimeSpan _final = end - maxTime;
+                    var final = end - _maxTime;
                     apt.Subject = subject;
                     //apt.Duration = start + hour;
                     apt.CustomFields["StartTime"] = start;
-                    apt.CustomFields["EndTime"] = _final;
+                    apt.CustomFields["EndTime"] = final;
                     apt.CustomFields["ToplamSure"] = totalDuration;
                     apt.CustomFields["OverTime"] = 0;
                     apt.CustomFields["ErkenGonderim"] = 0;
@@ -160,9 +167,10 @@ namespace Break_List.Forms.Rotalar
                     apt.CustomFields["SentHome"] = 0;
                     apt.CustomFields["Late"] = 0;
                     apt.CustomFields["Suspend"] = 0;
-                    apt.CustomFields["Department"] = _departmentNameFromMainForm;
+                    apt.CustomFields["Department"] = DepartmentNameFromMainForm;
                     apt.CustomFields["Createdby"] = UserName;
                     apt.CustomFields["CreatedAt"] = DateTime.Now;
+                    apt.CustomFields["Bitir"] = 0;
                     appointments.Add(apt);
                 }
 
@@ -182,9 +190,10 @@ namespace Break_List.Forms.Rotalar
                     apt.CustomFields["SentHome"] = 0;
                     apt.CustomFields["Late"] = 0;
                     apt.CustomFields["Suspend"] = 0;
-                    apt.CustomFields["Department"] = _departmentNameFromMainForm;
+                    apt.CustomFields["Department"] = DepartmentNameFromMainForm;
                     apt.CustomFields["Createdby"] = UserName;
                     apt.CustomFields["CreatedAt"] = DateTime.Now;
+                    apt.CustomFields["Bitir"] = 0;
                     appointments.Add(apt);
                 }
             }
@@ -195,49 +204,45 @@ namespace Break_List.Forms.Rotalar
 
         private void gridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            GridView view = sender as GridView;
-            downHitInfo = null;
+            var view = sender as GridView;
+            _downHitInfo = null;
 
-            GridHitInfo hitInfo = view.CalcHitInfo(new Point(e.X, e.Y));
-            if (Control.ModifierKeys != Keys.None)
+            if (view == null) return;
+            var hitInfo = view.CalcHitInfo(new Point(e.X, e.Y));
+            if (ModifierKeys != Keys.None)
                 return;
             if (e.Button == MouseButtons.Left && hitInfo.InRow && hitInfo.HitTest != GridHitTest.RowIndicator)
-                downHitInfo = hitInfo;
+                _downHitInfo = hitInfo;
         }
 
         private void gridView1_MouseMove(object sender, MouseEventArgs e)
         {
-            GridView view = sender as GridView;
-            if (e.Button == MouseButtons.Left && downHitInfo != null)
-            {
-                Size dragSize = SystemInformation.DragSize;
-                Rectangle dragRect = new Rectangle(new Point(downHitInfo.HitPoint.X - dragSize.Width / 1,
-                    downHitInfo.HitPoint.Y - dragSize.Height / 1), dragSize);
+            var view = sender as GridView;
+            if (e.Button != MouseButtons.Left || _downHitInfo == null) return;
+            var dragSize = SystemInformation.DragSize;
+            var dragRect = new Rectangle(new Point(_downHitInfo.HitPoint.X - dragSize.Width / 1,
+                _downHitInfo.HitPoint.Y - dragSize.Height / 1), dragSize);
 
-                if (!dragRect.Contains(new Point(e.X, e.Y)))
-                {
-                    view.GridControl.DoDragDrop(GetDragData(view), DragDropEffects.All);
-                    downHitInfo = null;
-                }
-            }
+            if (dragRect.Contains(new Point(e.X, e.Y))) return;
+            view?.GridControl.DoDragDrop(GetDragData(view), DragDropEffects.All);
+            _downHitInfo = null;
         }
 
 
 
         private void schedulerControl1_AppointmentDrop(object sender, AppointmentDragEventArgs e)
         {
-            DateTime srcStart = e.SourceAppointment.Start;
-            DateTime newStart = e.EditedAppointment.Start;
-            bool isNewAppointment = srcStart == DateTime.MinValue;
         }
 
 
 
         private void schedulerControl1_EditAppointmentFormShowing(object sender, AppointmentFormEventArgs e)
         {
-            SchedulerControl scheduler = ((SchedulerControl)(sender));
-            frmAddOverTime form = new frmAddOverTime(scheduler, e.Appointment, e.OpenRecurrenceForm);
-            form.labelControl2.Text = UserName;
+            var scheduler = (SchedulerControl)sender;
+            var form = new FrmAddOverTime(scheduler, e.Appointment, e.OpenRecurrenceForm)
+            {
+                labelControl2 = {Text = UserName}
+            };
             try
             {   
                 e.DialogResult = form.ShowDialog();
@@ -253,46 +258,41 @@ namespace Break_List.Forms.Rotalar
 
         private void schedulerControl1_AppointmentViewInfoCustomizing(object sender, AppointmentViewInfoCustomizingEventArgs e)
         {
-            if (e.ViewInfo.Appointment.Subject.Contains("OFF"))
-            {
-                e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font, FontStyle.Bold);
-                e.ViewInfo.Appearance.ForeColor = Color.Red;
-                e.ViewInfo.Appearance.BorderColor = Color.Red;
-                
-            }
-
-
-               
+            if (!e.ViewInfo.Appointment.Subject.Contains("OFF")) return;
+            e.ViewInfo.Appearance.Font = new Font(e.ViewInfo.Appearance.Font, FontStyle.Bold);
+            e.ViewInfo.Appearance.ForeColor = Color.Red;
+            e.ViewInfo.Appearance.BorderColor = Color.Red;
         }
 
         private void schedulerControl1_CustomDrawResourceHeader(object sender, CustomDrawObjectEventArgs e)
         {
-            ResourceHeader header = (ResourceHeader)e.ObjectInfo;
+            var header = (ResourceHeader)e.ObjectInfo;
 
             if (header.Resource.CustomFields["Position"].Equals("Inspector"))
             {
-                header.Appearance.HeaderCaption.ForeColor = Color.Red;
+                header.Appearance.HeaderCaption.ForeColor = Color.DarkRed;
 
             }
 
             if (header.Resource.CustomFields["Position"].Equals("Dealer"))
             {
-                header.Appearance.HeaderCaption.ForeColor = Color.Blue;
+                header.Appearance.HeaderCaption.ForeColor = Color.DarkBlue;
+
+            }
+
+            if (header.Resource.CustomFields["Position"].Equals("Dealer Inspector"))
+            {
+                header.Appearance.HeaderCaption.ForeColor = Color.DarkGreen;
 
             }
         }
 
         private void frmRoster_Shown(object sender, EventArgs e)
         {
-            roster1TableAdapter.Fill(livegameDataSet1.roster1);
-            getNames();
-            getShifts();
+            //rosterTableAdapter.Fill(livegameDataSet1.roster);
+            //getNames();
+            //getShifts();
         }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            
-            
-        }
     }
 }

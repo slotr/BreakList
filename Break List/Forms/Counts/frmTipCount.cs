@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
@@ -13,9 +8,9 @@ using Break_List.Properties;
 
 namespace Break_List.Forms.Counts
 {
-    public partial class frmTipCount : DevExpress.XtraEditors.XtraForm
+    public partial class FrmTipCount : XtraForm
     {
-        public frmTipCount()
+        public FrmTipCount()
         {
             InitializeComponent();
         }
@@ -25,7 +20,7 @@ namespace Break_List.Forms.Counts
             return item;
         }
 
-        public int rowid { get; set; }
+        public int Rowid { get; set; }
         private void frmTipCount_Load(object sender, EventArgs e)
         {
            
@@ -53,7 +48,7 @@ namespace Break_List.Forms.Counts
                                 item.Text = Convert.ToString(t["masa"]);
                                 //item.Text3 = Convert.ToString(rows[i]["Guid"]);
                                 item.Tag = Convert.ToString(t["id"]);
-                                @group.Items.Add(item);
+                                group.Items.Add(item);
                             }
                             tileControl1.Groups.Add(group);
                         }
@@ -70,11 +65,11 @@ namespace Break_List.Forms.Counts
 
         private void tileControl1_ItemClick(object sender, TileItemEventArgs e)
         {
-            rowid = Convert.ToInt32(e.Item.Tag.ToString());
+            Rowid = Convert.ToInt32(e.Item.Tag.ToString());
             
-            using (var form = new frmTipAdd())
+            using (var form = new FrmTipAdd())
             {
-                form.rowID = rowid;
+                form.RowId = Rowid;
                 form.labelControl2.Text = e.Item.Text;
                 var dr = form.ShowDialog();
                 if (dr == DialogResult.OK)
@@ -97,7 +92,7 @@ namespace Break_List.Forms.Counts
                 var dataSet = new DataSet();
                 mySqlDataAdapter.Fill(dataSet, "spTotalDropResult");
 
-                tileControl1.Groups[0].Text = "Sayilan Toplam Tip: "+ dataSet.Tables["spTotalDropResult"].Rows[0]["TotalTip"].ToString();
+                tileControl1.Groups[0].Text = @"Sayilan Toplam Tip: "+ dataSet.Tables["spTotalDropResult"].Rows[0]["TotalTip"];
                 
                 mySqlConnection.Close();
             }

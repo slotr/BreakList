@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Personel
 {
-    partial class frmMaasEdit
+    partial class FrmMaasEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@
             this.ClientSize = new System.Drawing.Size(250, 105);
             this.Controls.Add(this.simpleButton1);
             
-            this.Name = "frmMaasEdit";
+            this.Name = "FrmMaasEdit";
             this.Text = "frmMaasEdit";
             this.ResumeLayout(false);
 

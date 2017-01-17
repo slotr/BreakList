@@ -1,27 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Break_List.Properties;
+using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
 using MySql.Data.MySqlClient;
-using Break_List.Properties;
 
-namespace Break_List
+namespace Break_List.Forms.Admin
 {
-    public partial class frmDepartments : DevExpress.XtraEditors.XtraForm
+    public partial class FrmDepartments : XtraForm
     {
-        private MySqlConnection con = new MySqlConnection(Settings.Default.livegameConnectionString2);
-        private MySqlCommand cmd;
-        public frmDepartments()
+        private readonly MySqlConnection _con = new MySqlConnection(Settings.Default.livegameConnectionString2);
+        private MySqlCommand _cmd;
+        public FrmDepartments()
         {
             InitializeComponent();
 
@@ -29,17 +17,16 @@ namespace Break_List
 
         void InsertDepartment()
         {
-                         con.Open();
-                        cmd = new MySqlCommand("INSERT INTO departments(DepartmentName) VALUES(@DepartmentName)", con);
-                        cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
-                        cmd.Parameters["@DepartmentName"].Value = this.txtDepartment.Text;
-                        cmd.ExecuteNonQuery();
-                        con.Close();
+                         _con.Open();
+                        _cmd = new MySqlCommand("INSERT INTO departments(DepartmentName) VALUES(@DepartmentName)", _con);
+                        _cmd.Parameters.Add("@DepartmentName", MySqlDbType.VarChar, 45);
+                        _cmd.Parameters["@DepartmentName"].Value = txtDepartment.Text;
+                        _cmd.ExecuteNonQuery();
+                        _con.Close();
         }
 
-        private void windowsUIButtonPanelMain_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
-        {
-            switch (e.Button.Properties.Caption)
+        private void windowsUIButtonPanelMain_ButtonClick(object sender, ButtonEventArgs e)
+        {switch (e.Button.Properties.Caption)
             {
                 case "Save":
                     InsertDepartment();

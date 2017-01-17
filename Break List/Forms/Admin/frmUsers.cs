@@ -1,64 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
 using Break_List.Properties;
+using DevExpress.XtraBars.Docking2010;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using MySql.Data.MySqlClient;
 
-namespace Break_List
+namespace Break_List.Forms.Admin
 {
-    public partial class frmUsers : DevExpress.XtraEditors.XtraForm
+    public partial class FrmUsers : XtraForm
     {
-        public string userID { get; set; }
-        public frmUsers()
+        public string UserId { get; set; }
+        public FrmUsers()
         {
             InitializeComponent();
            
         }
 
-        
-    
 
+        private static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
+        }
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
         private void frmUsers_Load(object sender, EventArgs e)
         {
-            getDepartments();
+            GetDepartments();
+            
         }
 
-        private void permissionsBindingNavigatorSaveItem1_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        void getDepartments() // Yeni Kayit Olusturulurken Aliyor
+        private void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
             var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            using (var cnn = new MySqlConnection(connectionString))
+            using (var cmd = cnn.CreateCommand())
             {
                 cnn.Open();
                 cmd.CommandText = "spDepartment";
                 cmd.CommandType = CommandType.StoredProcedure;
-                DataTable dt = new DataTable();
+                var dt = new DataTable();
                 using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
                 {
                     da.Fill(dt);
 
-                    foreach (DataRow Row in dt.Rows)
+                    foreach (DataRow row in dt.Rows)
                     {
 
-                        cmbDepartment.Properties.Items.Add(Row["DepartmentName"]);
+                        cmbDepartment.Properties.Items.Add(row["DepartmentName"]);
 
                     }
 
@@ -76,7 +71,7 @@ namespace Break_List
            
         }
 
-        public static void ClearSpace(Control control)
+        private static void ClearSpace(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -95,15 +90,15 @@ namespace Break_List
                     ClearSpace(c);
             }
         }
-        private void windowsUIButtonPanelMain_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
+        private void windowsUIButtonPanelMain_ButtonClick(object sender, ButtonEventArgs e)
         {
             switch (e.Button.Properties.Caption)
             {
                 case "Save":
-                    saveStaff();
+                    SaveStaff();
                     break;                
                 case "Save And Close":
-                    saveStaff();
+                    SaveStaff();
                         Close();
                     break;
                 case "Save And New":
@@ -113,13 +108,12 @@ namespace Break_List
             }
         }
         
-        void saveStaff()
+        void SaveStaff()
         {
 
 
             var str = Settings.Default.livegameConnectionString2;
-            var query = string.Format("select * from users where UserName = '{0}'",
-                txtUserName.Text);
+            var query = $"select * from users where UserName = '{txtUserName.Text}'";
             var con = new MySqlConnection(str);
             var cmd = new MySqlCommand(query, con);
             con.Open();
@@ -133,7 +127,7 @@ namespace Break_List
             if (count == 1)
             {
                 
-                MessageBox.Show( "Böyle bir Kullanıcı ismi daha önce kullanılmış", @"Bir Hata Oluştu.");
+                MessageBox.Show( @"Böyle bir Kullanıcı ismi daha önce kullanılmış", @"Bir Hata Oluştu.");
                 
 
             }
@@ -143,18 +137,19 @@ namespace Break_List
                 try
                 {
                     con.Close();
-                    cmd = new MySqlCommand("INSERT INTO users(UserName, Department, FullName, Password) VALUES(@UserName, @Department, @FullName, @Password)", con);
+                    cmd = new MySqlCommand("INSERT INTO users(UserName, Department, FullName, Password,email) VALUES(@UserName, @Department, @FullName, @Password,@email)", con);
 
 
                     cmd.Parameters.Add("@UserName", MySqlDbType.VarChar, 45);
                     cmd.Parameters.Add("@Department", MySqlDbType.VarChar, 45);
                     cmd.Parameters.Add("@FullName", MySqlDbType.VarChar, 45);
-                    cmd.Parameters.Add("@Password", MySqlDbType.VarChar, 45);   
+                    cmd.Parameters.Add("@Password", MySqlDbType.VarChar, 45);
+                    cmd.Parameters.Add("@email", MySqlDbType.VarChar, 200);
                     cmd.Parameters["@UserName"].Value = txtUserName.Text;
                     cmd.Parameters["@Department"].Value = cmbDepartment.EditValue.ToString();
                     cmd.Parameters["@FullName"].Value = txtFulName.Text;
-                    cmd.Parameters["@Password"].Value = txtPassword.Text;
-                    
+                    cmd.Parameters["@Password"].Value = txtPassword.Text; //Base64Encode(txtPassword.Text);
+                    cmd.Parameters["@email"].Value = txtemail.Text;
                     con.Open();
                     cmd.ExecuteNonQuery();
 
@@ -172,19 +167,12 @@ namespace Break_List
            
         }
 
-        private void cmbDepartment_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void cmbDepartment_Properties_ButtonClick_1(object sender, ButtonPressedEventArgs e)
         {
-
-        }
-
-        private void cmbDepartment_Properties_ButtonClick_1(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)
-            {
-                frmDepartments Departments = new frmDepartments();
+            if (e.Button.Kind != ButtonPredefines.Plus) return;
+            var departments = new FrmDepartments();
                 
-                Departments.ShowDialog();
-            }
+            departments.ShowDialog();
         }
     }
 }

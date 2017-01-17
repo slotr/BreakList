@@ -49,6 +49,7 @@
         ///
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPersonelDetails));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -58,7 +59,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.cmbistenayrilma = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -116,7 +117,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabIzinler = new DevExpress.XtraTab.XtraTabPage();
             this.vacationgrid = new DevExpress.XtraGrid.GridControl();
-            this.spSelectVacationsBindingSource = new System.Windows.Forms.BindingSource();
+            this.spSelectVacationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNO = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -230,11 +231,11 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
-            this.popvacation = new DevExpress.XtraBars.PopupMenu();
-            this.popMaas = new DevExpress.XtraBars.PopupMenu();
-            this.popHata = new DevExpress.XtraBars.PopupMenu();
+            this.popvacation = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popMaas = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popHata = new DevExpress.XtraBars.PopupMenu(this.components);
             this.windowsUIButtonPanelMain = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
-            this.popOffAlacak = new DevExpress.XtraBars.PopupMenu();
+            this.popOffAlacak = new DevExpress.XtraBars.PopupMenu(this.components);
             this.colIsleyen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colalacaksayisi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTarih = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -270,7 +271,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.spSelectVacationsTableAdapter = new Break_List.livegameDataSet1TableAdapters.spSelectVacationsTableAdapter();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbistenayrilma.Properties)).BeginInit();
@@ -1997,7 +1998,7 @@
             // 
             this.lblFileName.Location = new System.Drawing.Point(12, 621);
             this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(63, 13);
+            this.lblFileName.Size = new System.Drawing.Size(0, 13);
             this.lblFileName.StyleController = this.dataLayoutControl1;
             this.lblFileName.TabIndex = 12;
             this.lblFileName.Visible = false;
@@ -3132,7 +3133,7 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
-            // frmPersonelDetails
+            // FrmPersonelDetails
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.Appearance.BackColor = System.Drawing.Color.White;

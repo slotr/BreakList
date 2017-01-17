@@ -1,6 +1,6 @@
 ﻿namespace Break_List.Forms.Counts
 {
-    partial class frmInitiator
+    partial class FrmInitiator
     {
         /// <summary>
         /// Required designer variable.
@@ -86,7 +86,7 @@
             this.Controls.Add(this.dateEdit1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmInitiator";
+            this.Name = "FrmInitiator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmInitiator";
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
@@ -97,10 +97,9 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        public DevExpress.XtraEditors.DateEdit dateEdit1;
     }
 }

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Break_List
+namespace Break_List.Class
 {
     public static class PivotClass
     {
@@ -15,22 +13,24 @@ namespace Break_List
       Expression<Func<T, TRow>> rowSelector,
       Func<IEnumerable<T>, TData> dataSelector)
         {
-            DataTable table = new DataTable();
+            var table = new DataTable();
             var rowName = ((MemberExpression)rowSelector.Body).Member.Name;
             table.Columns.Add(new DataColumn(rowName));
-            var columns = source.Select(columnSelector).Distinct();
+            var enumerable = source as T[] ?? source.ToArray();
+            var columns = enumerable.Select(columnSelector).Distinct();
 
-            foreach (var column in columns)
+            var enumerable1 = columns as TColumn[] ?? columns.ToArray();
+            foreach (var column in enumerable1)
                 table.Columns.Add(new DataColumn(column.ToString()));
 
-            var rows = source.GroupBy(rowSelector.Compile())
+            var rows = enumerable.GroupBy(rowSelector.Compile())
                              .Select(rowGroup => new
                              {
-                                 Key = rowGroup.Key,
-                                 Values = columns.GroupJoin(
+                                 rowGroup.Key,
+                                 Values = enumerable1.GroupJoin(
                                      rowGroup,
                                      c => c,
-                                     r => columnSelector(r),
+                                     columnSelector,
                                      (c, columnGroup) => dataSelector(columnGroup))
                              });
 

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Break_List.Properties;
@@ -15,20 +9,20 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace Break_List.Forms.Personel
 {
-    public partial class frmEgitimler : XtraForm
+    public partial class FrmEgitimler : XtraForm
     {
-        public frmEgitimler()
+        public FrmEgitimler()
         {
             InitializeComponent();
-            getDepartment();
+            GetDepartment();
         }
 
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bringNamesbyDepartment();
+            BringNamesbyDepartment();
         }
 
-        void getDepartment()
+        void GetDepartment()
         {
             var connectionString = Settings.Default.livegameConnectionString2;
             using (MySqlConnection cnn = new MySqlConnection(connectionString))
@@ -43,10 +37,10 @@ namespace Break_List.Forms.Personel
                 {
                     da.Fill(dt);
 
-                    foreach (DataRow Row in dt.Rows)
+                    foreach (DataRow row in dt.Rows)
                     {
 
-                        comboBoxEdit1.Properties.Items.Add(Row["DepartmentName"]);
+                        comboBoxEdit1.Properties.Items.Add(row["DepartmentName"]);
 
                     }
 
@@ -57,7 +51,7 @@ namespace Break_List.Forms.Personel
             }
         }
 
-        void bringNamesbyDepartment()
+        void BringNamesbyDepartment()
         {
             using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
@@ -66,7 +60,7 @@ namespace Break_List.Forms.Personel
                     CommandType = CommandType.StoredProcedure
                 })
                 {
-                    string dep = comboBoxEdit1.EditValue.ToString(); ;
+                    string dep = comboBoxEdit1.EditValue.ToString(); 
                     mySqlCommand.Parameters.Add(new MySqlParameter("_department", dep));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
@@ -84,16 +78,15 @@ namespace Break_List.Forms.Personel
 
         private void gridView2_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            GridColumn Column = e.Column;
+            GridColumn column = e.Column;
             int rowid;
-            string personelName;
-            if(Column == gridColumn1)
+            if(column == gridColumn1)
             {
               rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
-                personelName = (string)((GridView)sender).GetRowCellValue(e.RowHandle, "personel");
-              using (frmEgitimGirisi frmEgitimGirisi = new frmEgitimGirisi())
+                var personelName = (string)((GridView)sender).GetRowCellValue(e.RowHandle, "personel");
+              using (FrmEgitimGirisi frmEgitimGirisi = new FrmEgitimGirisi())
                 {
-                    frmEgitimGirisi.personelID = rowid;
+                    frmEgitimGirisi.PersonelId = rowid;
                     frmEgitimGirisi.lblPersonel.Text = personelName;
                     DialogResult dr = frmEgitimGirisi.ShowDialog();
                     if (dr == DialogResult.OK)
@@ -104,7 +97,7 @@ namespace Break_List.Forms.Personel
                     
                 }
             }
-            if (Column == personel)
+            if (column == personel)
             {
                 rowid = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
                 using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))

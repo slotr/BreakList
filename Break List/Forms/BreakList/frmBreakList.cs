@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Data;
-using System.Diagnostics;
+using System.Data.Common;
 using System.Drawing;
 using System.Windows.Forms;
 using Break_List.Properties;
 using DevExpress.Data;
+using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraScheduler;
 using DevExpress.XtraScheduler.Drawing;
 using MySql.Data.MySqlClient;
 using PopupMenuShowingEventArgs = DevExpress.XtraScheduler.PopupMenuShowingEventArgs;
+using TimeScaleFixedInterval = Break_List.Class.TimeScaleFixedInterval;
 
 
 namespace Break_List.Forms.BreakList
 {
-    public partial class FrmBreakList : XtraForm
+    public partial class FrmBreakList : RibbonForm
     {
         private readonly TimeSpan _minTime = new TimeSpan(0, 0, 0);
-        
+
 
         public FrmBreakList()
         {
@@ -43,7 +46,7 @@ namespace Break_List.Forms.BreakList
             {
                 scales.Clear();
                 //scales.Add(new TimeScaleFixedInterval(TimeSpan.FromDays(1), tsStart, MaxTime));
-                scales.Add(new TimeScaleFixedInterval(TimeSpan.FromHours(1), _minTime, MaxTime));
+                //scales.Add(new TimeScaleFixedInterval(TimeSpan.FromHours(1), _minTime, MaxTime));
                 scales.Add(new TimeScaleFixedInterval(TimeSpan.FromMinutes(20), _minTime, MaxTime));
                 schedulerControl.LimitInterval.Start = OperationDate;
                 schedulerControl.LimitInterval.End = EndDate;
@@ -59,7 +62,7 @@ namespace Break_List.Forms.BreakList
         }
 
         public string DepartmentNameFromMainForm { get; set; }
-
+        public string UserFullName { get; set; }
         public DateTime OperationDate { get; set; }
         public DateTime EndDate { get; set; }
 
@@ -80,9 +83,33 @@ namespace Break_List.Forms.BreakList
             appointmentsTableAdapter.Update(livegameDataSet1);
             livegameDataSet1.AcceptChanges();
             appointmentsTableAdapter.Fill(livegameDataSet1.appointments);
+            //if (!panelRight.Visible) return;
+            //SpBreakListSumAnlik();
+            //gridView2.Columns[0].Width = 150;
         }
 
+        //void SpBreakListSumAnlik()
+        //{
+        //    using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+        //    {
+        //        var cmd = new MySqlCommand("spBreakListSumAnlik;", conn) { CommandType = CommandType.StoredProcedure };
+        //        cmd.Parameters.Add(new MySqlParameter("DepartmentName", DepartmentNameFromMainForm));
+        //        cmd.Parameters.Add(new MySqlParameter("StartDate", OperationDate));
+        //        conn.Open();
+        //        using (var adapter = new MySqlDataAdapter())
+        //        {
+        //            var dt = new DataTable();
+        //            adapter.SelectCommand = cmd;
+        //            {
+        //                adapter.Fill(dt);
+        //                //gridControl1.DataSource = dt;
 
+        //            }
+        //        }
+        //        conn.Close();
+        //        conn.Dispose();
+        //    }
+        //}
         private void GetNames() // Break LIst Isimlerini Getiriyor.
         {
             using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
@@ -184,15 +211,16 @@ namespace Break_List.Forms.BreakList
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Ribbon.MdiMergeStyle = RibbonMdiMergeStyle.OnlyWhenMaximized;
             schedulerControl.MouseWheel += schedulerControl_MouseWheel;
-            appointmentsTableAdapter.Fill(livegameDataSet1.appointments);
             GetNames();
             GetNamesGelecek();
+            gridViewPers.Columns[2].Width = 8;
             if (DepartmentNameFromMainForm != "Live Game")
             {
                 GetBolgeler();
-                btnMasalar.Visible = false;
-                btnYenile.Visible = false;
+                btnMasalar.Visibility = BarItemVisibility.Never;
+                btnYenile.Visibility = BarItemVisibility.Never;
                 //gridView1.Columns["logismosno"].Visible = false;
             }
             else
@@ -200,7 +228,9 @@ namespace Break_List.Forms.BreakList
                 GetTables();
                 gridView1.Columns["No"].SortOrder = ColumnSortOrder.Ascending;
                 gridView1.Columns["logismosno"].Visible = false;
+                gridView1.Columns["Game"].Visible = false;
             }
+            appointmentsTableAdapter.Fill(livegameDataSet1.appointments);
         }
 
         private void schedulerControl_MouseWheel(object sender, MouseEventArgs e) // Mouse asagi yukari hareket ediyor.
@@ -212,9 +242,7 @@ namespace Break_List.Forms.BreakList
                 schedulerControl.ActiveView.FirstVisibleResourceIndex++;
         }
 
-      
 
-        
         private void schedulerControl_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             e.Menu.Items.Clear();
@@ -226,43 +254,39 @@ namespace Break_List.Forms.BreakList
                 e.Menu.Items.Clear();
                 ResourceId = (int) hi.ViewInfo.Resource.Id;
                 ResourceName = hi.ViewInfo.Resource.Caption;
-                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Bitir", EveGonder, image: imageList1.Images[1]));
-                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Geri Gönder", GeriGonder, image: imageList1.Images[2]));
+                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Bitir", EveGonder, imageList1.Images[1]));
+                e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Geri Gönder", GeriGonder, imageList1.Images[2]));
             }
 
             if (hi.HitTest == SchedulerHitTest.Cell)
                 if (schedulerControl.SelectedAppointments.Count == 1)
                 {
-                    
                     e.Menu.Items.Clear();
-                    e.Menu.Items.Add(new SchedulerMenuItem("İşaretle", Isaretle,image:imageList1.Images[0]));
+                    e.Menu.Items.Add(new SchedulerMenuItem("İşaretle", Isaretle, imageList1.Images[0]));
                     e.Menu.Items.Add(new SchedulerMenuItem("İşareti Kaldır", IsaretiKaldir));
-                    
-                    e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
-                        GoToNow, image: imageList1.Images[3]));
 
+                    e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
+                        GoToNow, imageList1.Images[3]));
                 }
-            
-            else
-            {
-                e.Menu.Items.Clear();
-                 e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
-                        GoToNow, image: imageList1.Images[3]));
-            }
+
+                else
+                {
+                    e.Menu.Items.Clear();
+                    e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
+                        GoToNow, imageList1.Images[3]));
+                }
             if (hi.HitTest == SchedulerHitTest.TimeScaleHeader)
             {
                 e.Menu.Items.Clear();
-               
             }
-           
         }
 
-     
-      
+
         private void GoToNow(object sender, EventArgs e)
         {
-            var tTime = new TimeInterval { Start = DateTime.Now };
-            schedulerControl.TimelineView.GotoTimeInterval(tTime);}
+            var tTime = new TimeInterval {Start = DateTime.Now};
+            schedulerControl.TimelineView.GotoTimeInterval(tTime);
+        }
 
         public void GeriGonder(object sender, EventArgs e)
         {
@@ -280,7 +304,14 @@ namespace Break_List.Forms.BreakList
                     cmd.Parameters.Add(new MySqlParameter("operationDate", OperationDate));
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    conn.Close();
+                    try
+                    {
+                        conn.Close();
+                    }
+                    catch (DbException dbException)
+                    {
+                        MessageBox.Show(dbException.ToString(), @"Database Problemi");
+                    }
                 }
 
                 GetNames();
@@ -308,7 +339,14 @@ namespace Break_List.Forms.BreakList
                     cmd.Parameters.Add(new MySqlParameter("operationDate", OperationDate));
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    conn.Close();
+                    try
+                    {
+                        conn.Close();
+                    }
+                    catch (DbException dbException)
+                    {
+                        MessageBox.Show(dbException.ToString(), @"Database Problemi");
+                    }
                 }
                 GetNames();
             }
@@ -344,26 +382,7 @@ namespace Break_List.Forms.BreakList
         }
 
 
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            if (DepartmentNameFromMainForm == "Live Game")
-            {
-                GetTables();
-                gridView1.Columns["No"].SortOrder = ColumnSortOrder.Ascending;
-            }
-            if (DepartmentNameFromMainForm == "F&B")
-                GetBolgeler();
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            using (var form = new frmMasalar())
-            {
-                var dr = form.ShowDialog();
-                if (dr == DialogResult.OK)
-                    GetTables();
-            }
-        }
+     
 
         private void schedulerControl_CustomDrawResourceHeader(object sender, CustomDrawObjectEventArgs e)
         {
@@ -374,19 +393,18 @@ namespace Break_List.Forms.BreakList
 
             if (header.Resource.CustomFields["Position"].Equals("Dealer"))
                 header.Appearance.HeaderCaption.ForeColor = Color.Blue;
-            
-
         }
 
         private void schedulerControl_InitAppointmentDisplayText(object sender, AppointmentDisplayTextEventArgs e)
         {
-            e.Text = e.Appointment.Location;}
+            e.Text = e.Appointment.Location;
+        }
 
         private void schedulerStorage1_AppointmentDeleting(object sender, PersistentObjectCancelEventArgs e)
         {
             if (DepartmentNameFromMainForm == "Live Game")
             {
-                var apt = (Appointment)e.Object;
+                var apt = (Appointment) e.Object;
                 LocationData = apt.Location;
                 SubjectData = apt.Subject;
                 LogismosNo = apt.CustomFields["Logismosno"].ToString();
@@ -405,38 +423,34 @@ namespace Break_List.Forms.BreakList
             }
             else
             {
-                var apt = (Appointment)e.Object;
-                LocationData = apt.Location;
-                SubjectData = apt.Subject;
-                
-                var sourceTable = gridMasa.DataSource as DataTable;
-                if (sourceTable == null) return;
-                var row = sourceTable.NewRow();
-                if (DepartmentNameFromMainForm != "Live Game")
-                    if (SubjectData != "BREAK")
-                    {
-                        row["Bolge"] = SubjectData;
-                        row["bolge2"] = LocationData;
-                        sourceTable.Rows.Add(row);
-                    }
+                //var apt = (Appointment)e.Object;
+                //LocationData = apt.Location;
+                //SubjectData = apt.Subject;
+
+                //var sourceTable = gridMasa.DataSource as DataTable;
+                //if (sourceTable == null) return;
+                //var row = sourceTable.NewRow();
+                //if (DepartmentNameFromMainForm != "Live Game")
+                //    if (SubjectData != "BREAK")
+                //    {
+                //        row["Bolge"] = SubjectData;
+                //        row["bolge2"] = LocationData;
+                //        sourceTable.Rows.Add(row);
+                //    }
             }
-               
-            
         }
 
-        
-       
+        #region Break Ekleniyor
 
         private void schedulerControl_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             SchedulerHitInfo hi = schedulerControl.ActiveView.ViewInfo.CalcHitInfo(e.Location, false);
             if (hi.HitTest == SchedulerHitTest.Cell) // Eger bos alana tiklanirsa
             {
-                
                 TimeInterval interval = hi.ViewInfo.Interval;
                 string resource = hi.ViewInfo.Resource.Id.ToString();
-                DateTime StartTime = interval.Start;
-                DateTime EndTime = interval.End;
+                DateTime startTime = interval.Start;
+                DateTime endTime = interval.End;
                 var selection = gridView1.GetSelectedRows();
 
                 var count = selection.Length;
@@ -447,49 +461,49 @@ namespace Break_List.Forms.BreakList
 
                     if (DepartmentNameFromMainForm == "Live Game")
                     {
-                        var subject = (string)gridView1.GetRowCellValue(rowIndex, "Game");
-                        var location = (string)gridView1.GetRowCellValue(rowIndex, "No");
-                        var logismosno = (string)gridView1.GetRowCellValue(rowIndex, "logismosno");
+                        var subject = (string) gridView1.GetRowCellValue(rowIndex, "Game");
+                        var location = (string) gridView1.GetRowCellValue(rowIndex, "No");
+                        var logismosno = (string) gridView1.GetRowCellValue(rowIndex, "logismosno");
 
                         apt.Subject = subject;
                         apt.Location = location;
                         apt.ResourceId = resource;
-                        apt.Start = StartTime;
-                        apt.End = EndTime;
+                        apt.Start = startTime;
+                        apt.End = endTime;
                         apt.CustomFields["Department"] = DepartmentNameFromMainForm;
                         apt.CustomFields["ActualShiftDate"] = OperationDate;
                         apt.CustomFields["Logismosno"] = logismosno;
-                        apt.Duration = TimeSpan.FromMinutes(20);
+                        apt.CustomFields["User"] = UserFullName;apt.Duration = TimeSpan.FromMinutes(20);
                         schedulerStorage1.Appointments.Add(apt);
                         schedulerControl.Storage.RefreshData();
-                        if(subject != "BREAK")
+                        if (subject != "BREAK")
                         {
                             DeleteSelectedRows(gridView1);
-                            schedulerControl.AppointmentViewInfoCustomizing += schedulerControl_AppointmentViewInfoCustomizing;
+                            schedulerControl.AppointmentViewInfoCustomizing +=
+                                schedulerControl_AppointmentViewInfoCustomizing;
                         }
-                        
                     }
                     else
                     {
-                        var subject = (string)gridView1.GetRowCellValue(rowIndex, "Bolge");
-                        var location = (string)gridView1.GetRowCellValue(rowIndex, "bolge2");
+                        var subject = (string) gridView1.GetRowCellValue(rowIndex, "Bolge");
+                        var location = (string) gridView1.GetRowCellValue(rowIndex, "bolge2");
                         apt.Subject = subject;
                         apt.Location = location;
                         apt.ResourceId = resource;
-                        apt.Start = StartTime;
-                        apt.End = EndTime;
+                        apt.Start = startTime;
+                        apt.End = endTime;
                         apt.CustomFields["Department"] = DepartmentNameFromMainForm;
                         apt.CustomFields["ActualShiftDate"] = OperationDate;
                         apt.Duration = TimeSpan.FromMinutes(20);
                         schedulerStorage1.Appointments.Add(apt);
                         schedulerControl.Storage.RefreshData();
-                        
                     }
                 }
             }
-            
         }
-        
+
+        #endregion
+
         private void gridViewPers_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             var column = e.Column;
@@ -509,9 +523,74 @@ namespace Break_List.Forms.BreakList
             GetNames();
         }
 
-        private void simpleButton3_Click(object sender, EventArgs e)
+
+        private void schedulerControl_AppointmentViewInfoCustomizing(object sender,
+            AppointmentViewInfoCustomizingEventArgs e)
+        {
+            //var oldBounds = e.ViewInfo.Bounds;
+            //e.ViewInfo.Bounds = new Rectangle(oldBounds.Location.X, oldBounds.Location.Y, oldBounds.Width - 2,
+            //    oldBounds.Height);
+        }
+
+        private void schedulerControl_CustomDrawTimeCell(object sender, CustomDrawObjectEventArgs e)
+        {
+            var selectionBarCell = e.ObjectInfo as SelectionBarCell;
+            if (selectionBarCell == null) return;
+            var cell = selectionBarCell;
+
+
+            e.DrawDefault();
+            var breakerCount = CountBreakers(cell.Interval);
+            var rect1 = new Rectangle(cell.Bounds.X, cell.Bounds.Y, cell.Bounds.Width, cell.Bounds.Height / 1);
+            e.Graphics.FillRectangle(new SolidBrush(Color.White), rect1);
+            e.Graphics.DrawRectangle(Pens.Lavender, rect1);
+            e.Graphics.DrawString("B: " + breakerCount, cell.Appearance.Font, new SolidBrush(Color.Black), rect1);
+            e.Handled = true;
+        }
+
+        private int CountBreakers(TimeInterval visTime)
+        {
+            var col = schedulerControl.ActiveView.GetAppointments().FindAll(
+                apt => (apt.Location.Contains("/")) && (visTime.Contains(new TimeInterval(apt.Start, apt.End))));
+            return col.Count;
+        }
+
+        private int CountTables(TimeInterval visTime)
+        {
+            var col = schedulerControl.ActiveView.GetAppointments().FindAll(
+                apt => (apt.Location != "/") && (visTime.Contains(new TimeInterval(apt.Start, apt.End))));
+            return col.Count;
+        }
+
+        private void schedulerControl_CustomDrawAppointment(object sender, CustomDrawObjectEventArgs e)
         {
             
+
+        }
+
+        private void Yenile_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (DepartmentNameFromMainForm == "Live Game")
+            {
+                GetTables();
+                gridView1.Columns["No"].SortOrder = ColumnSortOrder.Ascending;
+            }
+            if (DepartmentNameFromMainForm == "F&B")
+                GetBolgeler();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (var form = new FrmMasalar())
+            {
+                var dr = form.ShowDialog();
+                if (dr == DialogResult.OK)
+                    GetTables();
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
             var dialogResult = XtraMessageBox.Show("Yeni Gune Gecmek istediginizden Emin misiniz", "Dikkat",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             switch (dialogResult)
@@ -521,7 +600,10 @@ namespace Break_List.Forms.BreakList
                     {
                         try
                         {
-                            var cmd = new MySqlCommand("spBitir;", conn) {CommandType = CommandType.StoredProcedure};
+                            var cmd = new MySqlCommand("spBitirBreakList;", conn)
+                            {
+                                CommandType = CommandType.StoredProcedure
+                            };
                             cmd.Parameters.Add(new MySqlParameter("departmentName", DepartmentNameFromMainForm));
                             cmd.Parameters.Add(new MySqlParameter("operationDate", OperationDate));
                             conn.Open();
@@ -529,21 +611,14 @@ namespace Break_List.Forms.BreakList
                             conn.Close();
                             conn.Dispose();
                         }
+                        // ReSharper disable once CatchAllClause
                         catch (Exception ex)
                         {
                             XtraMessageBox.Show(ex.ToString());
                         }
                         finally
                         {
-                            // Get the parameters/arguments passed to program if any
-                            var arguments = string.Empty;
-                            var args = Environment.GetCommandLineArgs();
-                            for (var i = 1; i < args.Length; i++) // args[0] is always exe path/filename
-                                arguments += args[i] + " ";
-
-                            // Restart current application, with same arguments/parameters
-                            Application.Exit();
-                            Process.Start(Application.ExecutablePath, arguments);
+                            Close();
                         }
                     }
                     break;
@@ -562,70 +637,12 @@ namespace Break_List.Forms.BreakList
                     break;
                 case DialogResult.Ignore:
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-        
-        private void schedulerControl_AppointmentViewInfoCustomizing(object sender, AppointmentViewInfoCustomizingEventArgs e)
-        {
-            if (e.ViewInfo.Appointment.Subject.Contains("AR"))
-            {
-                e.ViewInfo.Appointment.LabelKey = 2;
-
-            }
-            if (e.ViewInfo.Appointment.Subject.Contains("BJ"))
-            {
-                e.ViewInfo.Appointment.LabelKey = 3;
-
-            }
-            if (e.ViewInfo.Appointment.Subject.Contains("NP"))
-            {
-                e.ViewInfo.Appointment.LabelKey = 8;
-
-            }
-            if (e.ViewInfo.Appointment.Subject.Contains("RP"))
-            {
-                e.ViewInfo.Appointment.LabelKey = 9;
-
-            }
+                }
         }
 
-        private void schedulerControl_CustomDrawTimeCell(object sender, CustomDrawObjectEventArgs e)
+        private void FrmBreakList_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (e.ObjectInfo is SelectionBarCell)
-            {
-                SelectionBarCell cell = e.ObjectInfo as SelectionBarCell;
-                
-                
-                e.DrawDefault();
-                int breakerCount = CountBreakers(cell, cell.Interval);
-                Rectangle rect1 = new Rectangle(cell.Bounds.X, cell.Bounds.Y, cell.Bounds.Width, cell.Bounds.Height/2);
-                e.Graphics.FillRectangle(new SolidBrush(Color.White), rect1);
-                e.Graphics.DrawRectangle(Pens.Lavender, rect1);
-                e.Graphics.DrawString("B: "+breakerCount, cell.Appearance.Font, new SolidBrush(Color.Black), rect1);
-
-
-                int tableCount = CountTables(cell, cell.Interval);
-                Rectangle rect2 = new Rectangle(cell.Bounds.X, cell.Bounds.Y + cell.Bounds.Height / 2, cell.Bounds.Width, cell.Bounds.Height / 2);
-                e.Graphics.FillRectangle(new SolidBrush(Color.Lavender), rect2);
-                e.Graphics.DrawRectangle(Pens.Fuchsia, rect2);
-                e.Graphics.DrawString("T: " + tableCount, cell.Appearance.Font, new SolidBrush(Color.Black), rect2);
-                e.Handled = true;
-            }
-        }
-        private int CountBreakers(SelectionBarCell rh, TimeInterval visTime)
-        {
-            AppointmentBaseCollection col = schedulerControl.ActiveView.GetAppointments().FindAll(delegate (Appointment apt) { return (apt.Location.Contains("/")) && (visTime.Contains(new TimeInterval(apt.Start, apt.End))); });
-            return col.Count;
-
-
-        }
-        private int CountTables(SelectionBarCell rh, TimeInterval visTime)
-        {
-            
-            AppointmentBaseCollection col = schedulerControl.ActiveView.GetAppointments().FindAll(delegate (Appointment apt) { return (apt.Location != "/") && (visTime.Contains(new TimeInterval(apt.Start, apt.End))); });
-            return col.Count;
+          
         }
     }
 }

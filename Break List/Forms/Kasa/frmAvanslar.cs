@@ -1,25 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 
 namespace Break_List.Forms.Kasa
 {
-    public partial class frmAvanslar : XtraForm
+    public partial class FrmAvanslar : XtraForm
     {
-        public string personelID { get; set; }
-        public string avansTipi { get; set; }
-        public Boolean flag { get; set; }
-        public string userName { get; set; }
-        public frmAvanslar()
+        public string PersonelId { get; set; }
+        public string AvansTipi { get; set; }
+        public Boolean Flag { get; set; }
+        public string UserName { get; set; }
+        public FrmAvanslar()
         {
             InitializeComponent();
         }
@@ -31,7 +24,7 @@ namespace Break_List.Forms.Kasa
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (flag == true)
+            if (Flag)
             {
                 using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
                 {
@@ -41,12 +34,12 @@ namespace Break_List.Forms.Kasa
                     })
                     {
                         DateTime tarih = Convert.ToDateTime(dateEdit1.EditValue);
-                        int _personelID = Convert.ToInt32(personelID);
-                        string isleyen = userName;
-                        decimal tipavansi = Convert.ToDecimal(textEdit1.Text.ToString());
+                        int personelId = Convert.ToInt32(PersonelId);
+                        string isleyen = UserName;
+                        decimal tipavansi = Convert.ToDecimal(textEdit1.Text);
                         
                         
-                        mySqlCommand.Parameters.Add(new MySqlParameter("resourceID", _personelID));
+                        mySqlCommand.Parameters.Add(new MySqlParameter("resourceID", personelId));
                         mySqlCommand.Parameters.Add(new MySqlParameter("isleyen", isleyen));
                         mySqlCommand.Parameters.Add(new MySqlParameter("tarih", tarih));
                         mySqlCommand.Parameters.Add(new MySqlParameter("tipavansi", tipavansi));
@@ -68,12 +61,12 @@ namespace Break_List.Forms.Kasa
                     })
                     {
                         DateTime tarih = Convert.ToDateTime(dateEdit1.EditValue);
-                        int _personelID = Convert.ToInt32(personelID);
-                        string isleyen = userName;
-                        decimal tipavansi = Convert.ToDecimal(textEdit1.Text.ToString());
+                        int personelId = Convert.ToInt32(PersonelId);
+                        string isleyen = UserName;
+                        decimal tipavansi = Convert.ToDecimal(textEdit1.Text);
 
 
-                        mySqlCommand.Parameters.Add(new MySqlParameter("resourceID", _personelID));
+                        mySqlCommand.Parameters.Add(new MySqlParameter("resourceID", personelId));
                         mySqlCommand.Parameters.Add(new MySqlParameter("isleyen", isleyen));
                         mySqlCommand.Parameters.Add(new MySqlParameter("tarih", tarih));
                         mySqlCommand.Parameters.Add(new MySqlParameter("tipavansi", tipavansi));
