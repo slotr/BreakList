@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Windows.Forms;
+using Break_List.Class;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
-using Oracle.ManagedDataAccess.Client;
 
 namespace Break_List.Forms.Turnuva
 {
@@ -14,26 +13,56 @@ namespace Break_List.Forms.Turnuva
             InitializeComponent();
         }
         public DateTime KatilimTarihi { get; set; }
+        public string KatilimciId;
         private void frmKatilimcics_Load(object sender, EventArgs e)
         {
             
         }
         public string TurnuvaAdi { get; set; }
-        private const string ConString = "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
+        public string TurnuvaId { get; set; }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            using (var conn = new MySqlConnection(ConString))
+            if (simpleButton1.Text == @"OK")
             {
-                using (var cmd = new MySqlCommand("spTurnuva_new_player;", conn)
+                using (var conn = DbConnection.Con)
+                {
+                    using (var cmd = new MySqlCommand("spTurnuva_new_player;", conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("p_player", txtPlayer.Text));
+                        cmd.Parameters.Add(new MySqlParameter("p_turnuva", TurnuvaAdi));
+                        cmd.Parameters.Add(new MySqlParameter("p_masa", txtMasa.Text));
+                        cmd.Parameters.Add(new MySqlParameter("p_timestamp", DateTime.Now));
+                        cmd.Parameters.Add(new MySqlParameter("p_katilim_tarihi", KatilimTarihi));
+                        cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", TurnuvaId));
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        conn.Dispose();
+                        Close();
+                    }
+                }
+            }
+            else
+            {
+                UpdateClient();
+            }
+        }
+
+        private void UpdateClient()
+        {
+            using (var conn = DbConnection.Con)
+            {
+                using (var cmd = new MySqlCommand("spTurnuva_Player_Update;", conn)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
-                    cmd.Parameters.Add(new MySqlParameter("p_player", txtPlayer.Text));
-                    cmd.Parameters.Add(new MySqlParameter("p_turnuva", TurnuvaAdi));
+                    cmd.Parameters.Add(new MySqlParameter("p_adi", txtPlayer.Text));
                     cmd.Parameters.Add(new MySqlParameter("p_masa", txtMasa.Text));
-                    cmd.Parameters.Add(new MySqlParameter("p_timestamp", DateTime.Now));
-                    cmd.Parameters.Add(new MySqlParameter("p_katilim_tarihi", KatilimTarihi));
+                    cmd.Parameters.Add(new MySqlParameter("p_player_id", KatilimciId));
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();

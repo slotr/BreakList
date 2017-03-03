@@ -13,7 +13,7 @@ namespace Break_List.Forms.Personel
         {
             
             spCalismaIzinTakibiTableAdapter.Fill(livegameDataSet1.spCalismaIzinTakibi);
-            
+            schedulerControl1.Start = DateTime.Today;
         }
     }
     

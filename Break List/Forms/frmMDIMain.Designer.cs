@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMdiMain));
+            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
+            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation2 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
+            this.dashboardGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnDashboard = new DevExpress.XtraBars.BarButtonItem();
+            this.groupBreakList = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnBreak = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEskiBreak = new DevExpress.XtraBars.BarButtonItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.backstageViewControl1 = new DevExpress.XtraBars.Ribbon.BackstageViewControl();
             this.backstageViewClientControl2 = new DevExpress.XtraBars.Ribbon.BackstageViewClientControl();
@@ -60,7 +67,6 @@
             this.backstageViewItemSeparator3 = new DevExpress.XtraBars.Ribbon.BackstageViewItemSeparator();
             this.backstageViewButtonItem3 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
             this.backstageViewButtonItem4 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
-            this.btnBreak = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.btnStaffList = new DevExpress.XtraBars.BarButtonItem();
             this.btnAddPersonel = new DevExpress.XtraBars.BarButtonItem();
@@ -81,7 +87,6 @@
             this.btnOnayaDusenler = new DevExpress.XtraBars.BarButtonItem();
             this.btnPersonelCount = new DevExpress.XtraBars.BarButtonItem();
             this.btnEgitim = new DevExpress.XtraBars.BarButtonItem();
-            this.btnEskiBreak = new DevExpress.XtraBars.BarButtonItem();
             this.btnProsedur = new DevExpress.XtraBars.BarButtonItem();
             this.btnYeniProsedur = new DevExpress.XtraBars.BarButtonItem();
             this.btnGroup = new DevExpress.XtraBars.BarButtonItem();
@@ -91,7 +96,6 @@
             this.btnAudit = new DevExpress.XtraBars.BarButtonItem();
             this.btnEnvanter = new DevExpress.XtraBars.BarButtonItem();
             this.btnTeknikListe = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDashboard = new DevExpress.XtraBars.BarButtonItem();
             this.btnLGturnuva = new DevExpress.XtraBars.BarButtonItem();
             this.btnPrintTip = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -99,39 +103,40 @@
             this.btnMasaBazlı = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.btnAnaliz = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDailyResultToBoss = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSigara = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSlotMusteriDetay = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTurnuvaRapor = new DevExpress.XtraBars.BarButtonItem();
             this.rbnDashBoard = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonBreak = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonRoster = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupRota = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPersonel = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupPersonel = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonRapor = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.GrupRaporlamalar = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.pagegroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnMasa = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupIstatistik = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnPageKasa = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupKasa = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnOnaylar = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.GroupOnay = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnProsedur = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupProsedur = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnCount = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupCount = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnEnvanter = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupEnvanter = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnTeknik = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupGorev = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnTurnuvalar = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rbnEgitimler = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupTurnuva = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnAdmin = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.pgUserAdministration = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupUserAdministration = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupAudit = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbnSM = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.groupSlot = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tabFormDefaultManager1 = new DevExpress.XtraBars.TabFormDefaultManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -151,6 +156,7 @@
             this.barDockControl9 = new DevExpress.XtraBars.BarDockControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.backstageViewButtonItem2 = new DevExpress.XtraBars.Ribbon.BackstageViewButtonItem();
+            this.btnVacations = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backstageViewControl1)).BeginInit();
             this.backstageViewControl1.SuspendLayout();
@@ -167,10 +173,53 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager3)).BeginInit();
             this.SuspendLayout();
             // 
+            // dashboardGroup
+            // 
+            this.dashboardGroup.ItemLinks.Add(this.btnDashboard);
+            this.dashboardGroup.Name = "dashboardGroup";
+            this.dashboardGroup.Text = "dashboardGroup";
+            // 
+            // btnDashboard
+            // 
+            this.btnDashboard.Caption = "Dashboard";
+            this.btnDashboard.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Glyph")));
+            this.btnDashboard.Id = 6;
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDashboard_ItemClick);
+            // 
+            // groupBreakList
+            // 
+            this.groupBreakList.ItemLinks.Add(this.btnBreak, "BE");
+            this.groupBreakList.ItemLinks.Add(this.btnEskiBreak);
+            this.groupBreakList.KeyTip = "BR";
+            this.groupBreakList.Name = "groupBreakList";
+            this.groupBreakList.Text = "Break List Operations";
+            // 
+            // btnBreak
+            // 
+            this.btnBreak.Caption = "Break List";
+            this.btnBreak.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
+            this.btnBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBreak.Glyph")));
+            this.btnBreak.Id = 4;
+            this.btnBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBreak.LargeGlyph")));
+            this.btnBreak.Name = "btnBreak";
+            this.btnBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // btnEskiBreak
+            // 
+            this.btnEskiBreak.Caption = "Eski Break List";
+            this.btnEskiBreak.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
+            this.btnEskiBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.Glyph")));
+            this.btnEskiBreak.Id = 15;
+            this.btnEskiBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.LargeGlyph")));
+            this.btnEskiBreak.Name = "btnEskiBreak";
+            this.btnEskiBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEskiBreak_ItemClick);
+            // 
             // ribbon
             // 
             this.ribbon.ApplicationButtonDropDownControl = this.backstageViewControl1;
             this.ribbon.ApplicationIcon = ((System.Drawing.Bitmap)(resources.GetObject("ribbon.ApplicationIcon")));
+            this.ribbon.AutoSizeItems = true;
             this.ribbon.Categories.AddRange(new DevExpress.XtraBars.BarManagerCategory[] {
             new DevExpress.XtraBars.BarManagerCategory("Personel", new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a")),
             new DevExpress.XtraBars.BarManagerCategory("GM", new System.Guid("36cca08c-efd2-4a13-87a3-b8c647dec142")),
@@ -218,11 +267,20 @@
             this.btnPlayerStats,
             this.btnMasaBazlı,
             this.barButtonItem3,
-            this.btnAnaliz});
+            this.btnAnaliz,
+            this.btnDailyResultToBoss,
+            this.btnSigara,
+            this.btnSlotMusteriDetay,
+            this.btnTurnuvaRapor,
+            this.btnVacations});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 15;
+            this.ribbon.Margin = new System.Windows.Forms.Padding(1);
+            this.ribbon.MaxItemId = 6;
+            this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.OnlyWhenMaximized;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsTouch.AffectOnlyRibbon = true;
+            this.ribbon.OptionsTouch.ShowTouchUISelectorInQAT = true;
+            this.ribbon.OptionsTouch.ShowTouchUISelectorVisibilityItemInQATMenu = true;
             this.ribbon.OptionsTouch.TouchUI = DevExpress.Utils.DefaultBoolean.True;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rbnDashBoard,
@@ -238,11 +296,13 @@
             this.rbnEnvanter,
             this.rbnTeknik,
             this.rbnTurnuvalar,
-            this.rbnEgitimler,
             this.rbnAdmin,
             this.rbnSM});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
-            this.ribbon.Size = new System.Drawing.Size(1227, 101);
+            this.ribbon.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbon.ShowItemCaptionsInQAT = true;
+            this.ribbon.ShowPageHeadersInFormCaption = DevExpress.Utils.DefaultBoolean.True;
+            this.ribbon.Size = new System.Drawing.Size(1600, 72);
             // 
             // backstageViewControl1
             // 
@@ -497,15 +557,6 @@
             this.backstageViewButtonItem4.Name = "backstageViewButtonItem4";
             this.backstageViewButtonItem4.ItemClick += new DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler(this.backstageViewButtonItem4_ItemClick);
             // 
-            // btnBreak
-            // 
-            this.btnBreak.Caption = "Break List";
-            this.btnBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBreak.Glyph")));
-            this.btnBreak.Id = 4;
-            this.btnBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBreak.LargeGlyph")));
-            this.btnBreak.Name = "btnBreak";
-            this.btnBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
             // barStaticItem1
             // 
             this.barStaticItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
@@ -517,6 +568,7 @@
             // btnStaffList
             // 
             this.btnStaffList.Caption = "Personel Listesi";
+            this.btnStaffList.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnStaffList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStaffList.Glyph")));
             this.btnStaffList.Id = 6;
             this.btnStaffList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnStaffList.LargeGlyph")));
@@ -526,6 +578,7 @@
             // btnAddPersonel
             // 
             this.btnAddPersonel.Caption = "Yeni Personel Ekle";
+            this.btnAddPersonel.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnAddPersonel.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAddPersonel.Glyph")));
             this.btnAddPersonel.Id = 7;
             this.btnAddPersonel.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnAddPersonel.LargeGlyph")));
@@ -535,6 +588,7 @@
             // btnRoster
             // 
             this.btnRoster.Caption = "Rota";
+            this.btnRoster.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnRoster.Glyph = ((System.Drawing.Image)(resources.GetObject("btnRoster.Glyph")));
             this.btnRoster.Id = 8;
             this.btnRoster.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnRoster.LargeGlyph")));
@@ -606,6 +660,7 @@
             // btnPrintRota
             // 
             this.btnPrintRota.Caption = "Rotayı Yazdır";
+            this.btnPrintRota.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnPrintRota.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPrintRota.Glyph")));
             this.btnPrintRota.Id = 5;
             this.btnPrintRota.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPrintRota.LargeGlyph")));
@@ -615,6 +670,7 @@
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Saatler";
+            this.barButtonItem1.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 6;
             this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
@@ -624,6 +680,7 @@
             // btnIstenAyrilmis
             // 
             this.btnIstenAyrilmis.Caption = "İşten Ayrılan Personel";
+            this.btnIstenAyrilmis.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnIstenAyrilmis.Glyph = ((System.Drawing.Image)(resources.GetObject("btnIstenAyrilmis.Glyph")));
             this.btnIstenAyrilmis.Id = 8;
             this.btnIstenAyrilmis.Name = "btnIstenAyrilmis";
@@ -632,6 +689,7 @@
             // btnCalismaIzni
             // 
             this.btnCalismaIzni.Caption = "Çalışma İzni Takibi";
+            this.btnCalismaIzni.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnCalismaIzni.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCalismaIzni.Glyph")));
             this.btnCalismaIzni.Id = 9;
             this.btnCalismaIzni.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnCalismaIzni.LargeGlyph")));
@@ -659,6 +717,7 @@
             // btnPersonelCount
             // 
             this.btnPersonelCount.Caption = "Personel Count";
+            this.btnPersonelCount.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnPersonelCount.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPersonelCount.Glyph")));
             this.btnPersonelCount.Id = 13;
             this.btnPersonelCount.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPersonelCount.LargeGlyph")));
@@ -668,20 +727,12 @@
             // btnEgitim
             // 
             this.btnEgitim.Caption = "Eğitim Girişleri";
+            this.btnEgitim.CategoryGuid = new System.Guid("4d54f65b-b76c-4f2c-a036-fa0f1db1cb4a");
             this.btnEgitim.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.Glyph")));
             this.btnEgitim.Id = 14;
             this.btnEgitim.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEgitim.LargeGlyph")));
             this.btnEgitim.Name = "btnEgitim";
             this.btnEgitim.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEgitim_ItemClick);
-            // 
-            // btnEskiBreak
-            // 
-            this.btnEskiBreak.Caption = "Eski Break List";
-            this.btnEskiBreak.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.Glyph")));
-            this.btnEskiBreak.Id = 15;
-            this.btnEskiBreak.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEskiBreak.LargeGlyph")));
-            this.btnEskiBreak.Name = "btnEskiBreak";
-            this.btnEskiBreak.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEskiBreak_ItemClick);
             // 
             // btnProsedur
             // 
@@ -726,6 +777,7 @@
             // btnCount
             // 
             this.btnCount.Caption = "Count";
+            this.btnCount.CategoryGuid = new System.Guid("df8b195a-bf7d-4d8c-9b1e-412fbf41a107");
             this.btnCount.Glyph = ((System.Drawing.Image)(resources.GetObject("btnCount.Glyph")));
             this.btnCount.Id = 2;
             this.btnCount.Name = "btnCount";
@@ -754,14 +806,6 @@
             this.btnTeknikListe.Name = "btnTeknikListe";
             this.btnTeknikListe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTeknikListe_ItemClick);
             // 
-            // btnDashboard
-            // 
-            this.btnDashboard.Caption = "Dashboard";
-            this.btnDashboard.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Glyph")));
-            this.btnDashboard.Id = 6;
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDashboard_ItemClick);
-            // 
             // btnLGturnuva
             // 
             this.btnLGturnuva.Caption = "LG Turnuva";
@@ -773,6 +817,7 @@
             // btnPrintTip
             // 
             this.btnPrintTip.Caption = "Print Tip Count";
+            this.btnPrintTip.CategoryGuid = new System.Guid("df8b195a-bf7d-4d8c-9b1e-412fbf41a107");
             this.btnPrintTip.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPrintTip.Glyph")));
             this.btnPrintTip.Id = 8;
             this.btnPrintTip.Name = "btnPrintTip";
@@ -781,6 +826,7 @@
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Print Count";
+            this.barButtonItem2.CategoryGuid = new System.Guid("df8b195a-bf7d-4d8c-9b1e-412fbf41a107");
             this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 9;
             this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
@@ -790,6 +836,7 @@
             // btnPlayerStats
             // 
             this.btnPlayerStats.Caption = "Oyuncu Bazlı";
+            this.btnPlayerStats.CategoryGuid = new System.Guid("df8b195a-bf7d-4d8c-9b1e-412fbf41a107");
             this.btnPlayerStats.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPlayerStats.Glyph")));
             this.btnPlayerStats.Id = 10;
             this.btnPlayerStats.Name = "btnPlayerStats";
@@ -798,6 +845,7 @@
             // btnMasaBazlı
             // 
             this.btnMasaBazlı.Caption = "Masa Bazlı";
+            this.btnMasaBazlı.CategoryGuid = new System.Guid("df8b195a-bf7d-4d8c-9b1e-412fbf41a107");
             this.btnMasaBazlı.Glyph = global::Break_List.Properties.Resources.BlackJackGreen00_jpgc455e3c4_0ec2_4d78_a5e6_ac33e3fadd18Original;
             this.btnMasaBazlı.Id = 11;
             this.btnMasaBazlı.Name = "btnMasaBazlı";
@@ -815,261 +863,291 @@
             // btnAnaliz
             // 
             this.btnAnaliz.Caption = "Slot Performans Analiz";
+            this.btnAnaliz.CategoryGuid = new System.Guid("74c81124-1f67-4d04-8370-054021e17998");
             this.btnAnaliz.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAnaliz.Glyph")));
             this.btnAnaliz.Id = 14;
             this.btnAnaliz.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnAnaliz.LargeGlyph")));
             this.btnAnaliz.Name = "btnAnaliz";
             this.btnAnaliz.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAnaliz_ItemClick);
             // 
+            // btnDailyResultToBoss
+            // 
+            this.btnDailyResultToBoss.Caption = "Daily Result To Boss";
+            this.btnDailyResultToBoss.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDailyResultToBoss.Glyph")));
+            this.btnDailyResultToBoss.Id = 1;
+            this.btnDailyResultToBoss.Name = "btnDailyResultToBoss";
+            this.btnDailyResultToBoss.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDailyResultToBoss_ItemClick);
+            // 
+            // btnSigara
+            // 
+            this.btnSigara.Caption = "Sigara Takip";
+            this.btnSigara.Glyph = global::Break_List.Properties.Resources.smoking;
+            this.btnSigara.Id = 2;
+            this.btnSigara.Name = "btnSigara";
+            this.btnSigara.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSigara_ItemClick);
+            // 
+            // btnSlotMusteriDetay
+            // 
+            this.btnSlotMusteriDetay.Caption = "Detay Raporu";
+            this.btnSlotMusteriDetay.Glyph = ((System.Drawing.Image)(resources.GetObject("btnSlotMusteriDetay.Glyph")));
+            this.btnSlotMusteriDetay.Id = 3;
+            this.btnSlotMusteriDetay.Name = "btnSlotMusteriDetay";
+            this.btnSlotMusteriDetay.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSlotMusteriDetay_ItemClick);
+            // 
+            // btnTurnuvaRapor
+            // 
+            this.btnTurnuvaRapor.Caption = "Rapor";
+            this.btnTurnuvaRapor.Glyph = ((System.Drawing.Image)(resources.GetObject("btnTurnuvaRapor.Glyph")));
+            this.btnTurnuvaRapor.Id = 4;
+            this.btnTurnuvaRapor.Name = "btnTurnuvaRapor";
+            this.btnTurnuvaRapor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTurnuvaRapor_ItemClick);
+            // 
             // rbnDashBoard
             // 
             this.rbnDashBoard.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup13});
+            this.dashboardGroup});
             this.rbnDashBoard.Name = "rbnDashBoard";
+            reduceOperation1.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable;
+            reduceOperation1.Group = this.dashboardGroup;
+            reduceOperation1.ItemLinkIndex = 0;
+            reduceOperation1.ItemLinksCount = 0;
+            reduceOperation1.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.CollapseGroup;
+            this.rbnDashBoard.ReduceOperations.Add(reduceOperation1);
             this.rbnDashBoard.Text = "Dashboard";
-            // 
-            // ribbonPageGroup13
-            // 
-            this.ribbonPageGroup13.ItemLinks.Add(this.btnDashboard);
-            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
-            this.ribbonPageGroup13.Text = "ribbonPageGroup13";
             // 
             // ribbonBreak
             // 
             this.ribbonBreak.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.groupBreakList});
             this.ribbonBreak.KeyTip = "B";
             this.ribbonBreak.Name = "ribbonBreak";
+            reduceOperation2.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.UntilAvailable;
+            reduceOperation2.Group = this.groupBreakList;
+            reduceOperation2.ItemLinkIndex = 0;
+            reduceOperation2.ItemLinksCount = 0;
+            reduceOperation2.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.CollapseGroup;
+            this.ribbonBreak.ReduceOperations.Add(reduceOperation2);
             this.ribbonBreak.Text = "Break List";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnBreak, "BE");
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnEskiBreak);
-            this.ribbonPageGroup1.KeyTip = "BR";
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Break List Operations";
             // 
             // ribbonRoster
             // 
             this.ribbonRoster.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3});
+            this.groupRota});
             this.ribbonRoster.KeyTip = "RO";
             this.ribbonRoster.Name = "ribbonRoster";
             this.ribbonRoster.Text = "Rota";
             // 
-            // ribbonPageGroup3
+            // groupRota
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnRoster, "RT");
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnPrintRota, true, "RA");
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnGroup, "G");
-            this.ribbonPageGroup3.KeyTip = "RO";
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Roster";
+            this.groupRota.ItemLinks.Add(this.btnRoster, "RT");
+            this.groupRota.ItemLinks.Add(this.btnPrintRota, true, "RA");
+            this.groupRota.ItemLinks.Add(this.btnGroup, "G");
+            this.groupRota.KeyTip = "RO";
+            this.groupRota.Name = "groupRota";
+            this.groupRota.Text = "Roster";
             // 
             // ribbonPersonel
             // 
             this.ribbonPersonel.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
+            this.groupPersonel});
             this.ribbonPersonel.KeyTip = "PE";
             this.ribbonPersonel.Name = "ribbonPersonel";
             this.ribbonPersonel.Text = "Personel";
             // 
-            // ribbonPageGroup2
+            // groupPersonel
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnStaffList, "PR");
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnAddPersonel, true, "Y");
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnIstenAyrilmis, "İ");
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnCalismaIzni, "Ç");
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnPersonelCount, "PS");
-            this.ribbonPageGroup2.KeyTip = "PE";
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Personnel";
+            this.groupPersonel.ItemLinks.Add(this.btnStaffList, "PR");
+            this.groupPersonel.ItemLinks.Add(this.btnAddPersonel, true, "Y");
+            this.groupPersonel.ItemLinks.Add(this.btnVacations);
+            this.groupPersonel.ItemLinks.Add(this.btnIstenAyrilmis, "İ");
+            this.groupPersonel.ItemLinks.Add(this.btnCalismaIzni, "Ç");
+            this.groupPersonel.ItemLinks.Add(this.btnPersonelCount, "PS");
+            this.groupPersonel.ItemLinks.Add(this.btnEgitim);
+            this.groupPersonel.KeyTip = "PE";
+            this.groupPersonel.Name = "groupPersonel";
+            this.groupPersonel.Text = "Personnel";
             // 
             // ribbonRapor
             // 
             this.ribbonRapor.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup4});
+            this.GrupRaporlamalar,
+            this.pagegroup});
             this.ribbonRapor.KeyTip = "RA";
             this.ribbonRapor.Name = "ribbonRapor";
             this.ribbonRapor.Text = "Raporlamalar";
             // 
-            // ribbonPageGroup4
+            // GrupRaporlamalar
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1, "S");
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnDetayliRapor, "D");
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnEskiBreak);
-            this.ribbonPageGroup4.KeyTip = "C";
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Calisma Saatleri";
+            this.GrupRaporlamalar.ItemLinks.Add(this.barButtonItem1, "S");
+            this.GrupRaporlamalar.ItemLinks.Add(this.btnDetayliRapor, "D");
+            this.GrupRaporlamalar.ItemLinks.Add(this.btnEskiBreak);
+            this.GrupRaporlamalar.KeyTip = "C";
+            this.GrupRaporlamalar.Name = "GrupRaporlamalar";
+            this.GrupRaporlamalar.Text = "Calisma Saatleri";
+            // 
+            // pagegroup
+            // 
+            this.pagegroup.Glyph = ((System.Drawing.Image)(resources.GetObject("pagegroup.Glyph")));
+            this.pagegroup.ItemLinks.Add(this.btnDailyResultToBoss);
+            this.pagegroup.Name = "pagegroup";
+            this.pagegroup.Text = "ribbonPageGroup1";
             // 
             // rbnMasa
             // 
             this.rbnMasa.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup15});
+            this.groupIstatistik});
+            this.rbnMasa.KeyTip = "I";
             this.rbnMasa.Name = "rbnMasa";
             this.rbnMasa.Text = "İstatistik";
             // 
-            // ribbonPageGroup15
+            // groupIstatistik
             // 
-            this.ribbonPageGroup15.ItemLinks.Add(this.btnMasaBazlı);
-            this.ribbonPageGroup15.ItemLinks.Add(this.btnPlayerStats);
-            this.ribbonPageGroup15.Name = "ribbonPageGroup15";
-            this.ribbonPageGroup15.Text = "ribbonPageGroup15";
+            this.groupIstatistik.ItemLinks.Add(this.btnMasaBazlı);
+            this.groupIstatistik.ItemLinks.Add(this.btnPlayerStats);
+            this.groupIstatistik.Name = "groupIstatistik";
+            this.groupIstatistik.Text = "ribbonPageGroup15";
             // 
             // rbnPageKasa
             // 
             this.rbnPageKasa.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup5});
+            this.groupKasa});
             this.rbnPageKasa.KeyTip = "K";
             this.rbnPageKasa.Name = "rbnPageKasa";
             this.rbnPageKasa.Text = "Kasa";
             // 
-            // ribbonPageGroup5
+            // groupKasa
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnTip, "T");
-            this.ribbonPageGroup5.KeyTip = "K";
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "Kasiyer Operasyonlari";
+            this.groupKasa.ItemLinks.Add(this.btnTip, "T");
+            this.groupKasa.KeyTip = "K";
+            this.groupKasa.Name = "groupKasa";
+            this.groupKasa.Text = "Kasiyer Operasyonlari";
             // 
             // rbnOnaylar
             // 
             this.rbnOnaylar.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup6});
+            this.GroupOnay});
             this.rbnOnaylar.KeyTip = "O";
             this.rbnOnaylar.Name = "rbnOnaylar";
             this.rbnOnaylar.Text = "Onay";
             // 
-            // ribbonPageGroup6
+            // GroupOnay
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnOnayaDusenler, "O");
-            this.ribbonPageGroup6.KeyTip = "R";
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "ribbonPageGroup6";
+            this.GroupOnay.ItemLinks.Add(this.btnOnayaDusenler, "O");
+            this.GroupOnay.KeyTip = "R";
+            this.GroupOnay.Name = "GroupOnay";
+            this.GroupOnay.Text = "ribbonPageGroup6";
             // 
             // rbnProsedur
             // 
             this.rbnProsedur.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup8});
+            this.groupProsedur});
             this.rbnProsedur.KeyTip = "PR";
             this.rbnProsedur.Name = "rbnProsedur";
             this.rbnProsedur.Text = "Prosedurler";
             // 
-            // ribbonPageGroup8
+            // groupProsedur
             // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnProsedur, "P");
-            this.ribbonPageGroup8.ItemLinks.Add(this.btnYeniProsedur, "Y");
-            this.ribbonPageGroup8.KeyTip = "R";
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
+            this.groupProsedur.ItemLinks.Add(this.btnProsedur, "P");
+            this.groupProsedur.ItemLinks.Add(this.btnYeniProsedur, "Y");
+            this.groupProsedur.KeyTip = "R";
+            this.groupProsedur.Name = "groupProsedur";
+            this.groupProsedur.Text = "ribbonPageGroup8";
             // 
             // rbnCount
             // 
             this.rbnCount.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup9});
+            this.groupCount});
             this.rbnCount.Name = "rbnCount";
             this.rbnCount.Text = "Count";
             // 
-            // ribbonPageGroup9
+            // groupCount
             // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.btnCount);
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonPageGroup9.ItemLinks.Add(this.btnPrintTip);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
+            this.groupCount.ItemLinks.Add(this.btnCount);
+            this.groupCount.ItemLinks.Add(this.barButtonItem2);
+            this.groupCount.ItemLinks.Add(this.btnPrintTip);
+            this.groupCount.Name = "groupCount";
+            this.groupCount.Text = "ribbonPageGroup9";
             // 
             // rbnEnvanter
             // 
             this.rbnEnvanter.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup10});
+            this.groupEnvanter});
             this.rbnEnvanter.Name = "rbnEnvanter";
             this.rbnEnvanter.Text = "Envanter";
             // 
-            // ribbonPageGroup10
+            // groupEnvanter
             // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.btnEnvanter);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            this.ribbonPageGroup10.Text = "ribbonPageGroup10";
+            this.groupEnvanter.ItemLinks.Add(this.btnEnvanter);
+            this.groupEnvanter.Name = "groupEnvanter";
+            this.groupEnvanter.Text = "ribbonPageGroup10";
             // 
             // rbnTeknik
             // 
             this.rbnTeknik.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup11});
+            this.groupGorev});
             this.rbnTeknik.Name = "rbnTeknik";
             this.rbnTeknik.Text = "Görev Yönetimi";
             // 
-            // ribbonPageGroup11
+            // groupGorev
             // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.btnTeknikListe);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            this.ribbonPageGroup11.Text = "ribbonPageGroup11";
+            this.groupGorev.ItemLinks.Add(this.btnTeknikListe);
+            this.groupGorev.ItemLinks.Add(this.btnSigara);
+            this.groupGorev.Name = "groupGorev";
+            this.groupGorev.Text = "ribbonPageGroup11";
             // 
             // rbnTurnuvalar
             // 
             this.rbnTurnuvalar.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup14});
+            this.groupTurnuva});
             this.rbnTurnuvalar.Name = "rbnTurnuvalar";
             this.rbnTurnuvalar.Text = "Turnuvalar";
             // 
-            // ribbonPageGroup14
+            // groupTurnuva
             // 
-            this.ribbonPageGroup14.ItemLinks.Add(this.btnLGturnuva);
-            this.ribbonPageGroup14.Name = "ribbonPageGroup14";
-            this.ribbonPageGroup14.Text = "ribbonPageGroup14";
-            // 
-            // rbnEgitimler
-            // 
-            this.rbnEgitimler.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup7});
-            this.rbnEgitimler.KeyTip = "E";
-            this.rbnEgitimler.Name = "rbnEgitimler";
-            this.rbnEgitimler.Text = "Eğitimler";
-            // 
-            // ribbonPageGroup7
-            // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.btnEgitim, "E");
-            this.ribbonPageGroup7.KeyTip = "R";
-            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            this.ribbonPageGroup7.Text = "ribbonPageGroup7";
+            this.groupTurnuva.ItemLinks.Add(this.btnLGturnuva);
+            this.groupTurnuva.ItemLinks.Add(this.btnTurnuvaRapor);
+            this.groupTurnuva.Name = "groupTurnuva";
+            this.groupTurnuva.Text = "ribbonPageGroup14";
             // 
             // rbnAdmin
             // 
             this.rbnAdmin.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.pgUserAdministration,
-            this.ribbonPageGroup12});
+            this.groupUserAdministration,
+            this.groupAudit});
             this.rbnAdmin.KeyTip = "AD";
             this.rbnAdmin.Name = "rbnAdmin";
             this.rbnAdmin.Text = "Admin";
             // 
-            // pgUserAdministration
+            // groupUserAdministration
             // 
-            this.pgUserAdministration.ItemLinks.Add(this.btnUsers, "K");
-            this.pgUserAdministration.ItemLinks.Add(this.btnDepartments, true, "D");
-            this.pgUserAdministration.ItemLinks.Add(this.btnPositions, true, "P");
-            this.pgUserAdministration.ItemLinks.Add(this.btnPermissions, "Y");
-            this.pgUserAdministration.KeyTip = "U";
-            this.pgUserAdministration.Name = "pgUserAdministration";
-            this.pgUserAdministration.Text = "User Administration";
+            this.groupUserAdministration.ItemLinks.Add(this.btnUsers, "K");
+            this.groupUserAdministration.ItemLinks.Add(this.btnDepartments, true, "D");
+            this.groupUserAdministration.ItemLinks.Add(this.btnPositions, true, "P");
+            this.groupUserAdministration.ItemLinks.Add(this.btnPermissions, "Y");
+            this.groupUserAdministration.KeyTip = "U";
+            this.groupUserAdministration.Name = "groupUserAdministration";
+            this.groupUserAdministration.Text = "User Administration";
             // 
-            // ribbonPageGroup12
+            // groupAudit
             // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.btnAudit);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            this.ribbonPageGroup12.Text = "Audit";
+            this.groupAudit.ItemLinks.Add(this.btnAudit);
+            this.groupAudit.Name = "groupAudit";
+            this.groupAudit.Text = "Audit";
             // 
             // rbnSM
             // 
             this.rbnSM.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup16});
+            this.groupSlot});
             this.rbnSM.Name = "rbnSM";
             this.rbnSM.Text = "Slot";
             // 
-            // ribbonPageGroup16
+            // groupSlot
             // 
-            this.ribbonPageGroup16.ItemLinks.Add(this.barButtonItem3);
-            this.ribbonPageGroup16.ItemLinks.Add(this.btnAnaliz);
-            this.ribbonPageGroup16.Name = "ribbonPageGroup16";
-            this.ribbonPageGroup16.Text = "ribbonPageGroup16";
+            this.groupSlot.ItemLinks.Add(this.barButtonItem3);
+            this.groupSlot.ItemLinks.Add(this.btnAnaliz);
+            this.groupSlot.ItemLinks.Add(this.btnSlotMusteriDetay);
+            this.groupSlot.Name = "groupSlot";
+            this.groupSlot.Text = "ribbonPageGroup16";
             // 
             // tabFormDefaultManager1
             // 
@@ -1085,14 +1163,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1227, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1600, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 872);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1227, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1600, 0);
             // 
             // barDockControlLeft
             // 
@@ -1105,7 +1183,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1227, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1600, 0);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 872);
             // 
             // tabFormDefaultManager2
@@ -1122,14 +1200,14 @@
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl1.Size = new System.Drawing.Size(1227, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1600, 0);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl2.Location = new System.Drawing.Point(0, 872);
-            this.barDockControl2.Size = new System.Drawing.Size(1227, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1600, 0);
             // 
             // barDockControl3
             // 
@@ -1142,7 +1220,7 @@
             // 
             this.barDockControl5.CausesValidation = false;
             this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl5.Location = new System.Drawing.Point(1227, 0);
+            this.barDockControl5.Location = new System.Drawing.Point(1600, 0);
             this.barDockControl5.Size = new System.Drawing.Size(0, 872);
             // 
             // barDockControl4
@@ -1169,14 +1247,14 @@
             this.barDockControl6.CausesValidation = false;
             this.barDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl6.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl6.Size = new System.Drawing.Size(1227, 0);
+            this.barDockControl6.Size = new System.Drawing.Size(1600, 0);
             // 
             // barDockControl7
             // 
             this.barDockControl7.CausesValidation = false;
             this.barDockControl7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl7.Location = new System.Drawing.Point(0, 872);
-            this.barDockControl7.Size = new System.Drawing.Size(1227, 0);
+            this.barDockControl7.Size = new System.Drawing.Size(1600, 0);
             // 
             // barDockControl8
             // 
@@ -1189,7 +1267,7 @@
             // 
             this.barDockControl9.CausesValidation = false;
             this.barDockControl9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl9.Location = new System.Drawing.Point(1227, 0);
+            this.barDockControl9.Location = new System.Drawing.Point(1600, 0);
             this.barDockControl9.Size = new System.Drawing.Size(0, 872);
             // 
             // labelControl2
@@ -1208,11 +1286,19 @@
             // 
             this.backstageViewButtonItem2.Name = "backstageViewButtonItem2";
             // 
+            // btnVacations
+            // 
+            this.btnVacations.Caption = "Yillik Izinler";
+            this.btnVacations.Glyph = ((System.Drawing.Image)(resources.GetObject("btnVacations.Glyph")));
+            this.btnVacations.Id = 5;
+            this.btnVacations.Name = "btnVacations";
+            this.btnVacations.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnVacations_ItemClick);
+            // 
             // FrmMdiMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 872);
+            this.ClientSize = new System.Drawing.Size(1600, 872);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.ribbon);
             this.Controls.Add(this.backstageViewControl1);
@@ -1234,6 +1320,7 @@
             this.Name = "FrmMdiMain";
             this.Ribbon = this.ribbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ayarlar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMDIMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMDIMain_Load);
@@ -1263,7 +1350,7 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonBreak;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupBreakList;
         private DevExpress.XtraBars.TabFormDefaultManager tabFormDefaultManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -1273,7 +1360,7 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarButtonItem btnStaffList;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPersonel;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupPersonel;
         private DevExpress.XtraBars.BarButtonItem btnAddPersonel;
         private DevExpress.XtraBars.TabFormDefaultManager tabFormDefaultManager2;
         private DevExpress.XtraBars.BarDockControl barDockControl1;
@@ -1283,7 +1370,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private DevExpress.XtraBars.BarButtonItem btnRoster;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonRoster;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupRota;
         private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
         private DevExpress.XtraBars.BarStaticItem stOperationDate;
         private DevExpress.XtraBars.BarHeaderItem department;
@@ -1291,22 +1378,22 @@
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarButtonItem btnUsers;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnAdmin;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pgUserAdministration;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupUserAdministration;
         private DevExpress.XtraBars.BarButtonItem btnDepartments;
         private DevExpress.XtraBars.BarButtonItem btnPositions;
         private DevExpress.XtraBars.BarButtonItem btnPermissions;
         private DevExpress.XtraBars.BarButtonItem btnPrintRota;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonRapor;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup GrupRaporlamalar;
         private DevExpress.XtraBars.BarButtonItem btnIstenAyrilmis;
         private DevExpress.XtraBars.BarButtonItem btnCalismaIzni;
         private DevExpress.XtraBars.BarButtonItem btnTip;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnPageKasa;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupKasa;
         private DevExpress.XtraBars.BarButtonItem btnOnayaDusenler;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnOnaylar;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup GroupOnay;
         private DevExpress.XtraBars.TabFormDefaultManager tabFormDefaultManager3;
         private DevExpress.XtraBars.BarDockControl barDockControl6;
         private DevExpress.XtraBars.BarDockControl barDockControl7;
@@ -1314,12 +1401,10 @@
         private DevExpress.XtraBars.BarDockControl barDockControl9;
         private DevExpress.XtraBars.BarButtonItem btnPersonelCount;
         private DevExpress.XtraBars.BarButtonItem btnEgitim;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rbnEgitimler;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem btnEskiBreak;
         private DevExpress.XtraBars.BarButtonItem btnProsedur;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnProsedur;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupProsedur;
         private DevExpress.XtraBars.BarButtonItem btnYeniProsedur;
         private DevExpress.XtraBars.BarButtonItem btnGroup;
         private DevExpress.XtraBars.BarButtonItem btnDetayliRapor;
@@ -1352,35 +1437,41 @@
         private DevExpress.XtraBars.Ribbon.BackstageViewButtonItem backstageViewButtonItem4;
         private DevExpress.XtraBars.BarButtonItem btnCount;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnCount;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupCount;
         private DevExpress.XtraBars.BarButtonItem btnAudit;
         private DevExpress.XtraBars.BarButtonItem btnEnvanter;
         private DevExpress.XtraBars.BarButtonItem btnTeknikListe;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupAudit;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnEnvanter;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupEnvanter;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnTeknik;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupGorev;
         private DevExpress.XtraBars.BarButtonItem btnDashboard;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnDashBoard;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup dashboardGroup;
         private DevExpress.XtraBars.BarButtonItem btnLGturnuva;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnTurnuvalar;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupTurnuva;
         private DevExpress.XtraBars.BarButtonItem btnPrintTip;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem btnPlayerStats;
         private DevExpress.XtraBars.BarButtonItem btnMasaBazlı;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnMasa;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup15;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupIstatistik;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.Ribbon.RecentControlItemControlContainer recentControlItemControlContainer2;
         private DevExpress.XtraBars.Ribbon.RecentControlContainerItem recentControlContainerItem2;
         private DevExpress.XtraEditors.LabelControl lblVersion;
         private DevExpress.XtraBars.BarButtonItem btnAnaliz;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbnSM;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup16;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup groupSlot;
         private DevExpress.XtraBars.Ribbon.RecentButtonItem btnsifre;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraBars.BarButtonItem btnDailyResultToBoss;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup pagegroup;
+        private DevExpress.XtraBars.BarButtonItem btnSigara;
+        private DevExpress.XtraBars.BarButtonItem btnSlotMusteriDetay;
+        private DevExpress.XtraBars.BarButtonItem btnTurnuvaRapor;
+        private DevExpress.XtraBars.BarButtonItem btnVacations;
     }
 }

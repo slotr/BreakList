@@ -30,9 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTurnuva));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.dtTurnuva = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -50,12 +51,13 @@
             this.colMasa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHareket = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colSil = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEdit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.gridTop = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colClient = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colScore = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -77,6 +79,11 @@
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.final_score = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colgedit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.colgSil = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtTurnuva.Properties.CalendarTimeProperties)).BeginInit();
@@ -90,22 +97,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit5)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.simpleButton4);
+            this.groupControl1.Controls.Add(this.simpleButton3);
             this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Controls.Add(this.checkButton1);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.dtTurnuva);
             this.groupControl1.Controls.Add(this.panelControl2);
@@ -118,6 +128,34 @@
             this.groupControl1.Size = new System.Drawing.Size(1063, 223);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "İşlemler";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.Location = new System.Drawing.Point(260, 126);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(141, 47);
+            this.simpleButton4.TabIndex = 10;
+            this.simpleButton4.Text = "Round Toplamı";
+            this.simpleButton4.ToolTip = "Turnuva raound Toplamını gösterir.";
+            this.simpleButton4.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Exclamation;
+            this.simpleButton4.ToolTipTitle = "Round Toplamı";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.Location = new System.Drawing.Point(119, 126);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(135, 47);
+            this.simpleButton3.TabIndex = 10;
+            this.simpleButton3.Tag = "Turnuva Geneli";
+            this.simpleButton3.Text = "Turn. Geneli";
+            this.simpleButton3.ToolTip = "TUrnuva Genelini Gösterir";
+            this.simpleButton3.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Application;
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton1
             // 
@@ -137,34 +175,20 @@
             this.labelControl1.Appearance.Options.UseBackColor = true;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labelControl1.Appearance.Options.UseTextOptions = true;
+            this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.labelControl1.Location = new System.Drawing.Point(2, 182);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Padding = new System.Windows.Forms.Padding(5);
-            this.labelControl1.Size = new System.Drawing.Size(200, 39);
+            this.labelControl1.Size = new System.Drawing.Size(396, 39);
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "Aktif Turnuva Yok";
+            this.labelControl1.ToolTip = "Mevcut turnuvanın parametrelerini \r\nburaya tıklayarak değiştirebilirsiniz.";
+            this.labelControl1.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Warning;
+            this.labelControl1.ToolTipTitle = "Parametre Değiştir.";
             this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
-            // 
-            // checkButton1
-            // 
-            this.checkButton1.AllowAllUnchecked = true;
-            this.checkButton1.Appearance.BackColor = System.Drawing.Color.RoyalBlue;
-            this.checkButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.checkButton1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.checkButton1.Appearance.Options.UseBackColor = true;
-            this.checkButton1.Appearance.Options.UseFont = true;
-            this.checkButton1.Appearance.Options.UseForeColor = true;
-            this.checkButton1.AppearancePressed.BackColor = System.Drawing.Color.Crimson;
-            this.checkButton1.AppearancePressed.Options.UseBackColor = true;
-            this.checkButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.checkButton1.Location = new System.Drawing.Point(118, 126);
-            this.checkButton1.Name = "checkButton1";
-            this.checkButton1.Size = new System.Drawing.Size(283, 47);
-            this.checkButton1.TabIndex = 1;
-            this.checkButton1.Text = "Turnuva Genelini Göster";
-            this.checkButton1.CheckedChanged += new System.EventHandler(this.checkButton1_CheckedChanged_1);
-            this.checkButton1.Click += new System.EventHandler(this.checkButton1_Click);
             // 
             // labelControl5
             // 
@@ -183,12 +207,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtTurnuva.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtTurnuva.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            this.dtTurnuva.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.dtTurnuva.Size = new System.Drawing.Size(283, 36);
             this.dtTurnuva.TabIndex = 7;
             // 
             // panelControl2
             // 
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl2.Controls.Add(this.panelControl3);
             this.panelControl2.Controls.Add(this.tileControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelControl2.Location = new System.Drawing.Point(404, 21);
@@ -209,7 +236,7 @@
             this.tileControl1.AppearanceItem.Selected.Options.UseFont = true;
             this.tileControl1.AppearanceText.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.tileControl1.AppearanceText.Options.UseFont = true;
-            this.tileControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tileControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tileControl1.DragSize = new System.Drawing.Size(0, 0);
             this.tileControl1.ItemPadding = new System.Windows.Forms.Padding(5);
             this.tileControl1.ItemSize = 60;
@@ -218,7 +245,7 @@
             this.tileControl1.Padding = new System.Windows.Forms.Padding(3);
             this.tileControl1.RowCount = 2;
             this.tileControl1.ShowText = true;
-            this.tileControl1.Size = new System.Drawing.Size(444, 200);
+            this.tileControl1.Size = new System.Drawing.Size(235, 200);
             this.tileControl1.TabIndex = 0;
             this.tileControl1.Text = "Masalar";
             // 
@@ -239,9 +266,10 @@
             // 
             this.lblKatilimci.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblKatilimci.Appearance.Options.UseFont = true;
-            this.lblKatilimci.Location = new System.Drawing.Point(4, 136);
+            this.lblKatilimci.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblKatilimci.Location = new System.Drawing.Point(4, 131);
             this.lblKatilimci.Name = "lblKatilimci";
-            this.lblKatilimci.Size = new System.Drawing.Size(84, 16);
+            this.lblKatilimci.Size = new System.Drawing.Size(200, 29);
             this.lblKatilimci.TabIndex = 4;
             this.lblKatilimci.Text = "Katılımcı Sayısı";
             // 
@@ -249,9 +277,10 @@
             // 
             this.lblReentry.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblReentry.Appearance.Options.UseFont = true;
+            this.lblReentry.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.lblReentry.Location = new System.Drawing.Point(6, 22);
             this.lblReentry.Name = "lblReentry";
-            this.lblReentry.Size = new System.Drawing.Size(48, 16);
+            this.lblReentry.Size = new System.Drawing.Size(198, 24);
             this.lblReentry.TabIndex = 4;
             this.lblReentry.Text = "Re Entry";
             // 
@@ -259,9 +288,10 @@
             // 
             this.lblTurnTotal.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblTurnTotal.Appearance.Options.UseFont = true;
-            this.lblTurnTotal.Location = new System.Drawing.Point(4, 79);
+            this.lblTurnTotal.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblTurnTotal.Location = new System.Drawing.Point(6, 81);
             this.lblTurnTotal.Name = "lblTurnTotal";
-            this.lblTurnTotal.Size = new System.Drawing.Size(83, 16);
+            this.lblTurnTotal.Size = new System.Drawing.Size(198, 24);
             this.lblTurnTotal.TabIndex = 4;
             this.lblTurnTotal.Text = "Turnuva Totali";
             // 
@@ -303,7 +333,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupControl2.Location = new System.Drawing.Point(0, 223);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(374, 343);
+            this.groupControl2.Size = new System.Drawing.Size(401, 446);
             this.groupControl2.TabIndex = 2;
             this.groupControl2.Text = "Turnuva Katılımcıları";
             // 
@@ -314,8 +344,10 @@
             this.gridClient.MainView = this.gridView2;
             this.gridClient.Name = "gridClient";
             this.gridClient.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemButtonEdit1});
-            this.gridClient.Size = new System.Drawing.Size(370, 320);
+            this.repositoryItemButtonEdit1,
+            this.repositoryItemButtonEdit2,
+            this.repositoryItemButtonEdit3});
+            this.gridClient.Size = new System.Drawing.Size(397, 423);
             this.gridClient.TabIndex = 0;
             this.gridClient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -331,7 +363,10 @@
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colKatilimci,
             this.colMasa,
-            this.colHareket});
+            this.colHareket,
+            this.colSil,
+            this.colID,
+            this.colEdit});
             this.gridView2.GridControl = this.gridClient;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
@@ -373,70 +408,64 @@
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
+            // colSil
+            // 
+            this.colSil.Caption = "Sil";
+            this.colSil.ColumnEdit = this.repositoryItemButtonEdit2;
+            this.colSil.Name = "colSil";
+            this.colSil.Visible = true;
+            this.colSil.VisibleIndex = 3;
+            // 
+            // repositoryItemButtonEdit2
+            // 
+            this.repositoryItemButtonEdit2.AutoHeight = false;
+            this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
+            this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // colID
+            // 
+            this.colID.Caption = "id";
+            this.colID.FieldName = "id";
+            this.colID.Name = "colID";
+            // 
+            // colEdit
+            // 
+            this.colEdit.Caption = "Edit";
+            this.colEdit.ColumnEdit = this.repositoryItemButtonEdit3;
+            this.colEdit.Name = "colEdit";
+            // 
+            // repositoryItemButtonEdit3
+            // 
+            this.repositoryItemButtonEdit3.AutoHeight = false;
+            this.repositoryItemButtonEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
+            this.repositoryItemButtonEdit3.Name = "repositoryItemButtonEdit3";
+            this.repositoryItemButtonEdit3.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.panelControl3);
             this.groupControl3.Controls.Add(this.gridControl1);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(374, 223);
+            this.groupControl3.Location = new System.Drawing.Point(401, 223);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(689, 343);
+            this.groupControl3.Size = new System.Drawing.Size(662, 446);
             this.groupControl3.TabIndex = 3;
             this.groupControl3.Text = "Oyuncu Hareketleri";
             // 
             // panelControl3
             // 
-            this.panelControl3.Controls.Add(this.gridTop);
             this.panelControl3.Controls.Add(this.tableLayoutPanel1);
             this.panelControl3.Controls.Add(this.lblOyuncu);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl3.Location = new System.Drawing.Point(2, 21);
+            this.panelControl3.Location = new System.Drawing.Point(238, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(246, 320);
+            this.panelControl3.Size = new System.Drawing.Size(203, 200);
             this.panelControl3.TabIndex = 1;
-            // 
-            // gridTop
-            // 
-            this.gridTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.gridTop.Location = new System.Drawing.Point(5, 167);
-            this.gridTop.MainView = this.gridView3;
-            this.gridTop.Name = "gridTop";
-            this.gridTop.Size = new System.Drawing.Size(236, 150);
-            this.gridTop.TabIndex = 2;
-            this.gridTop.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            // 
-            // gridView3
-            // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colClient,
-            this.colScore});
-            this.gridView3.GridControl = this.gridTop;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            this.gridView3.OptionsView.ShowIndicator = false;
-            this.gridView3.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
-            // 
-            // colClient
-            // 
-            this.colClient.Caption = "Oyuncu";
-            this.colClient.FieldName = "Oyuncu";
-            this.colClient.Name = "colClient";
-            this.colClient.Visible = true;
-            this.colClient.VisibleIndex = 0;
-            // 
-            // colScore
-            // 
-            this.colScore.Caption = "Score";
-            this.colScore.FieldName = "Score";
-            this.colScore.Name = "colScore";
-            this.colScore.Visible = true;
-            this.colScore.VisibleIndex = 1;
             // 
             // tableLayoutPanel1
             // 
@@ -462,7 +491,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 125);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(199, 125);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // labelControl2
@@ -470,7 +499,7 @@
             this.labelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl2.Location = new System.Drawing.Point(3, 3);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(115, 19);
+            this.labelControl2.Size = new System.Drawing.Size(93, 19);
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Toplam Re-Entry";
             // 
@@ -479,7 +508,7 @@
             this.labelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl3.Location = new System.Drawing.Point(3, 28);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(115, 19);
+            this.labelControl3.Size = new System.Drawing.Size(93, 19);
             this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "Toplam Re-Buy";
             // 
@@ -488,7 +517,7 @@
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl4.Location = new System.Drawing.Point(3, 53);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(115, 19);
+            this.labelControl4.Size = new System.Drawing.Size(93, 19);
             this.labelControl4.TabIndex = 0;
             this.labelControl4.Text = "Re-Buy Alacak";
             // 
@@ -497,7 +526,7 @@
             this.labelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl6.Location = new System.Drawing.Point(3, 78);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(115, 19);
+            this.labelControl6.Size = new System.Drawing.Size(93, 19);
             this.labelControl6.TabIndex = 0;
             this.labelControl6.Text = "Re-Entry Alacak";
             // 
@@ -510,10 +539,10 @@
             this.lblTotReEntry.Appearance.Options.UseFont = true;
             this.lblTotReEntry.Appearance.Options.UseForeColor = true;
             this.lblTotReEntry.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotReEntry.Location = new System.Drawing.Point(124, 3);
+            this.lblTotReEntry.Location = new System.Drawing.Point(102, 3);
             this.lblTotReEntry.Name = "lblTotReEntry";
             this.lblTotReEntry.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.lblTotReEntry.Size = new System.Drawing.Size(115, 19);
+            this.lblTotReEntry.Size = new System.Drawing.Size(94, 19);
             this.lblTotReEntry.TabIndex = 0;
             this.lblTotReEntry.Text = "0";
             // 
@@ -526,10 +555,10 @@
             this.lblTotRebuy.Appearance.Options.UseFont = true;
             this.lblTotRebuy.Appearance.Options.UseForeColor = true;
             this.lblTotRebuy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotRebuy.Location = new System.Drawing.Point(124, 28);
+            this.lblTotRebuy.Location = new System.Drawing.Point(102, 28);
             this.lblTotRebuy.Name = "lblTotRebuy";
             this.lblTotRebuy.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.lblTotRebuy.Size = new System.Drawing.Size(115, 19);
+            this.lblTotRebuy.Size = new System.Drawing.Size(94, 19);
             this.lblTotRebuy.TabIndex = 0;
             this.lblTotRebuy.Text = "0";
             // 
@@ -542,10 +571,10 @@
             this.lblRebuyAlacak.Appearance.Options.UseFont = true;
             this.lblRebuyAlacak.Appearance.Options.UseForeColor = true;
             this.lblRebuyAlacak.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblRebuyAlacak.Location = new System.Drawing.Point(124, 53);
+            this.lblRebuyAlacak.Location = new System.Drawing.Point(102, 53);
             this.lblRebuyAlacak.Name = "lblRebuyAlacak";
             this.lblRebuyAlacak.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.lblRebuyAlacak.Size = new System.Drawing.Size(115, 19);
+            this.lblRebuyAlacak.Size = new System.Drawing.Size(94, 19);
             this.lblRebuyAlacak.TabIndex = 0;
             this.lblRebuyAlacak.Text = "0";
             // 
@@ -558,10 +587,10 @@
             this.lblReentryAlacak.Appearance.Options.UseFont = true;
             this.lblReentryAlacak.Appearance.Options.UseForeColor = true;
             this.lblReentryAlacak.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblReentryAlacak.Location = new System.Drawing.Point(124, 78);
+            this.lblReentryAlacak.Location = new System.Drawing.Point(102, 78);
             this.lblReentryAlacak.Name = "lblReentryAlacak";
             this.lblReentryAlacak.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
-            this.lblReentryAlacak.Size = new System.Drawing.Size(115, 19);
+            this.lblReentryAlacak.Size = new System.Drawing.Size(94, 19);
             this.lblReentryAlacak.TabIndex = 0;
             this.lblReentryAlacak.Text = "0";
             // 
@@ -572,7 +601,7 @@
             this.labelControl7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelControl7.Location = new System.Drawing.Point(3, 103);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(115, 19);
+            this.labelControl7.Size = new System.Drawing.Size(93, 19);
             this.labelControl7.TabIndex = 1;
             this.labelControl7.Text = "Score";
             // 
@@ -581,9 +610,9 @@
             this.lblScore.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblScore.Appearance.Options.UseFont = true;
             this.lblScore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblScore.Location = new System.Drawing.Point(124, 103);
+            this.lblScore.Location = new System.Drawing.Point(102, 103);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(115, 19);
+            this.lblScore.Size = new System.Drawing.Size(94, 19);
             this.lblScore.TabIndex = 2;
             this.lblScore.Text = "0";
             // 
@@ -601,19 +630,22 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(247, 21);
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(2, 21);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(440, 320);
+            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemButtonEdit4,
+            this.repositoryItemButtonEdit5});
+            this.gridControl1.Size = new System.Drawing.Size(658, 423);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.gridView1.Appearance.Row.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colTarih,
             this.colRebuy,
@@ -621,13 +653,17 @@
             this.colRebuypaid,
             this.gridColumn5,
             this.gridColumn6,
-            this.final_score});
+            this.final_score,
+            this.gridColumn1,
+            this.colgedit,
+            this.colgSil});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             this.gridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never;
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
             // colTarih
             // 
@@ -685,11 +721,49 @@
             this.final_score.Visible = true;
             this.final_score.VisibleIndex = 6;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "id";
+            this.gridColumn1.FieldName = "id";
+            this.gridColumn1.Name = "gridColumn1";
+            // 
+            // colgedit
+            // 
+            this.colgedit.Caption = "Edit";
+            this.colgedit.ColumnEdit = this.repositoryItemButtonEdit4;
+            this.colgedit.Name = "colgedit";
+            this.colgedit.Visible = true;
+            this.colgedit.VisibleIndex = 7;
+            // 
+            // repositoryItemButtonEdit4
+            // 
+            this.repositoryItemButtonEdit4.AutoHeight = false;
+            this.repositoryItemButtonEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit4.Name = "repositoryItemButtonEdit4";
+            this.repositoryItemButtonEdit4.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
+            // colgSil
+            // 
+            this.colgSil.Caption = "Sil";
+            this.colgSil.ColumnEdit = this.repositoryItemButtonEdit5;
+            this.colgSil.Name = "colgSil";
+            this.colgSil.Visible = true;
+            this.colgSil.VisibleIndex = 8;
+            // 
+            // repositoryItemButtonEdit5
+            // 
+            this.repositoryItemButtonEdit5.AutoHeight = false;
+            this.repositoryItemButtonEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.repositoryItemButtonEdit5.Name = "repositoryItemButtonEdit5";
+            this.repositoryItemButtonEdit5.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            // 
             // FrmTurnuva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1063, 566);
+            this.ClientSize = new System.Drawing.Size(1063, 669);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
@@ -707,23 +781,24 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -752,7 +827,6 @@
         private DevExpress.XtraEditors.TileControl tileControl1;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.DateEdit dtTurnuva;
-        private DevExpress.XtraEditors.CheckButton checkButton1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl lblOyuncu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -766,10 +840,6 @@
         private DevExpress.XtraEditors.LabelControl lblReentryAlacak;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl lblScore;
-        private DevExpress.XtraGrid.GridControl gridTop;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private DevExpress.XtraGrid.Columns.GridColumn colClient;
-        private DevExpress.XtraGrid.Columns.GridColumn colScore;
         private DevExpress.XtraGrid.Columns.GridColumn colTarih;
         private DevExpress.XtraGrid.Columns.GridColumn colRebuy;
         private DevExpress.XtraGrid.Columns.GridColumn colReEntry;
@@ -778,5 +848,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn final_score;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraGrid.Columns.GridColumn colSil;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn colID;
+        private DevExpress.XtraGrid.Columns.GridColumn colEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn colgedit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit4;
+        private DevExpress.XtraGrid.Columns.GridColumn colgSil;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit5;
     }
 }

@@ -121,7 +121,7 @@
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "labelControl1";
             // 
-            // frmPersonelList
+            // FrmPersonelList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,6 +133,7 @@
             this.Text = "Çalışan Personel Listesi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPersonel_Load);
+            this.Shown += new System.EventHandler(this.FrmPersonelList_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();

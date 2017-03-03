@@ -51,6 +51,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPersonelDetails));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -76,6 +77,8 @@
             this.barHeaderItem3 = new DevExpress.XtraBars.BarHeaderItem();
             this.btnOffAlacagi = new DevExpress.XtraBars.BarButtonItem();
             this.btnAlacakOde = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblEarnedVacation = new DevExpress.XtraEditors.LabelControl();
             this.lblUsedVacations = new DevExpress.XtraEditors.LabelControl();
@@ -117,14 +120,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabIzinler = new DevExpress.XtraTab.XtraTabPage();
             this.vacationgrid = new DevExpress.XtraGrid.GridControl();
-            this.spSelectVacationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colNO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIzinTipi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIzinBaslangicTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIzinBitisTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGunSayisi = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.tabOffAlacak = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -230,6 +226,8 @@
             this.layoutControlItem49 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spSelectVacationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.livegameDataSet1 = new Break_List.livegameDataSet1();
             this.labelControl = new DevExpress.XtraEditors.LabelControl();
             this.popvacation = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popMaas = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -272,6 +270,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.spSelectVacationsTableAdapter = new Break_List.livegameDataSet1TableAdapters.spSelectVacationsTableAdapter();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.popUyari = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbistenayrilma.Properties)).BeginInit();
@@ -301,8 +300,6 @@
             this.xtraTabControl1.SuspendLayout();
             this.tabIzinler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vacationgrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spSelectVacationsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.tabOffAlacak.SuspendLayout();
@@ -401,6 +398,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spSelectVacationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popvacation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popMaas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popHata)).BeginInit();
@@ -435,6 +434,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popUyari)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -520,8 +520,10 @@
             this.barButtonItem6,
             this.barHeaderItem3,
             this.btnOffAlacagi,
-            this.btnAlacakOde});
-            this.barManager1.MaxItemId = 13;
+            this.btnAlacakOde,
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 15;
             // 
             // barDockControlTop
             // 
@@ -639,6 +641,22 @@
             this.btnAlacakOde.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnAlacakOde.LargeGlyph")));
             this.btnAlacakOde.Name = "btnAlacakOde";
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Uyari Ekle";
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
+            this.barButtonItem2.Id = 13;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Uyari Sil";
+            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
+            this.barButtonItem3.Id = 14;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick_1);
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
@@ -665,81 +683,81 @@
             // 
             // lblEarnedVacation
             // 
-            this.lblEarnedVacation.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblEarnedVacation.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblEarnedVacation.Appearance.Options.UseFont = true;
             this.lblEarnedVacation.Location = new System.Drawing.Point(5, 5);
             this.lblEarnedVacation.Name = "lblEarnedVacation";
-            this.lblEarnedVacation.Size = new System.Drawing.Size(124, 16);
+            this.lblEarnedVacation.Size = new System.Drawing.Size(183, 23);
             this.lblEarnedVacation.TabIndex = 17;
             this.lblEarnedVacation.Text = "Toplam Hak ettiği İzin";
             // 
             // lblUsedVacations
             // 
-            this.lblUsedVacations.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.lblUsedVacations.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblUsedVacations.Appearance.Options.UseFont = true;
             this.lblUsedVacations.Location = new System.Drawing.Point(5, 56);
             this.lblUsedVacations.Name = "lblUsedVacations";
-            this.lblUsedVacations.Size = new System.Drawing.Size(93, 16);
+            this.lblUsedVacations.Size = new System.Drawing.Size(205, 23);
             this.lblUsedVacations.TabIndex = 13;
-            this.lblUsedVacations.Text = "Kullanılan İzinler";
+            this.lblUsedVacations.Text = "Toplam Kullanılan İzinler";
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(5, 107);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(89, 16);
+            this.labelControl1.Size = new System.Drawing.Size(201, 23);
             this.labelControl1.TabIndex = 27;
-            this.labelControl1.Text = "Kalan İzin Hakkı";
+            this.labelControl1.Text = "Toplam Kalan İzin Hakkı";
             // 
             // lblHak
             // 
-            this.lblHak.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHak.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblHak.Appearance.Options.UseFont = true;
             this.lblHak.Location = new System.Drawing.Point(350, 5);
             this.lblHak.Name = "lblHak";
-            this.lblHak.Size = new System.Drawing.Size(8, 16);
+            this.lblHak.Size = new System.Drawing.Size(13, 25);
             this.lblHak.TabIndex = 28;
             this.lblHak.Text = "0";
             // 
             // lblKul
             // 
-            this.lblKul.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKul.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblKul.Appearance.Options.UseFont = true;
             this.lblKul.Location = new System.Drawing.Point(350, 56);
             this.lblKul.Name = "lblKul";
-            this.lblKul.Size = new System.Drawing.Size(8, 16);
+            this.lblKul.Size = new System.Drawing.Size(13, 25);
             this.lblKul.TabIndex = 28;
             this.lblKul.Text = "0";
             // 
             // lblKalan
             // 
-            this.lblKalan.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblKalan.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblKalan.Appearance.Options.UseFont = true;
             this.lblKalan.Location = new System.Drawing.Point(350, 107);
             this.lblKalan.Name = "lblKalan";
-            this.lblKalan.Size = new System.Drawing.Size(8, 16);
+            this.lblKalan.Size = new System.Drawing.Size(13, 25);
             this.lblKalan.TabIndex = 28;
             this.lblKalan.Text = "0";
             // 
             // labelControl7
             // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Location = new System.Drawing.Point(5, 158);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(109, 16);
+            this.labelControl7.Size = new System.Drawing.Size(158, 23);
             this.labelControl7.TabIndex = 29;
             this.labelControl7.Text = "Toplam Off Alacağı";
             // 
             // lblOffalacagi
             // 
-            this.lblOffalacagi.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblOffalacagi.Appearance.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblOffalacagi.Appearance.Options.UseFont = true;
             this.lblOffalacagi.Location = new System.Drawing.Point(350, 158);
             this.lblOffalacagi.Name = "lblOffalacagi";
-            this.lblOffalacagi.Size = new System.Drawing.Size(8, 16);
+            this.lblOffalacagi.Size = new System.Drawing.Size(13, 25);
             this.lblOffalacagi.TabIndex = 28;
             this.lblOffalacagi.Text = "0";
             // 
@@ -1302,6 +1320,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtIzinBitis.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtIzinBitis.Properties.DisplayFormat.FormatString = "";
+            this.dtIzinBitis.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtIzinBitis.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dtIzinBitis.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtIzinBitis.Size = new System.Drawing.Size(236, 20);
@@ -1320,6 +1340,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtIzinBaslangic.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtIzinBaslangic.Properties.DisplayFormat.FormatString = "";
+            this.dtIzinBaslangic.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtIzinBaslangic.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dtIzinBaslangic.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtIzinBaslangic.Size = new System.Drawing.Size(236, 20);
@@ -1380,8 +1402,10 @@
             // 
             // vacationgrid
             // 
-            this.vacationgrid.DataSource = this.spSelectVacationsBindingSource;
             this.vacationgrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.vacationgrid.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.vacationgrid.Location = new System.Drawing.Point(0, 0);
             this.vacationgrid.MainView = this.gridView1;
             this.vacationgrid.MenuManager = this.barManager1;
@@ -1391,72 +1415,16 @@
             this.vacationgrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // spSelectVacationsBindingSource
-            // 
-            this.spSelectVacationsBindingSource.DataMember = "spSelectVacations";
-            this.spSelectVacationsBindingSource.DataSource = this.livegameDataSet1;
-            // 
-            // livegameDataSet1
-            // 
-            this.livegameDataSet1.DataSetName = "livegameDataSet1";
-            this.livegameDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // gridView1
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colNO,
-            this.colIzinTipi,
-            this.colIzinBaslangicTarihi,
-            this.colIzinBitisTarihi,
-            this.colGunSayisi});
             this.gridView1.GridControl = this.vacationgrid;
-            this.gridView1.GroupCount = 1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colIzinTipi, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.gridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridControl1_MouseDown);
-            // 
-            // colNO
-            // 
-            this.colNO.FieldName = "NO";
-            this.colNO.Name = "colNO";
-            this.colNO.Visible = true;
-            this.colNO.VisibleIndex = 0;
-            // 
-            // colIzinTipi
-            // 
-            this.colIzinTipi.FieldName = "Izin Tipi";
-            this.colIzinTipi.Name = "colIzinTipi";
-            this.colIzinTipi.Visible = true;
-            this.colIzinTipi.VisibleIndex = 1;
-            // 
-            // colIzinBaslangicTarihi
-            // 
-            this.colIzinBaslangicTarihi.FieldName = "Izin Baslangic Tarihi";
-            this.colIzinBaslangicTarihi.Name = "colIzinBaslangicTarihi";
-            this.colIzinBaslangicTarihi.Visible = true;
-            this.colIzinBaslangicTarihi.VisibleIndex = 1;
-            this.colIzinBaslangicTarihi.Width = 121;
-            // 
-            // colIzinBitisTarihi
-            // 
-            this.colIzinBitisTarihi.FieldName = "Izin Bitis Tarihi";
-            this.colIzinBitisTarihi.Name = "colIzinBitisTarihi";
-            this.colIzinBitisTarihi.Visible = true;
-            this.colIzinBitisTarihi.VisibleIndex = 2;
-            this.colIzinBitisTarihi.Width = 108;
-            // 
-            // colGunSayisi
-            // 
-            this.colGunSayisi.FieldName = "Gun Sayisi";
-            this.colGunSayisi.Name = "colGunSayisi";
-            this.colGunSayisi.Visible = true;
-            this.colGunSayisi.VisibleIndex = 3;
-            this.colGunSayisi.Width = 66;
             // 
             // panelControl3
             // 
@@ -1644,6 +1612,7 @@
             this.warningsGrid.TabIndex = 0;
             this.warningsGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
+            this.warningsGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.warningsGrid_MouseDown);
             // 
             // gridView3
             // 
@@ -2014,6 +1983,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtBirthDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtBirthDate.Properties.DisplayFormat.FormatString = "";
+            this.dtBirthDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtBirthDate.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dtBirthDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtBirthDate.Size = new System.Drawing.Size(236, 20);
@@ -2107,6 +2078,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtValidUntil.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.txtValidUntil.Properties.DisplayFormat.FormatString = "";
+            this.txtValidUntil.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtValidUntil.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtValidUntil.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txtValidUntil.Size = new System.Drawing.Size(236, 20);
@@ -2122,6 +2095,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dtStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtStartDate.Properties.DisplayFormat.FormatString = "";
+            this.dtStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtStartDate.Properties.FirstDayOfWeek = System.DayOfWeek.Tuesday;
             this.dtStartDate.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.dtStartDate.Properties.MinValue = new System.DateTime(1998, 2, 1, 0, 0, 0, 0);
@@ -2683,6 +2658,16 @@
             this.layoutControlItem32.Text = "İşten Ayrılma Sebebi:";
             this.layoutControlItem32.TextSize = new System.Drawing.Size(132, 13);
             // 
+            // spSelectVacationsBindingSource
+            // 
+            this.spSelectVacationsBindingSource.DataMember = "spSelectVacations";
+            this.spSelectVacationsBindingSource.DataSource = this.livegameDataSet1;
+            // 
+            // livegameDataSet1
+            // 
+            this.livegameDataSet1.DataSetName = "livegameDataSet1";
+            this.livegameDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // labelControl
             // 
             this.labelControl.AllowHtmlString = true;
@@ -3133,6 +3118,14 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
+            // popUyari
+            // 
+            this.popUyari.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            this.popUyari.Manager = this.barManager1;
+            this.popUyari.Name = "popUyari";
+            // 
             // FrmPersonelDetails
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -3154,6 +3147,7 @@
             this.Text = "Personel Detayları";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPersonelDetails_Load);
+            this.Shown += new System.EventHandler(this.FrmPersonelDetails_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbistenayrilma.Properties)).EndInit();
@@ -3185,8 +3179,6 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.tabIzinler.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vacationgrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spSelectVacationsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.tabOffAlacak.ResumeLayout(false);
@@ -3285,6 +3277,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem49)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spSelectVacationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popvacation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popMaas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popHata)).EndInit();
@@ -3319,6 +3313,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popUyari)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3501,11 +3496,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn id;
         private System.Windows.Forms.BindingSource spSelectVacationsBindingSource;
         private livegameDataSet1 livegameDataSet1;
-        private DevExpress.XtraGrid.Columns.GridColumn colNO;
-        private DevExpress.XtraGrid.Columns.GridColumn colIzinTipi;
-        private DevExpress.XtraGrid.Columns.GridColumn colIzinBaslangicTarihi;
-        private DevExpress.XtraGrid.Columns.GridColumn colIzinBitisTarihi;
-        private DevExpress.XtraGrid.Columns.GridColumn colGunSayisi;
         private livegameDataSet1TableAdapters.spSelectVacationsTableAdapter spSelectVacationsTableAdapter;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem57;
@@ -3541,6 +3531,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
         private DevExpress.XtraEditors.ButtonEdit txtMaas;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.PopupMenu popUyari;
     }
 
 }

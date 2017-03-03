@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Break_List.Class;
-using Break_List.Forms.Prosedur;
-using Break_List.Properties;
 using DevExpress.XtraGrid.Views.Grid;
 using MySql.Data.MySqlClient;
 
@@ -14,9 +11,7 @@ namespace Break_List.Forms.Turnuva
     public partial class FrmTurnuva : XtraForm
     {
         private readonly ClsTurnuva _turnuva = new ClsTurnuva();
-
-        private const string ConString =
-            "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
+        
 
         public FrmTurnuva()
         {
@@ -31,7 +26,6 @@ namespace Break_List.Forms.Turnuva
                 btnNewTournament.Text = @"Turnuvayı Bitir";
                 labelControl1.Text = _turnuva.TurnuvaAdi;
                 GEtTurnuvaTotals();
-                GetClassification();
             }
             else
             {
@@ -40,11 +34,6 @@ namespace Break_List.Forms.Turnuva
         }
 
         private bool TournamentActive { get; set; }
-        private int TurnuvaId { get; set; }
-        private DateTime TurnuvaTarihi { get; set; }
-
-        
-
         private static TileItem GetItem()
         {
             var item = new TileItem();
@@ -55,12 +44,10 @@ namespace Break_List.Forms.Turnuva
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                using (MySqlConnection conn = DbConnection.Con)
                 {
-                    var cmd = new MySqlCommand("spTurnuva_Masalar;", conn);
-
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new MySqlParameter("p_turnuvaID", _turnuva.TurnuvaAdi));
+                    var cmd = new MySqlCommand("spTurnuva_Masalar;", conn) {CommandType = CommandType.StoredProcedure};
+                    cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", _turnuva.TurnuvaId));
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -107,14 +94,14 @@ namespace Break_List.Forms.Turnuva
         {
             try
             {
-                using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                using (var conn = DbConnection.Con)
                 {
                     var cmd = new MySqlCommand("spTurnuva_Masalar_Date;", conn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
 
-                    cmd.Parameters.Add(new MySqlParameter("p_turnuvaID", _turnuva.TurnuvaAdi));
+                    cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", _turnuva.TurnuvaId));
                     cmd.Parameters.Add(new MySqlParameter("p_tarih", dtTurnuva.DateTime));
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -159,7 +146,7 @@ namespace Break_List.Forms.Turnuva
 
         private void LoadActiveTournament()
         {
-            using (var conn = new MySqlConnection(ConString))
+            using (var conn = DbConnection.Con)
             {
                 var cmd = new MySqlCommand("spTurnuva_Load_active_tournament;", conn)
                 {
@@ -173,8 +160,7 @@ namespace Break_List.Forms.Turnuva
                     if (dbr.HasRows)
                     {
                         TournamentActive = Convert.ToBoolean(dbr["turnuva_finished"].ToString());
-                        _turnuva.TurnuvaID = Convert.ToInt32(dbr["turnuva_id"].ToString());
-                        TurnuvaTarihi = Convert.ToDateTime(dbr["tarih"].ToString());
+                        _turnuva.TurnuvaId = dbr["turnuva_id"].ToString();
                         _turnuva.TurnuvaTarihi = Convert.ToDateTime(dbr["tarih"].ToString());
                         _turnuva.TurnuvaAdi = dbr["turnuva_name"].ToString();
                         _turnuva.TopDenom1 = dbr["ilk_spin_5K"].ToString();
@@ -217,13 +203,13 @@ namespace Break_List.Forms.Turnuva
 
         private void GEtTurnuvaTotals()
         {
-            using (var mySqlConnection = new MySqlConnection(ConString))
+            using (var mySqlConnection = DbConnection.Con)
             {
                 var cmd = new MySqlCommand("spTurnuva_Totals;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                cmd.Parameters.Add(new MySqlParameter("p_turnuvaadi", _turnuva.TurnuvaAdi));
+                cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", _turnuva.TurnuvaId));
                 mySqlConnection.Open();
                 var dbr = cmd.ExecuteReader();
                 while (dbr.Read())
@@ -243,7 +229,7 @@ namespace Break_List.Forms.Turnuva
         {
             if (btnNewTournament.Text == @"Turnuva YARAT")
             {
-                var yeni = new FrmYeniTurnuva();
+                var yeni = new FrmYeniTurnuva {YeniTurnuva = true};
                 var dr = yeni.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
@@ -262,44 +248,52 @@ namespace Break_List.Forms.Turnuva
             }
             else
             {
-                TurnuvayiBitir();
-                LoadActiveTournament();
-                if (TournamentActive)
+                var dr = XtraMessageBox.Show("Turnuvayı Bitireceksiniz", "Emin misiniz?", MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning);
+                if (dr == DialogResult.OK)
                 {
-                    btnNewTournament.Text = @"Turnuvayı Bitir";
-                    labelControl1.Text = _turnuva.TurnuvaAdi;
-                    GEtTurnuvaTotals();
+                    
+                    TurnuvayiBitir();
+                    LoadActiveTournament();
+                    if (TournamentActive)
+                    {
+                        btnNewTournament.Text = @"Turnuvayı Bitir";
+                        labelControl1.Text = _turnuva.TurnuvaAdi;
+                        GEtTurnuvaTotals();
+                    }
+                    else
+                    {
+                        btnNewTournament.Text = @"Turnuva YARAT";
+                    }
                 }
-                else
-                {
-                    btnNewTournament.Text = @"Turnuva YARAT";
-                }
+                
             }
         }
 
         private void TurnuvayiBitir()
         {
-            using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var conn = DbConnection.Con)
             {
                 var cmd = new MySqlCommand("spTournamant_Finish;", conn) {CommandType = CommandType.StoredProcedure};
 
-                cmd.Parameters.Add(new MySqlParameter("p_trnID", TurnuvaId));
+                cmd.Parameters.Add(new MySqlParameter("p_trnID", _turnuva.TurnuvaId));
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-            }
+                Close();}
+            
         }
 
         private void SelectDistinctClientAll()
         {
-            using (MySqlConnection cnn = new MySqlConnection(ConString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            using (var cnn = DbConnection.Con)
+            using (var cmd = cnn.CreateCommand())
             {
                 cnn.Open();
                 cmd.CommandText = "spTurnuva_select_uniqueClient";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new MySqlParameter("p_turnuva_adi", _turnuva.TurnuvaAdi));
+                cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", _turnuva.TurnuvaId));
 
                 DataTable dt = new DataTable();
                 using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
@@ -310,24 +304,7 @@ namespace Break_List.Forms.Turnuva
             }
         }
 
-        private void GetClassification()
-        {
-            using (MySqlConnection cnn = new MySqlConnection(ConString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
-            {
-                cnn.Open();
-                cmd.CommandText = "spTurnuva_scoreBoard";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new MySqlParameter("p_turnuva_adi", _turnuva.TurnuvaAdi));
-
-                DataTable dt = new DataTable();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                {
-                    da.Fill(dt);
-                    gridTop.DataSource = dt;
-                }
-            }
-        }
+       
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
@@ -339,64 +316,149 @@ namespace Break_List.Forms.Turnuva
             }
             else
             {
-                var katilimci = new FrmKatilimcics
+                var katilimci = new FrmAddRebuy
                 {
                     TurnuvaAdi = _turnuva.TurnuvaAdi,
-                    KatilimTarihi = dtTurnuva.DateTime
+                    KatilimTarihi = dtTurnuva.DateTime,
+                    TurnuvaId = _turnuva.TurnuvaId,
+                  
                 };
                 var dr = katilimci.ShowDialog();
-                if (dr != DialogResult.OK) return;
-                if (checkButton1.Checked)
-                {
-                    SelectDistinctClientAll();
-                }
-                else
+                if (dr == DialogResult.OK)
                 {
                     SelectDistinctClientDate();
                 }
+               
+               MasalariGetirDate();
+               GEtTurnuvaTotals();
             }
         }
 
         private string _musteri;
         private string _masa;
-
+        private int Id { get; set; }
         private void gridView2_RowCellClick(object sender, RowCellClickEventArgs e)
         {
+            _musteri = (string)((GridView)sender).GetRowCellValue(e.RowHandle, "Katilimci");
+            _masa = (string)((GridView)sender).GetRowCellValue(e.RowHandle, "Masa");
+            Id = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
             var column = e.Column;
+
+            #region colHareket
             if (column == colHareket)
             {
-                _musteri = (string) ((GridView) sender).GetRowCellValue(e.RowHandle, "Katilimci");
-                _masa = (string) ((GridView) sender).GetRowCellValue(e.RowHandle, "Masa");
-                var yeniGiris = new FrmAddRebuy
+                if (dtTurnuva.EditValue != null)
                 {
-                    musteri = _musteri,
-                    KatilimTarihi = dtTurnuva.DateTime,
-                    TopDenom1 = _turnuva.TopDenom1,
-                    TopDenom2 = _turnuva.TopDenom2,
-                    TopDenom3 = _turnuva.TopDenom3,
-                    TopDenom4 = _turnuva.TopDenom4,
-                    TopDenom5 = _turnuva.TopDenom5,
-                    TopDenom6 = _turnuva.TopDenom6,
-                    Rebuy1 = _turnuva.Rebuy1,
-                    Rebuy2 = _turnuva.Rebuy2,
-                    Rebuy3 = _turnuva.Rebuy3,
-                    Rebuy4 = _turnuva.Rebuy4,
-                    Rebuy5 = _turnuva.Rebuy5,
-                    Rebuy6 = _turnuva.Rebuy6,
-                    masa = _masa,
-                    TurnuvaAdi = _turnuva.TurnuvaAdi,
+                    var yeniGiris = new FrmAddRebuy
+                    {
+                        Musteri = _musteri,
+                        KatilimTarihi = dtTurnuva.DateTime,
+                        TopDenom1 = _turnuva.TopDenom1,
+                        TopDenom2 = _turnuva.TopDenom2,
+                        TopDenom3 = _turnuva.TopDenom3,
+                        TopDenom4 = _turnuva.TopDenom4,
+                        TopDenom5 = _turnuva.TopDenom5,
+                        TopDenom6 = _turnuva.TopDenom6,
+                        Rebuy1 = _turnuva.Rebuy1,
+                        Rebuy2 = _turnuva.Rebuy2,
+                        Rebuy3 = _turnuva.Rebuy3,
+                        Rebuy4 = _turnuva.Rebuy4,
+                        Rebuy5 = _turnuva.Rebuy5,
+                        Rebuy6 = _turnuva.Rebuy6,
+                        Masa = _masa,
+                        TurnuvaAdi = _turnuva.TurnuvaAdi,
+                        NewRecord = true,
+                        TurnuvaId = _turnuva.TurnuvaId
+                    };
+                    var dr = yeniGiris.ShowDialog();
+                    if (dr == DialogResult.OK)
+                    {
+                        GetMusteriDetay();
+                       
+                        gridControl1.Refresh();
+                        gridClient.Refresh();
+                    }
+                }
+                else
+                {
+                    XtraMessageBox.Show(@"Turnuva Round Tarihini secin", @"Dikkat");
+                    dtTurnuva.Focus();
+                    dtTurnuva.ShowPopup();
+                }
+
+            }
+
+
+            #endregion
+
+            if (column == colEdit)
+            {
+                var editMusteri = new FrmKatilimcics
+                {
+                    KatilimciId = _musteri,
+                    Text = _musteri,
+                    simpleButton1 = {Text = @"Update"}
                 };
-                var dr = yeniGiris.ShowDialog();
+                var dr = editMusteri.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    GetMusteriDetay();
-                    GetClassification();
+                    if (dtTurnuva.EditValue == null)
+                    {
+                        SelectDistinctClientAll();
+                    }
+                    else
+                    {
+                        SelectDistinctClientDate();
+                    }
+                    
+                }
+            }
+            if (column == colSil)
+            {
+                var dr = XtraMessageBox.Show("Musteri silinecek. Eğer müşteriye ait kayıt varsa öncelikle bu kayıtları Cancel butonuna basarak silin", "Emin misiniz?", MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning);
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = DbConnection.Con)
+                        {
+                            var cmd = new MySqlCommand("spTurnuva_Delete_Katilimci", conn)
+                            {
+                                CommandType = CommandType.StoredProcedure
+                            };
+                            cmd.Parameters.Add(new MySqlParameter("p_id", Id));
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                        if (dtTurnuva.EditValue == null)
+                        {
+                            SelectDistinctClientAll();
+                            
+                            GEtTurnuvaTotals();
+                        }
+                        else
+                        {
+                            SelectDistinctClientDate();
+                            
+                            GEtTurnuvaTotals();
+                        }
+                        GetMusteriDetay();
+                    }
+                    catch (Exception ex)
+                    {
+                        XtraMessageBox.Show(ex.ToString(),"Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                    
                 }
             }
             else
             {
-                _musteri = (string) ((GridView) sender).GetRowCellValue(e.RowHandle, "Katilimci");
+                
                 GetMusteriDetay();
+                
+                GEtTurnuvaTotals();
             }
         }
 
@@ -404,7 +466,7 @@ namespace Break_List.Forms.Turnuva
         {
             lblOyuncu.Text = _musteri;
 
-            using (var conn = new MySqlConnection(ConString))
+            using (var conn = DbConnection.Con)
             {
                 var cmd = new MySqlCommand("spTurnuva_musteri_toplam_rebuy;", conn)
                 {
@@ -425,13 +487,15 @@ namespace Break_List.Forms.Turnuva
                     }}
                 conn.Close();
             }
-            using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (MySqlConnection conn = DbConnection.Con)
             {
-                var cmd = new MySqlCommand("spTournament_Musteri_hareketleri;", conn);
+                var cmd = new MySqlCommand("spTournament_Musteri_hareketleri;", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
 
-                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new MySqlParameter("p_musteri", _musteri));
-                cmd.Parameters.Add(new MySqlParameter("p_turnuva", _turnuva.TurnuvaAdi));
+                cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", _turnuva.TurnuvaId));
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 using (var adapter = new MySqlDataAdapter())
@@ -448,13 +512,13 @@ namespace Break_List.Forms.Turnuva
 
         private void SelectDistinctClientDate()
         {
-            using (var cnn = new MySqlConnection(ConString))
+            using (var cnn = DbConnection.Con)
             using (var cmd = cnn.CreateCommand())
             {
                 cnn.Open();
                 cmd.CommandText = "spTurnuva_select_uniqueClient_Date";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new MySqlParameter("p_turnuva_adi", _turnuva.TurnuvaAdi));
+                cmd.Parameters.Add(new MySqlParameter("p_turnuva_ID", _turnuva.TurnuvaId));
                 cmd.Parameters.Add(new MySqlParameter("p_tarih", dtTurnuva.DateTime));
                 var dt = new DataTable();
                 using (var da = new MySqlDataAdapter(cmd))
@@ -473,7 +537,7 @@ namespace Break_List.Forms.Turnuva
             {
                 var updateTurnuva = new FrmYeniTurnuva
                 {
-                    TurnuvaID = _turnuva.TurnuvaID,
+                    TurnuvaId = _turnuva.TurnuvaId,
                     Text = @"Update Turnuva",
                     YeniTurnuva = false
                 };
@@ -481,54 +545,114 @@ namespace Break_List.Forms.Turnuva
                 if (dr == DialogResult.OK)
                 {
                     LoadActiveTournament();
-                    GetClassification();
-                }
-            }
-        }
-
-        private void checkButton1_Click(object sender, EventArgs e)
-        {
-            if (checkButton1.Text == @"Turnuva Genelini Göster")
-            {
-                SelectDistinctClientAll();
-                MasalariGetir();
-                tileControl1.Text = @"Turnuva Geneli Masalar";
-                checkButton1.Text = @"Tarihe Göre Göster";
-                checkButton1.Appearance.BackColor = Color.Crimson;
-            }
-            else
-            {
-                if (dtTurnuva.EditValue == null & checkButton1.Text == @"Tarihe Göre Göster")
-                {
-                    XtraMessageBox.Show(@"Tarih Seciniz");
-                    dtTurnuva.Focus();
-                    dtTurnuva.ShowPopup();
-                    dtTurnuva.DateTime = DateTime.Today;}
-                else
-                {
                     
-                    SelectDistinctClientDate();
-                    MasalariGetirDate();
-                    tileControl1.Text = @"Secilen Tarihte Masalar";
-                    checkButton1.Text = @"Turnuva Genelini Göster";
-                    checkButton1.Appearance.BackColor = Color.RoyalBlue;
+                    labelControl1.Text = _turnuva.TurnuvaAdi;
                 }
-
             }
         }
 
-        private void checkButton1_CheckedChanged_1(object sender, EventArgs e)
-        {
-        }
+      
+
+        
 
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
-            var tvscreen = new FrmTVScreen
+            var tvscreen = new FrmTvScreen
             {
                 TurnuvaAdi = _turnuva.TurnuvaAdi,
-                TurnuvaID = _turnuva.TurnuvaID
+                TurnuvaId = _turnuva.TurnuvaId
             };
-            tvscreen.ShowDialog();
+            tvscreen.Show();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            SelectDistinctClientAll();
+            MasalariGetir();
+            GEtTurnuvaTotals();
+            tileControl1.Text = @"Turnuva Geneli";
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            if (dtTurnuva.EditValue == null)
+            {
+                XtraMessageBox.Show(@"Tarih Seciniz");
+                dtTurnuva.Focus();
+                dtTurnuva.ShowPopup();
+                dtTurnuva.DateTime = DateTime.Today;
+            }
+            else
+            {
+
+                SelectDistinctClientDate();
+                MasalariGetirDate();
+                GEtTurnuvaTotals();
+                tileControl1.Text = @"Secilen Tarihte Masalar";
+
+            }
+        }
+        
+        private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            Id = (int)((GridView)sender).GetRowCellValue(e.RowHandle, "id");
+            var column = e.Column;
+            if (column == colgedit)
+            {
+                var updateRecord = new FrmAddRebuy
+                {
+                    
+                    KatilimTarihi = dtTurnuva.DateTime,
+                    TopDenom1 = _turnuva.TopDenom1,
+                    TopDenom2 = _turnuva.TopDenom2,
+                    TopDenom3 = _turnuva.TopDenom3,
+                    TopDenom4 = _turnuva.TopDenom4,
+                    TopDenom5 = _turnuva.TopDenom5,
+                    TopDenom6 = _turnuva.TopDenom6,
+                    Rebuy1 = _turnuva.Rebuy1,
+                    Rebuy2 = _turnuva.Rebuy2,
+                    Rebuy3 = _turnuva.Rebuy3,
+                    Rebuy4 = _turnuva.Rebuy4,
+                    Rebuy5 = _turnuva.Rebuy5,
+                    Rebuy6 = _turnuva.Rebuy6,
+
+                    TurnuvaAdi = _turnuva.TurnuvaAdi,
+                    RecordID = Id
+                };
+                updateRecord.btnOK.Text = @"Update";
+                var dr = updateRecord.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    GetMusteriDetay();
+                    
+                    GEtTurnuvaTotals();
+                }
+            }
+            if (column == colgSil)
+            {
+                var dr = XtraMessageBox.Show("Musteriye ait seçilen kayıt silinecek", "Emin misiniz?", MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning);
+                if (dr == DialogResult.OK)
+                {
+                    using (var conn = DbConnection.Con)
+                    {
+                        using (var cmd = new MySqlCommand("Delete from tblturnuva_katilimci where id=" + Id, conn)
+                        {
+                            CommandType = CommandType.Text
+                        })
+                        {
+
+
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            conn.Dispose();
+                        }
+                    }
+                    GetMusteriDetay();
+                    GEtTurnuvaTotals();}
+                   
+            }
         }
     }
 }

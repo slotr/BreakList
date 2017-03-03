@@ -106,6 +106,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit txtPlayer;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        public DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

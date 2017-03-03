@@ -1,0 +1,640 @@
+﻿<XtraSerializer version="1.0" application="View">
+  <property name="#LayoutVersion" />
+  <property name="AppearancePrint" isnull="true" iskey="true">
+    <property name="HeaderPanel" iskey="true" value="HeaderPanel">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseBackColor">true</property>
+      </property>
+      <property name="BackColor">White</property>
+    </property>
+  </property>
+  <property name="Appearance" isnull="true" iskey="true">
+    <property name="BandPanel" iskey="true" value="BandPanel">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseBackColor">true</property>
+      </property>
+      <property name="BackColor">White</property>
+    </property>
+    <property name="FixedLine" iskey="true" value="FixedLine">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseTextOptions">true</property>
+        <property name="UseFont">true</property>
+      </property>
+      <property name="TextOptions" isnull="true" iskey="true">
+        <property name="HAlignment">Center</property>
+        <property name="VAlignment">Center</property>
+      </property>
+      <property name="Font">Tahoma, 9pt, style=Bold</property>
+    </property>
+  </property>
+  <property name="Columns" iskey="true" value="20">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="VisibleIndex">1</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colPersonelNo</property>
+      <property name="FieldName">Personel No</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">63</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="VisibleIndex">2</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colPersonel</property>
+      <property name="FieldName">Personel</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">195</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="VisibleIndex">3</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colTipPuani</property>
+      <property name="Caption">Puan</property>
+      <property name="FieldName">Tip Puani</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">48</property>
+      <property name="AppearanceCell" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseForeColor">true</property>
+          <property name="UseFont">true</property>
+        </property>
+        <property name="ForeColor">192, 0, 0</property>
+        <property name="Font">Tahoma, 9.75pt, style=Underline</property>
+      </property>
+      <property name="Summary" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="Tag" isnull="true" />
+          <property name="FieldName">Tip Puani</property>
+          <property name="SummaryType">Sum</property>
+          <property name="DisplayFormat">SUM={0:0.##}</property>
+        </property>
+      </property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="VisibleIndex">5</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colSickCall</property>
+      <property name="FieldName">Sick Call</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">61</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="VisibleIndex">6</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colNoCallNoShow</property>
+      <property name="Caption">No Call</property>
+      <property name="FieldName">No Call No Show</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">87</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="VisibleIndex">7</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colSickSentHome</property>
+      <property name="FieldName">Sick Sent Home</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">83</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="VisibleIndex">8</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colRapor</property>
+      <property name="FieldName">Rapor</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">55</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item8" isnull="true" iskey="true">
+      <property name="VisibleIndex">9</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colLate</property>
+      <property name="FieldName">Late</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">46</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item9" isnull="true" iskey="true">
+      <property name="VisibleIndex">10</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colSuspend</property>
+      <property name="Caption">Susp.</property>
+      <property name="FieldName">Suspend</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">62</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item10" isnull="true" iskey="true">
+      <property name="VisibleIndex">11</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colSentHomeD</property>
+      <property name="FieldName">SentHomeD</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">92</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item11" isnull="true" iskey="true">
+      <property name="VisibleIndex">0</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colDepartment</property>
+      <property name="FieldName">Department</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">90</property>
+    </property>
+    <property name="Item12" isnull="true" iskey="true">
+      <property name="VisibleIndex">16</property>
+      <property name="Fixed">None</property>
+      <property name="Name">Alacak</property>
+      <property name="Caption">Alacağı</property>
+      <property name="FieldName">gridColumn1</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">97</property>
+      <property name="AppearanceCell" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseFont">true</property>
+        </property>
+        <property name="Font">Tahoma, 11.25pt, style=Bold</property>
+      </property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="UnboundType">Decimal</property>
+      <property name="UnboundExpression">[toplamtip] - [kesinti] - [Tip Avansi] - [Bankaya Yatan]</property>
+      <property name="Summary" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="Tag" isnull="true" />
+          <property name="FieldName">gridColumn1</property>
+          <property name="SummaryType">Sum</property>
+          <property name="DisplayFormat">SUM={0:n1}</property>
+        </property>
+      </property>
+    </property>
+    <property name="Item13" isnull="true" iskey="true">
+      <property name="VisibleIndex">13</property>
+      <property name="Fixed">None</property>
+      <property name="Name">kesinti</property>
+      <property name="Caption">Top Kesinti</property>
+      <property name="FieldName">kesinti</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">81</property>
+      <property name="AppearanceCell" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseForeColor">true</property>
+          <property name="UseFont">true</property>
+        </property>
+        <property name="ForeColor">192, 0, 0</property>
+        <property name="Font">Tahoma, 9.75pt, style=Underline</property>
+      </property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="UnboundType">Decimal</property>
+      <property name="UnboundExpression">([Late] + [No Call No Show] + [Rapor] + [SentHomeD] + [Sick Call] + [Sick Sent Home] + [Suspend]) * [toplamtip] / 30</property>
+      <property name="Summary" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="Tag" isnull="true" />
+          <property name="FieldName">kesinti</property>
+          <property name="SummaryType">Sum</property>
+          <property name="DisplayFormat">SUM={0:n1}</property>
+        </property>
+      </property>
+    </property>
+    <property name="Item14" isnull="true" iskey="true">
+      <property name="VisibleIndex">4</property>
+      <property name="Fixed">None</property>
+      <property name="Name">toplamtip</property>
+      <property name="Caption">Toplam Tip</property>
+      <property name="FieldName">toplamtip</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">88</property>
+      <property name="AppearanceCell" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseFont">true</property>
+        </property>
+        <property name="Font">Tahoma, 9.75pt, style=Underline</property>
+      </property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Summary" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="Tag" isnull="true" />
+          <property name="FieldName">toplamtip</property>
+          <property name="SummaryType">Sum</property>
+          <property name="DisplayFormat">SUM={0:n1}</property>
+        </property>
+      </property>
+    </property>
+    <property name="Item15" isnull="true" iskey="true">
+      <property name="VisibleIndex">17</property>
+      <property name="Fixed">None</property>
+      <property name="Name">gridColumn1</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="Printable">False</property>
+      </property>
+      <property name="Caption">Detaylar</property>
+      <property name="ColumnEditName">repositoryItemButtonEdit1</property>
+      <property name="Visible">true</property>
+      <property name="Width">61</property>
+    </property>
+    <property name="Item16" isnull="true" iskey="true">
+      <property name="VisibleIndex">12</property>
+      <property name="Fixed">None</property>
+      <property name="Name">gridColumn2</property>
+      <property name="Caption">Gun Kesinti</property>
+      <property name="FieldName">gridColumn2</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">85</property>
+      <property name="AppearanceCell" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseForeColor">true</property>
+          <property name="UseBackColor">true</property>
+          <property name="UseFont">true</property>
+        </property>
+        <property name="ForeColor">White</property>
+        <property name="BackColor">192, 0, 0</property>
+        <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+      </property>
+      <property name="AppearanceHeader" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseBackColor">true</property>
+        </property>
+        <property name="BackColor">192, 0, 0</property>
+      </property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="UnboundType">Decimal</property>
+      <property name="UnboundExpression">[Late] + [No Call No Show] + [Rapor] + [SentHomeD] + [Sick Call] + [Sick Sent Home] + [Suspend]</property>
+      <property name="Summary" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="Tag" isnull="true" />
+          <property name="FieldName">gridColumn2</property>
+          <property name="SummaryType">Sum</property>
+          <property name="DisplayFormat">SUM={0:n1}</property>
+        </property>
+      </property>
+    </property>
+    <property name="Item17" isnull="true" iskey="true">
+      <property name="VisibleIndex">18</property>
+      <property name="Fixed">None</property>
+      <property name="Name">tipAvans</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="Printable">False</property>
+      </property>
+      <property name="Caption">Tip Avansi Ekle</property>
+      <property name="ColumnEditName">repositoryItemButtonEdit2</property>
+      <property name="Visible">true</property>
+      <property name="Width">58</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item18" isnull="true" iskey="true">
+      <property name="VisibleIndex">19</property>
+      <property name="Fixed">None</property>
+      <property name="Name">BankayaYatan</property>
+      <property name="OptionsColumn" isnull="true" iskey="true">
+        <property name="Printable">False</property>
+      </property>
+      <property name="Caption">Bankaya Yatan Ekle</property>
+      <property name="ColumnEditName">repositoryItemButtonEdit3</property>
+      <property name="Visible">true</property>
+      <property name="Width">55</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+    <property name="Item19" isnull="true" iskey="true">
+      <property name="VisibleIndex">14</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colTipAvansi</property>
+      <property name="Caption">Avans</property>
+      <property name="FieldName">Tip Avansi</property>
+      <property name="ColumnEditName">repositoryItemHyperLinkEdit1</property>
+      <property name="Visible">true</property>
+      <property name="Width">54</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="Summary" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="Tag" isnull="true" />
+          <property name="FieldName">Tip Avansi</property>
+          <property name="SummaryType">Sum</property>
+          <property name="DisplayFormat">SUM={0:n1}</property>
+        </property>
+      </property>
+    </property>
+    <property name="Item20" isnull="true" iskey="true">
+      <property name="VisibleIndex">15</property>
+      <property name="Fixed">None</property>
+      <property name="Name">colBankayaYatan</property>
+      <property name="Caption">Bankaya Yatan</property>
+      <property name="FieldName">Bankaya Yatan</property>
+      <property name="ColumnEditName" />
+      <property name="Visible">true</property>
+      <property name="Width">86</property>
+      <property name="DisplayFormat" isnull="true" iskey="true">
+        <property name="FormatString">n1</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+    </property>
+  </property>
+  <property name="MinBandPanelRowCount">1</property>
+  <property name="OptionsView" isnull="true" iskey="true">
+    <property name="ColumnAutoWidth">false</property>
+    <property name="ShowFooter">true</property>
+    <property name="ShowGroupPanel">false</property>
+  </property>
+  <property name="OptionsPrint" isnull="true" iskey="true">
+    <property name="PrintBandHeader">false</property>
+  </property>
+  <property name="OptionsCustomization" isnull="true" iskey="true">
+    <property name="ShowBandsInCustomizationForm">false</property>
+    <property name="AllowFilter">false</property>
+    <property name="AllowColumnMoving">false</property>
+  </property>
+  <property name="BandPanelRowHeight">-1</property>
+  <property name="OptionsBehavior" isnull="true" iskey="true">
+    <property name="AutoExpandAllGroups">true</property>
+    <property name="Editable">false</property>
+  </property>
+  <property name="OptionsFind" isnull="true" iskey="true">
+    <property name="ShowCloseButton">false</property>
+    <property name="ShowFindButton">false</property>
+    <property name="AlwaysVisible">true</property>
+    <property name="FindNullPrompt">Personel Ismi Girin</property>
+  </property>
+  <property name="OptionsMenu" isnull="true" iskey="true">
+    <property name="ShowConditionalFormattingItem">true</property>
+    <property name="EnableGroupPanelMenu">false</property>
+  </property>
+  <property name="FixedLineWidth">4</property>
+  <property name="IndicatorWidth">-1</property>
+  <property name="ColumnPanelRowHeight">-1</property>
+  <property name="RowSeparatorHeight">0</property>
+  <property name="FooterPanelHeight">-1</property>
+  <property name="HorzScrollVisibility">Auto</property>
+  <property name="VertScrollVisibility">Auto</property>
+  <property name="RowHeight">-1</property>
+  <property name="GroupRowHeight">-1</property>
+  <property name="GroupFormat">{0}: [#image]{1} {2}</property>
+  <property name="ChildGridLevelName" />
+  <property name="VertScrollTipFieldName" />
+  <property name="PreviewFieldName" />
+  <property name="GroupPanelText" />
+  <property name="NewItemRowText" />
+  <property name="LevelIndent">-1</property>
+  <property name="PreviewIndent">-1</property>
+  <property name="PreviewLineCount">-1</property>
+  <property name="ScrollStyle">LiveVertScroll, LiveHorzScroll</property>
+  <property name="FocusRectStyle">CellFocus</property>
+  <property name="HorzScrollStep">0</property>
+  <property name="OptionsClipboard" isnull="true" iskey="true">
+    <property name="AllowTxtFormat">False</property>
+    <property name="AllowRtfFormat">False</property>
+    <property name="AllowHtmlFormat">False</property>
+    <property name="AllowCsvFormat">False</property>
+  </property>
+  <property name="ActiveFilterEnabled">true</property>
+  <property name="OptionsLayout" isnull="true" iskey="true">
+    <property name="Columns" isnull="true" iskey="true">
+      <property name="AddNewColumns">false</property>
+    </property>
+  </property>
+  <property name="OptionsFilter" isnull="true" iskey="true">
+    <property name="AllowFilterEditor">false</property>
+  </property>
+  <property name="ViewCaptionHeight">-1</property>
+  <property name="ViewCaption" />
+  <property name="BorderStyle">Default</property>
+  <property name="SynchronizeClones">true</property>
+  <property name="DetailTabHeaderLocation">Top</property>
+  <property name="Name">bandedGridView1</property>
+  <property name="DetailHeight">350</property>
+  <property name="Tag" isnull="true" />
+  <property name="Bands" iskey="true" value="6">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="AppearanceHeader" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseImage">true</property>
+        </property>
+      </property>
+      <property name="Fixed">Left</property>
+      <property name="Width">484</property>
+      <property name="Columns" iskey="true" value="5">
+        <property name="Item1">colDepartment</property>
+        <property name="Item2">colPersonelNo</property>
+        <property name="Item3">colPersonel</property>
+        <property name="Item4">colTipPuani</property>
+        <property name="Item5">toplamtip</property>
+      </property>
+      <property name="Children" iskey="true" value="0" />
+      <property name="Caption">Personel</property>
+      <property name="Name">gridBand1</property>
+      <property name="OptionsBand" isnull="true" iskey="true">
+        <property name="AllowMove">false</property>
+      </property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="AppearanceHeader" isnull="true" iskey="true">
+        <property name="Options" isnull="true" iskey="true">
+          <property name="UseImage">true</property>
+        </property>
+      </property>
+      <property name="Width">486</property>
+      <property name="Columns" iskey="true" value="7">
+        <property name="Item1">colSickCall</property>
+        <property name="Item2">colNoCallNoShow</property>
+        <property name="Item3">colSickSentHome</property>
+        <property name="Item4">colRapor</property>
+        <property name="Item5">colLate</property>
+        <property name="Item6">colSuspend</property>
+        <property name="Item7">colSentHomeD</property>
+      </property>
+      <property name="Children" iskey="true" value="0" />
+      <property name="Caption">Devam Durumu</property>
+      <property name="Name">gridBand2</property>
+      <property name="OptionsBand" isnull="true" iskey="true">
+        <property name="AllowMove">false</property>
+      </property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="Width">166</property>
+      <property name="Columns" iskey="true" value="2">
+        <property name="Item1">gridColumn2</property>
+        <property name="Item2">kesinti</property>
+      </property>
+      <property name="Children" iskey="true" value="0" />
+      <property name="Caption">Kesinti Detayları</property>
+      <property name="Name">gridBand3</property>
+      <property name="OptionsBand" isnull="true" iskey="true">
+        <property name="AllowMove">false</property>
+      </property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="Width">140</property>
+      <property name="Columns" iskey="true" value="2">
+        <property name="Item1">colTipAvansi</property>
+        <property name="Item2">colBankayaYatan</property>
+      </property>
+      <property name="Children" iskey="true" value="0" />
+      <property name="Caption">Avanslar</property>
+      <property name="Name">gridBand5</property>
+      <property name="OptionsBand" isnull="true" iskey="true">
+        <property name="AllowMove">false</property>
+      </property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="Width">97</property>
+      <property name="Columns" iskey="true" value="1">
+        <property name="Item1">Alacak</property>
+      </property>
+      <property name="Children" iskey="true" value="0" />
+      <property name="Caption">Alacağı</property>
+      <property name="Name">gridBand6</property>
+      <property name="OptionsBand" isnull="true" iskey="true">
+        <property name="AllowMove">false</property>
+      </property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="Width">174</property>
+      <property name="Columns" iskey="true" value="3">
+        <property name="Item1">gridColumn1</property>
+        <property name="Item2">tipAvans</property>
+        <property name="Item3">BankayaYatan</property>
+      </property>
+      <property name="Children" iskey="true" value="0" />
+      <property name="Caption">Operasyon</property>
+      <property name="Name">gridBand4</property>
+      <property name="OptionsBand" isnull="true" iskey="true">
+        <property name="AllowMove">false</property>
+      </property>
+    </property>
+  </property>
+  <property name="GroupSummary" iskey="true" value="0" />
+  <property name="ActiveFilterString" />
+  <property name="FormatRules" iskey="true" value="7">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="ColumnName">colSickCall</property>
+      <property name="Name">Format0</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="ColumnName">colNoCallNoShow</property>
+      <property name="Name">Format1</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="ColumnName">colSickSentHome</property>
+      <property name="Name">Format2</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="ColumnName">colRapor</property>
+      <property name="Name">Format3</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="ColumnName">colLate</property>
+      <property name="Name">Format4</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="ColumnName">colSuspend</property>
+      <property name="Name">Format5</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="ColumnName">colSentHomeD</property>
+      <property name="Name">Format6</property>
+      <property name="RuleType">#FormatConditionRuleValue</property>
+      <property name="Rule" isnull="true" iskey="true">
+        <property name="Condition">Greater</property>
+        <property name="Value1" type="System.Decimal">0</property>
+        <property name="PredefinedName">Red Fill, Red Text</property>
+      </property>
+    </property>
+  </property>
+  <property name="SortInfo">~Xtra#Base64AAEAAAD/////AQAAAAAAAAAMAgAAAF1EZXZFeHByZXNzLlh0cmFHcmlkLnYxNi4xLCBWZXJzaW9uPTE2LjEuNy4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEFAQAAADhEZXZFeHByZXNzLlh0cmFHcmlkLkNvbHVtbnMuR3JpZENvbHVtblNvcnRJbmZvQ29sbGVjdGlvbgQAAAAKZ3JvdXBDb3VudAVjbG9uZQ9jbG9uZUdyb3VwQ291bnQTQ29sbGVjdGlvbkJhc2UrbGlzdAADAAMIsgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW0RldkV4cHJlc3MuWHRyYUdyaWQuQ29sdW1ucy5HcmlkQ29sdW1uU29ydEluZm8sIERldkV4cHJlc3MuWHRyYUdyaWQudjE2LjEsIFZlcnNpb249MTYuMS43LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YV1dCBxTeXN0ZW0uQ29sbGVjdGlvbnMuQXJyYXlMaXN0AgAAAAEAAAAJAwAAAAAAAAAJBAAAAAQDAAAAsgFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW0RldkV4cHJlc3MuWHRyYUdyaWQuQ29sdW1ucy5HcmlkQ29sdW1uU29ydEluZm8sIERldkV4cHJlc3MuWHRyYUdyaWQudjE2LjEsIFZlcnNpb249MTYuMS43LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAwRGV2RXhwcmVzcy5YdHJhR3JpZC5Db2x1bW5zLkdyaWRDb2x1bW5Tb3J0SW5mb1tdAgAAAAgICQUAAAAAAAAAAAAAAAQEAAAAHFN5c3RlbS5Db2xsZWN0aW9ucy5BcnJheUxpc3QDAAAABl9pdGVtcwVfc2l6ZQhfdmVyc2lvbgUAAAgICQYAAAABAAAABQAAAAcFAAAAAAEAAAAAAAAABC5EZXZFeHByZXNzLlh0cmFHcmlkLkNvbHVtbnMuR3JpZENvbHVtblNvcnRJbmZvAgAAABAGAAAABAAAAAkHAAAADQMMCAAAABlEZXZFeHByZXNzLlh0cmFHcmlkLnYxNi4xBQcAAAAuRGV2RXhwcmVzcy5YdHJhR3JpZC5Db2x1bW5zLkdyaWRDb2x1bW5Tb3J0SW5mbwIAAAAJU29ydE9yZGVyCkNvbHVtbk5hbWUAAQgIAAAAAQAAAAYJAAAADWNvbERlcGFydG1lbnQL</property>
+  <property name="FormatConditions" iskey="true" value="0" />
+  <property name="GroupSummarySortInfoState" />
+  <property name="FindFilterText" />
+  <property name="FindPanelVisible">false</property>
+</XtraSerializer>

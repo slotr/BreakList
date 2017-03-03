@@ -17,7 +17,8 @@ namespace Break_List.Forms.Admin
             GetDepartments();
            
         }
-        void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
+
+        private void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
             var connectionString = Settings.Default.livegameConnectionString2;
@@ -47,7 +48,7 @@ namespace Break_List.Forms.Admin
 
         }
 
-        void InsertPosition()
+        private void InsertPosition()
         {
             _con.Open();
             _cmd = new MySqlCommand("INSERT INTO positions(DepartmentName, PositionName) VALUES(@DepartmentName, @PositionName)", _con);

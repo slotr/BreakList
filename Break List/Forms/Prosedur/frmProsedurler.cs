@@ -18,7 +18,8 @@ namespace Break_List.Forms.Prosedur
 
         }
         public string DepartmentNameFromMainForm { get; set; }
-        void GetProcedures()
+
+        private void GetProcedures()
         {
             using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.livegameConnectionString2))
             {

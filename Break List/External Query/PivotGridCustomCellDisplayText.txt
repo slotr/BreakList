@@ -1,0 +1,10 @@
+﻿private void pivotGridControl1_CustomCellDisplayText_1(object sender, PivotCellDisplayTextEventArgs e)
+        {
+            if (e.DataField.Caption == @"Σ Play Time")
+            {
+                var val = e.GetCellValue(colPlyTime);
+                var timespan = TimeSpan.FromMinutes(Convert.ToDouble(val)*60);
+                var output = timespan.ToString("h\\:mm");
+                e.DisplayText = output;
+            }
+        }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ClsTurnuva xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TurnuvaAdi>Deneme Turnuva</TurnuvaAdi>
+  <TurnuvaTarihi>2017-01-12T00:00:00</TurnuvaTarihi>
+  <TopDenom1>İlk Spin 5K</TopDenom1>
+  <TopDenom2>5K</TopDenom2>
+  <TopDenom3>10K</TopDenom3>
+  <TopDenom4>25K</TopDenom4>
+  <TopDenom5>Eğer Varsa</TopDenom5>
+  <Rebuy1>500</Rebuy1>
+  <Rebuy2>500</Rebuy2>
+  <Rebuy3>500</Rebuy3>
+  <Rebuy4>500</Rebuy4>
+  <Rebuy5>500</Rebuy5>
+</ClsTurnuva>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using Break_List.Class;
 using DevExpress.XtraEditors;
 using Break_List.Properties;
 using MySql.Data.MySqlClient;
@@ -22,13 +23,13 @@ namespace Break_List.Forms.Personel
             BringNamesbyDepartment();
         }
 
-        void GetDepartment()
+        private void GetDepartment()
         {
-            var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            
+            using (var con = DbConnection.Con)
+            using (var cmd = con.CreateCommand())
             {
-                cnn.Open();
+                con.Open();
                 cmd.CommandText = "spDepartment";
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -46,32 +47,32 @@ namespace Break_List.Forms.Personel
 
                     comboBoxEdit1.Properties.Sorted = true;
 
-                    cnn.Close();
+                    con.Close();
                 }
             }
         }
 
-        void BringNamesbyDepartment()
+        private void BringNamesbyDepartment()
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var con = DbConnection.Con)
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spLivePersonelbyDepartment;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spLivePersonelbyDepartment;", con)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
                     string dep = comboBoxEdit1.EditValue.ToString(); 
                     mySqlCommand.Parameters.Add(new MySqlParameter("_department", dep));
-                    mySqlConnection.Open();
+                    con.Open();
                     mySqlCommand.ExecuteNonQuery();
-                    using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
                     {
-                        DataTable dataTable = new DataTable();
+                        var dataTable = new DataTable();
                         mySqlDataAdapter.SelectCommand = mySqlCommand;
                         mySqlDataAdapter.Fill(dataTable);
                         gridControl2.DataSource = dataTable;
                     }
-                    mySqlConnection.Close();
+                    con.Close();
                 }
             }
         }

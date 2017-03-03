@@ -2,7 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Break_List.Properties;
+using Break_List.Class;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Tile;
 using MySql.Data.MySqlClient;
@@ -15,7 +15,7 @@ namespace Break_List.Forms.Personel
         public int PersonelId;
         public string UserNameFromMainForm { get; set; }
         public string UserId { get; set; }
-        Boolean HaspermissionToAllPersonel { get; set; }
+        private bool HaspermissionToAllPersonel { get; set; }
         public FrmIstenAyrilmis()
         {
             InitializeComponent();           
@@ -25,16 +25,16 @@ namespace Break_List.Forms.Personel
         private void frmPersonel_Load(object sender, EventArgs e)
         {
             GetNames();
-            SetupView();
+            
             labelControl1.Text = UserId;
         }
 
-        void GetNames()
+        private void GetNames()
         {
             CheckPermissions();
             if(HaspermissionToAllPersonel)
             {
-                using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                using (var conn = DbConnection.Con)
                 {
                     var command = new MySqlCommand("spPersonelIstenAyrilmisAll", conn)
                     {
@@ -59,7 +59,7 @@ namespace Break_List.Forms.Personel
             }
             else
             {
-                using (var conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                using (var conn = DbConnection.Con)
                 {
                     var command = new MySqlCommand("spPersonelIstenAyrilmis;", conn)
                     {
@@ -86,9 +86,9 @@ namespace Break_List.Forms.Personel
 
         }
 
-        void CheckPermissions() //Department , Role ve Full adi aliyor.
+        private void CheckPermissions() //Department , Role ve Full adi aliyor.
         {
-            var conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var conn = DbConnection.Con;
             var command = conn.CreateCommand();
             command.CommandText = "SELECT * from permissions WHERE UserID ='" + UserId + "'";
             try
@@ -109,7 +109,7 @@ namespace Break_List.Forms.Personel
             conn.Close();
         }
 
-        void SetupView()
+        private void SetupView()
         {
             try
             {
@@ -205,6 +205,11 @@ namespace Break_List.Forms.Personel
             personel.Show();
            
 
+        }
+
+        private void FrmIstenAyrilmis_Shown(object sender, EventArgs e)
+        {
+            SetupView();
         }
     }
 }

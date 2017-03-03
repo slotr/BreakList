@@ -9,7 +9,8 @@ namespace Break_List.Forms.Personel
         {
             InitializeComponent();
         }
-        string _sifre = "135642";
+
+        private string _sifre = "135642";
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (textEdit1.Text == _sifre) {

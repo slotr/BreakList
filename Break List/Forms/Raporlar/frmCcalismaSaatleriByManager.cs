@@ -6,6 +6,7 @@ using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 using Break_List.Properties;
 using System.IO;
+using Break_List.Class;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid;
 
@@ -24,9 +25,9 @@ namespace Break_List.Forms.Raporlar
         }
         private void GetTimes()
         {
-            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var con = DbConnection.Con)
             {
-                using (var mySqlCommand = new MySqlCommand("spCalismaSaatleriAll;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spCalismaSaatleriAll;", con)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
@@ -35,7 +36,7 @@ namespace Break_List.Forms.Raporlar
                     mySqlCommand.Parameters.Add(new MySqlParameter("StartDate", dateEdit.EditValue));
                     //mySqlCommand.Parameters.Add(new MySqlParameter("EndDate", dateEdit2.EditValue));
                     mySqlCommand.Parameters.Add(new MySqlParameter("DepartmentName", DptcomboBox.EditValue));
-                    mySqlConnection.Open();
+                    con.Open();
                     mySqlCommand.ExecuteNonQuery();
                     using (MySqlDataAdapter mySqlDataAdapter = new MySqlDataAdapter())
                     {
@@ -45,19 +46,19 @@ namespace Break_List.Forms.Raporlar
                         gridControl1.DataSource = dataTable;
                         
                     }
-                    mySqlConnection.Close();
+                    con.Close();
                 }
             }
         }
-       
-        void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
+
+        private void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
-            var connectionString = Settings.Default.livegameConnectionString2;
-            using (MySqlConnection cnn = new MySqlConnection(connectionString))
-            using (MySqlCommand cmd = cnn.CreateCommand())
+            
+            using (var con = DbConnection.Con)
+            using (var cmd = con.CreateCommand())
             {
-                cnn.Open();
+                con.Open();
                 cmd.CommandText = "spDepartment";
                 cmd.CommandType = CommandType.StoredProcedure;
                 DataTable dt = new DataTable();

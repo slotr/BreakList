@@ -1,0 +1,1083 @@
+﻿<XtraSerializer version="1.0" application="PivotGrid">
+  <property name="#LayoutVersion" />
+  <property name="OptionsLayout" isnull="true" iskey="true">
+    <property name="StoreLayoutOptions">true</property>
+    <property name="StoreAppearance">true</property>
+    <property name="StoreAllOptions">true</property>
+  </property>
+  <property name="Appearance" isnull="true" iskey="true">
+    <property name="FieldValueTotal" iskey="true" value="FieldValueTotal">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseFont">true</property>
+      </property>
+      <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+    </property>
+    <property name="GrandTotalCell" iskey="true" value="GrandTotalCell">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseForeColor">true</property>
+        <property name="UseTextOptions">true</property>
+        <property name="UseBackColor">true</property>
+        <property name="UseFont">true</property>
+      </property>
+      <property name="ForeColor">Black</property>
+      <property name="BackColor">White</property>
+      <property name="TextOptions" isnull="true" iskey="true">
+        <property name="HAlignment">Far</property>
+        <property name="VAlignment">Center</property>
+      </property>
+      <property name="Font">Tahoma, 9.75pt</property>
+    </property>
+    <property name="FieldValueGrandTotal" iskey="true" value="FieldValueGrandTotal">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseFont">true</property>
+      </property>
+      <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+    </property>
+    <property name="TotalCell" iskey="true" value="TotalCell">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseForeColor">true</property>
+        <property name="UseBackColor">true</property>
+        <property name="UseFont">true</property>
+      </property>
+      <property name="ForeColor">White</property>
+      <property name="BackColor">52, 73, 94</property>
+      <property name="Font">Tahoma, 9pt, style=Bold</property>
+    </property>
+  </property>
+  <property name="Fields" iskey="true" value="27">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[basicsum] / [rate]</property>
+      <property name="Name">colDollarResult</property>
+      <property name="UnboundFieldName">colDollarResult</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">$ Total Result</property>
+      <property name="Index">0</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:$ #,#;($ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="UseNativeFormat">False</property>
+      <property name="AreaIndex">8</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldid1</property>
+      <property name="FieldName">id</property>
+      <property name="Index">1</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldno1</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">no</property>
+      <property name="Caption">No</property>
+      <property name="Index">2</property>
+      <property name="SummaryType">Count</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">4</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SortOrder">Descending</property>
+      <property name="Width">80</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldvendor1</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">vendor</property>
+      <property name="Caption">Brand</property>
+      <property name="Index">3</property>
+      <property name="SummaryType">Count</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SortOrder">Descending</property>
+      <property name="Width">150</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldcabinet1</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">cabinet</property>
+      <property name="Caption">Cabinet</property>
+      <property name="Index">4</property>
+      <property name="SummaryType">Count</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">1</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SortOrder">Descending</property>
+      <property name="Width">150</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldsoftware1</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">software</property>
+      <property name="Caption">Software</property>
+      <property name="Index">5</property>
+      <property name="SummaryType">Count</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">2</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SortOrder">Descending</property>
+      <property name="Width">150</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fielddenom1</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">denom</property>
+      <property name="Caption">Denomination</property>
+      <property name="Index">6</property>
+      <property name="SummaryType">Count</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">3</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SortOrder">Descending</property>
+      <property name="Width">80</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item8" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldbasicsum1</property>
+      <property name="FieldName">basicsum</property>
+      <property name="Caption">₺ Total Result</property>
+      <property name="Index">7</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="SortMode">Value</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ #,#;(₺ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">6</property>
+      <property name="ActualSortMode">Value</property>
+      <property name="SortOrder">Descending</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item9" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldbill1</property>
+      <property name="FieldName">bill</property>
+      <property name="Caption">₺ Bill</property>
+      <property name="Index">8</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ #,#;(₺ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item10" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldturnover1</property>
+      <property name="Area">DataArea</property>
+      <property name="FieldName">turnover</property>
+      <property name="Caption">₺ T/O</property>
+      <property name="Index">9</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ #,#;(₺ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">1</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item11" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldtotalwin1</property>
+      <property name="FieldName">totalwin</property>
+      <property name="Index">10</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">2</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item12" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldgames1</property>
+      <property name="FieldName">games</property>
+      <property name="Caption">Games Played</property>
+      <property name="Index">11</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">1</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item13" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowValues">false</property>
+      </property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldavgbet1</property>
+      <property name="FieldName">avgbet</property>
+      <property name="Caption">₺ Avg. Bet</property>
+      <property name="Index">12</property>
+      <property name="SummaryType">Average</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ #,#;(₺ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">1</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item14" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fielddaysworked1</property>
+      <property name="FieldName">daysworked</property>
+      <property name="Caption">Days Worked</property>
+      <property name="Index">13</property>
+      <property name="SummaryType">Average</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0: 0;( 0)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">2</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item15" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldkeyin1</property>
+      <property name="FieldName">keyin</property>
+      <property name="Caption">₺ Key IN</property>
+      <property name="Index">14</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ 0.00;(₺ 0.00)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">4</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item16" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldcancelcredit1</property>
+      <property name="FieldName">cancelcredit</property>
+      <property name="Caption">₺ Cancel Crd.</property>
+      <property name="Index">15</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ 0.00;(₺ 0.00)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">4</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item17" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldhandpay1</property>
+      <property name="FieldName">handpay</property>
+      <property name="Caption">₺ H. Paid</property>
+      <property name="Index">16</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ 0.00;(₺ 0.00)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">4</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item18" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="ShowValues">false</property>
+      </property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[basicsum] / [daysworked]</property>
+      <property name="Name">pivotGridField1</property>
+      <property name="UnboundFieldName">pivotGridField1</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">₺ Avg Result</property>
+      <property name="Index">17</property>
+      <property name="SummaryType">Average</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:₺ #,#;(₺ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="UseNativeFormat">False</property>
+      <property name="AreaIndex">7</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item19" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">pivotGridField2</property>
+      <property name="GroupInterval">DateYear</property>
+      <property name="FieldName">date</property>
+      <property name="UnboundFieldName">pivotGridField2</property>
+      <property name="Caption">Year</property>
+      <property name="Index">18</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">4</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item20" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">pivotGridField3</property>
+      <property name="Area">ColumnArea</property>
+      <property name="GroupInterval">DateMonth</property>
+      <property name="FieldName">date</property>
+      <property name="UnboundFieldName">pivotGridField3</property>
+      <property name="Caption">Month</property>
+      <property name="Index">19</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="UseNativeFormat">False</property>
+      <property name="AreaIndex">0</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item21" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">pivotGridField4</property>
+      <property name="GroupInterval">DateDay</property>
+      <property name="FieldName">date</property>
+      <property name="UnboundFieldName">pivotGridField4</property>
+      <property name="Caption">Day</property>
+      <property name="Index">20</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">3</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item22" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="ShowValues">false</property>
+      </property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">Iif([pivotGridField1] = 0, 0, [pivotGridField1] / [rate])</property>
+      <property name="Name">colDollarAvg</property>
+      <property name="UnboundFieldName">colDollaravg</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">$ Avg Result</property>
+      <property name="Index">21</property>
+      <property name="SummaryType">Average</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName">fieldvendor1</property>
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="SortMode">Value</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:$ #,#;($ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="UseNativeFormat">False</property>
+      <property name="AreaIndex">9</property>
+      <property name="ActualSortMode">Value</property>
+      <property name="SortOrder">Descending</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item23" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">colRate</property>
+      <property name="Area">DataArea</property>
+      <property name="FieldName">rate</property>
+      <property name="Index">22</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="AreaIndex">4</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="Visible">false</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item24" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[turnover] / [rate]</property>
+      <property name="Name">colDollarTurnover</property>
+      <property name="Area">DataArea</property>
+      <property name="UnboundFieldName">colDollarTurnover</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="UnboundExpressionMode">UseSummaryValues</property>
+      <property name="Caption">$ T/O</property>
+      <property name="Index">23</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:$ #,#;($ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item25" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowValues">false</property>
+      </property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[colDollarTurnover] / [daysworked]</property>
+      <property name="Name">collDollarAvgTO</property>
+      <property name="UnboundFieldName">collDollarAvgTO</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">$ Avg T/O</property>
+      <property name="Index">24</property>
+      <property name="SummaryType">Average</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">{0:$ #,#;($ #,#)}</property>
+        <property name="FormatType">Custom</property>
+      </property>
+      <property name="AreaIndex">5</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item26" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowValues">false</property>
+      </property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[colDollarResult]</property>
+      <property name="Name">pivotGridField5</property>
+      <property name="Area">DataArea</property>
+      <property name="UnboundFieldName">pivotGridField5</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="UnboundExpressionMode">UseSummaryValues</property>
+      <property name="Caption">Res. Share %</property>
+      <property name="Index">25</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">p</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">2</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryDisplayType">PercentOfColumnGrandTotal</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+    <property name="Item27" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="0" />
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowValues">false</property>
+      </property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">colTurnShare</property>
+      <property name="Area">DataArea</property>
+      <property name="FieldName">turnover</property>
+      <property name="UnboundExpressionMode">UseSummaryValues</property>
+      <property name="Caption">T/O Share %</property>
+      <property name="Index">26</property>
+      <property name="SortBySummaryInfo" isnull="true" iskey="true">
+        <property name="Conditions" iskey="true" value="0" />
+        <property name="FieldComponentName" />
+      </property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="Values">~Xtra#Array0, </property>
+        <property name="ValuesCore" iskey="true" value="0" />
+        <property name="DeferFilterString" />
+        <property name="ShowBlanks">true</property>
+        <property name="FilterType">Excluded</property>
+      </property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">p</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">3</property>
+      <property name="ActualSortMode">Default</property>
+      <property name="SummaryDisplayType">PercentOfColumnGrandTotal</property>
+      <property name="SummaryFilter" isnull="true" iskey="true">
+        <property name="StartValue" isnull="true" />
+        <property name="EndValue" isnull="true" />
+        <property name="Mode">LastLevel</property>
+        <property name="RowFieldComponentName" />
+        <property name="ColumnFieldComponentName" />
+      </property>
+    </property>
+  </property>
+  <property name="Prefilter" isnull="true" iskey="true">
+    <property name="Criteria" isnull="true" />
+    <property name="ShowOperandTypeIcon">false</property>
+    <property name="Enabled">true</property>
+  </property>
+  <property name="OptionsCustomization" isnull="true" iskey="true">
+    <property name="CustomizationFormStyle">Excel2007</property>
+  </property>
+  <property name="OptionsChartDataSource" isnull="true" iskey="true">
+    <property name="FieldValuesProvideMode">Value</property>
+    <property name="MaxAllowedSeriesCount">31</property>
+  </property>
+  <property name="OptionsMenu" isnull="true" iskey="true">
+    <property name="EnableFormatRulesMenu">true</property>
+  </property>
+  <property name="OptionsPrint" isnull="true" iskey="true">
+    <property name="PrintDataHeaders">False</property>
+    <property name="PrintFilterHeaders">False</property>
+    <property name="PrintColumnHeaders">False</property>
+    <property name="PrintUnusedFilterFields">false</property>
+  </property>
+  <property name="Groups" iskey="true" value="0" />
+  <property name="FormatRules" iskey="true" value="0" />
+  <property name="FormatConditions" iskey="true" value="0" />
+</XtraSerializer>

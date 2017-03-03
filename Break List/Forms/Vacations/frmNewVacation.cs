@@ -3,8 +3,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Break_List.Class;
 using Break_List.Forms.Personel;
-using Break_List.Properties;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
 
@@ -15,7 +15,7 @@ namespace Break_List.Forms.Vacations
         public string PersonelId { get; set; }
         public string UserName { get; set; }
         public string PersonelName { get; set; }
-        private readonly MySqlConnection _con = new MySqlConnection(Settings.Default.livegameConnectionString2);
+        private readonly  MySqlConnection _con = DbConnection.Con;
         private MySqlCommand _cmd;
         private FileStream _fs;
         private BinaryReader _br;
@@ -149,10 +149,6 @@ namespace Break_List.Forms.Vacations
                     }
                 }
 
-                else
-                {
-
-                }
                
             }
             if(Convert.ToDateTime(dtEnd.EditValue) <= Convert.ToDateTime(dtStart.EditValue))

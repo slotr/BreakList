@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using Break_List.Properties;
-using MySql.Data.MySqlClient;
 using Break_List.Forms.Rotalar;
 using Break_List.Forms.Personel;
 using Break_List.Forms.Prosedur;
@@ -14,18 +13,19 @@ using System.Deployment.Application;
 using System.Diagnostics;
 using System.Reflection;
 using Break_List.Forms.Admin;
+using Break_List.Forms.Bar.Sigara;
 using Break_List.Forms.BreakList;
 using Break_List.Forms.Kasa;
 using Break_List.Forms.Maas;
-using DevExpress.XtraEditors;
+using Break_List.Forms.Slot;
 
 namespace Break_List.Forms
 {
     public partial class FrmMdiMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private readonly CustomProperties _prop = new CustomProperties();
-        readonly ClsPermissions _p = new ClsPermissions();
-        private readonly string _str = Settings.Default.livegameConnectionString2;
+        private readonly ClsPermissions _p = new ClsPermissions();
+        
         public string UserNameFromLogin { get; set; }
 
         public FrmMdiMain()
@@ -33,13 +33,43 @@ namespace Break_List.Forms
             InitializeComponent();
             var assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-            var fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+            //var fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
             var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
-            lblVersion.Text = assemblyVersion + @" " + fileVersion + @" " + productVersion;
+            lblVersion.Text = assemblyVersion + @" " + productVersion;
+            
         }
 
-
         private void frmMDIMain_Load(object sender, EventArgs e)
+        {
+            var conn1 = DbConnection.Con;
+            var command1 = conn1.CreateCommand();
+            command1.CommandText =
+                $"SELECT userID, Department, RoleID, FullName from users WHERE UserName ='{UserNameFromLogin}'";
+            try
+            {
+                conn1.Open();
+            }
+            catch (Exception ex1)
+            {
+                MessageBox.Show(@"There were an Error", ex1.ToString());
+            }
+            var reader1 = command1.ExecuteReader();
+            while (reader1.Read())
+            {
+                _prop.UserId = reader1["userID"].ToString();
+                _prop.RoleId = reader1["RoleID"].ToString();
+                _prop.Department = reader1["Department"].ToString();
+                _prop.FullName = reader1["FullName"].ToString();
+            }
+            conn1.Close();
+            conn1.Dispose();
+
+            SetMenus();
+            backstageViewControl1.Controls.Add(labelControl2);
+            labelControl2.Top = 5;
+        }
+
+        private void SetMenus()
         {
             rbnOnaylar.Visible = _p.Onay;
             rbnPageKasa.Visible = _p.Kasa;
@@ -50,17 +80,13 @@ namespace Break_List.Forms
             btnAddPersonel.Enabled = _p.AddPersonel;
             ribbonPersonel.Visible = _p.Personel;
             ribbonBreak.Visible = _p.BreakList;
-            rbnEgitimler.Visible = _p.Egitim;
             rbnCount.Visible = _p.Count;
             rbnDashBoard.Visible = _p.Dashboard;
             rbnEnvanter.Visible = _p.Envanter;
             rbnTurnuvalar.Visible = _p.Turnuva;
             rbnSM.Visible = _p.Slot;
             rbnMasa.Visible = _p.Istatistik;
-            backstageViewControl1.Controls.Add(labelControl2);
-            labelControl2.Top = 5;
         }
-
         private void frmMDIMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -69,7 +95,6 @@ namespace Break_List.Forms
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             
-           
             foreach (Form form in Application.OpenForms)
             {
                 if (form.GetType() == typeof(FrmBreakList))
@@ -342,30 +367,7 @@ namespace Break_List.Forms
 
         private void frmMDIMain_Shown(object sender, EventArgs e)
         {
-            var conn1 = new MySqlConnection(_str);
-            var command1 = conn1.CreateCommand();
-            command1.CommandText =
-                $"SELECT userID, Department, RoleID, FullName from users WHERE UserName ='{UserNameFromLogin}'";
-            try
-            {
-                conn1.Open();
-            }
-            catch (Exception ex1)
-            {
-                MessageBox.Show(@"There were an Error", ex1.ToString());
-            }
-            var reader1 = command1.ExecuteReader();
-            while (reader1.Read())
-            {
-                _prop.UserId = reader1["userID"].ToString();
-                _prop.RoleId = reader1["RoleID"].ToString();
-                _prop.Department = reader1["Department"].ToString();
-                _prop.FullName = reader1["FullName"].ToString();
-            }
-            conn1.Close();
-            conn1.Dispose();
-
-            var conn = new MySqlConnection(_str);
+            var conn = DbConnection.Con;
             var command = conn.CreateCommand();
             command.CommandText = $"SELECT * from permissions WHERE UserID ='{_prop.UserId}'";
             try
@@ -414,23 +416,8 @@ namespace Break_List.Forms
                 lblDepartman.Caption = @"Department: " + _prop.Department;
                 lblUserName.Caption = @"User: " + _prop.FullName;
             }
-           
-            rbnOnaylar.Visible = _p.Onay;
-            rbnPageKasa.Visible = _p.Kasa;
-            ribbonRoster.Visible = _p.Rota;
-            rbnAdmin.Visible = _p.Admin;
-            ribbonRapor.Visible = _p.Rapor;
-            rbnProsedur.Visible = _p.Prosedur;
-            btnAddPersonel.Enabled = _p.AddPersonel;
-            ribbonPersonel.Visible = _p.Personel;
-            ribbonBreak.Visible = _p.BreakList;
-            rbnEgitimler.Visible = _p.Egitim;
-            rbnCount.Visible = _p.Count;
-            rbnDashBoard.Visible = _p.Dashboard;
-            rbnEnvanter.Visible = _p.Envanter;
-            rbnTurnuvalar.Visible = _p.Turnuva;
-            rbnSM.Visible = _p.Slot;
-            rbnMasa.Visible = _p.Istatistik;
+
+            SetMenus();
         }
 
 
@@ -450,7 +437,9 @@ namespace Break_List.Forms
         private void backstageViewButtonItem1_ItemClick(object sender,
             DevExpress.XtraBars.Ribbon.BackstageViewItemEventArgs e)
         {
-            Application.Restart();
+            this.Hide();
+            var login = new FrmLogin();
+            login.Show();
         }
 
         private void backstageViewControl1_SizeChanged(object sender, EventArgs e)
@@ -553,8 +542,7 @@ namespace Break_List.Forms
 
         private void btnEnvanter_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Envanter.FrmEnvanter envanter = new Envanter.FrmEnvanter {Department = _prop.Department};
-            envanter.Text = envanter.Department + @" Envanteri";
+            Envanter.FrmEnvanterMain envanter = new Envanter.FrmEnvanterMain();
             envanter.MdiParent = this;
             envanter.Show();
         }
@@ -605,13 +593,13 @@ namespace Break_List.Forms
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var slotDaily = new TopPlayers.FrmSlots {MdiParent = this};
+            var slotDaily = new FrmSlots {MdiParent = this};
             slotDaily.Show();
         }
 
         private void btnAnaliz_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var slotPerformans = new TopPlayers.FrmSlotRapor { MdiParent = this };
+            var slotPerformans = new FrmSlotRapor { MdiParent = this };
             slotPerformans.Show();
         }
 
@@ -621,6 +609,37 @@ namespace Break_List.Forms
             password.ShowDialog();
                 
 
+        }
+
+        private void btnDailyResultToBoss_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var sendMail = new FrmDailySms { UserName = _prop.FullName };
+            sendMail.ShowDialog();
+        }
+
+        private void btnSigara_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var sigaratakip = new FrmSigaraTakip();
+            sigaratakip.Show();
+        }
+
+        private void btnSlotMusteriDetay_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var detayRaporu = new FrmSlotMusteri {MdiParent = this};
+            detayRaporu.Show();
+        }
+
+        private void btnTurnuvaRapor_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var turnuvaRaporu = new Turnuva.Rapor.FrmRapor { MdiParent = this };
+            turnuvaRaporu.Show();
+        }
+
+        private void btnVacations_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var YillikIzinler = new FrmPersonelVacations();
+            YillikIzinler.MdiParent = this;
+            YillikIzinler.Show();
         }
     }
 }

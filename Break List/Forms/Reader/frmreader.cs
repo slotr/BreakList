@@ -15,8 +15,8 @@ namespace Break_List.Forms.Reader
         }
 
        public string Personel { get; set; }
-        public string Data { get; set; }  
-        Boolean Iceride { get; set; }        
+        public string Data { get; set; }
+        private Boolean Iceride { get; set; }        
         private void textEdit1_TextChanged(object sender, EventArgs e)
         {
             
@@ -62,7 +62,8 @@ namespace Break_List.Forms.Reader
             Data = str;
             timer1.Start();
         }
-        void Konus()
+
+        private void Konus()
         {
             MessageBox.Show(Data);
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
@@ -148,8 +149,8 @@ namespace Break_List.Forms.Reader
             }
         }
 
-        
-        void Getflag() 
+
+        private void Getflag() 
         {
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
             MySqlCommand command = conn.CreateCommand();

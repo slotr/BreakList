@@ -42,12 +42,16 @@ namespace Break_List.Forms.Teknik
                         {
                             if (comboBoxEdit1.Text == @"Kime")
                             {
-                                XtraMessageBox.Show("Görevi devredeceğiniz kişiyi seçin");
+                                XtraMessageBox.Show("Görevi devredeceğiniz kişiyi seçin", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
 
                             else
                             {
                                 GoreviUpdateEt();
+                            }
+                            if (dateEdit1.EditValue == null)
+                            {
+                                XtraMessageBox.Show("Görevin bitmesini istediğiniz tarihi girin","Hata",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                             }
                         }
                     }
@@ -84,6 +88,8 @@ namespace Break_List.Forms.Teknik
                     MessageBox.Show(dbException.ToString(), @"Database Problemi");
                 }
             }
+            EmailGonder();
+            XtraMessageBox.Show("Görev update edildi", "Teşekkürler", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void GoreviBitir()
@@ -151,11 +157,12 @@ namespace Break_List.Forms.Teknik
                 + @" <p>Size " + User+ " tarafından bir görev atandı. Atanan görev detayları ve bitirlmesi gereken süre aşağıda görüldüğü gibidir. Lütfen görevi geciktirmeden tamamlayın." + "<br />"+"<hr></hr>"+ "<br />"+
                 @"<strong>" + "Görev: " + memoEdit1.Text + "</strong><br />" +
                 "Veriliş Tarihi: " + gorevTarihi + "<br />" +
-                "<strong>Son süre: " + bitisTarihi + "</strong>"+"<br />" +
+                "<strong style=\"color:#34495e\">Son süre: " + bitisTarihi + "</strong>"+"<br />" +
                 "<br />" + "<br />" +
-                "<small>Not: Görevin size ait olmadığını düşünüyorsanız sisteme giriş yapıp değişiklikleri kaydedin.</small>" + "<br />" +
+                "<small>Not: Görevin size ait olmadığını düşünüyorsanız sisteme giriş yapıp değişiklikleri kaydedin. Bu otomatik üretilmiş bir e-posta dır. Lütfen buna cevap yazmayın.</small>" + "<br />" +
                 "<br />" + "<br />" +
-                @"<h4>" + User+ "</h2>"+"</body></html>";
+                @"<h4>" + User+ "</h2>"+"" +
+                       "</body></html>";
             AlternateView htmlView =
             AlternateView.CreateAlternateViewFromString(body,null, MediaTypeNames.Text.Html);
             var smtp = new SmtpClient
@@ -273,6 +280,8 @@ namespace Break_List.Forms.Teknik
         private void comboBoxEdit1_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetEmail();
+            dateEdit1.Focus();
+            dateEdit1.ShowPopup();
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿private void pivotGridControl1_CellDoubleClick(object sender, PivotCellEventArgs e)
+        {
+            // Create a new form.
+            var form = new Form {Text = @"Records"};
+            // Place a DataGrid control on the form.
+            var grid = new DataGrid
+            {
+                Parent = form,
+                Dock = DockStyle.Fill,
+                DataSource = e.CreateDrillDownDataSource()
+            };
+            // Get the recrd set associated with the current cell and bind it to the grid.
+            form.Bounds = new Rectangle(100, 100, 500, 400);
+            // Display the form.
+            form.ShowDialog();
+            form.Dispose();
+        }

@@ -2,7 +2,7 @@
 
 namespace Break_List.Class
 {
-    class CustomProperties
+    internal class CustomProperties
     {
         public string RoleId { get; set; } // Diger formlara gonderiliyor
         public string Department { get; set; } // Main Form set ediliyor

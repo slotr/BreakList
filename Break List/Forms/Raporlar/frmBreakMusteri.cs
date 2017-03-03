@@ -5,9 +5,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using MySql.Data.MySqlClient;
-using Break_List.Properties;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Globalization;
+using Break_List.Class;
 using Oracle.ManagedDataAccess.Client;
 using DevExpress.XtraPivotGrid;
 
@@ -22,7 +22,7 @@ namespace Break_List.Forms.Raporlar
         }
 
 
-        public string GameDate { get; set; }
+        private string GameDate { get; set; }
         private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
         {
             gridControl1.Enabled = false;
@@ -71,7 +71,8 @@ namespace Break_List.Forms.Raporlar
         public DateTime StatTime { get; set; }
         public DateTime EndTime { get; set; }
         public string MasaFinal { get; set; }
-        void QueryDatabase()
+
+        private void QueryDatabase()
         {
             //Sql sorgulama
             const string sql = @"SELECT A.FIRST_NAME, A.LAST_NAME,B.AVG_BET,B.START_TIME,B.CASH_OUT,B.THEORET_LOSS,B.THEORET_DROP,B.CASH_CHIPS,B.HANDS_PLAYED,B.DROP_PLAQUES,B.PLQSOUT_ENTRY, B.CASH_CHIPS, B.PLAY_TIME 
@@ -152,7 +153,8 @@ namespace Break_List.Forms.Raporlar
             
             
         }
-        void GetTableResult()
+
+        private void GetTableResult()
         {
             //Sql sorgulama
             string sql = @"SELECT SUM(DROP_PLAQUES + CASH_CHIPS - CASH_OUT - PLQSOUT_ENTRY) AS RESULT
@@ -299,7 +301,7 @@ namespace Break_List.Forms.Raporlar
         {
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                using (MySqlConnection conn = DbConnection.Con)
                 {
                     MySqlCommand cmd = new MySqlCommand("spBreakRapor;", conn) { CommandType = CommandType.StoredProcedure };
                     cmd.Parameters.Add(new MySqlParameter("ShiftDate", barEditItem1.EditValue));

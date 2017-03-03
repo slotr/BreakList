@@ -1,0 +1,31 @@
+﻿SELECT  A.FIRST_NAME,
+        A.LAST_NAME,
+        B.PLAY_TIME,
+        B.AVG_BET,
+        B.BET,
+        B.POINTS_EARNED,
+        B.WIN,
+        B.COININ_ENTRY,
+        B.COINOUT_ENTRY,
+        B.ENTRY_RATE,
+        C.DALLAS_ID
+        FROM STARSYNCH.SH_TRAK_DETAIL B
+        LEFT JOIN STARSYNCH.SH_PLAYER_MASTER A
+        ON B.MEMB_LINKID = A.LINK_ID
+        LEFT JOIN  STARCASH.SLOT_MACHINES C
+        ON B.SLOT_LINK = C.MACHINE_ID
+        WHERE B.ENTRY_SRC = 'SL'
+        AND B.USER_ID = 'ACPPROCESS'
+        GROUP BY
+        A.FIRST_NAME,
+        A.LAST_NAME,
+        B.PLAY_TIME,
+        B.AVG_BET,
+        B.BET,
+        B.POINTS_EARNED,
+        B.WIN,
+        B.COININ_ENTRY,
+        B.COINOUT_ENTRY,
+        B.ENTRY_RATE,
+        B.SLOT_LINK,
+        C.DALLAS_ID

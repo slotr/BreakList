@@ -160,7 +160,8 @@ namespace Break_List.Forms.Counts
                 XtraMessageBox.Show(ex.ToString(), "Bir Hata oluştu");
             }
         }
-        void DuzeltmeEgerVarsa()
+
+        private void DuzeltmeEgerVarsa()
         {
             using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {
@@ -377,7 +378,7 @@ namespace Break_List.Forms.Counts
             txtClick.SelectAll();
         }
 
-        void GetTotalTables()
+        private void GetTotalTables()
         {
             
 

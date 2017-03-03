@@ -32,9 +32,9 @@
     <ProductName>Casino Management Application</ProductName>
     <PublisherName>Hakan Karaca</PublisherName>
     <SuiteName>Casino Management by Hakan Karaca</SuiteName>
-    <MinimumRequiredVersion>1.0.0.25</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.77</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>78</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -194,6 +194,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -248,15 +250,18 @@
     <Reference Include="System.Windows.Forms">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <Private>True</Private>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase">
       <Private>True</Private>
     </Reference>
+    <Reference Include="WindowsFormsIntegration" />
     <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
       <HintPath>..\packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
       <Private>True</Private>
@@ -269,6 +274,7 @@
     <Compile Include="Class\CustomScales.cs" />
     <Compile Include="Class\CustomTimeScaleDay.cs" />
     <Compile Include="Class\DateTimeExtension.cs" />
+    <Compile Include="Class\DbConnection.cs" />
     <Compile Include="Forms\Admin\frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,18 @@
     </Compile>
     <Compile Include="Forms\Audit\frmLoginLogs.Designer.cs">
       <DependentUpon>frmLoginLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Bar\Sigara\frmDailySigara.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Bar\Sigara\frmDailySigara.Designer.cs">
+      <DependentUpon>frmDailySigara.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Bar\Sigara\FrmSigaraTakip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Bar\Sigara\FrmSigaraTakip.Designer.cs">
+      <DependentUpon>FrmSigaraTakip.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BreakList\BreakListPrint.cs">
       <SubType>Form</SubType>
@@ -341,17 +359,23 @@
     <Compile Include="Forms\DashBoard\frmDashBoard.Designer.cs">
       <DependentUpon>frmDashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Envanter\frmEnvanter.cs">
+    <Compile Include="Forms\Envanter\FrmEnvanterMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Envanter\frmEnvanter.Designer.cs">
-      <DependentUpon>frmEnvanter.cs</DependentUpon>
+    <Compile Include="Forms\Envanter\FrmEnvanterMain.Designer.cs">
+      <DependentUpon>FrmEnvanterMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmLostPassword.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmLostPassword.Designer.cs">
       <DependentUpon>frmLostPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmNavigation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmNavigation.Designer.cs">
+      <DependentUpon>FrmNavigation.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Hatalar\frmHataEkle.cs">
       <SubType>Form</SubType>
@@ -449,11 +473,23 @@
     <Compile Include="Forms\Personel\frmPersonelCount.Designer.cs">
       <DependentUpon>frmPersonelCount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Personel\FrmPersonelVacations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Personel\FrmPersonelVacations.Designer.cs">
+      <DependentUpon>FrmPersonelVacations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Personel\frmSifre.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Personel\frmSifre.Designer.cs">
       <DependentUpon>frmSifre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Personel\frmUyari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Personel\frmUyari.Designer.cs">
+      <DependentUpon>frmUyari.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Prosedur\frmProsedurDisplay.cs">
       <SubType>Form</SubType>
@@ -472,6 +508,12 @@
     </Compile>
     <Compile Include="Forms\Raporlar\frmBreakMusteri.Designer.cs">
       <DependentUpon>frmBreakMusteri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Raporlar\FrmDailySMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Raporlar\FrmDailySMS.Designer.cs">
+      <DependentUpon>FrmDailySMS.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Raporlar\frmPersonelPerformance.cs">
       <SubType>Form</SubType>
@@ -581,6 +623,12 @@
     <Compile Include="Forms\Rotalar\frmRotaGruplar.Designer.cs">
       <DependentUpon>frmRotaGruplar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Slot\FrmSlotMusteri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Slot\FrmSlotMusteri.Designer.cs">
+      <DependentUpon>FrmSlotMusteri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Teknik\frmAddGorev.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -593,10 +641,22 @@
     <Compile Include="Forms\Teknik\frmTeknikTakip.Designer.cs">
       <DependentUpon>frmTeknikTakip.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TopPlayers\frmExchaneRates.cs">
+    <Compile Include="Forms\Slot\FrmAllMeters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TopPlayers\frmExchaneRates.Designer.cs">
+    <Compile Include="Forms\Slot\FrmAllMeters.Designer.cs">
+      <DependentUpon>FrmAllMeters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Slot\FrmAllRates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Slot\FrmAllRates.Designer.cs">
+      <DependentUpon>FrmAllRates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Slot\frmExchaneRates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Slot\frmExchaneRates.Designer.cs">
       <DependentUpon>frmExchaneRates.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TopPlayers\frmPlayers.cs">
@@ -605,16 +665,16 @@
     <Compile Include="Forms\TopPlayers\frmPlayers.Designer.cs">
       <DependentUpon>frmPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TopPlayers\frmSlotRapor.cs">
+    <Compile Include="Forms\Slot\frmSlotRapor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TopPlayers\frmSlotRapor.Designer.cs">
+    <Compile Include="Forms\Slot\frmSlotRapor.Designer.cs">
       <DependentUpon>frmSlotRapor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TopPlayers\frmSlots.cs">
+    <Compile Include="Forms\Slot\frmSlots.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TopPlayers\frmSlots.Designer.cs">
+    <Compile Include="Forms\Slot\frmSlots.Designer.cs">
       <DependentUpon>frmSlots.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TopPlayers\frmTables.cs">
@@ -660,6 +720,24 @@
       <DependentUpon>frmYeniTurnuva.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\PivotClass.cs" />
+    <Compile Include="Forms\Turnuva\Puanlama\FrmPuanlama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\Puanlama\FrmPuanlama.Designer.cs">
+      <DependentUpon>FrmPuanlama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Turnuva\Rapor\FrmRapor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Turnuva\Rapor\FrmRapor.Designer.cs">
+      <DependentUpon>FrmRapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Vacations\FrmAddVacation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Vacations\FrmAddVacation.Designer.cs">
+      <DependentUpon>FrmAddVacation.cs</DependentUpon>
+    </Compile>
     <Compile Include="livegameDataSet13.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -706,6 +784,12 @@
     <EmbeddedResource Include="Forms\Admin\frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Bar\Sigara\frmDailySigara.resx">
+      <DependentUpon>frmDailySigara.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Bar\Sigara\FrmSigaraTakip.resx">
+      <DependentUpon>FrmSigaraTakip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BreakList\BreakListPrint.resx">
       <DependentUpon>BreakListPrint.cs</DependentUpon>
     </EmbeddedResource>
@@ -736,11 +820,14 @@
     <EmbeddedResource Include="Forms\DashBoard\frmDashBoard.resx">
       <DependentUpon>frmDashBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Envanter\frmEnvanter.resx">
-      <DependentUpon>frmEnvanter.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Envanter\FrmEnvanterMain.resx">
+      <DependentUpon>FrmEnvanterMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLostPassword.resx">
       <DependentUpon>frmLostPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmNavigation.resx">
+      <DependentUpon>FrmNavigation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Hatalar\frmHataEkle.resx">
       <DependentUpon>frmHataEkle.cs</DependentUpon>
@@ -784,8 +871,14 @@
     <EmbeddedResource Include="Forms\Personel\frmPersonelCount.resx">
       <DependentUpon>frmPersonelCount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Personel\FrmPersonelVacations.resx">
+      <DependentUpon>FrmPersonelVacations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Personel\frmSifre.resx">
       <DependentUpon>frmSifre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Personel\frmUyari.resx">
+      <DependentUpon>frmUyari.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Prosedur\frmProsedurDisplay.resx">
       <DependentUpon>frmProsedurDisplay.cs</DependentUpon>
@@ -795,6 +888,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Raporlar\frmBreakMusteri.resx">
       <DependentUpon>frmBreakMusteri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Raporlar\FrmDailySMS.resx">
+      <DependentUpon>FrmDailySMS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Raporlar\frmPersonelPerformance.resx">
       <DependentUpon>frmPersonelPerformance.cs</DependentUpon>
@@ -836,22 +932,31 @@
     <EmbeddedResource Include="Forms\Rotalar\frmRotaGruplar.resx">
       <DependentUpon>frmRotaGruplar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Slot\FrmSlotMusteri.resx">
+      <DependentUpon>FrmSlotMusteri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Teknik\frmAddGorev.resx">
       <DependentUpon>frmAddGorev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Teknik\frmTeknikTakip.resx">
       <DependentUpon>frmTeknikTakip.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TopPlayers\frmExchaneRates.resx">
+    <EmbeddedResource Include="Forms\Slot\FrmAllMeters.resx">
+      <DependentUpon>FrmAllMeters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Slot\FrmAllRates.resx">
+      <DependentUpon>FrmAllRates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Slot\frmExchaneRates.resx">
       <DependentUpon>frmExchaneRates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TopPlayers\frmPlayers.resx">
       <DependentUpon>frmPlayers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TopPlayers\frmSlotRapor.resx">
+    <EmbeddedResource Include="Forms\Slot\frmSlotRapor.resx">
       <DependentUpon>frmSlotRapor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TopPlayers\frmSlots.resx">
+    <EmbeddedResource Include="Forms\Slot\frmSlots.resx">
       <DependentUpon>frmSlots.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TopPlayers\frmTables.resx">
@@ -874,6 +979,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Turnuva\frmYeniTurnuva.resx">
       <DependentUpon>frmYeniTurnuva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\Puanlama\FrmPuanlama.resx">
+      <DependentUpon>FrmPuanlama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Turnuva\Rapor\FrmRapor.resx">
+      <DependentUpon>FrmRapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Vacations\FrmAddVacation.resx">
+      <DependentUpon>FrmAddVacation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Vacations\frmNewVacation.resx">
       <DependentUpon>frmNewVacation.cs</DependentUpon>
@@ -998,6 +1112,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1479156211_Card_file.ico" />
+    <Content Include="BalanceLayout.xml" />
+    <Content Include="calismasaatleriFormview.xml" />
+    <Content Include="External Query\PivotGridCustomCellDisplayText.txt" />
+    <Content Include="External Query\PivotGridDoubleClickDrillDown.txt" />
+    <Content Include="External Query\SlotPlayersMachineDetails.txt" />
+    <Content Include="External Query\StoredProcedureAdd.txt" />
+    <Content Include="frmPlayers_layout.xml" />
+    <Content Include="NetResultLayout.xml" />
     <Content Include="oci.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1007,6 +1129,15 @@
     <Content Include="OraOps11w.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\sort.png" />
+    <None Include="Resources\1.JPG" />
+    <None Include="Resources\semfoto.jpg" />
+    <Content Include="slotPivotResultTotals.xml" />
+    <Content Include="slotPivotTOTotals.xml" />
+    <Content Include="smoking.ico" />
+    <Content Include="tipFormview.xml" />
+    <Content Include="Turnuva_Settings.xml" />
+    <Content Include="view.xml" />
     <None Include="Resources\_FMS4718a.jpg" />
     <None Include="Resources\black.jpg" />
     <None Include="Resources\footer.jpg" />
@@ -1018,6 +1149,26 @@
     <None Include="Resources\cards.ico" />
   </ItemGroup>
   <ItemGroup>
+    <PublishFile Include="BalanceLayout.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="calismasaatleriFormview.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
     <PublishFile Include="DevComponents.DotNetBar2">
       <Visible>False</Visible>
       <Group>
@@ -1028,9 +1179,118 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="External Query\PivotGridCustomCellDisplayText.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="External Query\PivotGridDoubleClickDrillDown.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="External Query\SlotPlayersMachineDetails.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="External Query\StoredProcedureAdd.txt">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="frmPlayers_layout.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="NetResultLayout.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="slotPivotResultTotals.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="slotPivotTOTotals.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="tipFormview.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Turnuva_Settings.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="view.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Bar\Sigara\" />
     <Folder Include="Forms\Bar\Siparis\" />
     <Folder Include="Forms\Bar\Stok\" />
     <Folder Include="Forms\Member\Operations\" />

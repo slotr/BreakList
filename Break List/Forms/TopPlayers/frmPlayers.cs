@@ -11,13 +11,15 @@ namespace Break_List.Forms.TopPlayers
     public partial class FrmPlayers : XtraForm
     {
         private readonly DataSet _ds = new DataSet();
-        readonly string _allviewlayout = Application.StartupPath + "\\frmPlayers_layout.xml";
+        private readonly string _allviewlayout = Application.StartupPath + "\\frmPlayers_layout.xml";
+        private readonly string _netResultLayout = Application.StartupPath + "\\NetResultLayout.xml";
+        private readonly string _balanceLayout = Application.StartupPath + "\\BalanceLayout.xml";
         public FrmPlayers()
         {
             InitializeComponent();
         }
 
-        void QueryDatabase()
+        private void QueryDatabase()
         {
             //Sql sorgulama
             string lvSql = @"SELECT 
@@ -45,6 +47,8 @@ namespace Break_List.Forms.TopPlayers
 	                            CASH_OUT,
 	                            SDROP,
 	                            SCASH_OUT,
+                                COMPLEMENTS_PLUS,
+                                COMPLEMENTS_MINUS,
                                 LG_PLAY_TIME	
 	                            
                             FROM
@@ -105,7 +109,7 @@ namespace Break_List.Forms.TopPlayers
 
         private void frmPlayers_Load(object sender, EventArgs e)
         {
-            pivotGridControl1.RestoreLayoutFromXml(_allviewlayout);
+            //pivotGridControl1.RestoreLayoutFromXml(_allviewlayout);
         }
 
         private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,11 +137,15 @@ namespace Break_List.Forms.TopPlayers
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             splashScreenManager1.ShowWaitForm();
-            splashScreenManager1.SetWaitFormDescription("Lütfen Bekleyin...");
+            splashScreenManager1.SetWaitFormDescription("Lütfen Bekleyin... Rapor Hazirlaniyor");
 
             backgroundWorker2.RunWorkerAsync();
+
         }
-        string _fileName = "Top Players Export.xls";
+
+        private string _fileName = "Top Players Export.xls";
+        
+
         private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
             Action a = () =>
@@ -187,10 +195,45 @@ namespace Break_List.Forms.TopPlayers
             if (e.DataField.Caption == @"PLAY TIME LG")
             {
                 var val = e.GetCellValue(colPlayTime);
-                var timespan = TimeSpan.FromMinutes(Convert.ToDouble(val)*60);
+                var timespan = TimeSpan.FromMinutes(Convert.ToDouble(val) * 60);
                 var output = timespan.ToString("h\\:mm");
                 e.DisplayText = output;
             }
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            pivotGridControl1.SaveLayoutToXml(_netResultLayout);
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            pivotGridControl1.SaveLayoutToXml(_balanceLayout);
+        }
+
+        private void dateEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            dateEdit2.Focus();
+            dateEdit2.ShowPopup();
+            
+        }
+
+        private void dateEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            if (dateEdit2.DateTime < dateEdit1.DateTime)
+            {
+                XtraMessageBox.Show("Başlangıç tarihinden küçük olamaz", "Hata", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                dateEdit2.Focus();
+                dateEdit2.ShowPopup();
+            }
+            else
+            {
+                simpleButton5.Enabled = true;
+                simpleButton5.Enabled = true;
+                simpleButton1.Enabled = true;
+            }
+            
         }
     }
 

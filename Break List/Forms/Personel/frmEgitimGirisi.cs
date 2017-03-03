@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
+using Break_List.Class;
 using MySql.Data.MySqlClient;
-using Break_List.Properties;
 
 namespace Break_List.Forms.Personel
 {
@@ -15,9 +15,9 @@ namespace Break_List.Forms.Personel
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            using (MySqlConnection mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (MySqlConnection con = DbConnection.Con)
             {
-                using (MySqlCommand mySqlCommand = new MySqlCommand("spInsertEgitim;", mySqlConnection)
+                using (MySqlCommand cmd = new MySqlCommand("spInsertEgitim;", con)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
@@ -28,16 +28,16 @@ namespace Break_List.Forms.Personel
                     string aciklama = memoEdit2.Text;
                     string egitimveren = textEdit2.Text;
                     string sonuc = memoEdit1.Text;
-                    mySqlCommand.Parameters.Add(new MySqlParameter("tarih", tarih));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("personelID", personelId));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("egitim", egitim));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("aciklama", aciklama));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("egitimveren", egitimveren));
-                    mySqlCommand.Parameters.Add(new MySqlParameter("sonuc", sonuc));
-                    mySqlConnection.Open();
-                    mySqlCommand.ExecuteNonQuery();
-                    
-                    mySqlConnection.Close();
+                    cmd.Parameters.Add(new MySqlParameter("tarih", tarih));
+                    cmd.Parameters.Add(new MySqlParameter("personelID", personelId));
+                    cmd.Parameters.Add(new MySqlParameter("egitim", egitim));
+                    cmd.Parameters.Add(new MySqlParameter("aciklama", aciklama));
+                    cmd.Parameters.Add(new MySqlParameter("egitimveren", egitimveren));
+                    cmd.Parameters.Add(new MySqlParameter("sonuc", sonuc));
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    con.Dispose();
                 }
             }
         }

@@ -107,8 +107,8 @@ namespace Break_List.Forms.Admin
 
             }
         }
-        
-        void SaveStaff()
+
+        private void SaveStaff()
         {
 
 

@@ -15,7 +15,8 @@ namespace Break_List.Forms.Rotalar
             InitializeComponent();
             GetDepartments();
         }
-        void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
+
+        private void GetDepartments() // Yeni Kayit Olusturulurken Aliyor
         {
 
             var connectionString = Settings.Default.livegameConnectionString2;

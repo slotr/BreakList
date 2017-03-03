@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using Break_List.Class;
 using System.Xml.Serialization;
 using System.IO;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace Break_List.Forms.Turnuva
@@ -14,7 +15,7 @@ namespace Break_List.Forms.Turnuva
     {
         InitializeComponent();
     }
-        public int TurnuvaID;
+        public string TurnuvaId;
         public bool YeniTurnuva { get; set; }
         private void frmYeniTurnuva_Load(object sender, EventArgs e)
         {
@@ -30,14 +31,14 @@ namespace Break_List.Forms.Turnuva
 
         private void ParametreGetir()
         {
-            var TurnID = TurnuvaID;
+           
             using (var mySqlConnection = new MySqlConnection(ConString))
             {
                 var cmd = new MySqlCommand("spTurnuva_Select;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                cmd.Parameters.Add(new MySqlParameter("p_turnuvaID", TurnID));
+                cmd.Parameters.Add(new MySqlParameter("p_turnuvaID", TurnuvaId));
                 mySqlConnection.Open();
                 var dbr = cmd.ExecuteReader();
                 while (dbr.Read())
@@ -86,112 +87,124 @@ namespace Break_List.Forms.Turnuva
         {
             if (YeniTurnuva)
             {
+                
                 ParametreKaydet();
             }
             else
             {
                 ParametreUpdateEt();
+
             }
             
         }
 
-        private void ParametreUpdateEt()
+    private void ParametreUpdateEt()
+    {
+        using (var conn = new MySqlConnection(ConString))
         {
-            using (var conn = new MySqlConnection(ConString))
+            using (var cmd = new MySqlCommand("spTurnuva_Update;", conn)
             {
-                using (var cmd = new MySqlCommand("spTurnuva_Update;", conn)
-                {
-                    CommandType = CommandType.StoredProcedure
-                })
-                {
-                    cmd.Parameters.Add(new MySqlParameter("t_adi"      , txtTurnuvaAdi.Text   ));
-                    cmd.Parameters.Add(new MySqlParameter("t_tarih"    , dateEdit1.DateTime  ));
-                    cmd.Parameters.Add(new MySqlParameter("t_ilk_spin" , tf1.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_5K"       , tf2.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_10K"      , tf3.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_25k"      , tf4.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_50K"      , tf5.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_100K"     , tf6.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy1"   , rb1.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy2"   , rb2.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy3"   , rb3.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy4"   , rb4.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy5"   , rb5.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy6"   , rb6.Text             ));
-                    cmd.Parameters.Add(new MySqlParameter("o1"         , textEdit1.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o2"         , textEdit2.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o3"         , textEdit3.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o4"         , textEdit4.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o5"         , textEdit5.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o6"         , textEdit6.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o7"         , textEdit7.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o8"         , textEdit8.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o9"         , textEdit9.Text       ));
-                    cmd.Parameters.Add(new MySqlParameter("o10"        , textEdit10.Text      ));
-                    cmd.Parameters.Add(new MySqlParameter("o11"        , textEdit11.Text      ));
-                    cmd.Parameters.Add(new MySqlParameter("o12"        , textEdit12.Text      ));
-                    cmd.Parameters.Add(new MySqlParameter("o13"        , textEdit13.Text      ));
-                    cmd.Parameters.Add(new MySqlParameter("o14"        , textEdit14.Text      ));
-                    cmd.Parameters.Add(new MySqlParameter("o15"        , textEdit15.Text      ));
-                    cmd.Parameters.Add(new MySqlParameter("turnuvaID"  , TurnuvaID));
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    conn.Dispose();
-                    Close();
-                }
+                CommandType = CommandType.StoredProcedure
+            })
+            {
+                cmd.Parameters.Add(new MySqlParameter("t_adi", txtTurnuvaAdi.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_tarih", dateEdit1.DateTime));
+                cmd.Parameters.Add(new MySqlParameter("t_ilk_spin", tf1.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_5K", tf2.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_10K", tf3.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_25k", tf4.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_50K", tf5.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_100K", tf6.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_rebuy1", rb1.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_rebuy2", rb2.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_rebuy3", rb3.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_rebuy4", rb4.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_rebuy5", rb5.Text));
+                cmd.Parameters.Add(new MySqlParameter("t_rebuy6", rb6.Text));
+                cmd.Parameters.Add(new MySqlParameter("o1", textEdit1.Text));
+                cmd.Parameters.Add(new MySqlParameter("o2", textEdit2.Text));
+                cmd.Parameters.Add(new MySqlParameter("o3", textEdit3.Text));
+                cmd.Parameters.Add(new MySqlParameter("o4", textEdit4.Text));
+                cmd.Parameters.Add(new MySqlParameter("o5", textEdit5.Text));
+                cmd.Parameters.Add(new MySqlParameter("o6", textEdit6.Text));
+                cmd.Parameters.Add(new MySqlParameter("o7", textEdit7.Text));
+                cmd.Parameters.Add(new MySqlParameter("o8", textEdit8.Text));
+                cmd.Parameters.Add(new MySqlParameter("o9", textEdit9.Text));
+                cmd.Parameters.Add(new MySqlParameter("o10", textEdit10.Text));
+                cmd.Parameters.Add(new MySqlParameter("o11", textEdit11.Text));
+                cmd.Parameters.Add(new MySqlParameter("o12", textEdit12.Text));
+                cmd.Parameters.Add(new MySqlParameter("o13", textEdit13.Text));
+                cmd.Parameters.Add(new MySqlParameter("o14", textEdit14.Text));
+                cmd.Parameters.Add(new MySqlParameter("o15", textEdit15.Text));
+                cmd.Parameters.Add(new MySqlParameter("turnuvaID", TurnuvaId));
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                conn.Dispose();
+
             }
         }
+        }
 
-        private const string ConString = "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
+    private const string ConString = "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
 
 
-        void ParametreKaydet()
+    private void ParametreKaydet()
         {
-            using (var conn = new MySqlConnection(ConString))
+            if (dateEdit1.EditValue == null)
             {
-                using (var cmd = new MySqlCommand("spTurnuva_yeni_turnuva;", conn)
-                {
-                    CommandType = CommandType.StoredProcedure
-                })
-                {
-                    cmd.Parameters.Add(new MySqlParameter("t_adi", txtTurnuvaAdi.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_tarih",dateEdit1.EditValue));
-                    cmd.Parameters.Add(new MySqlParameter("t_ilk_spin",tf1.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_5K",tf2.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_10K",tf3.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_25k", tf4.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_50K", tf5.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_100K", tf6.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy1",rb1.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy2", rb2.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy3", rb3.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy4", rb4.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy5", rb5.Text));
-                    cmd.Parameters.Add(new MySqlParameter("t_rebuy6", rb6.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o1",  textEdit1.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o2",  textEdit2.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o3",  textEdit3.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o4",  textEdit4.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o5",  textEdit5.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o6",  textEdit6.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o7",  textEdit7.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o8",  textEdit8.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o9",  textEdit9.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o10", textEdit10.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o11", textEdit11.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o12", textEdit12.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o13", textEdit13.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o14", textEdit14.Text));
-                    cmd.Parameters.Add(new MySqlParameter("o15", textEdit15.Text));
+                XtraMessageBox.Show("Tarih Bos olamaz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateEdit1.ShowPopup();
+                dateEdit1.Focus();
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    conn.Dispose();
-                    Close();
-                }
             }
+            else
+            {
+                using (var conn = new MySqlConnection(ConString))
+                {
+                    using (var cmd = new MySqlCommand("spTurnuva_yeni_turnuva;", conn)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    })
+                    {
+                        cmd.Parameters.Add(new MySqlParameter("t_adi", txtTurnuvaAdi.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_tarih", dateEdit1.EditValue));
+                        cmd.Parameters.Add(new MySqlParameter("t_ilk_spin", tf1.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_5K", tf2.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_10K", tf3.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_25k", tf4.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_50K", tf5.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_100K", tf6.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_rebuy1", rb1.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_rebuy2", rb2.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_rebuy3", rb3.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_rebuy4", rb4.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_rebuy5", rb5.Text));
+                        cmd.Parameters.Add(new MySqlParameter("t_rebuy6", rb6.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o1", textEdit1.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o2", textEdit2.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o3", textEdit3.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o4", textEdit4.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o5", textEdit5.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o6", textEdit6.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o7", textEdit7.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o8", textEdit8.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o9", textEdit9.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o10", textEdit10.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o11", textEdit11.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o12", textEdit12.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o13", textEdit13.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o14", textEdit14.Text));
+                        cmd.Parameters.Add(new MySqlParameter("o15", textEdit15.Text));
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        conn.Dispose();
+
+                    }
+                }}
+            
         }
         
 }

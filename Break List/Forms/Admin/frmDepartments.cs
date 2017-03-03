@@ -15,7 +15,7 @@ namespace Break_List.Forms.Admin
 
         }
 
-        void InsertDepartment()
+        private void InsertDepartment()
         {
                          _con.Open();
                         _cmd = new MySqlCommand("INSERT INTO departments(DepartmentName) VALUES(@DepartmentName)", _con);

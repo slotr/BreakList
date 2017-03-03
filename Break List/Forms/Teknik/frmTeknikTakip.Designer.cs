@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTeknikTakip));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTeknikTakip));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.colGecikme = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnGecikme = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -167,14 +167,14 @@
             this.colBitir,
             this.id,
             this.colGecikme});
-            gridFormatRule3.ApplyToRow = true;
-            gridFormatRule3.Column = this.colGecikme;
-            gridFormatRule3.Name = "Format0";
-            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
-            formatConditionRuleValue3.PredefinedName = "Red Fill";
-            formatConditionRuleValue3.Value1 = 0;
-            gridFormatRule3.Rule = formatConditionRuleValue3;
-            this.gridView1.FormatRules.Add(gridFormatRule3);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.colGecikme;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
+            formatConditionRuleValue1.PredefinedName = "Red Fill";
+            formatConditionRuleValue1.Value1 = 0;
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridView1.FormatRules.Add(gridFormatRule1);
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.GroupCount = 2;
             this.gridView1.Name = "gridView1";
@@ -415,14 +415,14 @@
             this.gridColumn19,
             this.colDueDate,
             this.gridColumnGecikme});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.gridColumnGecikme;
-            gridFormatRule1.Name = "Format1";
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
-            formatConditionRuleValue1.PredefinedName = "Red Fill";
-            formatConditionRuleValue1.Value1 = 0;
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            this.gridView2.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.gridColumnGecikme;
+            gridFormatRule2.Name = "Format1";
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
+            formatConditionRuleValue2.PredefinedName = "Red Fill";
+            formatConditionRuleValue2.Value1 = 0;
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            this.gridView2.FormatRules.Add(gridFormatRule2);
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.GroupCount = 2;
             this.gridView2.Name = "gridView2";

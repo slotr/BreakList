@@ -15,7 +15,7 @@ namespace Break_List.Forms.Personel
         public int PersonelId;
         public string UserNameFromMainForm { get; set; }
         public string UserId { get; set; }
-        Boolean HaspermissionToAllPersonel { get; set; }
+        private Boolean HaspermissionToAllPersonel { get; set; }
         public string PersonelName;
         public FrmPersonelList()
         {
@@ -26,12 +26,11 @@ namespace Break_List.Forms.Personel
         private void frmPersonel_Load(object sender, EventArgs e)
         {
             
-            GetNames();            
-            SetupView();
+            
             labelControl1.Text = UserId;
         }
 
-        void GetNames()
+        private void GetNames()
         {
             CheckPermissions();
             if (HaspermissionToAllPersonel)
@@ -81,7 +80,7 @@ namespace Break_List.Forms.Personel
 
         }
 
-        void CheckPermissions() //Department , Role ve Full adi aliyor.
+        private void CheckPermissions() //Department , Role ve Full adi aliyor.
         {
             MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
             MySqlCommand command = conn.CreateCommand();
@@ -104,7 +103,7 @@ namespace Break_List.Forms.Personel
             conn.Close();
         }
 
-        void SetupView()
+        private void SetupView()
         {
             try
             {
@@ -212,6 +211,9 @@ namespace Break_List.Forms.Personel
 
         }
 
-
+        private void FrmPersonelList_Shown(object sender, EventArgs e)
+        {
+            GetNames();
+            SetupView();}
     }
 }

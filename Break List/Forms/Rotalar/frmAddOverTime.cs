@@ -256,17 +256,20 @@ namespace Break_List.Forms.Rotalar
         {
             return new AppointmentFormController(control, apt);
         }
-        void SubscribeEditorsEvents()
+
+        private void SubscribeEditorsEvents()
         {
             cbReminder.EditValueChanging += OnCbReminderEditValueChanging;
         }
-        void SubscribeControllerEvents(AppointmentFormController controller)
+
+        private void SubscribeControllerEvents(AppointmentFormController controller)
         {
             if (controller == null)
                 return;
             controller.PropertyChanged += OnControllerPropertyChanged;
         }
-        void OnControllerPropertyChanged(object sender, PropertyChangedEventArgs e)
+
+        private void OnControllerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "ReadOnly")
                 UpdateReadonly();
@@ -288,7 +291,7 @@ namespace Break_List.Forms.Rotalar
             btnRecurrence.Enabled = !Controller.ReadOnly;
         }
 
-        static List<Control> GetAllControls(Control rootControl)
+        private static List<Control> GetAllControls(Control rootControl)
         {
             List<Control> result = new List<Control>();
             foreach (Control control in rootControl.Controls)
@@ -334,7 +337,8 @@ namespace Break_List.Forms.Rotalar
             edtStartTime.Validating -= OnEdtStartTimeValidating;
             edtStartTime.InvalidValue -= OnEdtStartTimeInvalidValue;
         }
-        void OnBtnOkClick(object sender, EventArgs e)
+
+        private void OnBtnOkClick(object sender, EventArgs e)
         {
             OnOkButton();
         }
@@ -425,7 +429,8 @@ namespace Break_List.Forms.Rotalar
         {
             return XtraMessageBox.Show(this, text, caption, buttons, icon);
         }
-        void OnBtnDeleteClick(object sender, EventArgs e)
+
+        private void OnBtnDeleteClick(object sender, EventArgs e)
         {
             OnDeleteButton();
         }
@@ -440,7 +445,8 @@ namespace Break_List.Forms.Rotalar
             DialogResult = DialogResult.Abort;
             Close();
         }
-        void OnBtnRecurrenceClick(object sender, EventArgs e)
+
+        private void OnBtnRecurrenceClick(object sender, EventArgs e)
         {
             OnRecurrenceButton();
         }
@@ -514,7 +520,8 @@ namespace Break_List.Forms.Rotalar
             tbDescription.Location = new Point(tbDescription.Location.X, tbDescription.Location.Y - intDeltaY);
             tbDescription.Size = new Size(tbDescription.Size.Width, tbDescription.Size.Height + intDeltaY);
         }
-        void OnCbReminderEditValueChanging(object sender, ChangingEventArgs e)
+
+        private void OnCbReminderEditValueChanging(object sender, ChangingEventArgs e)
         {
             if (e.NewValue is TimeSpan)
                 return;

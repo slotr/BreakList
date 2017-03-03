@@ -120,7 +120,7 @@
             this.labelControl1.TabIndex = 2;
             this.labelControl1.Text = "labelControl1";
             // 
-            // frmIstenAyrilmis
+            // FrmIstenAyrilmis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,6 +130,7 @@
             this.Name = "FrmIstenAyrilmis";
             this.Text = "İşten Ayrılanlar";
             this.Load += new System.EventHandler(this.frmPersonel_Load);
+            this.Shown += new System.EventHandler(this.FrmIstenAyrilmis_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.livegameDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();

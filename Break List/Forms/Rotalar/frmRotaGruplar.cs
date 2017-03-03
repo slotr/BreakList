@@ -18,7 +18,8 @@ namespace Break_List.Forms.Rotalar
         {
             GetGroup();
         }
-        void GetGroup()
+
+        private void GetGroup()
         {
             using (MySqlConnection conn = new MySqlConnection(Settings.Default.livegameConnectionString2))
             {

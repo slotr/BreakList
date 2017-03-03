@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.RegressionLine regressionLine1 = new DevExpress.XtraCharts.RegressionLine();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -41,6 +48,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Break_List.Forms.Raporlar.WaitForm1), true, true);
             this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
+            this.colBalance = new DevExpress.XtraPivotGrid.PivotGridField();
             this.colGameDate = new DevExpress.XtraPivotGrid.PivotGridField();
             this.colDropPlq = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
@@ -59,8 +67,15 @@
             this.colExpenses = new DevExpress.XtraPivotGrid.PivotGridField();
             this.colNETRESULT = new DevExpress.XtraPivotGrid.PivotGridField();
             this.colCustom = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.colPlayTime = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.colCompPlus = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.colCompMinus = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.colDay = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.colYear = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.chartControl3 = new DevExpress.XtraCharts.ChartControl();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
@@ -70,10 +85,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
+            this.splitContainerControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(regressionLine1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.simpleButton5);
+            this.panelControl1.Controls.Add(this.simpleButton4);
             this.panelControl1.Controls.Add(this.simpleButton3);
             this.panelControl1.Controls.Add(this.checkEdit1);
             this.panelControl1.Controls.Add(this.labelControl2);
@@ -86,25 +111,44 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(930, 87);
+            this.panelControl1.Size = new System.Drawing.Size(1231, 87);
             this.panelControl1.TabIndex = 0;
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(309, 8);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton5.TabIndex = 7;
+            this.simpleButton5.Text = "Balance";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Location = new System.Drawing.Point(214, 8);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton4.TabIndex = 7;
+            this.simpleButton4.Text = "Net Result";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(366, 58);
+            this.simpleButton3.Location = new System.Drawing.Point(214, 58);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(170, 23);
             this.simpleButton3.TabIndex = 6;
             this.simpleButton3.Text = "Yazdır";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(220, 58);
+            this.checkEdit1.Location = new System.Drawing.Point(1074, 42);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Data Başlıklarını Göster";
             this.checkEdit1.Size = new System.Drawing.Size(145, 19);
             this.checkEdit1.TabIndex = 5;
+            this.checkEdit1.Visible = false;
             this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // labelControl2
@@ -125,7 +169,7 @@
             // 
             // radioGroup1
             // 
-            this.radioGroup1.Location = new System.Drawing.Point(220, 5);
+            this.radioGroup1.Location = new System.Drawing.Point(897, 8);
             this.radioGroup1.Name = "radioGroup1";
             this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem(((short)(0)), "Günlük"),
@@ -133,16 +177,18 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(5, "Yıllık")});
             this.radioGroup1.Size = new System.Drawing.Size(221, 31);
             this.radioGroup1.TabIndex = 3;
+            this.radioGroup1.Visible = false;
             this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
             // 
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.Location = new System.Drawing.Point(823, 13);
+            this.simpleButton2.Location = new System.Drawing.Point(1124, 13);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(95, 23);
             this.simpleButton2.TabIndex = 2;
             this.simpleButton2.Text = "Görünümü Kaydet";
+            this.simpleButton2.Visible = false;
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
@@ -165,6 +211,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit2.Size = new System.Drawing.Size(100, 20);
             this.dateEdit2.TabIndex = 0;
+            this.dateEdit2.EditValueChanged += new System.EventHandler(this.dateEdit2_EditValueChanged);
             // 
             // dateEdit1
             // 
@@ -177,6 +224,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit1.Size = new System.Drawing.Size(100, 20);
             this.dateEdit1.TabIndex = 0;
+            this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit1_EditValueChanged);
             // 
             // backgroundWorker1
             // 
@@ -191,6 +239,7 @@
             // 
             this.pivotGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pivotGridControl1.Fields.AddRange(new DevExpress.XtraPivotGrid.PivotGridField[] {
+            this.colBalance,
             this.colGameDate,
             this.colDropPlq,
             this.pivotGridField1,
@@ -209,18 +258,33 @@
             this.colExpenses,
             this.colNETRESULT,
             this.colCustom,
-            this.colPlayTime});
-            this.pivotGridControl1.Location = new System.Drawing.Point(0, 87);
+            this.colPlayTime,
+            this.colCompPlus,
+            this.colCompMinus,
+            this.colDay,
+            this.colYear});
+            this.pivotGridControl1.Location = new System.Drawing.Point(0, 0);
             this.pivotGridControl1.Name = "pivotGridControl1";
-            this.pivotGridControl1.Size = new System.Drawing.Size(930, 517);
+            this.pivotGridControl1.OptionsChartDataSource.FieldValuesProvideMode = DevExpress.XtraPivotGrid.PivotChartFieldValuesProvideMode.Value;
+            this.pivotGridControl1.OptionsChartDataSource.MaxAllowedSeriesCount = 31;
+            this.pivotGridControl1.Size = new System.Drawing.Size(1231, 231);
             this.pivotGridControl1.TabIndex = 1;
             this.pivotGridControl1.CustomCellDisplayText += new DevExpress.XtraPivotGrid.PivotCellDisplayTextEventHandler(this.pivotGridControl1_CustomCellDisplayText);
+            // 
+            // colBalance
+            // 
+            this.colBalance.AreaIndex = 18;
+            this.colBalance.Caption = "BALANCE";
+            this.colBalance.Name = "colBalance";
+            this.colBalance.UnboundExpression = "[ACTUAL_LOSS] + [SACTUAL_LOSS]";
+            this.colBalance.UnboundFieldName = "colBalance";
+            this.colBalance.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             // 
             // colGameDate
             // 
             this.colGameDate.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
             this.colGameDate.AreaIndex = 0;
-            this.colGameDate.Caption = "DATE";
+            this.colGameDate.Caption = "MONTH";
             this.colGameDate.FieldName = "GAMEDATE";
             this.colGameDate.GroupInterval = DevExpress.XtraPivotGrid.PivotGroupInterval.DateMonth;
             this.colGameDate.Name = "colGameDate";
@@ -228,8 +292,7 @@
             // 
             // colDropPlq
             // 
-            this.colDropPlq.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.colDropPlq.AreaIndex = 0;
+            this.colDropPlq.AreaIndex = 15;
             this.colDropPlq.Caption = "LG. DROP";
             this.colDropPlq.FieldName = "DROP_PLAQUES";
             this.colDropPlq.Name = "colDropPlq";
@@ -264,20 +327,18 @@
             this.pivotGridField3.UnboundExpression = "[FIRST_NAME] + \' \' + [LAST_NAME]";
             this.pivotGridField3.UnboundFieldName = "pivotGridField3";
             this.pivotGridField3.UnboundType = DevExpress.Data.UnboundColumnType.String;
-            this.pivotGridField3.Width = 247;
+            this.pivotGridField3.Width = 295;
             // 
             // colActualLoss
             // 
-            this.colActualLoss.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.colActualLoss.AreaIndex = 1;
+            this.colActualLoss.AreaIndex = 16;
             this.colActualLoss.Caption = "LG. ACTUAL LOSS";
             this.colActualLoss.FieldName = "ACTUAL_LOSS";
             this.colActualLoss.Name = "colActualLoss";
             // 
             // colSlotActualLoss
             // 
-            this.colSlotActualLoss.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.colSlotActualLoss.AreaIndex = 2;
+            this.colSlotActualLoss.AreaIndex = 17;
             this.colSlotActualLoss.Caption = "SL. ACTUAL LOSS";
             this.colSlotActualLoss.FieldName = "SACTUAL_LOSS";
             this.colSlotActualLoss.Name = "colSlotActualLoss";
@@ -348,20 +409,20 @@
             // colNETRESULT
             // 
             this.colNETRESULT.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.colNETRESULT.AreaIndex = 3;
+            this.colNETRESULT.AreaIndex = 0;
             this.colNETRESULT.Caption = "NET RESULT";
             this.colNETRESULT.Name = "colNETRESULT";
             this.colNETRESULT.Options.AllowSortBySummary = DevExpress.Utils.DefaultBoolean.True;
             this.colNETRESULT.Options.ShowUnboundExpressionMenu = true;
             this.colNETRESULT.UnboundExpression = "[ACTUAL_LOSS] + [SACTUAL_LOSS] - [EXPENSES] - ([DISC_CHIPS_PLUS] - [DISC_CHIPS_MI" +
-    "NUS]) - ([DISC_CASH_PLUS] - [DISC_CASH_MINUS])";
+    "NUS]) - ([DISC_CASH_PLUS] - [DISC_CASH_MINUS]) - ([COMPLEMENTS_PLUS] - [COMPLEME" +
+    "NTS_MINUS])";
             this.colNETRESULT.UnboundFieldName = "colNETRESULT";
             this.colNETRESULT.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             // 
             // colCustom
             // 
-            this.colCustom.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.colCustom.AreaIndex = 4;
+            this.colCustom.AreaIndex = 12;
             this.colCustom.Caption = "CUSTOM";
             this.colCustom.Name = "colCustom";
             this.colCustom.Options.ShowInExpressionEditor = false;
@@ -370,11 +431,6 @@
             this.colCustom.UnboundFieldName = "colCustom";
             this.colCustom.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             // 
-            // backgroundWorker2
-            // 
-            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
-            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
-            // 
             // colPlayTime
             // 
             this.colPlayTime.AreaIndex = 9;
@@ -382,15 +438,121 @@
             this.colPlayTime.FieldName = "LG_PLAY_TIME";
             this.colPlayTime.Name = "colPlayTime";
             // 
+            // colCompPlus
+            // 
+            this.colCompPlus.AreaIndex = 10;
+            this.colCompPlus.Caption = "COMP +";
+            this.colCompPlus.FieldName = "COMPLEMENTS_PLUS";
+            this.colCompPlus.Name = "colCompPlus";
+            // 
+            // colCompMinus
+            // 
+            this.colCompMinus.AreaIndex = 11;
+            this.colCompMinus.Caption = "COMP -";
+            this.colCompMinus.FieldName = "COMPLEMENTS_MINUS";
+            this.colCompMinus.Name = "colCompMinus";
+            // 
+            // colDay
+            // 
+            this.colDay.AreaIndex = 14;
+            this.colDay.Caption = "DAY";
+            this.colDay.CellFormat.FormatString = "d";
+            this.colDay.CellFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colDay.FieldName = "GAMEDATE";
+            this.colDay.GroupInterval = DevExpress.XtraPivotGrid.PivotGroupInterval.Date;
+            this.colDay.Name = "colDay";
+            this.colDay.UnboundFieldName = "colDay";
+            // 
+            // colYear
+            // 
+            this.colYear.AreaIndex = 13;
+            this.colYear.Caption = "YEAR";
+            this.colYear.CellFormat.FormatString = "d";
+            this.colYear.CellFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colYear.FieldName = "GAMEDATE";
+            this.colYear.GroupInterval = DevExpress.XtraPivotGrid.PivotGroupInterval.DateYear;
+            this.colYear.Name = "colYear";
+            this.colYear.UnboundFieldName = "pivotGridField4";
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+            // 
+            // splitContainerControl1
+            // 
+            this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl1.Horizontal = false;
+            this.splitContainerControl1.Location = new System.Drawing.Point(0, 87);
+            this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.pivotGridControl1);
+            this.splitContainerControl1.Panel1.Text = "Panel1";
+            this.splitContainerControl1.Panel2.Controls.Add(this.chartControl3);
+            this.splitContainerControl1.Panel2.Text = "Panel2";
+            this.splitContainerControl1.Size = new System.Drawing.Size(1231, 517);
+            this.splitContainerControl1.SplitterPosition = 231;
+            this.splitContainerControl1.TabIndex = 2;
+            this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // chartControl3
+            // 
+            this.chartControl3.AnimationStartMode = DevExpress.XtraCharts.ChartAnimationMode.OnDataChanged;
+            this.chartControl3.AppearanceNameSerializable = "Chameleon";
+            this.chartControl3.CrosshairEnabled = DevExpress.Utils.DefaultBoolean.False;
+            this.chartControl3.DataBindings = null;
+            this.chartControl3.DataSource = this.pivotGridControl1;
+            xyDiagram1.AxisX.Label.Staggered = true;
+            xyDiagram1.AxisX.Label.TextPattern = "{A:dd-MMM-yy}";
+            xyDiagram1.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl3.Diagram = xyDiagram1;
+            this.chartControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartControl3.IndicatorsPaletteName = "Chameleon";
+            this.chartControl3.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
+            this.chartControl3.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
+            this.chartControl3.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
+            this.chartControl3.Legend.MaxHorizontalPercentage = 30D;
+            this.chartControl3.Legend.MaxVerticalPercentage = 30D;
+            this.chartControl3.Legend.Name = "Default Legend";
+            this.chartControl3.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            this.chartControl3.Location = new System.Drawing.Point(0, 0);
+            this.chartControl3.Name = "chartControl3";
+            this.chartControl3.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
+            this.chartControl3.PaletteName = "Chameleon";
+            this.chartControl3.PivotGridDataSourceOptions.AutoBindingSettingsEnabled = false;
+            this.chartControl3.PivotGridDataSourceOptions.AutoLayoutSettingsEnabled = false;
+            this.chartControl3.SeriesDataMember = "Arguments";
+            this.chartControl3.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
+            this.chartControl3.SeriesTemplate.ArgumentDataMember = "Series";
+            this.chartControl3.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Qualitative;
+            sideBySideBarSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+            sideBySideBarSeriesLabel1.Position = DevExpress.XtraCharts.BarSeriesLabelPosition.Top;
+            sideBySideBarSeriesLabel1.ResolveOverlappingMode = DevExpress.XtraCharts.ResolveOverlappingMode.Default;
+            sideBySideBarSeriesLabel1.TextPattern = "{V:#,#}";
+            this.chartControl3.SeriesTemplate.Label = sideBySideBarSeriesLabel1;
+            this.chartControl3.SeriesTemplate.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.chartControl3.SeriesTemplate.ValueDataMembersSerializable = "Values";
+            regressionLine1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            regressionLine1.LineStyle.LineJoin = System.Drawing.Drawing2D.LineJoin.Bevel;
+            regressionLine1.LineStyle.Thickness = 3;
+            regressionLine1.Name = "Regression Line 1";
+            sideBySideBarSeriesView1.Indicators.AddRange(new DevExpress.XtraCharts.Indicator[] {
+            regressionLine1});
+            this.chartControl3.SeriesTemplate.View = sideBySideBarSeriesView1;
+            this.chartControl3.Size = new System.Drawing.Size(1231, 274);
+            this.chartControl3.TabIndex = 2;
+            // 
             // FrmPlayers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 604);
-            this.Controls.Add(this.pivotGridControl1);
+            this.ClientSize = new System.Drawing.Size(1231, 604);
+            this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.panelControl1);
             this.Name = "FrmPlayers";
             this.Text = "Oyuncu Bazlı Raporlama";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPlayers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -402,6 +564,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
+            this.splitContainerControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(regressionLine1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,5 +611,15 @@
         private DevExpress.XtraPivotGrid.PivotGridField colNETRESULT;
         private DevExpress.XtraPivotGrid.PivotGridField colCustom;
         private DevExpress.XtraPivotGrid.PivotGridField colPlayTime;
+        private DevExpress.XtraPivotGrid.PivotGridField colCompPlus;
+        private DevExpress.XtraPivotGrid.PivotGridField colCompMinus;
+        private DevExpress.XtraPivotGrid.PivotGridField colDay;
+        private DevExpress.XtraPivotGrid.PivotGridField colYear;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
+        private DevExpress.XtraCharts.ChartControl chartControl3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraPivotGrid.PivotGridField colBalance;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
     }
 }

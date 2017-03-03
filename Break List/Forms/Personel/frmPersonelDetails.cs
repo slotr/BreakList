@@ -7,7 +7,6 @@ using Break_List.Forms.Admin;
 using Break_List.Forms.Hatalar;
 using Break_List.Forms.Maas;
 using Break_List.Forms.Vacations;
-using Break_List.Properties;
 using Break_List.Reports;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking2010;
@@ -17,6 +16,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
 using DevExpress.XtraReports.UI;
 using MySql.Data.MySqlClient;
+using Break_List.Class;
 
 namespace Break_List.Forms.Personel
 {
@@ -29,14 +29,12 @@ namespace Break_List.Forms.Personel
             Weekday,
             Day,
             Hour,
-            Minute,
-            Second
+            Minute
         }
 
-        private const string ConString =
-            "server=192.168.0.187;user id=hakan;password=26091974;persistsecurityinfo=True;database=livegame";
+        
 
-        private readonly MySqlConnection _con = new MySqlConnection(ConString);
+        private readonly MySqlConnection _con = DbConnection.Con;
         private BinaryReader _br;
         private MySqlCommand _cmd;
         private FileStream _fs;
@@ -46,25 +44,25 @@ namespace Break_List.Forms.Personel
             InitializeComponent();
         }
 
-        public string PersonelId { get; set; }
-        public string KayitId { get; set; }
-        public int UniqueId { get; set; }
-        public string DepartmentName { get; set; }
-        public string Pozisyon { get; set; }
-        public string UserId { get; set; }
-        public string UserNameFromMainForm { get; set; }
-        public bool HasPermissionToVacations { get; set; }
-        public bool HasPermissionsToPersonelEditAdd { get; set; }
-        public bool HasPermissionToAddEditTip { get; set; }
-        public bool HasPermissionToAddEditmaas { get; set; }
-        public string PersonelName { get; set; }
+        public string PersonelId { private get; set; }
+        private string KayitId { get; set; }
+        private int UniqueId { get; set; }
+        private string DepartmentName { get; set; }
+        private string Pozisyon { get; set; }
+        public string UserId { private get; set; }
+        public string UserNameFromMainForm { private get; set; }
+        private bool HasPermissionToVacations { get; set; }
+        private bool HasPermissionsToPersonelEditAdd { get; set; }
+        private bool HasPermissionToAddEditTip { get; set; }
+        private bool HasPermissionToAddEditmaas { get; set; }
+        public string PersonelName { private get; set; }
 
 
-        private DateTime IseBaslamaTarihi => dtStartDate.DateTime;
+        
 
         private void CheckPermissions()
         {
-            var conn = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var conn = DbConnection.Con;
             var command = conn.CreateCommand();
             command.CommandText = $"SELECT * from permissions WHERE UserID ='{UserId}'";
             try
@@ -91,7 +89,6 @@ namespace Break_List.Forms.Personel
             if (PersonelId != null)
             {
                 GetPersonel();
-                CalculateVacation();
                 GetUsedVacations();
                 GetDepartments();
                 GetVacations();
@@ -137,6 +134,7 @@ namespace Break_List.Forms.Personel
                 tabLayout.Visibility = LayoutVisibility.Never;
                 labelControl.Text = @"Yeni Personel Kaydı";
             }
+           
         }
 
         private void AddPersonel()
@@ -265,9 +263,9 @@ namespace Break_List.Forms.Personel
                     _br.Close();
                     _fs.Close();
 
-                    using (var conn = new MySqlConnection(ConString))
+                    using (var conn = DbConnection.Con)
                     {
-                        using (var cmd = new MySqlCommand("spUpdatePersonelWithImage;", conn)
+                        using (var cmd = new MySqlCommand("spPersonel_UpdateWithImage;", conn)
                         {
                             CommandType = CommandType.StoredProcedure
                         })
@@ -302,8 +300,7 @@ namespace Break_List.Forms.Personel
                             cmd.Parameters.Add(new MySqlParameter("_Maas", txtMaas.Text));
                             cmd.Parameters.Add(new MySqlParameter("_TipPuani", txtTip.Text));
                             cmd.Parameters.Add(new MySqlParameter("_Uyruk", cmbUyruk.Text));
-                            cmd.Parameters.Add(new MySqlParameter("_sex", cmbCinsiyet.Text));
-                            cmd.Parameters.Add(new MySqlParameter("_email", txtEmail.Text));
+                            cmd.Parameters.Add(new MySqlParameter("_sex", cmbCinsiyet.Text));cmd.Parameters.Add(new MySqlParameter("_email", txtEmail.Text));
                             cmd.Parameters.Add(new MySqlParameter("_MedeniHal", txtMedeniHali.Text));
                             cmd.Parameters.Add(new MySqlParameter("_Askerlik", cmbAskerlik.Text));
                             cmd.Parameters.Add(new MySqlParameter("_Ehliyet", cmbEhliyet.Text));
@@ -324,9 +321,9 @@ namespace Break_List.Forms.Personel
             }
             try
             {
-                using (var conn = new MySqlConnection(ConString))
+                using (var conn = DbConnection.Con)
                 {
-                    using (var cmd = new MySqlCommand("spUpdatePersonelWithoutImage;", conn)
+                    using (var cmd = new MySqlCommand("spPersonel_UpdateWithoutImage;", conn)
                     {
                         CommandType = CommandType.StoredProcedure
                     })
@@ -379,7 +376,7 @@ namespace Break_List.Forms.Personel
 
         private void GetPersonel()
         {
-            using (var mySqlConnection = new MySqlConnection(ConString))
+            using (var mySqlConnection = DbConnection.Con)
             {
                 var mySqlCommand = new MySqlCommand("spSinglePersonel;", mySqlConnection)
                 {
@@ -401,11 +398,7 @@ namespace Break_List.Forms.Personel
                 cmbDepartment.EditValue = DepartmentName;
                 txtPosition.Text = Pozisyon;
                 dtStartDate.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["StartDate"].ToString();
-
-
                 dtEnd.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["EndDate"].ToString();
-
-
                 dtBirthDate.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["BirthDate"].ToString();
                 cmbDocumentType.EditValue = dataSet.Tables["spSinglePersonel"].Rows[0]["DocumentType"].ToString();
                 cmbistenayrilma.Text = dataSet.Tables["spSinglePersonel"].Rows[0]["ReasonForLeaving"].ToString();
@@ -438,7 +431,7 @@ namespace Break_List.Forms.Personel
 
         private void GetDepartments()
         {
-            using (var cnn = new MySqlConnection(ConString))
+            using (var cnn = DbConnection.Con)
             {
                 using (var cmd = cnn.CreateCommand())
                 {
@@ -464,7 +457,7 @@ namespace Break_List.Forms.Personel
 
         private void BringPositions()
         {
-            using (var cnn = new MySqlConnection(ConString))
+            using (var cnn = DbConnection.Con)
             {
                 using (var cmd = cnn.CreateCommand())
                 {
@@ -488,187 +481,19 @@ namespace Break_List.Forms.Personel
             }
         }
 
-        private void CalculateVacation()
+        
+
+        private void GetVacations() // Vacatıon grid
         {
-            if (radioGroup1.SelectedIndex == 0)
+            using (var mySqlConnection = DbConnection.Con)
             {
-                var iseBaslamaTarihi = dtStartDate.DateTime;
-                var ikincitarih = DateTime.Today;
-                var num = DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih);
-                var toplamCalismaGunu = Convert.ToInt32(num);
-
-
-                var firstFiveYears =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih));
-                var secondFiveYears =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih) - 1825);
-                var thirdFiveYears =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih) - 3650);
-                var over15Years =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, iseBaslamaTarihi, ikincitarih) - 5475);
-
-
-                var dataFirstFiveYears = firstFiveYears*14/365;
-                var dataSecondFiveYears = (firstFiveYears - secondFiveYears)*14/365 + secondFiveYears*18/365;
-                var dataThirdFiveYears = (firstFiveYears - secondFiveYears)*14/365 +
-                                         (secondFiveYears - thirdFiveYears)*18/365 + thirdFiveYears*22/365;
-                var dataOver15Years = (firstFiveYears - secondFiveYears)*14/365 +
-                                      (secondFiveYears - thirdFiveYears)*18/365 + (thirdFiveYears - over15Years)*22/365 +
-                                      over15Years*25/365;
-
-
-                if (toplamCalismaGunu < 184)
-                {
-                    lblHak.Text = @"0";
-                    lbl05.Text = @"6 ay altı";
-                    lbl510.Text = @"0";
-                    lbl1015.Text = @"0";
-                    lbl15ust.Text = @"0";
-                }
-
-                if ((toplamCalismaGunu > 184) && (toplamCalismaGunu < 1825))
-                {
-                    lblHak.Text = dataFirstFiveYears.ToString();
-
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-
-                    lbl510.Text = @"0";
-                    lbl1015.Text = @"0";
-                    lbl15ust.Text = @"0";
-                }
-                if ((toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650))
-                {
-                    lblHak.Text = dataSecondFiveYears.ToString();
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-                    lbl510.Text = (toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650)
-                        ? (secondFiveYears*18/365).ToString()
-                        : "90";
-                    lbl1015.Text = @"0";
-                    lbl15ust.Text = @"0";
-                }
-                if ((toplamCalismaGunu > 3650) && (toplamCalismaGunu < 5475))
-                {
-                    lblHak.Text = dataThirdFiveYears.ToString();
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-                    lbl510.Text = (toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650)
-                        ? (secondFiveYears*18/365).ToString()
-                        : "90";
-                    lbl1015.Text = (toplamCalismaGunu > 3650) && (toplamCalismaGunu < 5475)
-                        ? (thirdFiveYears*22/365).ToString()
-                        : "110";
-
-
-                    lbl15ust.Text = @"0";
-                }
-                // ReSharper disable once InvertIf
-                if (toplamCalismaGunu > 5475)
-                {
-                    lblHak.Text = dataOver15Years.ToString();
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-                    lbl510.Text = (toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650)
-                        ? (secondFiveYears*18/365).ToString()
-                        : "90";
-                    lbl1015.Text = (toplamCalismaGunu > 3650) && (toplamCalismaGunu < 5475)
-                        ? (thirdFiveYears*22/365).ToString()
-                        : "110";
-                    lbl15ust.Text = (over15Years*25/365).ToString();
-                }
-            }
-            else
-            {
-                var ikincitarih = dtEnd.DateTime;
-                var num = DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih);
-                var toplamCalismaGunu = Convert.ToInt32(num);
-
-
-                var firstFiveYears =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih));
-                var secondFiveYears =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih) - 1825);
-                var thirdFiveYears =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih) - 3650);
-                var over15Years =
-                    Convert.ToInt32(DateTimeUtil.DateDiff(DateInterval.Day, IseBaslamaTarihi, ikincitarih) - 5475);
-
-
-                var dataFirstFiveYears = firstFiveYears*14/365;
-                var dataSecondFiveYears = (firstFiveYears - secondFiveYears)*14/365 + secondFiveYears*18/365;
-                var dataThirdFiveYears = (firstFiveYears - secondFiveYears)*14/365 +
-                                         (secondFiveYears - thirdFiveYears)*18/365 + thirdFiveYears*22/365;
-                var dataOver15Years = (firstFiveYears - secondFiveYears)*14/365 +
-                                      (secondFiveYears - thirdFiveYears)*18/365 + (thirdFiveYears - over15Years)*22/365 +
-                                      over15Years*25/365;
-
-
-                if (toplamCalismaGunu < 184)
-                {
-                    lblHak.Text = @"0";
-                    lbl05.Text = @"6 ay altı";
-                    lbl510.Text = @"0";
-                    lbl1015.Text = @"0";
-                    lbl15ust.Text = @"0";
-                }
-
-                if ((toplamCalismaGunu > 184) && (toplamCalismaGunu < 1825))
-                {
-                    lblHak.Text = dataFirstFiveYears.ToString();
-
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-
-                    lbl510.Text = @"0";
-                    lbl1015.Text = @"0";
-                    lbl15ust.Text = @"0";
-                }
-                if ((toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650))
-                {
-                    lblHak.Text = dataSecondFiveYears.ToString();
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-                    lbl510.Text = (toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650)
-                        ? (secondFiveYears*18/365).ToString()
-                        : "90";
-                    lbl1015.Text = @"0";
-                    lbl15ust.Text = @"0";
-                }
-                if ((toplamCalismaGunu > 3650) && (toplamCalismaGunu < 5475))
-                {
-                    lblHak.Text = dataThirdFiveYears.ToString();
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-                    lbl510.Text = (toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650)
-                        ? (secondFiveYears*18/365).ToString()
-                        : "90";
-                    lbl1015.Text = (toplamCalismaGunu > 3650) && (toplamCalismaGunu < 5475)
-                        ? (thirdFiveYears*22/365).ToString()
-                        : "110";
-
-
-                    lbl15ust.Text = @"0";
-                }
-                if (toplamCalismaGunu > 5475)
-                {
-                    lblHak.Text = dataOver15Years.ToString();
-                    lbl05.Text = toplamCalismaGunu < 1825 ? (toplamCalismaGunu*14/365).ToString() : "70";
-                    lbl510.Text = (toplamCalismaGunu > 1825) && (toplamCalismaGunu < 3650)
-                        ? (secondFiveYears*18/365).ToString()
-                        : "90";
-                    lbl1015.Text = (toplamCalismaGunu > 3650) && (toplamCalismaGunu < 5475)
-                        ? (thirdFiveYears*22/365).ToString()
-                        : "110";
-                    lbl15ust.Text = (over15Years*25/365).ToString();
-                }
-            }
-        }
-
-        private void GetVacations()
-        {
-            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
-            {
-                using (var mySqlCommand = new MySqlCommand("spSelectVacations;", mySqlConnection)
+                using (var mySqlCommand = new MySqlCommand("spizinlerPersonel;", mySqlConnection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })
                 {
                     var num = Convert.ToInt32(PersonelId);
-                    mySqlCommand.Parameters.Add(new MySqlParameter("personelID", num));
+                    mySqlCommand.Parameters.Add(new MySqlParameter("p_resourceid", num));
                     mySqlConnection.Open();
                     mySqlCommand.ExecuteNonQuery();
                     using (var mySqlDataAdapter = new MySqlDataAdapter())
@@ -685,43 +510,43 @@ namespace Break_List.Forms.Personel
 
         private void GetUsedVacations()
         {
-            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var conn = DbConnection.Con)
             {
-                var mySqlCommand = new MySqlCommand("spUSedVacations;", mySqlConnection)
+                var cmd = new MySqlCommand("sp_Personel_vacation;", conn)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-                var str = PersonelId;
-                mySqlCommand.Parameters.Add(new MySqlParameter("personelID", str));
-                mySqlConnection.Open();
-                var mySqlDataAdapter = new MySqlDataAdapter(mySqlCommand);
-                var dataSet = new DataSet();
-                mySqlDataAdapter.Fill(dataSet, "spUsedVacations");
-                lblKul.Text = dataSet.Tables["spUSedVacations"].Rows[0]["totalVacationUsed"].ToString();
-                lblKullanilan.Text = dataSet.Tables["spUSedVacations"].Rows[0]["totalVacationUsed"].ToString();
-
-
-                if (lblKul.Text == string.Empty)
+                cmd.Parameters.Add(new MySqlParameter("p_resourceid", PersonelId));
+                conn.Open();
+                var dbr = cmd.ExecuteReader();
+                while (dbr.Read())
                 {
-                    lblKul.Text = @"0";
+                    if (dbr.HasRows)
+                    {
+                        lblHak.Text = dbr["Izin Hakki"].ToString();
+                        lblKul.Text = dbr["Kullanilan"].ToString();
+                        var kullanilan = Convert.ToInt32(lblKul.Text);
+                        var hakedilen = Convert.ToInt32(lblHak.Text);
+                        lblKalan.Text = Convert.ToString(hakedilen - kullanilan);
+                        lblKullanilan.Text = lblKul.Text;
+                        lbl05.Text = dbr["Ilk 5 yil"].ToString();
+                        lbl510.Text = dbr["2. 5 yil"].ToString();
+                        lbl1015.Text = dbr["3. 5 yil"].ToString();
+                        lbl15ust.Text = dbr["15 yil ustu"].ToString();
+                    }
+                    else
+                    {
+                        lblKul.Text = @"0";
+                    }
                 }
+                conn.Close();
+            }}
 
-
-                else
-                {
-                    var kullanilan = Convert.ToInt32(lblKul.Text);
-                    var hakedilen = Convert.ToInt32(lblHak.Text);
-                    lblKalan.Text = Convert.ToString(hakedilen - kullanilan);
-                }
-
-                mySqlConnection.Close();
-            }
-        }
-
+      
 
         private void GetMaas()
         {
-            using (var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2))
+            using (var mySqlConnection = DbConnection.Con)
             {
                 using (var mySqlCommand = new MySqlCommand("spMaasArtislari;", mySqlConnection)
                 {
@@ -752,7 +577,6 @@ namespace Break_List.Forms.Personel
                     if (PersonelId == null)
                     {
                         AddPersonel();
-                        CalculateVacation();
                         GetUsedVacations();
                         tabLayout.Visibility = LayoutVisibility.Always;
                         windowsUIButtonPanelMain.Buttons["Save"].Properties.Caption = "Edit";
@@ -771,7 +595,7 @@ namespace Break_List.Forms.Personel
                     LockControls(this);
                     windowsUIButtonPanelMain.Buttons["Save Changes"].Properties.Caption = "Edit";
                     UpdatePersonel();
-                    CalculateVacation();
+                   
                     GetUsedVacations();
                     labelControl.Text =
                         $@"Personel: {txtNameSurname.Text} | Departmanı: {DepartmentName} | Pozisyonu: {Pozisyon} | Sicil No: {PersonelId} | Kayıt No:{KayitId}";
@@ -810,7 +634,7 @@ namespace Break_List.Forms.Personel
         }
 
 
-        public static void ClearSpace(Control control)
+        private static void ClearSpace(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -828,7 +652,7 @@ namespace Break_List.Forms.Personel
             }
         }
 
-        public static void LockControls(Control control)
+        private static void LockControls(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -849,7 +673,7 @@ namespace Break_List.Forms.Personel
             }
         }
 
-        public static void UnlockLockControls(Control control)
+        private static void UnlockLockControls(Control control)
         {
             foreach (Control c in control.Controls)
             {
@@ -918,18 +742,16 @@ namespace Break_List.Forms.Personel
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frmvacation = new FrmNewVacation())
+            using (var frmvacation = new FrmAddVacation())
             {
-                frmvacation.PersonelId = PersonelId;
-                frmvacation.UserName = UserNameFromMainForm;
-                frmvacation.lblKalan.Text = lblKalan.Text;
+                frmvacation.PersonelId= PersonelId;
+                frmvacation.KalanIzin = lblKalan.Text;
                 frmvacation.PersonelName = txtNameSurname.Text;
                 var dr = frmvacation.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
                     GetVacations();
                     GetUsedVacations();
-                    CalculateVacation();
                     GetOffAlacaklari();
                 }
             }
@@ -993,7 +815,7 @@ namespace Break_List.Forms.Personel
 
         private void GetHataListesi()
         {
-            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var mySqlConnection = DbConnection.Con;
             try
             {
                 var mySqlCommand = new MySqlCommand("spLgHata;", mySqlConnection)
@@ -1047,7 +869,6 @@ namespace Break_List.Forms.Personel
                 {
                     GetVacations();
                     GetUsedVacations();
-                    CalculateVacation();
                     GetOffAlacaklari();
                     GetToplamOffAlacagi();
                 }
@@ -1060,7 +881,7 @@ namespace Break_List.Forms.Personel
 
         private void GetOffAlacaklari()
         {
-            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var mySqlConnection = DbConnection.Con;
             try
             {
                 var mySqlCommand = new MySqlCommand("spOffAlacaklari;", mySqlConnection)
@@ -1095,7 +916,7 @@ namespace Break_List.Forms.Personel
 
         private void GetOdenenOfflar()
         {
-            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var mySqlConnection = DbConnection.Con;
             try
             {
                 using (var mySqlCommand = new MySqlCommand("spOdenenOfflar;", mySqlConnection)
@@ -1125,7 +946,7 @@ namespace Break_List.Forms.Personel
 
         private void GetToplamOffAlacagi()
         {
-            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var mySqlConnection = DbConnection.Con;
             try
             {
                 var mySqlCommand = new MySqlCommand("spOffAlacaklariToplam;", mySqlConnection)
@@ -1175,11 +996,42 @@ namespace Break_List.Forms.Personel
                 GetHataListesi();
             if (xtraTabControl1.SelectedTabPage.Equals(tabEgitim) && (egitimGrid.DataSource == null))
                 Egitimler();
+            if (xtraTabControl1.SelectedTabPage.Equals(tabUyari) && (warningsGrid.DataSource == null))
+                Uyarilar();
+        }
+
+        private void Uyarilar()
+        {
+            var mySqlConnection = DbConnection.Con;
+            try
+            {
+                using (var mySqlCommand = new MySqlCommand("spPersonelWarnings;", mySqlConnection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    mySqlCommand.Parameters.Add(new MySqlParameter("_personelID", PersonelId));
+                    mySqlConnection.Open();
+                    mySqlCommand.ExecuteNonQuery();
+                    using (var mySqlDataAdapter = new MySqlDataAdapter())
+                    {
+                        var dataTable = new DataTable();
+                        mySqlDataAdapter.SelectCommand = mySqlCommand;
+                        mySqlDataAdapter.Fill(dataTable);
+                        warningsGrid.DataSource = dataTable;
+                    }
+                    mySqlConnection.Close();
+                }
+            }
+            finally
+            {
+                mySqlConnection.Dispose();
+            }
         }
 
         private void Egitimler()
         {
-            var mySqlConnection = new MySqlConnection(Settings.Default.livegameConnectionString2);
+            var mySqlConnection = DbConnection.Con;
             try
             {
                 using (var mySqlCommand = new MySqlCommand("spSelectEgitimByPersonel;", mySqlConnection)
@@ -1223,7 +1075,7 @@ namespace Break_List.Forms.Personel
                     {
                         var odemeTarihi = Convert.ToDateTime(frmOdemeTarihi.dateEdit1.EditValue.ToString());
                         var rowid = (int) ((GridView) sender).GetRowCellValue(e.RowHandle, "id");
-                        using (var con = new MySqlConnection(Settings.Default.livegameConnectionString2))
+                        using (var con = DbConnection.Con)
                         {
                             using (var cmd = new MySqlCommand("spOffOde;", con)
                             {
@@ -1363,6 +1215,40 @@ namespace Break_List.Forms.Personel
                 var num = number < 0 ? (long) Math.Ceiling(number) : (long) Math.Floor(number);
                 return num;
             }
+        }
+
+        private void FrmPersonelDetails_Shown(object sender, EventArgs e)
+        {
+            if (DepartmentName != "Live Game")
+            {
+                tabPerformans.PageVisible = false;
+            }
+        }
+
+        private void barButtonItem2_ItemClick_1(object sender, ItemClickEventArgs e) // Uyari Ekle
+        {
+            var uyariekle = new frmUyari()
+            {
+                PersonelID = PersonelId
+            };
+            var dr = uyariekle.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                Uyarilar();
+            }
+
+        }
+
+        private void barButtonItem3_ItemClick_1(object sender, ItemClickEventArgs e) // Uyari Sil
+        {
+            MessageBox.Show(@"Bu Bolum icin yetkiniz yok.", @"Ooooooooppppppsss");
+        }
+
+        private void warningsGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+                return;
+            popUyari.ShowPopup(MousePosition);
         }
     }
 }

@@ -31,8 +31,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.rbAlınan = new DevExpress.XtraEditors.TextEdit();
-            this.rebuy = new DevExpress.XtraEditors.TextEdit();
+            this.txtrbAlınan = new DevExpress.XtraEditors.TextEdit();
+            this.txtrebuy = new DevExpress.XtraEditors.TextEdit();
             this.lblR1 = new DevExpress.XtraEditors.LabelControl();
             this.lblR2 = new DevExpress.XtraEditors.LabelControl();
             this.lblR3 = new DevExpress.XtraEditors.LabelControl();
@@ -48,7 +48,7 @@
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.checkButton1 = new DevExpress.XtraEditors.CheckButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.lblAlacak = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -61,16 +61,20 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.checkButton2 = new DevExpress.XtraEditors.CheckButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.txtclient = new DevExpress.XtraEditors.TextEdit();
+            this.txtmasa = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbAlınan.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rebuy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtrbAlınan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtrebuy.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScore.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReEntry.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReentryAlınan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtclient.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtmasa.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -97,48 +101,50 @@
             // 
             // labelControl4
             // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelControl4.Location = new System.Drawing.Point(855, 2);
+            this.labelControl4.Location = new System.Drawing.Point(824, 2);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(63, 13);
+            this.labelControl4.Size = new System.Drawing.Size(94, 19);
             this.labelControl4.TabIndex = 1;
             this.labelControl4.Text = "labelControl4";
             // 
-            // rbAlınan
+            // txtrbAlınan
             // 
-            this.rbAlınan.EditValue = "0";
-            this.rbAlınan.EnterMoveNextControl = true;
-            this.rbAlınan.Location = new System.Drawing.Point(579, 289);
-            this.rbAlınan.Name = "rbAlınan";
-            this.rbAlınan.Properties.Appearance.BackColor = System.Drawing.Color.Maroon;
-            this.rbAlınan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
-            this.rbAlınan.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.rbAlınan.Properties.Appearance.Options.UseBackColor = true;
-            this.rbAlınan.Properties.Appearance.Options.UseFont = true;
-            this.rbAlınan.Properties.Appearance.Options.UseForeColor = true;
-            this.rbAlınan.Properties.Appearance.Options.UseTextOptions = true;
-            this.rbAlınan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rbAlınan.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.rbAlınan.Size = new System.Drawing.Size(329, 50);
-            this.rbAlınan.TabIndex = 1;
+            this.txtrbAlınan.EditValue = "0";
+            this.txtrbAlınan.EnterMoveNextControl = true;
+            this.txtrbAlınan.Location = new System.Drawing.Point(579, 289);
+            this.txtrbAlınan.Name = "txtrbAlınan";
+            this.txtrbAlınan.Properties.Appearance.BackColor = System.Drawing.Color.Maroon;
+            this.txtrbAlınan.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
+            this.txtrbAlınan.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtrbAlınan.Properties.Appearance.Options.UseBackColor = true;
+            this.txtrbAlınan.Properties.Appearance.Options.UseFont = true;
+            this.txtrbAlınan.Properties.Appearance.Options.UseForeColor = true;
+            this.txtrbAlınan.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtrbAlınan.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txtrbAlınan.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtrbAlınan.Size = new System.Drawing.Size(329, 50);
+            this.txtrbAlınan.TabIndex = 1;
             // 
-            // rebuy
+            // txtrebuy
             // 
-            this.rebuy.EditValue = "0";
-            this.rebuy.EnterMoveNextControl = true;
-            this.rebuy.Location = new System.Drawing.Point(579, 231);
-            this.rebuy.Name = "rebuy";
-            this.rebuy.Properties.Appearance.BackColor = System.Drawing.Color.Maroon;
-            this.rebuy.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
-            this.rebuy.Properties.Appearance.ForeColor = System.Drawing.Color.White;
-            this.rebuy.Properties.Appearance.Options.UseBackColor = true;
-            this.rebuy.Properties.Appearance.Options.UseFont = true;
-            this.rebuy.Properties.Appearance.Options.UseForeColor = true;
-            this.rebuy.Properties.Appearance.Options.UseTextOptions = true;
-            this.rebuy.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.rebuy.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.rebuy.Size = new System.Drawing.Size(329, 50);
-            this.rebuy.TabIndex = 0;
+            this.txtrebuy.EditValue = "0";
+            this.txtrebuy.EnterMoveNextControl = true;
+            this.txtrebuy.Location = new System.Drawing.Point(579, 231);
+            this.txtrebuy.Name = "txtrebuy";
+            this.txtrebuy.Properties.Appearance.BackColor = System.Drawing.Color.Maroon;
+            this.txtrebuy.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 18F);
+            this.txtrebuy.Properties.Appearance.ForeColor = System.Drawing.Color.White;
+            this.txtrebuy.Properties.Appearance.Options.UseBackColor = true;
+            this.txtrebuy.Properties.Appearance.Options.UseFont = true;
+            this.txtrebuy.Properties.Appearance.Options.UseForeColor = true;
+            this.txtrebuy.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtrebuy.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.txtrebuy.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txtrebuy.Size = new System.Drawing.Size(329, 50);
+            this.txtrebuy.TabIndex = 0;
             // 
             // lblR1
             // 
@@ -249,7 +255,7 @@
             this.lblR6.Location = new System.Drawing.Point(756, 32);
             this.lblR6.Margin = new System.Windows.Forms.Padding(0);
             this.lblR6.Name = "lblR6";
-            this.lblR6.Size = new System.Drawing.Size(151, 60);
+            this.lblR6.Size = new System.Drawing.Size(155, 60);
             this.lblR6.TabIndex = 32;
             this.lblR6.Text = "labelControl2";
             this.lblR6.Click += new System.EventHandler(this.lblR6_Click);
@@ -328,7 +334,7 @@
             this.lblT6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblT6.Location = new System.Drawing.Point(759, 4);
             this.lblT6.Name = "lblT6";
-            this.lblT6.Size = new System.Drawing.Size(145, 24);
+            this.lblT6.Size = new System.Drawing.Size(149, 24);
             this.lblT6.TabIndex = 32;
             this.lblT6.Text = "labelControl2";
             // 
@@ -362,22 +368,22 @@
             this.checkButton1.Text = "Rebuy Hepsini Aldım";
             this.checkButton1.CheckedChanged += new System.EventHandler(this.checkButton1_CheckedChanged);
             // 
-            // simpleButton1
+            // btnOK
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.Teal;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton1.Location = new System.Drawing.Point(506, 8);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(159, 42);
-            this.simpleButton1.TabIndex = 2;
-            this.simpleButton1.Text = "ONAYLA";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnOK.Appearance.BackColor = System.Drawing.Color.Teal;
+            this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnOK.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btnOK.Appearance.Options.UseBackColor = true;
+            this.btnOK.Appearance.Options.UseFont = true;
+            this.btnOK.Appearance.Options.UseForeColor = true;
+            this.btnOK.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.Location = new System.Drawing.Point(506, 8);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(159, 42);
+            this.btnOK.TabIndex = 2;
+            this.btnOK.Text = "ONAYLA";
+            this.btnOK.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton2
             // 
@@ -400,7 +406,7 @@
             // 
             this.lblAlacak.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblAlacak.Appearance.Options.UseFont = true;
-            this.lblAlacak.Location = new System.Drawing.Point(8, 75);
+            this.lblAlacak.Location = new System.Drawing.Point(373, 98);
             this.lblAlacak.Name = "lblAlacak";
             this.lblAlacak.Size = new System.Drawing.Size(89, 16);
             this.lblAlacak.TabIndex = 36;
@@ -415,7 +421,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
             this.tableLayoutPanel1.Controls.Add(this.lblT1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblT2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblT3, 2, 0);
@@ -440,7 +446,7 @@
             // 
             this.lblToplamRebuy.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.lblToplamRebuy.Appearance.Options.UseFont = true;
-            this.lblToplamRebuy.Location = new System.Drawing.Point(9, 45);
+            this.lblToplamRebuy.Location = new System.Drawing.Point(374, 68);
             this.lblToplamRebuy.Name = "lblToplamRebuy";
             this.lblToplamRebuy.Size = new System.Drawing.Size(87, 16);
             this.lblToplamRebuy.TabIndex = 36;
@@ -539,18 +545,36 @@
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.simpleButton2);
-            this.panelControl2.Controls.Add(this.simpleButton1);
+            this.panelControl2.Controls.Add(this.btnOK);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 444);
+            this.panelControl2.Location = new System.Drawing.Point(0, 398);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(920, 59);
             this.panelControl2.TabIndex = 38;
+            // 
+            // txtclient
+            // 
+            this.txtclient.EditValue = "KATILIMCI";
+            this.txtclient.Location = new System.Drawing.Point(13, 40);
+            this.txtclient.Name = "txtclient";
+            this.txtclient.Size = new System.Drawing.Size(297, 36);
+            this.txtclient.TabIndex = 39;
+            // 
+            // txtmasa
+            // 
+            this.txtmasa.EditValue = "MASA NO";
+            this.txtmasa.Location = new System.Drawing.Point(13, 83);
+            this.txtmasa.Name = "txtmasa";
+            this.txtmasa.Size = new System.Drawing.Size(297, 36);
+            this.txtmasa.TabIndex = 39;
             // 
             // FrmAddRebuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 503);
+            this.ClientSize = new System.Drawing.Size(920, 457);
+            this.Controls.Add(this.txtmasa);
+            this.Controls.Add(this.txtclient);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblToplamRebuy);
@@ -564,9 +588,9 @@
             this.Controls.Add(this.labelControl14);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.txtReentryAlınan);
-            this.Controls.Add(this.rbAlınan);
+            this.Controls.Add(this.txtrbAlınan);
             this.Controls.Add(this.txtReEntry);
-            this.Controls.Add(this.rebuy);
+            this.Controls.Add(this.txtrebuy);
             this.Controls.Add(this.panelControl1);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -577,8 +601,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rbAlınan.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rebuy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtrbAlınan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtrebuy.Properties)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScore.Properties)).EndInit();
@@ -586,6 +610,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtReentryAlınan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtclient.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtmasa.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,14 +621,12 @@
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.TextEdit rbAlınan;
-        private DevExpress.XtraEditors.TextEdit rebuy;
+        private DevExpress.XtraEditors.TextEdit txtrbAlınan;
+        private DevExpress.XtraEditors.TextEdit txtrebuy;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.CheckButton checkButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.LabelControl lblAlacak;
         public DevExpress.XtraEditors.LabelControl lblR1;
         public DevExpress.XtraEditors.LabelControl lblR2;
         public DevExpress.XtraEditors.LabelControl lblR3;
@@ -616,7 +640,6 @@
         public DevExpress.XtraEditors.LabelControl lblT5;
         public DevExpress.XtraEditors.LabelControl lblT6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraEditors.LabelControl lblToplamRebuy;
         private DevExpress.XtraEditors.TextEdit txtScore;
         private DevExpress.XtraEditors.LabelControl lblScore;
         private DevExpress.XtraEditors.TextEdit txtReEntry;
@@ -626,5 +649,10 @@
         private DevExpress.XtraEditors.CheckButton checkButton2;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        public DevExpress.XtraEditors.SimpleButton btnOK;
+        private DevExpress.XtraEditors.TextEdit txtclient;
+        private DevExpress.XtraEditors.TextEdit txtmasa;
+        public DevExpress.XtraEditors.LabelControl lblAlacak;
+        public DevExpress.XtraEditors.LabelControl lblToplamRebuy;
     }
 }

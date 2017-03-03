@@ -4,6 +4,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.Windows.Forms;
 using Break_List.Properties;
+using DevExpress.CodeParser;
 using DevExpress.Data;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
@@ -242,7 +243,31 @@ namespace Break_List.Forms.BreakList
                 schedulerControl.ActiveView.FirstVisibleResourceIndex++;
         }
 
+        private void AppointmentYaziKarakteri(object sender, EventArgs e)
+        {
+            DialogResult result = fontDialog1.ShowDialog();
+            // See if OK was pressed.
+            if (result == DialogResult.OK)
+            {
+                // Get Font.
+                Font font = fontDialog1.Font;
+                // Set TextBox properties.
+                schedulerControl.Views.TimelineView.Appearance.Appointment.Font = font;
+            }
+        }
 
+        private void ResourcesYaziKarakteri(object sender, EventArgs e)
+        {
+            DialogResult result = fontDialog1.ShowDialog();
+            // See if OK was pressed.
+            if (result == DialogResult.OK)
+            {
+                // Get Font.
+                Font font = fontDialog1.Font;
+                // Set TextBox properties.
+                schedulerControl.Views.TimelineView.Appearance.ResourceHeaderCaption.Font = font;
+            }
+        }
         private void schedulerControl_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             e.Menu.Items.Clear();
@@ -256,6 +281,8 @@ namespace Break_List.Forms.BreakList
                 ResourceName = hi.ViewInfo.Resource.Caption;
                 e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Bitir", EveGonder, imageList1.Images[1]));
                 e.Menu.Items.Add(new SchedulerMenuItem(ResourceName + " Geri Gönder", GeriGonder, imageList1.Images[2]));
+                
+                e.Menu.Items.Add(new SchedulerMenuItem(" Yazı Karakteri", ResourcesYaziKarakteri, imageList1.Images[4]));
             }
 
             if (hi.HitTest == SchedulerHitTest.Cell)
@@ -264,9 +291,8 @@ namespace Break_List.Forms.BreakList
                     e.Menu.Items.Clear();
                     e.Menu.Items.Add(new SchedulerMenuItem("İşaretle", Isaretle, imageList1.Images[0]));
                     e.Menu.Items.Add(new SchedulerMenuItem("İşareti Kaldır", IsaretiKaldir));
-
-                    e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",
-                        GoToNow, imageList1.Images[3]));
+                    e.Menu.Items.Add(new SchedulerMenuItem("Şu ana git",GoToNow, imageList1.Images[3]));
+                    e.Menu.Items.Add(new SchedulerMenuItem(" Yazı Karakteri", AppointmentYaziKarakteri, imageList1.Images[4]));
                 }
 
                 else
@@ -643,6 +669,60 @@ namespace Break_List.Forms.BreakList
         private void FrmBreakList_FormClosed(object sender, FormClosedEventArgs e)
         {
           
+        }
+
+       
+
+        private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            var form = new XtraForm
+            {
+                Bounds = new Rectangle(100, 100, 100, 100),
+                StartPosition = FormStartPosition.CenterScreen,
+                FormBorderEffect = FormBorderEffect.Shadow,
+                Text = "Kişi Sayısını Girin"
+            };
+            var textbox = new TextEdit
+            {
+                Parent = form,
+                
+            };
+            textbox.Dock = DockStyle.Top;
+            
+            var button = new SimpleButton()
+            {
+                Parent = form
+            };
+            button.Dock = DockStyle.Bottom;
+            button.Text = "OK";
+            button.DialogResult = DialogResult.OK;
+            
+
+            var dr = form.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                schedulerControl.BeginUpdate();
+                schedulerControl.Views.TimelineView.ResourcesPerPage = Convert.ToInt32(textbox.Text);
+                schedulerControl.EndUpdate();}
+
+        }
+
+        private void btnFont_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DialogResult result = fontDialog1.ShowDialog();
+            // See if OK was pressed.
+            if (result == DialogResult.OK)
+            {
+                // Get Font.
+                Font font = fontDialog1.Font;
+                // Set TextBox properties.
+                schedulerControl.Views.TimelineView.Appearance.Appointment.Font = font;}
+
+        }
+
+        private void btnPersYenile_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GetNames();
         }
     }
 }

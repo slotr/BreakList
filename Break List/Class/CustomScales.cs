@@ -5,8 +5,8 @@ namespace Break_List.Class
 {
     public class TimeScaleFixedInterval : DevExpress.XtraScheduler.TimeScaleFixedInterval
     {
-        readonly TimeSpan _start;
-        readonly TimeSpan _end;
+        private readonly TimeSpan _start;
+        private readonly TimeSpan _end;
 
         public TimeScaleFixedInterval(TimeSpan span, TimeSpan spanStart, TimeSpan spanEnd) : base(span)
         {

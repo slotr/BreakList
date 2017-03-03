@@ -4,7 +4,7 @@ namespace Break_List.Class
 {
     public class ClsTurnuva
     {
-        public int TurnuvaID;
+        public string TurnuvaId;
         public string TurnuvaAdi;
         public DateTime TurnuvaTarihi;
         public string TopDenom1 ;

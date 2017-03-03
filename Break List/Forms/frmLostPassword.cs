@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Net.Mail;
 using System.Net;
-using Break_List.Properties;
+using Break_List.Class;
 using MySql.Data.MySqlClient;
 
 namespace Break_List.Forms
@@ -14,9 +14,10 @@ namespace Break_List.Forms
         {
             InitializeComponent();
         }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Isim { get; set; }
+
+        private string Email { get; set; }
+        private string Password { get; set; }
+        private string Isim { get; set; }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
 
@@ -30,10 +31,10 @@ namespace Break_List.Forms
             {
                 Email = textEdit1.Text;
 
-                var str = Settings.Default.livegameConnectionString2;
+                
                 var query =
                     $"select * from users where email = '{textEdit1.Text}'";
-                var con = new MySqlConnection(str);
+                var con = DbConnection.Con;
                 var cmd = new MySqlCommand(query, con);
                 con.Open();
                 var dbr = cmd.ExecuteReader();

@@ -15,7 +15,8 @@ namespace Break_List.Forms
         {
             
         }
-         DateTime EndDate { get; set; }
+
+        private DateTime EndDate { get; set; }
         private void dateEdit1_EditValueChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.operationDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
@@ -23,6 +24,8 @@ namespace Break_List.Forms
             EndDate = Convert.ToDateTime(dateEdit1.EditValue.ToString());
             dateEdit2.EditValue = EndDate.AddHours(26);
             Properties.Settings.Default.Save();
+            dateEdit2.Focus();
+            dateEdit2.ShowPopup();
         }
 
         private void dateEdit2_EditValueChanged(object sender, EventArgs e)
